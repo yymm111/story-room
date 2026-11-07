@@ -1,0 +1,145 @@
+/* The home library is a physical shelf. HTML provides the matching three reading cards. */
+body[data-view=shelf] .shelf-invitation,body[data-view=shelf] .wood-shelf,body[data-view=shelf] .hero,body[data-view=shelf] .site-footer,body[data-view=shelf] .shelf-hint{display:none!important}
+body[data-view=shelf] #shelfView{position:fixed;inset:0;pointer-events:none;z-index:5}
+body[data-view=shelf] .topbar{height:84px;padding:18px 26px;gap:14px;pointer-events:none}
+body[data-view=shelf] .topbar button{pointer-events:auto}
+body[data-view=shelf] .brand{display:flex;gap:3px;width:auto;padding:0;filter:drop-shadow(0 2px 1px #67492960)}
+.home-brand-symbol{width:39px;height:39px;object-fit:contain}.home-brand-wordmark{width:140px;height:42px;object-fit:contain}
+.home-reading-badge{color:#f9eed6;background:linear-gradient(#3f4968,#27364c);border:1px solid #b99e68;border-radius:24px;padding:9px 15px;font:600 12px StoryFredoka,'PingFang SC',sans-serif;box-shadow:0 3px 7px #332a2944;white-space:nowrap}
+body[data-view=shelf] .header-tools{gap:12px;pointer-events:auto}
+body[data-view=shelf] .header-tools .round-button,body[data-view=shelf] .profile-button{width:52px;height:52px;min-width:52px;box-shadow:0 4px 7px #38281940}
+.home-import{height:52px;min-width:170px;border:0;background:var(--story-pill) center/100% 100% no-repeat;box-shadow:0 4px 7px #38281940;color:#302d3e;display:flex;align-items:center;justify-content:center;gap:8px;font:600 16px StoryFredoka,'PingFang SC',sans-serif;padding:0 21px}
+.home-import .icon{width:22px;height:22px}
+body[data-view=shelf] .library{position:fixed;inset:auto 0 0;height:184px;max-width:none;padding:0;pointer-events:none}
+body[data-view=shelf] .shelf-prompt{position:absolute;bottom:200px;left:0;right:0;text-align:center;color:#fff6d7;font:700 21px StoryBaloo,'PingFang SC',sans-serif;line-height:1.1;letter-spacing:1px;text-shadow:0 2px 3px #49331d8c;margin:0;pointer-events:none}
+body[data-view=shelf] .books-stage{position:absolute;inset:0;pointer-events:none}
+body[data-view=shelf] .book-list{position:absolute;top:0;bottom:32px;left:50%;right:auto;translate:-50% 0;width:min(66vw,690px);height:140px;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0;overflow:visible;perspective:none;pointer-events:none}
+.shelf-book-card{position:relative;min-width:0;height:140px;pointer-events:auto;transition:transform .25s cubic-bezier(.2,.8,.3,1)}
+.shelf-book-card[hidden]{display:none!important}
+.shelf-select{position:relative;display:flex;align-items:center;flex-direction:column;justify-content:flex-end;width:100%;height:100%;padding:8px 12px 13px;border:2px solid #26394f;border-radius:17px;background:linear-gradient(#fff8df46,#fff3d85c),var(--story-paper) center/100% 100%;box-shadow:inset 0 0 0 2px #d9bb7a,0 7px 11px #432c204d;color:#514b3f;text-align:left;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s}
+.shelf-title-art{position:absolute;top:8px;left:8%;width:84%;height:77px;object-fit:contain;pointer-events:none}
+.shelf-written-title{position:absolute;top:16px;left:14px;right:14px;min-height:62px;display:grid;place-items:center;text-align:center;color:#71522d;font:700 23px StoryBaloo,'PingFang SC',sans-serif}
+.shelf-reading-track{align-self:flex-start;display:block;width:64%;height:7px;margin-bottom:9px;border-radius:8px;background:#c1b68b80;box-shadow:inset 0 1px 2px #493e2730;overflow:hidden}.shelf-reading-track>i{display:block;height:100%;background:linear-gradient(#ffdc77,#eab94c);box-shadow:inset 0 1px #ffeeb0;border-radius:inherit}
+.shelf-reading-status{align-self:flex-start;color:#7a7157;max-width:100%;font-size:11px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.shelf-page-marks{position:absolute;right:13px;bottom:39px;display:flex;gap:3px}.shelf-page-marks i{width:9px;height:9px;border-radius:50%;background:#a79d7880;box-shadow:inset 0 1px 2px #61552b22}.shelf-page-marks i.read{background:#cfa554;box-shadow:inset 0 1px #ffe3a3}
+.shelf-book-card:hover,.shelf-book-card.is-hovered{transform:translateY(-5px)}.shelf-select:hover,.shelf-select:focus-visible,.is-hovered>.shelf-select{border-color:#d0a34e;box-shadow:inset 0 0 0 2px #fff1bd,0 8px 17px #432c2066;outline:none}
+.shelf-book-more{position:absolute;right:6px;bottom:5px;background:none;border:0;padding:2px;width:19px;height:18px;color:#8c805f;opacity:0;cursor:pointer}.shelf-book-more .icon{width:16px;height:16px}.shelf-book-card:hover .shelf-book-more,.shelf-book-more:focus-visible{opacity:1}
+body[data-view=shelf] .book-options-menu{position:absolute;bottom:30px;right:0;left:auto;top:auto;min-width:150px;z-index:30;border:1px solid #c4a571;border-radius:12px;background:#fff4d8;box-shadow:0 7px 25px #33251150;padding:6px;display:flex;flex-direction:column}
+body[data-view=shelf] .book-options-menu button{background:none;border:0;padding:8px;text-align:left;color:#57472e;font-size:12px;cursor:pointer}
+body[data-view=shelf] .library-toolbar{position:static;border:0;background:none;box-shadow:none;padding:0;margin:0;transform:none;display:block;width:auto;max-width:none;pointer-events:none}
+body[data-view=shelf] .filter-tabs{position:fixed;left:22px;bottom:15px;gap:12px;padding:6px 12px;background:#fff2cfdb;border:1px solid #c7a474;border-radius:20px;box-shadow:0 3px 8px #49331d33;pointer-events:auto}
+body[data-view=shelf] .filter{font-size:10px;color:#806540;white-space:nowrap}
+body[data-view=shelf] .shelf-tools{position:static;display:block}
+body[data-view=shelf] #shelfCount{display:none}
+body[data-view=shelf] #scrollLeft,body[data-view=shelf] #scrollRight{position:absolute;bottom:79px;width:46px;height:46px;border:2px solid #2c3951;border-radius:50%;background:radial-gradient(at 35% 20%,#fff6d5,#ecc36a);color:#754a21;box-shadow:0 4px 0 #a6743d,0 7px 10px #42281140;pointer-events:auto}
+body[data-view=shelf] #scrollLeft{left:calc(50% - min(33vw,345px) - 54px)}body[data-view=shelf] #scrollRight{right:calc(50% - min(33vw,345px) - 54px)}body[data-view=shelf] #scrollLeft svg,body[data-view=shelf] #scrollRight svg{width:24px;height:24px;stroke-width:4}
+body[data-view=shelf] #scrollLeft:disabled,body[data-view=shelf] #scrollRight:disabled{opacity:.38;cursor:default;box-shadow:none}
+.shelf-pagination{position:absolute;bottom:9px;left:50%;translate:-50% 0;display:flex;gap:7px;pointer-events:auto}.shelf-page-dot{width:11px;height:11px;padding:0;border-radius:50%;background:#a18158;border:2px solid #f1d39a;box-shadow:0 1px 3px #52341f66;cursor:pointer}.shelf-page-dot.active{background:#ffda75;scale:1.2}
+body[data-view=shelf] .search-box{top:84px;right:25px;bottom:auto;pointer-events:auto}
+.shelf-empty{color:#fff3d5;text-align:center;grid-column:1/-1;font-size:15px}
+@media(max-width:900px){body[data-view=shelf] .topbar{padding:12px 13px;height:72px;gap:6px}.home-brand-symbol{width:30px;height:30px}.home-brand-wordmark{width:105px;height:34px}.home-reading-badge{display:none}body[data-view=shelf] .header-tools{gap:6px}body[data-view=shelf] .header-tools .round-button,body[data-view=shelf] .profile-button{width:43px;height:43px;min-width:43px}.home-import{min-width:105px;height:43px;font-size:12px;padding:0 13px;gap:4px}.home-import .icon{width:18px;height:18px}body[data-view=shelf] .book-list{width:79vw;gap:6px;height:124px;top:20px}.shelf-book-card{height:124px}.shelf-select{padding:7px 8px 13px;border-radius:13px}.shelf-title-art{top:7px;height:64px}.shelf-reading-status{font-size:9px}.shelf-reading-track{width:100%;height:5px;margin-bottom:8px}.shelf-page-marks{display:none}.shelf-written-title{font-size:16px;left:7px;right:7px;top:14px;min-height:50px}body[data-view=shelf] .shelf-prompt{bottom:171px;font-size:19px}body[data-view=shelf] #scrollLeft{left:1vw}body[data-view=shelf] #scrollRight{right:1vw}body[data-view=shelf] #scrollLeft,body[data-view=shelf] #scrollRight{width:36px;height:36px;bottom:83px;border-width:1px}body[data-view=shelf] .filter-tabs{left:12px;bottom:7px;padding:5px 9px;gap:9px}body[data-view=shelf] .filter{font-size:9px}body[data-view=shelf] .shelf-pagination{bottom:11px;left:auto;right:15px;translate:none}}
+@media(max-width:480px){.home-brand-wordmark{width:94px}.home-brand-symbol{width:26px}body[data-view=shelf] #searchButton{display:none}.home-import{min-width:88px;font-size:10px;padding:0 10px}.home-import .icon{display:none}body[data-view=shelf] .header-tools .round-button,body[data-view=shelf] .profile-button{width:37px;height:37px;min-width:37px}.home-import{height:37px}body[data-view=shelf] .topbar{gap:3px}body[data-view=shelf] .header-tools{gap:4px}.shelf-title-art{height:61px}.shelf-reading-status{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.shelf-book-card,.shelf-select{transition:none}}
+
+/* Souvenirs, language switcher and story entries (local gamification). */
+.souvenir-badge{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font:600 13px StoryFredoka,'PingFang SC',sans-serif}
+.souvenir-badge i{font-style:normal;opacity:.5;margin:0 1px}
+.souvenir-badge:hover{filter:brightness(1.12)}
+.learn-link{display:inline-flex;align-items:center;gap:7px;height:52px;padding:0 18px;border-radius:26px;background:var(--story-pill) center/100% 100% no-repeat;box-shadow:0 4px 7px #38281940;color:#302d3e;font:600 14px StoryFredoka,'PingFang SC',sans-serif;text-decoration:none;white-space:nowrap}
+.learn-link .icon{width:20px;height:20px}
+#languageFlag{font:700 15px StoryFredoka,'PingFang SC',sans-serif;color:#d8d8ca}
+.language-options{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.language-options button{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:1px solid #dbc9a5;border-radius:11px;background:#fffaf0;color:#65503a;font-size:15px}
+.language-options button.active{border-color:#ad8950;background:#f3e2bb;box-shadow:inset 0 0 0 1px #ad8950}
+.language-options button .check{color:#ad8950;font-weight:700}
+.souvenir-summary{display:flex;justify-content:center;gap:28px;font-size:15px;color:#8a7253;margin:0 0 20px}
+.souvenir-summary b{color:#a5824a;font-size:17px}
+.souvenir-summary i{font-style:normal;font-size:11px;color:#ab987b;margin-left:3px}
+#souvenirsList{display:flex;flex-direction:column;gap:12px}
+.souvenir-book{border:1px solid #d6c19a55;border-radius:11px;padding:13px 15px;background:#fffaf04d}
+.souvenir-book h3{font-family:"Songti SC",serif;font-size:15px;color:#795331;margin:0 0 9px;font-weight:700}
+.souvenir-pins{display:flex;gap:9px;font-size:23px;line-height:1}
+.souvenir-pins .pin{filter:grayscale(1);opacity:.32;transition:filter .3s,opacity .3s}
+.souvenir-pins .pin.got{filter:none;opacity:1}
+.souvenir-stars{font-size:11px;color:#a5824a;margin-top:9px}
+.souvenir-empty{text-align:center;color:#ab9675;font-size:13px;padding:16px 0}
+.all-stories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:13px;margin-top:6px}
+.all-story-card{border:1px solid #d6c19a55;border-radius:11px;overflow:hidden;background:#fffaf0;padding:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.all-story-card:hover{transform:translateY(-3px);box-shadow:0 8px 18px #432c2033}
+.all-story-card img{width:100%;height:150px;object-fit:cover;display:block;background:#274b64}
+.all-story-name{font-size:12px;padding:9px 8px;color:#795331;text-align:center;line-height:1.4}
+.shelf-pin-row{position:absolute;right:11px;top:9px;display:flex;gap:2px;font-size:12px;line-height:1;pointer-events:none}
+.shelf-pin-row .pin{filter:grayscale(1);opacity:.4}
+.shelf-pin-row .pin.got{filter:none;opacity:1}
+@media(max-width:900px){.learn-link{height:43px;padding:0 12px;font-size:12px}.learn-link .icon{width:17px;height:17px}.souvenir-badge{font-size:11px;padding:7px 11px}}
+@media(max-width:480px){.learn-link span[data-i18n]{display:none}.learn-link{padding:0 10px;min-width:37px}.souvenir-badge{display:none}.shelf-pin-row{display:none}}
+
+/* Keep the shelf clear; library actions sit beside the books. */
+body[data-view=shelf] .topbar{max-width:none;justify-content:flex-start;padding:18px 24px;border:0}
+body[data-view=shelf] .header-tools{margin-left:auto;gap:12px}
+body[data-view=shelf] .profile-button{margin:0;justify-content:center}
+body[data-view=shelf] #languageFlag{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#fff5de;color:#69513a;font-size:14px;box-shadow:inset 0 0 0 1px #d5bc8e}
+body[data-view=shelf] .souvenir-badge{display:flex;gap:12px;padding:8px 13px;min-height:36px}
+.achievement-item{display:flex;align-items:center;gap:4px}.achievement-item b{font-size:13px}.achievement-item small{font-size:9px;opacity:.7;margin-left:-3px}
+body[data-view=shelf] #homeReadingBadge{display:none}
+body[data-view=shelf] .shelf-heading{position:absolute;bottom:173px;left:0;right:0;display:flex;justify-content:center;align-items:baseline;gap:16px;pointer-events:auto}
+body[data-view=shelf] .shelf-prompt{position:static;margin:0;line-height:1.3;font-size:22px}
+.all-stories-link{color:#fff3d6;font-size:12px;padding:6px 0;text-shadow:0 1px 3px #402c21;border-bottom:1px solid #ffedc681;cursor:pointer}
+body[data-view=shelf] .book-list{top:12px}
+body[data-view=shelf] .shelf-pin-row{top:auto;bottom:10px;right:12px;font-size:13px;gap:2px}
+body[data-view=shelf] .shelf-reading-track{margin-bottom:12px;width:55%}
+body[data-view=shelf] .shelf-reading-status{max-width:62%;font-size:10px}
+body[data-view=shelf] .shelf-page-marks{bottom:37px;gap:4px}
+body[data-view=shelf] .shelf-page-marks i{width:10px;height:10px}
+body[data-view=shelf] .shelf-page-marks i.read:after{content:'✓';display:block;font-size:8px;line-height:10px;color:#fff8dc;text-align:center}
+body[data-view=shelf] .shelf-book-more{right:4px;top:3px;bottom:auto}
+body[data-view=shelf] .filter-tabs{align-items:center;gap:13px}
+body[data-view=shelf] #searchButton{display:grid;width:25px;height:25px;min-width:25px;border:0;box-shadow:none;background:none!important;color:#806540;padding:3px}
+body[data-view=shelf] #searchButton svg{width:17px;height:17px}
+body[data-view=shelf] .filter{min-height:25px;padding:3px 0}
+body[data-view=shelf] .search-box{position:fixed;top:88px;right:22px;width:min(300px,calc(100vw - 44px));border-radius:16px;padding:10px 14px;box-sizing:border-box}
+body[data-view=shelf] .search-box input{width:100%;min-width:0}
+body[data-view=shelf] .shelf-empty{align-self:center;background:#fff3dbed;color:#6c5134;border:1px solid #c6a56e;border-radius:16px;padding:18px 24px;box-shadow:0 5px 18px #49331d33;pointer-events:auto;font-size:13px}
+.shelf-empty p{margin:0 0 10px}.empty-reset{color:#725124;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.catalog-tools{display:flex;gap:10px;margin:16px 0 22px;align-items:center}.catalog-search{display:flex;align-items:center;gap:8px;border:1px solid #d2bd99;border-radius:12px;background:#fffaf0;padding:10px 12px;flex:1;min-width:0;color:#8b7455}.catalog-search .icon{width:19px;height:19px;flex:none}.catalog-search input{border:0;background:transparent;outline:0;width:100%;min-width:0;color:#604a33;font-size:14px}.catalog-tools .home-import{height:43px;min-width:112px;padding:0 14px;font-size:13px}.catalog-empty{text-align:center;padding:25px 0;color:#8a7253}
+.all-story-status{display:block;padding:0 8px 12px;color:#a08054;font-size:10px;line-height:1.5}.all-story-name{padding-bottom:5px;min-height:38px;display:grid;place-items:center}
+body[data-view=shelf] button:focus-visible,.all-story-card:focus-visible,.catalog-search:focus-within{outline:3px solid #fff2b5;outline-offset:4px}
+@media(max-width:1050px){body[data-view=shelf] .souvenir-badge{gap:8px;font-size:11px}.home-brand-wordmark{width:120px}body[data-view=shelf] .header-tools{gap:8px}body[data-view=shelf] .header-tools .round-button,body[data-view=shelf] .profile-button{width:46px;height:46px;min-width:46px}.learn-link{height:46px;padding:0 15px;font-size:13px}}
+@media(max-width:700px){
+ body[data-view=shelf] .topbar{height:110px;padding:12px 15px;align-items:flex-start;gap:8px;flex-wrap:wrap}
+ body[data-view=shelf] .brand{height:43px}.home-brand-symbol{width:36px;height:36px}.home-brand-wordmark{width:110px;height:32px}
+ body[data-view=shelf] .header-tools{gap:7px;margin-left:auto}
+ body[data-view=shelf] .header-tools .round-button,body[data-view=shelf] .profile-button{width:43px;height:43px;min-width:43px}
+ body[data-view=shelf] .header-tools .round-button svg{width:22px;height:22px}
+ body[data-view=shelf] .learn-link{display:none}
+ body[data-view=shelf] .souvenir-badge{position:absolute;top:66px;left:50%;transform:translateX(-50%);min-height:30px;padding:5px 13px;gap:12px}
+ body[data-view=shelf] .library{height:176px}
+ body[data-view=shelf] .shelf-heading{bottom:161px;gap:12px}
+ body[data-view=shelf] .shelf-prompt{font-size:18px}.all-stories-link{font-size:11px}
+ body[data-view=shelf] .book-list{top:6px;width:calc(100vw - 78px);gap:5px;height:122px}
+ .shelf-book-card{height:122px}.shelf-select{padding:7px 7px 12px;border-radius:12px}.shelf-title-art{top:5px;height:66px}
+ body[data-view=shelf] .shelf-reading-track{width:100%;height:5px;margin-bottom:10px}
+ body[data-view=shelf] .shelf-reading-status{max-width:100%;font-size:8px;white-space:normal;line-height:1.4;min-height:22px;text-align:center;align-self:center}
+ body[data-view=shelf] .shelf-page-marks,body[data-view=shelf] .shelf-pin-row{display:none}
+ body[data-view=shelf] #scrollLeft,body[data-view=shelf] #scrollRight{bottom:93px;width:32px;height:40px;border-radius:18px}
+ body[data-view=shelf] #scrollLeft{left:3px}body[data-view=shelf] #scrollRight{right:3px}
+ body[data-view=shelf] .filter-tabs{bottom:max(7px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);gap:12px;padding:4px 12px;max-width:calc(100vw - 20px);white-space:nowrap}
+ body[data-view=shelf] .filter{font-size:9px}body[data-view=shelf] .shelf-pagination{bottom:44px;left:50%;right:auto;translate:-50% 0}
+ body[data-view=shelf] .shelf-page-dot{width:9px;height:9px}
+ body[data-view=shelf] .search-box{top:112px;right:15px;width:calc(100vw - 30px)}
+ .catalog-tools{flex-wrap:wrap}.catalog-search{flex-basis:100%}.catalog-tools .home-import{min-width:110px}.all-stories-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:370px){body[data-view=shelf] .topbar{padding:12px 10px}.home-brand-wordmark{display:none}body[data-view=shelf] .header-tools{gap:9px}.shelf-title-art{height:58px}.shelf-written-title{font-size:13px}.achievement-item b{font-size:12px}}
+@media(max-height:620px) and (min-width:701px){body[data-view=shelf] .topbar{height:65px;padding:10px 18px}.home-brand-symbol{width:29px;height:29px}.home-brand-wordmark{width:105px;height:30px}body[data-view=shelf] .header-tools .round-button,body[data-view=shelf] .profile-button{width:40px;height:40px;min-width:40px}.learn-link{height:40px}body[data-view=shelf] .library{height:125px}body[data-view=shelf] .shelf-heading{bottom:111px}body[data-view=shelf] .shelf-prompt{font-size:18px}body[data-view=shelf] .book-list{height:88px;top:7px;width:min(60vw,560px)}.shelf-book-card{height:88px}.shelf-title-art{top:3px;height:45px}.shelf-written-title{top:7px;min-height:40px;font-size:17px}body[data-view=shelf] .shelf-reading-track{margin-bottom:7px;height:4px}body[data-view=shelf] .shelf-page-marks,body[data-view=shelf] .shelf-pin-row{display:none}body[data-view=shelf] .shelf-reading-status{max-width:100%;font-size:8px}body[data-view=shelf] #scrollLeft,body[data-view=shelf] #scrollRight{bottom:55px}body[data-view=shelf] #scrollLeft{left:calc(50% - min(30vw,280px) - 55px)}body[data-view=shelf] #scrollRight{right:calc(50% - min(30vw,280px) - 55px)}body[data-view=shelf] .filter-tabs{bottom:5px}body[data-view=shelf] .shelf-pagination{bottom:9px}}
+body[data-view=shelf] .header-tools .round-button{position:relative}
+@media(max-width:700px) and (min-height:701px){
+ body[data-view=shelf] .library{height:340px}
+ body[data-view=shelf] .shelf-heading{bottom:338px}
+ body[data-view=shelf] .book-list{top:6px;width:176px;height:282px;grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(3,90px);gap:6px}
+ .shelf-book-card{height:90px}.shelf-select{padding:5px 9px 7px}.shelf-title-art{top:3px;height:48px}.shelf-written-title{top:7px;min-height:36px;font-size:16px}
+ body[data-view=shelf] .shelf-reading-track{width:100%;height:4px;margin-bottom:5px}
+ body[data-view=shelf] .shelf-reading-status{min-height:12px;font-size:9px;white-space:nowrap}
+ body[data-view=shelf] #scrollLeft,body[data-view=shelf] #scrollRight{bottom:169px;width:39px;height:43px}
+ body[data-view=shelf] #scrollLeft{left:15px}body[data-view=shelf] #scrollRight{right:15px}
+ body[data-view=shelf] .shelf-empty{grid-row:1/-1;width:260px;justify-self:center}
+}

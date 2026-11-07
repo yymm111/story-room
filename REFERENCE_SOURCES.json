@@ -1,0 +1,659 @@
+{
+  "retrieved": "2026-11-06",
+  "sourceBook": "https://storycomet.app/?book=otto-shy-moo",
+  "use": "用户指定原站免费书的本地对照版本；非原创美术，未下载原站配音。",
+  "assets": [
+    {
+      "file": "assets/otto-reference/bedroom-front.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/bedroom-front.1e27a34f6451e047.webp",
+      "bytes": 254026,
+      "sha256": "1e27a34f6451e0474c1d3d3196e9f6e5af6effbc463ec85f65858311558b3b35"
+    },
+    {
+      "file": "assets/otto-reference/bedroom-wall-moon.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/bedroom-wall-moon.1b9067e8f31b7c3b.webp",
+      "bytes": 433506,
+      "sha256": "1b9067e8f31b7c3bf5adcba351c6b1187bec61608834fb6e64a1289a9c9ec7d7"
+    },
+    {
+      "file": "assets/otto-reference/bedroom-wall.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/bedroom-wall.0bc6829e3b6d333b.webp",
+      "bytes": 291028,
+      "sha256": "0bc6829e3b6d333ba14459ad4ba5a4de7db5864a95d6388e3d05f3c2efca97c7"
+    },
+    {
+      "file": "assets/otto-reference/cat.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/cat.568ceeac7e8136c9.webp",
+      "bytes": 107272,
+      "sha256": "568ceeac7e8136c9d2debbf7c4e3fc28182b4f831cc44912dd52fe35969f0d36"
+    },
+    {
+      "file": "assets/otto-reference/cloud-a.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/cloud-a.ad17d195e6fe88fe.webp",
+      "bytes": 38580,
+      "sha256": "ad17d195e6fe88fe8873d1720028443911e0a87730c7e336259ff31df039d728"
+    },
+    {
+      "file": "assets/otto-reference/cloud-b.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/cloud-b.22dc8b497217661a.webp",
+      "bytes": 18038,
+      "sha256": "22dc8b497217661a9356ffa2ac352fc359d01d44d4a9c8ba5666a62a4705b370"
+    },
+    {
+      "file": "assets/otto-reference/cloud-sleepy.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/cloud-sleepy.cf71ff834deebd66.webp",
+      "bytes": 59958,
+      "sha256": "cf71ff834deebd66855c82c42433757ab693cd9a5239d40392b110e9e92ccd06"
+    },
+    {
+      "file": "assets/otto-reference/clouds-sky.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/clouds-sky.cc505aa5e7bbfa8d.webp",
+      "bytes": 315118,
+      "sha256": "cc505aa5e7bbfa8da34ebaf34fc7edd0080043d599259b67ce90d9549fb7525b"
+    },
+    {
+      "file": "assets/otto-reference/dark-cloud.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/dark-cloud.d038f6c21ba6c4b5.webp",
+      "bytes": 166824,
+      "sha256": "d038f6c21ba6c4b5f5ed743c9e45015ca96b41d6400747dacbbe6da2e962dbea"
+    },
+    {
+      "file": "assets/otto-reference/moon-face.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/moon-face.6b6e8529cd83cbc5.webp",
+      "bytes": 184542,
+      "sha256": "6b6e8529cd83cbc530d4109d105bc5ae4ec06cc6357e87510c2effcd52124cad"
+    },
+    {
+      "file": "assets/otto-reference/owl-forest.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/owl-forest.51e138e49000470b.webp",
+      "bytes": 464554,
+      "sha256": "51e138e49000470b40c47bbec40586552168562b9a5ec637c288339bb0fce770"
+    },
+    {
+      "file": "assets/otto-reference/owl-tree.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/owl-tree.0ac22fda7e76bf5a.webp",
+      "bytes": 348572,
+      "sha256": "0ac22fda7e76bf5a4e4af16048eb31244ac67a04cb1bfb3a5a85b0cafc108f5d"
+    },
+    {
+      "file": "assets/otto-reference/owl.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/owl.b6f7fe44e784f9d4.webp",
+      "bytes": 204194,
+      "sha256": "b6f7fe44e784f9d47cfc999e7d5db275d22c05b3f8036f870384c8eebe037206"
+    },
+    {
+      "file": "assets/otto-reference/rooftops-sky.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/rooftops-sky.0920a36921304f0f.webp",
+      "bytes": 319560,
+      "sha256": "0920a36921304f0f7dc99bb557ff427eaa10dede8f323f6f9482583e3b196187"
+    },
+    {
+      "file": "assets/otto-reference/stars-sky.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/stars-sky.1c61f4b864e4a123.webp",
+      "bytes": 521992,
+      "sha256": "1c61f4b864e4a123001bf93df057483d21247f853b844f4f8fe0e255872129ec"
+    },
+    {
+      "file": "assets/otto-reference/doze.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/models/anim/doze.e3fe287e87147101.glb",
+      "bytes": 237560,
+      "sha256": "e3fe287e871471010a55cd6de5b8d0c725361cfb27e37f67d959f92984af7197"
+    },
+    {
+      "file": "assets/otto-reference/hang.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/models/anim/hang.a9d8f9ca873a909a.glb",
+      "bytes": 69528,
+      "sha256": "a9d8f9ca873a909af520ff41f336396db87c1d936395aa23a03f32b4d89492e7"
+    },
+    {
+      "file": "assets/otto-reference/jump.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/models/anim/jump.d7e2422727de0e47.glb",
+      "bytes": 82392,
+      "sha256": "d7e2422727de0e47d4ce5995485d0ddae4bf090ba580355ae9c50f6060f39687"
+    },
+    {
+      "file": "assets/otto-reference/look.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/models/anim/look.bce9e57fb3e1f3a9.glb",
+      "bytes": 114748,
+      "sha256": "bce9e57fb3e1f3a97da9fe393faf42f35b9b9576fd3fdc59e64dac9d3a6f8638"
+    },
+    {
+      "file": "assets/otto-reference/wave.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/models/anim/wave.f90b449158773aa6.glb",
+      "bytes": 102352,
+      "sha256": "f90b449158773aa691f5db816cab88bfcec81a1a13a5503407117384b6abccaf"
+    },
+    {
+      "file": "assets/otto-reference/otto.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/models/otto.7fe27f3586198fca.glb",
+      "bytes": 3092192,
+      "sha256": "7fe27f3586198fca8dc876340d58521e38ff7934c52b15e8d6c4c2a5edf3e05d"
+    },
+    {
+      "file": "assets/room-reference/textures-wood-planks-normal.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/wood-planks-normal.254001ca88b9a14b.webp",
+      "logicalSource": "public/textures/wood-planks-normal.jpg",
+      "bytes": 58848,
+      "sha256": "254001ca88b9a14b10e4ba9bed9b99f7b8c9337198f514ffbb9657b662f0508e"
+    },
+    {
+      "file": "assets/room-reference/models-toys-magnifier.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/magnifier.f83ff72527eeed07.glb",
+      "logicalSource": "public/models/toys/magnifier.glb",
+      "bytes": 1761004,
+      "sha256": "f83ff72527eeed070da2a4b59155e924ca45cf6c95a667f5191324bc64b2fab9"
+    },
+    {
+      "file": "assets/room-reference/models-toys-train.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/train.32fe892b58ba6e94.glb",
+      "logicalSource": "public/models/toys/train.glb",
+      "bytes": 2498012,
+      "sha256": "32fe892b58ba6e94a9d8d9d410c55daa2a6448614d79ea401bb2a18195607593"
+    },
+    {
+      "file": "assets/room-reference/textures-wood-planks.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/wood-planks.66ff16da40318ed3.webp",
+      "logicalSource": "public/textures/wood-planks.jpg",
+      "bytes": 185784,
+      "sha256": "66ff16da40318ed32ad8bff3e84e1c23779f3b125cb7e8e98284793c8cef3c6a"
+    },
+    {
+      "file": "assets/room-reference/ui-corner.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/corner.a562b92bf6f5ba2b.webp",
+      "logicalSource": "public/ui/corner.png",
+      "bytes": 23338,
+      "sha256": "a562b92bf6f5ba2bab2d5634cef815672cd22d5ce68f630a53a4c22b9ee01d7e"
+    },
+    {
+      "file": "assets/room-reference/textures-walls-otto-shy-moon-normal.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/otto-shy-moon-normal.3fe9ff9e0816772c.webp",
+      "logicalSource": "public/textures/walls/otto-shy-moon-normal.jpg",
+      "bytes": 74740,
+      "sha256": "3fe9ff9e0816772c539a2ee770c4d4d878629b90b528ff45650dc88fc5d62805"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-pause.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/pause.15d6646784f09b43.webp",
+      "logicalSource": "public/ui/icons/pause.png",
+      "bytes": 16374,
+      "sha256": "15d6646784f09b4329b61f0d7aa70b5ec9adc4c92f51ca442eabb58273a6cbcd"
+    },
+    {
+      "file": "assets/room-reference/textures-walls-default.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/default.15ecb305eab83bce.jpg",
+      "logicalSource": "public/textures/walls/default.jpg",
+      "bytes": 310345,
+      "sha256": "15ecb305eab83bcec2ee5f5fa07fc373cce098662c3efbdfcbef9f2df69fa03c"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-play.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/play.b923a70e2f71f2a2.webp",
+      "logicalSource": "public/ui/icons/play.png",
+      "bytes": 13840,
+      "sha256": "b923a70e2f71f2a22138ff99f95c1198d0d1ebc2d2deae482dc3556faee5bb26"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-back.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/back.18c2cac8ae4c18e2.webp",
+      "logicalSource": "public/ui/icons/back.png",
+      "bytes": 13882,
+      "sha256": "18c2cac8ae4c18e2ec7f28ebf2e5f231588d7154bd972a94a19ba3cbd19ec52a"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-gear.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/gear.559fcb58d9cfea50.webp",
+      "logicalSource": "public/ui/icons/gear.webp",
+      "bytes": 59826,
+      "sha256": "559fcb58d9cfea507c25c136b2c9f07ad5e697c4940c2c5df5511c223323aacf"
+    },
+    {
+      "file": "assets/room-reference/textures-page-edges.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/page-edges.095c25b3de01500e.webp",
+      "logicalSource": "public/textures/page-edges.jpg",
+      "bytes": 22878,
+      "sha256": "095c25b3de01500e701f34469897150ae6e992ce9de7c21b01a6de249e035a6a"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-next.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/next.dc7e787b49815b48.webp",
+      "logicalSource": "public/ui/icons/next.png",
+      "bytes": 12264,
+      "sha256": "dc7e787b49815b48d66a5efcff481cac36dd26a29e9559f5c6e2caa408eb06fe"
+    },
+    {
+      "file": "assets/room-reference/textures-cloth-neutral.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/cloth-neutral.bd2714a238f7ee4b.jpg",
+      "logicalSource": "public/textures/cloth-neutral.jpg",
+      "bytes": 83777,
+      "sha256": "bd2714a238f7ee4bda5a1052eecd71dc17bdfdf30e5a1a2588e954e18557447f"
+    },
+    {
+      "file": "assets/room-reference/models-toys-owl.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/owl.64076cdcda2a772a.glb",
+      "logicalSource": "public/models/toys/owl.glb",
+      "bytes": 1254152,
+      "sha256": "64076cdcda2a772af584a2af3dc9649cfa5072fe91b59e7159bc4e5ed7d43862"
+    },
+    {
+      "file": "assets/room-reference/models-toys-lamp.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/lamp.d0317b4ebce8705c.glb",
+      "logicalSource": "public/models/toys/lamp.glb",
+      "bytes": 1834524,
+      "sha256": "d0317b4ebce8705cf146e6df008f60da9c22a6bc1a3b9c857a07d24166ca88e8"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-look.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/look.741fe92c1b9a4986.webp",
+      "logicalSource": "public/ui/icons/look.png",
+      "bytes": 14724,
+      "sha256": "741fe92c1b9a4986594ff3190be292e48f660dcd03b7eecfbd2a248a0d6eaec4"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-account.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/account.daa08c2cad4503a2.webp",
+      "logicalSource": "public/ui/icons/account.png",
+      "bytes": 13962,
+      "sha256": "daa08c2cad4503a2925532591e3b3b446726627b558828a4e50ba1e9fd2e0e3e"
+    },
+    {
+      "file": "assets/room-reference/textures-wood.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/wood.bc5bd695f02f5b0c.webp",
+      "logicalSource": "public/textures/wood.jpg",
+      "bytes": 182790,
+      "sha256": "bc5bd695f02f5b0cacf8407261333636c2503be479b2e9c549e4712be4c12368"
+    },
+    {
+      "file": "assets/room-reference/textures-paper-normal.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/paper-normal.556c3bfed32a1880.webp",
+      "logicalSource": "public/textures/paper-normal.jpg",
+      "bytes": 36080,
+      "sha256": "556c3bfed32a1880fd92c6353563affb2304893fd88d84617a986438a482d51c"
+    },
+    {
+      "file": "assets/room-reference/textures-paper.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/paper.7b1612c72db0354d.webp",
+      "logicalSource": "public/textures/paper.jpg",
+      "bytes": 29648,
+      "sha256": "7b1612c72db0354d89f8197ed67bb0ea84b2c9ae29dc71bf424fc74f5b6c2bac"
+    },
+    {
+      "file": "assets/room-reference/ui-round.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/round.afdab066e34f07c6.webp",
+      "logicalSource": "public/ui/round.png",
+      "bytes": 39058,
+      "sha256": "afdab066e34f07c6637e852a5851017d74ed702f29a0986200fea02630025567"
+    },
+    {
+      "file": "assets/room-reference/textures-walls-otto-shy-moon.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/otto-shy-moon.96b751c39584e2de.webp",
+      "logicalSource": "public/textures/walls/otto-shy-moon.jpg",
+      "bytes": 168726,
+      "sha256": "96b751c39584e2dec0a64663d1185822951c5eedae64763b4fc5f9b9e2d8bd14"
+    },
+    {
+      "file": "assets/room-reference/ui-pill-pressed.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/pill-pressed.86ee68b30db5e1d0.webp",
+      "logicalSource": "public/ui/pill-pressed.png",
+      "bytes": 34988,
+      "sha256": "86ee68b30db5e1d0b1dd9026a94842b6ffad3670f049f8ca7d230dc23b511dfe"
+    },
+    {
+      "file": "assets/room-reference/textures-walls-default-normal.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/default-normal.e3ffb88fc4a60b8f.webp",
+      "logicalSource": "public/textures/walls/default-normal.jpg",
+      "bytes": 118790,
+      "sha256": "e3ffb88fc4a60b8f9f7bb60d097a1431481b5017bf24cb3f8e5296937c87a3cb"
+    },
+    {
+      "file": "assets/room-reference/models-toys-crayons.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/crayons.60308705f6f72514.glb",
+      "logicalSource": "public/models/toys/crayons.glb",
+      "bytes": 1693396,
+      "sha256": "60308705f6f72514c10f393e92c195be23de6521adfd2e35c9a371f1baf974f4"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-book.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/book.d05eed603c2ba1a1.webp",
+      "logicalSource": "public/ui/icons/book.png",
+      "bytes": 15854,
+      "sha256": "d05eed603c2ba1a17c7248644fc620753c39bad0986d125cd48a8973d35030f2"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-home.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/home.cb2bbd65e073cb8b.webp",
+      "logicalSource": "public/ui/icons/home.png",
+      "bytes": 18330,
+      "sha256": "cb2bbd65e073cb8bd523d3302d464a330e9fdef30fcc5d4262bf8b4ff496f6c6"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-sound.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/sound.d56e4ce5efc1cbff.webp",
+      "logicalSource": "public/ui/icons/sound.png",
+      "bytes": 16054,
+      "sha256": "d56e4ce5efc1cbff1b87f54ed279eeb285ba5e5b227b82a30bcd73d61b6fe6b2"
+    },
+    {
+      "file": "assets/room-reference/ui-pill.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/pill.f374995659899b10.webp",
+      "logicalSource": "public/ui/pill.png",
+      "bytes": 30572,
+      "sha256": "f374995659899b10df72c12556f32b6b72823975a1b25d52a28d3354d3692d1a"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-hand.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/hand.621acc491720839c.webp",
+      "logicalSource": "public/ui/icons/hand.png",
+      "bytes": 11912,
+      "sha256": "621acc491720839c29fc0401a2839eda5863fa72143485cfc7d8319d35df0ee2"
+    },
+    {
+      "file": "assets/room-reference/models-toys-moon.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/moon.8bfb8215fd3bb484.glb",
+      "logicalSource": "public/models/toys/moon.glb",
+      "bytes": 1202584,
+      "sha256": "8bfb8215fd3bb48470f7ea1510d61b3ccfb1e4e8eed315352bf92308c99db068"
+    },
+    {
+      "file": "assets/room-reference/ui-icons-music.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/ui/icons/music.66c42a3231ab2f38.webp",
+      "logicalSource": "public/ui/icons/music.png",
+      "bytes": 15122,
+      "sha256": "66c42a3231ab2f38cb93e66d58f07df9f0722577b9e14fb9ba49bf636e02886b"
+    },
+    {
+      "file": "assets/otto-reference/cover.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/cover.c3bd25b47c9314ed.webp",
+      "logicalSource": "books/otto-shy-moon/art/cover.jpg",
+      "bytes": 700358,
+      "sha256": "c3bd25b47c9314ed0599b5af874839ea95aa477c88e34f5701c6b12750f5f7a0"
+    },
+    {
+      "file": "assets/shelf-reference/house.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/house.e31709dfb36accd4.glb",
+      "logicalSource": "public/models/toys/house.glb",
+      "bytes": 1293428,
+      "sha256": "e31709dfb36accd46a06bfcc1f92f723634ef54ca7d3306fac2cd19d033734ae"
+    },
+    {
+      "file": "assets/shelf-reference/kite.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/kite.1ebacc09ef633f58.glb",
+      "logicalSource": "public/models/toys/kite.glb",
+      "bytes": 1245268,
+      "sha256": "1ebacc09ef633f58665b16b36493d3da67b9f97a2f667ddaa839ee965e6ed82f"
+    },
+    {
+      "file": "assets/shelf-reference/sheep.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/sheep.6dc976cb8fcb1ba1.glb",
+      "logicalSource": "public/models/toys/sheep.glb",
+      "bytes": 1096136,
+      "sha256": "6dc976cb8fcb1ba1a7eb4d09505c44c444449170720eb81a92955a0d992cda6c"
+    },
+    {
+      "file": "assets/shelf-reference/tree.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/tree.d5915091020e8c64.glb",
+      "logicalSource": "public/models/toys/tree.glb",
+      "bytes": 1182248,
+      "sha256": "d5915091020e8c6471794a05952dd9244f72493cd3c331df21125993e273e626"
+    },
+    {
+      "file": "assets/shelf-reference/turtle.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/turtle.ec45f1f11b941803.glb",
+      "logicalSource": "public/models/toys/turtle.glb",
+      "bytes": 1244844,
+      "sha256": "ec45f1f11b941803a3bbe5ac09e7533b49a767328890940f29fd68eac14057fe"
+    },
+    {
+      "file": "assets/shelf-reference/jar.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/jar.123b0408a7180a1a.glb",
+      "logicalSource": "public/models/toys/jar.glb",
+      "bytes": 1349108,
+      "sha256": "123b0408a7180a1a10a47600ef5ba29621569c0e6dadfa9743d8a82059a6cf95"
+    },
+    {
+      "file": "assets/shelf-reference/boat.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/models/toys/boat.242d1ab128043374.glb",
+      "logicalSource": "public/models/toys/boat.glb",
+      "bytes": 1243460,
+      "sha256": "242d1ab1280433744333bbac74810481dd6c9ec7be7dc75c6d5d990e510b3bc4"
+    },
+    {
+      "file": "assets/shelf-reference/otto-shy-moon-cover-shelf.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/cover-shelf.5227c9fb5d422e1c.webp",
+      "logicalSource": "books/otto-shy-moon/art/cover-shelf.webp",
+      "bytes": 68456,
+      "sha256": "5227c9fb5d422e1cec9658a4b4d9d5f5f605e3c220371e2d3237f88cd7efe755"
+    },
+    {
+      "file": "assets/shelf-reference/otto-shy-moon-logo-strip.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/otto-shy-moon/art/logo-strip.d41316dbd7cafe12.webp",
+      "logicalSource": "books/otto-shy-moon/art/logo-strip.webp",
+      "bytes": 77372,
+      "sha256": "d41316dbd7cafe1235266f4c1556069e14e2c44264adcdda3f546bc46af3bcf5"
+    },
+    {
+      "file": "assets/shelf-reference/otto-shy-moon-bookmark.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/bookmarks/otto-shy-moon.d894b89d0aa57169.webp",
+      "logicalSource": "public/bookmarks/otto-shy-moon.png",
+      "bytes": 21212,
+      "sha256": "d894b89d0aa57169fe7e9abac999f0753ebcc8e686b6667e1c22cb81e710c1e3"
+    },
+    {
+      "file": "assets/shelf-reference/nia-runaway-kite-cover-shelf.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/cover-shelf.9ecc727e903ef7b7.webp",
+      "logicalSource": "books/nia-runaway-kite/art/cover-shelf.webp",
+      "bytes": 123908,
+      "sha256": "9ecc727e903ef7b7637e0b88a50452c4f23dc5c4727389ab2e720ae7c4623bca"
+    },
+    {
+      "file": "assets/shelf-reference/nia-runaway-kite-logo-strip.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/logo-strip.08caff68589d04f0.webp",
+      "logicalSource": "books/nia-runaway-kite/art/logo-strip.webp",
+      "bytes": 62328,
+      "sha256": "08caff68589d04f07ea77ba49fd7b05a8fbe039a939707444c716df407be1a17"
+    },
+    {
+      "file": "assets/shelf-reference/nia-runaway-kite-bookmark.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/bookmarks/nia-runaway-kite.b6ac140bb161ae7d.webp",
+      "logicalSource": "public/bookmarks/nia-runaway-kite.png",
+      "bytes": 24064,
+      "sha256": "b6ac140bb161ae7dfb28390ac538e5cfe4993be334aa19482d08b6672fa62584"
+    },
+    {
+      "file": "assets/shelf-reference/fin-glowing-sea-cover-shelf.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/cover-shelf.045c33af17a42d88.webp",
+      "logicalSource": "books/fin-glowing-sea/art/cover-shelf.webp",
+      "bytes": 118870,
+      "sha256": "045c33af17a42d88347a1a3338c8d0591f6ef2db990ce6aef03620e1484a1e2b"
+    },
+    {
+      "file": "assets/shelf-reference/fin-glowing-sea-logo-strip.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/logo-strip.a1f098120a1eccfa.webp",
+      "logicalSource": "books/fin-glowing-sea/art/logo-strip.webp",
+      "bytes": 55958,
+      "sha256": "a1f098120a1eccfa3668e471f7ea8b7f04f59c6a543997d1b4c40bf5c52f4362"
+    },
+    {
+      "file": "assets/shelf-reference/fin-glowing-sea-bookmark.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/bookmarks/fin-glowing-sea.03c85c3fb9ce73a0.webp",
+      "logicalSource": "public/bookmarks/fin-glowing-sea.png",
+      "bytes": 24908,
+      "sha256": "03c85c3fb9ce73a0a3e1c4aa934203b0e187fd1c2c60934b58868e02f6a67dac"
+    },
+    {
+      "file": "assets/shelf-reference/brand-storycomet-symbol.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/brand/storycomet-symbol.546985a7de0c49d1.png",
+      "logicalSource": "public/brand/storycomet-symbol.png",
+      "bytes": 15904,
+      "sha256": "546985a7de0c49d1d1f2de7930f077b655b768fe2234481e6f5ff48915692d74"
+    },
+    {
+      "file": "assets/shelf-reference/brand-storycomet-wordmark.png",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/brand/storycomet-wordmark.199bba4889a58a32.png",
+      "logicalSource": "public/brand/storycomet-wordmark.png",
+      "bytes": 46052,
+      "sha256": "199bba4889a58a3218fb2a6c35283d08bf737dd36207cf466888f0df110ba149"
+    },
+    {
+      "file": "assets/shelf-reference/textures-walls-fin-glowing-sea.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/fin-glowing-sea.a8811a4fce1832eb.webp",
+      "logicalSource": "public/textures/walls/fin-glowing-sea.jpg",
+      "bytes": 253504,
+      "sha256": "a8811a4fce1832ebe1c137a9741102f3d030e4f2ae67a5f53fa105f118571809"
+    },
+    {
+      "file": "assets/shelf-reference/textures-walls-fin-glowing-sea-normal.jpg",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/fin-glowing-sea-normal.97620aa598e7db8d.webp",
+      "logicalSource": "public/textures/walls/fin-glowing-sea-normal.jpg",
+      "bytes": 104404,
+      "sha256": "97620aa598e7db8d72e608f0f9467839bee370f69ee465667180fb4d41502bdb"
+    },
+    {
+      "file": "assets/shelf-reference/nia-runaway-kite-cover.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/cover.aadd8e023233db98.webp",
+      "logicalSource": "books/nia-runaway-kite/art/cover.jpg",
+      "bytes": 938044,
+      "sha256": "aadd8e023233db98f7516b9107351042318fa444408958785a90f3102c548d86"
+    },
+    {
+      "file": "assets/shelf-reference/fin-glowing-sea-cover.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/cover.341ed5f075538eb3.webp",
+      "logicalSource": "books/fin-glowing-sea/art/cover.jpg",
+      "bytes": 796118,
+      "sha256": "341ed5f075538eb3699dfc79da2142f82180f294ffe72891ffca9682dce72adb"
+    },
+    {
+      "file": "assets/audio/shelf/hoot.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/hoot.2bf3de5110c99a0d.mp3",
+      "bytes": 16736,
+      "sha256": "2bf3de5110c99a0d17830f308857d51182778685820f4cf75402c6e1e49492a9"
+    },
+    {
+      "file": "assets/audio/shelf/shimmer.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/shimmer.42ffe26c8fdc8b0c.mp3",
+      "bytes": 16736,
+      "sha256": "42ffe26c8fdc8b0c2c200419cb80d5b8bf9a95d1a7bb12b06dfc92d4725edb0f"
+    },
+    {
+      "file": "assets/audio/shelf/thunk.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/thunk.f4b5fba8ec4c4fa7.mp3",
+      "bytes": 24677,
+      "sha256": "f4b5fba8ec4c4fa746bfb284f0b823fd195572cb9e3ea24aec7e70b737819e6a"
+    },
+    {
+      "file": "assets/audio/shelf/gust.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/gust.591a0cc28bf3df0d.mp3",
+      "bytes": 16736,
+      "sha256": "591a0cc28bf3df0d838341f667455b6282a8577e1f4a3fbeba21acbca87e7194"
+    },
+    {
+      "file": "assets/audio/shelf/baa.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/baa.f9ce6883acb65d1b.mp3",
+      "bytes": 16736,
+      "sha256": "f9ce6883acb65d1b509369eb78adb071c713bec7ebd5b1bfb5dc4ce8bb161d37"
+    },
+    {
+      "file": "assets/audio/shelf/rustle.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/rustle.a5ab8517473d621e.mp3",
+      "bytes": 24677,
+      "sha256": "a5ab8517473d621ef1e772f2fec1f217b5b15b367dec82b7ac9d54a4bae6b921"
+    },
+    {
+      "file": "assets/audio/shelf/bubbles.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/bubbles.281b5a1ab6cbdc2d.mp3",
+      "bytes": 16736,
+      "sha256": "281b5a1ab6cbdc2dbee1d239e70d1bc8134af7ae1b74c5f6e9bbd40bf0297867"
+    },
+    {
+      "file": "assets/audio/shelf/fizz.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/fizz.1afb16572b37a604.mp3",
+      "bytes": 24677,
+      "sha256": "1afb16572b37a6049223517aac1e051f8390ef745c42993889663fbc07d97a0c"
+    },
+    {
+      "file": "assets/audio/shelf/splash.mp3",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/audio/sfx/splash.42e9fd703bb2a879.mp3",
+      "bytes": 24677,
+      "sha256": "42e9fd703bb2a879147bf214c168307eb582506071a7b22f1956411bd2c3e191"
+    },
+    {
+      "file": "assets/otto-reference/town-strip.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/town-strip.5d60db2a9622628a.webp",
+      "bytes": 86472,
+      "sha256": "5d60db2a9622628aff612c6d4da4a28236750a3db7cb0f3804cab6d96d4074ef"
+    },
+    {
+      "file": "assets/shelf-reference/textures-walls-nia-runaway-kite.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/nia-runaway-kite.9e7ea9e9a4acd2e6.webp",
+      "bytes": 244730,
+      "sha256": "9e7ea9e9a4acd2e649103b1f5118912d602fd0bccf985dbcff38b6220afffa42",
+      "retrieved": "2026-11-07"
+    },
+    {
+      "file": "assets/shelf-reference/textures-walls-nia-runaway-kite-normal.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/public/textures/walls/nia-runaway-kite-normal.f74a6f1c4dea5a21.webp",
+      "bytes": 85500,
+      "sha256": "f74a6f1c4dea5a21df4d742c8c84cef49630af79de51687e24598c39a2713794",
+      "retrieved": "2026-11-07"
+    }
+  ],
+  "adaptedCode": [
+    {
+      "file": "reference-hero.js",
+      "source": "https://storycomet.app/src/props.js",
+      "purpose": "Character posture, gaze, blinking, crossfades and hand IK; local roughness adjustment."
+    },
+    {
+      "file": "reference-shelf.js",
+      "source": "https://storycomet.app/src/shelf.js",
+      "purpose": "Local home bookshelf reference adaptation; local assets and reduced-motion settling."
+    },
+    {
+      "file": "reference-shelf-props.js",
+      "source": "https://storycomet.app/src/props.js",
+      "purpose": "Local home bookshelf reference adaptation; local assets and reduced-motion settling."
+    },
+    {
+      "file": "reference-bookmark.js",
+      "source": "https://storycomet.app/src/bookmark.js",
+      "purpose": "Local home bookshelf reference adaptation; local assets and reduced-motion settling."
+    },
+    {
+      "file": "reference-soundkit.js",
+      "source": "https://storycomet.app/src/audio.js",
+      "purpose": "Original procedural effects adapted with local samples, per-toy voice replacement and a three-voice limit."
+    },
+    {
+      "file": "reference-sparkles.js",
+      "source": "https://storycomet.app/src/sparkles.js",
+      "purpose": "Original GPU star shader, cursor halo and motion, with wider and smaller click bursts."
+    },
+    {
+      "file": "reference-scene-props.js",
+      "source": "https://storycomet.app/src/props.js",
+      "retrieved": "2026-11-07",
+      "purpose": "Only the original balloon, stars, cards, town strip and particles; local alpha picking and opaque latex material."
+    },
+    {
+      "file": "reference-diorama.js",
+      "source": "https://storycomet.app/src/scenes.js",
+      "retrieved": "2026-11-07",
+      "purpose": "Original pop-up pivots, card and hotspot registry; adapted to the local book coordinates."
+    },
+    {
+      "file": "reference-otto-spreads.js",
+      "source": "https://storycomet.app/books/otto-shy-moon/scenes.js",
+      "retrieved": "2026-11-07",
+      "purpose": "Original ten spread compositions and gestures, linked to local Chinese narration and calibrated scene lights."
+    }
+  ],
+  "derivedAssets": [
+    {
+      "file": "assets/otto-reference/otto-smooth.bin.gz",
+      "source": "assets/otto-reference/otto.glb",
+      "operation": "One Loop subdivision; interpolated skin weights and UV seams retained. The original GLB is unchanged.",
+      "vertices": 109673,
+      "triangles": 163188,
+      "sha256": "e81f73fe0956ebd80a86f6284f10256a441796d55c1e3e043881242a86c758cd"
+    }
+  ]
+}

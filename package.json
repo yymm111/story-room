@@ -1,0 +1,10 @@
+{
+  "name": "story-room-local",
+  "version": "1.3.3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 server.py --port 8766",
+    "check": "node --check asset-prep.js && node --check asset-worker.js && node --check app.js && node --check narrator.js && node --check storybook-3d.js && node --check physical-book.js && node --check reading-room.js && node --check story-materials.js && node --check skinned-surface.js && node --check animated-actors.js && node --check prince-paper.js && node --check importers.js && node --check stories.js && node --check otto-scene.js && node --check otto-book.js && node --check room-models.js && node --check reference-hero.js && node --check cursor-sparkles.js && node --check home-shelf.js && node --check reference-shelf.js && node --check reference-shelf-props.js && node --check reference-bookmark.js && node --check atmosphere.js && node --check reference-soundkit.js && node --check reference-sparkles.js && node --check otto-material.js && node --check reference-otto-spreads.js && node --check reference-scene-props.js && node --check reference-diorama.js && node --check i18n.js && node --check souvenirs.js"
+  }
+}

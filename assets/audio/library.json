@@ -1,0 +1,682 @@
+{
+  "452aa46b60317afceda554157a68d95b48cc469eb1781d55d0e4a540ffd86f4f": {
+    "url": "assets/audio/library/452aa46b60317afceda554157a68d95b48cc469eb1781d55d0e4a540ffd86f4f.mp3",
+    "duration": 17.822,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 1,
+    "parts": [
+      {
+        "text": "晚安的钟声响了，小镇的窗户一扇扇亮起来。",
+        "start": 0.0,
+        "duration": 5.777777777777778
+      },
+      {
+        "text": "小熊奥托抬头看天空。星星都在，月亮却不见了。",
+        "start": 6.037037037037036,
+        "duration": 9.101851851851851
+      },
+      {
+        "text": "“月亮，你藏到哪里去了？”",
+        "start": 15.398148148148147,
+        "duration": 2.4237685185185196
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 19.2,
+    "removedSilenceSeconds": 0.49
+  },
+  "f31d1a2ce8626c2d7e3b6731ca691bd07cfcb46c3fc5cc58e7ee9db0b6c41f8f": {
+    "url": "assets/audio/library/f31d1a2ce8626c2d7e3b6731ca691bd07cfcb46c3fc5cc58e7ee9db0b6c41f8f.mp3",
+    "duration": 13.759,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 2,
+    "parts": [
+      {
+        "text": "奥托把红围巾系好，握住一只红气球。",
+        "start": 0.0,
+        "duration": 4.296296296296296
+      },
+      {
+        "text": "风轻轻吹来，气球把他带离屋顶。",
+        "start": 4.555555555555555,
+        "duration": 3.333333333333333
+      },
+      {
+        "text": "小镇越来越小，他的勇气却一点点变大。",
+        "start": 8.148148148148149,
+        "duration": 5.611310185185184
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 14.32,
+    "removedSilenceSeconds": 0.0
+  },
+  "7aa27ee1f01b936a3abed54b95eb94ec3325fff99cbc5e4530460d595b5740d6": {
+    "url": "assets/audio/library/7aa27ee1f01b936a3abed54b95eb94ec3325fff99cbc5e4530460d595b5740d6.mp3",
+    "duration": 17.664,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 3,
+    "parts": [
+      {
+        "text": "奥托飘过一排排屋顶。暖暖的窗光，像小镇给夜晚写的信。",
+        "start": 0.0,
+        "duration": 7.259259259259259
+      },
+      {
+        "text": "烟囱边的小猫竖起耳朵。",
+        "start": 7.518518518518517,
+        "duration": 2.444444444444444
+      },
+      {
+        "text": "“喵，抬头看看吧。月亮也许在更高的地方。”",
+        "start": 10.222222222222221,
+        "duration": 7.441861111111113
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 18.88,
+    "removedSilenceSeconds": 0.32
+  },
+  "df78a35604db7fd063ebc4818b76becdf9c5117624eb37439ce3ab141a2491c3": {
+    "url": "assets/audio/library/df78a35604db7fd063ebc4818b76becdf9c5117624eb37439ce3ab141a2491c3.mp3",
+    "duration": 18.045,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 4,
+    "parts": [
+      {
+        "text": "奥托飘进云海。云朵像软软的枕头，轻轻擦过他的脚。",
+        "start": 0.0,
+        "duration": 8.564814814814815
+      },
+      {
+        "text": "“借过一下，我想找月亮。”",
+        "start": 8.824074074074073,
+        "duration": 2.6666666666666665
+      },
+      {
+        "text": "风把云推开，露出一条银蓝色的小路。",
+        "start": 11.749999999999998,
+        "duration": 6.2951250000000005
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 19.84,
+    "removedSilenceSeconds": 0.91
+  },
+  "32d149c5cae60139720af7a6d4062e28ce4689ad64cda1808bc50f9071036140": {
+    "url": "assets/audio/library/32d149c5cae60139720af7a6d4062e28ce4689ad64cda1808bc50f9071036140.mp3",
+    "duration": 18.095,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 5,
+    "parts": [
+      {
+        "text": "一棵高高的树旁，猫头鹰轻轻转过头。",
+        "start": 0.0,
+        "duration": 6.185185185185184
+      },
+      {
+        "text": "“别着急，奥托。有时候，安静的朋友也需要一句问候。”",
+        "start": 6.444444444444444,
+        "duration": 6.731481481481481
+      },
+      {
+        "text": "奥托点点头，把准备好的晚安，放在了心里。",
+        "start": 13.435185185185183,
+        "duration": 4.657407407407407
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 19.36,
+    "removedSilenceSeconds": 0.38
+  },
+  "aab0800f189947ea2afb6abc759331fb33f1ce60f7018099c7ebb30aaded6428": {
+    "url": "assets/audio/library/aab0800f189947ea2afb6abc759331fb33f1ce60f7018099c7ebb30aaded6428.mp3",
+    "duration": 17.869,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 6,
+    "parts": [
+      {
+        "text": "一颗小星星眨眨眼，落在奥托身旁。",
+        "start": 0.0,
+        "duration": 6.268518518518517
+      },
+      {
+        "text": "奥托朝它挥手，继续向更高的云飘去。",
+        "start": 6.527777777777777,
+        "duration": 3.99074074074074
+      },
+      {
+        "text": "一路闪烁的小星星，像一串小小的路灯，陪着他往前走。",
+        "start": 10.777777777777777,
+        "duration": 7.090722222222224
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 19.6,
+    "removedSilenceSeconds": 0.84
+  },
+  "7a594e3f379d033f7999d5b261a92772c894f0bbfd051689cbfe3f26b23caf02": {
+    "url": "assets/audio/library/7a594e3f379d033f7999d5b261a92772c894f0bbfd051689cbfe3f26b23caf02.mp3",
+    "duration": 20.186,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 7,
+    "parts": [
+      {
+        "text": "奥托停在云边，看见一弯藏起来的金光。",
+        "start": 0.0,
+        "duration": 3.916666666666667
+      },
+      {
+        "text": "“没关系，我陪你。你可以先露出一点点。”",
+        "start": 4.175925925925926,
+        "duration": 3.944444444444444
+      },
+      {
+        "text": "月亮听见了。云朵后面，慢慢探出一个小小的微笑。",
+        "start": 8.37962962962963,
+        "duration": 11.796296296296296
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 22.96,
+    "removedSilenceSeconds": 1.73
+  },
+  "9d61542d0790769724baed01e1030d9e1e670cc3fba5b7e6798c513dd05a91d7": {
+    "url": "assets/audio/library/9d61542d0790769724baed01e1030d9e1e670cc3fba5b7e6798c513dd05a91d7.mp3",
+    "duration": 19.328,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 8,
+    "parts": [
+      {
+        "text": "月亮慢慢走出云朵。金光落在奥托的围巾上，也落进小镇的窗。",
+        "start": 0.0,
+        "duration": 11.925925925925926
+      },
+      {
+        "text": "奥托笑了，月亮也笑了。",
+        "start": 12.185185185185185,
+        "duration": 3.5462962962962963
+      },
+      {
+        "text": "有人陪着的时候，试一试就没有那么难。",
+        "start": 15.990740740740739,
+        "duration": 3.333333333333333
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 20.32,
+    "removedSilenceSeconds": 0.01
+  },
+  "4ec91f2e9eb1e3dc253e5e21df37fe80e54688988be3934362969244edd7a246": {
+    "url": "assets/audio/library/4ec91f2e9eb1e3dc253e5e21df37fe80e54688988be3934362969244edd7a246.mp3",
+    "duration": 17.079,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 9,
+    "parts": [
+      {
+        "text": "红气球顺着晚风，轻轻往下落。",
+        "start": 0.0,
+        "duration": 5.703703703703703
+      },
+      {
+        "text": "屋顶、小路和小花园，都披上了月光。",
+        "start": 5.962962962962963,
+        "duration": 5.111111111111111
+      },
+      {
+        "text": "奥托回头挥手：“明天见，我会记得向你说晚安。”",
+        "start": 11.333333333333332,
+        "duration": 5.746125000000003
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 18.48,
+    "removedSilenceSeconds": 0.59
+  },
+  "7b63cd595edc3b980aefceb26c9ac38099e43cea7d3c44c7822cf43eed5b53f9": {
+    "url": "assets/audio/library/7b63cd595edc3b980aefceb26c9ac38099e43cea7d3c44c7822cf43eed5b53f9.mp3",
+    "duration": 20.979,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-otto",
+    "page": 10,
+    "parts": [
+      {
+        "text": "奥托躺进被窝，红气球靠在床边。",
+        "start": 0.0,
+        "duration": 3.925925925925926
+      },
+      {
+        "text": "月亮安静地守在窗外，星星也慢慢眨着眼。",
+        "start": 4.185185185185184,
+        "duration": 6.814814814814815
+      },
+      {
+        "text": "晚安，奥托。晚安，月亮。也晚安，正在听故事的你。",
+        "start": 11.25925925925926,
+        "duration": 9.720115740740741
+      }
+    ],
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 25.44,
+    "removedSilenceSeconds": 3.3
+  },
+  "ca58c0a51e6c61f98515136944fcb6b64698ae3c1a9f14dbc33bde344782415c": {
+    "url": "assets/audio/library/ca58c0a51e6c61f98515136944fcb6b64698ae3c1a9f14dbc33bde344782415c.mp3",
+    "duration": 18.406,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-kite",
+    "page": 1,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 21.36,
+    "removedSilenceSeconds": 1.47,
+    "parts": []
+  },
+  "bb0072d715b75eeecb7cb74726d8784fb11d04aca08c8d9cb4c450fbac22a4e3": {
+    "url": "assets/audio/library/bb0072d715b75eeecb7cb74726d8784fb11d04aca08c8d9cb4c450fbac22a4e3.mp3",
+    "duration": 36.047,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-kite",
+    "page": 2,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 44.0,
+    "removedSilenceSeconds": 5.06,
+    "parts": []
+  },
+  "85f2c678ccab2c3a381db09dbffc7ef0b957a4b1746319a173def8072b1c8d78": {
+    "url": "assets/audio/library/85f2c678ccab2c3a381db09dbffc7ef0b957a4b1746319a173def8072b1c8d78.mp3",
+    "duration": 28.015,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-kite",
+    "page": 3,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 35.84,
+    "removedSilenceSeconds": 5.59,
+    "parts": []
+  },
+  "4bebee73dbc5702d252f1ea2d2b519252bdb230f380565e54d3bbde26d770721": {
+    "url": "assets/audio/library/4bebee73dbc5702d252f1ea2d2b519252bdb230f380565e54d3bbde26d770721.mp3",
+    "duration": 28.66,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-kite",
+    "page": 4,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 34.88,
+    "removedSilenceSeconds": 3.92,
+    "parts": []
+  },
+  "5b46df325a94fce0443756c20bd4b91940cb560987e2c202dc4ae6a0f982309f": {
+    "url": "assets/audio/library/5b46df325a94fce0443756c20bd4b91940cb560987e2c202dc4ae6a0f982309f.mp3",
+    "duration": 27.027,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-kite",
+    "page": 5,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 33.04,
+    "removedSilenceSeconds": 3.85,
+    "parts": []
+  },
+  "ae561aff45ff8e8c705d604770ccb1f804aadcdc50be0af23e82c68dcd1d791d": {
+    "url": "assets/audio/library/ae561aff45ff8e8c705d604770ccb1f804aadcdc50be0af23e82c68dcd1d791d.mp3",
+    "duration": 21.985,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-kite",
+    "page": 6,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 26.64,
+    "removedSilenceSeconds": 2.89,
+    "parts": []
+  },
+  "efcb23bc0f54e42512dcc167d03a051bcee11217901a13d086a74628cd7d1d93": {
+    "url": "assets/audio/library/efcb23bc0f54e42512dcc167d03a051bcee11217901a13d086a74628cd7d1d93.mp3",
+    "duration": 39.308,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 1,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 46.24,
+    "removedSilenceSeconds": 3.8,
+    "parts": []
+  },
+  "4f0ef82f936fe970d8b133839ef9a4a7c3742ca52d429fd2bf64db1d50edcf1b": {
+    "url": "assets/audio/library/4f0ef82f936fe970d8b133839ef9a4a7c3742ca52d429fd2bf64db1d50edcf1b.mp3",
+    "duration": 30.007,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 2,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 35.44,
+    "removedSilenceSeconds": 3.03,
+    "parts": []
+  },
+  "f445b49a62368e393e94e9a78578a16117b9c74b73b0e9401181a6da59ffeca6": {
+    "url": "assets/audio/library/f445b49a62368e393e94e9a78578a16117b9c74b73b0e9401181a6da59ffeca6.mp3",
+    "duration": 26.732,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 3,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 32.96,
+    "removedSilenceSeconds": 4.08,
+    "parts": []
+  },
+  "9a34d6278d2ba8d46d302c2a4415b98880e6f4ed044b61e35c9508b9135d815f": {
+    "url": "assets/audio/library/9a34d6278d2ba8d46d302c2a4415b98880e6f4ed044b61e35c9508b9135d815f.mp3",
+    "duration": 26.107,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 4,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 32.48,
+    "removedSilenceSeconds": 4.29,
+    "parts": []
+  },
+  "f5b40e31a04af1ac726e23b4f7e6dec491678c35a205ef0e910c7deb3bac8cdd": {
+    "url": "assets/audio/library/f5b40e31a04af1ac726e23b4f7e6dec491678c35a205ef0e910c7deb3bac8cdd.mp3",
+    "duration": 38.097,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 5,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 45.04,
+    "removedSilenceSeconds": 3.9,
+    "parts": []
+  },
+  "a81ac22c57fbb7ad3ba15c134deb1833cd26bbadcf205fe17a9999e82557efa2": {
+    "url": "assets/audio/library/a81ac22c57fbb7ad3ba15c134deb1833cd26bbadcf205fe17a9999e82557efa2.mp3",
+    "duration": 38.999,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 6,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 45.04,
+    "removedSilenceSeconds": 2.92,
+    "parts": []
+  },
+  "a51448a244c0bb03b4c0d809c5be40cc6b1944dd5e7d74e66ce6841d9699c31d": {
+    "url": "assets/audio/library/a51448a244c0bb03b4c0d809c5be40cc6b1944dd5e7d74e66ce6841d9699c31d.mp3",
+    "duration": 24.496,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 7,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 30.08,
+    "removedSilenceSeconds": 3.64,
+    "parts": []
+  },
+  "fd07d692ecebefda4519f08b15464b45ebb2e033eca91039797c1f3c3690570e": {
+    "url": "assets/audio/library/fd07d692ecebefda4519f08b15464b45ebb2e033eca91039797c1f3c3690570e.mp3",
+    "duration": 31.455,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 8,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 36.88,
+    "removedSilenceSeconds": 2.91,
+    "parts": []
+  },
+  "0c9b88ac6f10682388a940d3f2da1cf8da697011c33f4b0358b7d033fc5797a4": {
+    "url": "assets/audio/library/0c9b88ac6f10682388a940d3f2da1cf8da697011c33f4b0358b7d033fc5797a4.mp3",
+    "duration": 24.77,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 9,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 29.52,
+    "removedSilenceSeconds": 2.75,
+    "parts": []
+  },
+  "cad9bfbb902bfe93b17c1c594876d9588b01dc580c97a1e36a83f3b7bd7d2f86": {
+    "url": "assets/audio/library/cad9bfbb902bfe93b17c1c594876d9588b01dc580c97a1e36a83f3b7bd7d2f86.mp3",
+    "duration": 31.834,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 10,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 38.32,
+    "removedSilenceSeconds": 3.94,
+    "parts": []
+  },
+  "39a4ed83f48a52698e679eca1b63dfebcbb03884d6897fae8639fe9899050bee": {
+    "url": "assets/audio/library/39a4ed83f48a52698e679eca1b63dfebcbb03884d6897fae8639fe9899050bee.mp3",
+    "duration": 31.869,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 11,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 38.08,
+    "removedSilenceSeconds": 3.65,
+    "parts": []
+  },
+  "f5429cea6ff1a4c5dbaa1236b287b9204033c4ea45c7ec57c8979f433bd2726a": {
+    "url": "assets/audio/library/f5429cea6ff1a4c5dbaa1236b287b9204033c4ea45c7ec57c8979f433bd2726a.mp3",
+    "duration": 54.825,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-little-prince",
+    "page": 12,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 62.4,
+    "removedSilenceSeconds": 3.19,
+    "parts": []
+  },
+  "7f6603d7c58a42ee34bd41d02105f823dc34d0c3ea4e4b38127d82e70bf20e14": {
+    "url": "assets/audio/library/7f6603d7c58a42ee34bd41d02105f823dc34d0c3ea4e4b38127d82e70bf20e14.mp3",
+    "duration": 25.777,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-moon",
+    "page": 1,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 30.4,
+    "removedSilenceSeconds": 2.56,
+    "parts": []
+  },
+  "990576e45295639c1481a7fedd1357408dc6688def7b19e773c141bd815ab936": {
+    "url": "assets/audio/library/990576e45295639c1481a7fedd1357408dc6688def7b19e773c141bd815ab936.mp3",
+    "duration": 22.46,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-moon",
+    "page": 2,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 29.12,
+    "removedSilenceSeconds": 4.87,
+    "parts": []
+  },
+  "7de1f8c64e9f1e4180e7f38e7453b74e72fcaa25f4dfd09181f6983758171c34": {
+    "url": "assets/audio/library/7de1f8c64e9f1e4180e7f38e7453b74e72fcaa25f4dfd09181f6983758171c34.mp3",
+    "duration": 18.176,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-moon",
+    "page": 3,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 23.52,
+    "removedSilenceSeconds": 3.9,
+    "parts": []
+  },
+  "46bed50be5b40a8012499d0bbe23ce96712691a4c2bb13b8ea892dd5e9dd4063": {
+    "url": "assets/audio/library/46bed50be5b40a8012499d0bbe23ce96712691a4c2bb13b8ea892dd5e9dd4063.mp3",
+    "duration": 46.185,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-moon",
+    "page": 4,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 60.88,
+    "removedSilenceSeconds": 11.02,
+    "parts": []
+  },
+  "5243810aa796e0808a7b07a3204dcedb625082cbf08fd488595a2a0cf7585d1d": {
+    "url": "assets/audio/library/5243810aa796e0808a7b07a3204dcedb625082cbf08fd488595a2a0cf7585d1d.mp3",
+    "duration": 20.506,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-moon",
+    "page": 5,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 23.04,
+    "removedSilenceSeconds": 0.89,
+    "parts": []
+  },
+  "86df65302f2cc47067cdb415733f8f17b9dc4d42e3761c481355da75d549e8f4": {
+    "url": "assets/audio/library/86df65302f2cc47067cdb415733f8f17b9dc4d42e3761c481355da75d549e8f4.mp3",
+    "duration": 20.112,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-moon",
+    "page": 6,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 24.88,
+    "removedSilenceSeconds": 3.16,
+    "parts": []
+  },
+  "f01d4b99db1dc4f66c1fb8e54d7dd4471fd211afda227000ddd38dd186bfd93d": {
+    "url": "assets/audio/library/f01d4b99db1dc4f66c1fb8e54d7dd4471fd211afda227000ddd38dd186bfd93d.mp3",
+    "duration": 23.119,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-ocean",
+    "page": 1,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 30.56,
+    "removedSilenceSeconds": 5.59,
+    "parts": []
+  },
+  "b2c1d69dd3614ba7b747ac94d31c5c26c65908fe19200f338c3271c4b50faf9e": {
+    "url": "assets/audio/library/b2c1d69dd3614ba7b747ac94d31c5c26c65908fe19200f338c3271c4b50faf9e.mp3",
+    "duration": 19.545,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-ocean",
+    "page": 2,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 24.64,
+    "removedSilenceSeconds": 3.54,
+    "parts": []
+  },
+  "aade562ca15e5f803a513a4567da4912a5f08519e19a1fa3490cc6b87963b81a": {
+    "url": "assets/audio/library/aade562ca15e5f803a513a4567da4912a5f08519e19a1fa3490cc6b87963b81a.mp3",
+    "duration": 45.497,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-ocean",
+    "page": 3,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 52.32,
+    "removedSilenceSeconds": 3.18,
+    "parts": []
+  },
+  "969b368812d7d7c875cdfc4dc0afeec1de48ed52caf9ffbb3bc87fd3054d4a8c": {
+    "url": "assets/audio/library/969b368812d7d7c875cdfc4dc0afeec1de48ed52caf9ffbb3bc87fd3054d4a8c.mp3",
+    "duration": 20.748,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-ocean",
+    "page": 4,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 26.4,
+    "removedSilenceSeconds": 3.99,
+    "parts": []
+  },
+  "24ed06a44d7a37a72c14494a8be58f66cb58b818e9557816308e527263b019aa": {
+    "url": "assets/audio/library/24ed06a44d7a37a72c14494a8be58f66cb58b818e9557816308e527263b019aa.mp3",
+    "duration": 24.372,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-ocean",
+    "page": 5,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 27.04,
+    "removedSilenceSeconds": 0.7,
+    "parts": []
+  },
+  "2e402a5ab26800157f5f15863e4001d11d458d85dba136c40b7596d64597fb27": {
+    "url": "assets/audio/library/2e402a5ab26800157f5f15863e4001d11d458d85dba136c40b7596d64597fb27.mp3",
+    "duration": 26.647,
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "bookId": "demo-ocean",
+    "page": 6,
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 33.12,
+    "removedSilenceSeconds": 4.32,
+    "parts": []
+  }
+}

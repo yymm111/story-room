@@ -1,0 +1,23 @@
+# Machine-local speech models, environments, generated caches and developer backups
+.local/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+
+# OS and editor state
+.DS_Store
+.idea/
+.vscode/
+
+# Local secrets and logs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+
+# Distribution archives are produced separately from source
+*.zip

@@ -1,0 +1,9 @@
+{
+  "model": "mlx-community/Qwen3-TTS-12Hz-1.7B-CustomVoice-4bit",
+  "voice": "Serena",
+  "text": "森林安静下来了，小兔子的窗户还亮着。“奇怪，今晚月亮怎么没有来？”小兔子抱着枕头，踮起脚尖向外望。天上只有一颗星星，像一粒没睡醒的糖。小兔子轻轻地说：“月亮，别担心，我来陪你说晚安。”",
+  "duration": 46.16,
+  "sample_rate": 24000,
+  "generation_seconds": 31.7,
+  "peak": 0.29890382289886475
+}
