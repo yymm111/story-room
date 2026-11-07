@@ -1,5 +1,6 @@
 const KEY='story-garden-souvenirs';
 export const PIN_MANIFESTS={
+ 'demo-carmela':[{id:'map',icon:'🗺️',zh:'冒险地图',en:'Adventure map'},{id:'bridge',icon:'🌉',zh:'合作小桥',en:'Friendship bridge'},{id:'chime',icon:'🔔',zh:'松果风铃',en:'Pine-cone chime'}],
  'demo-otto':[
   {id:'owl',icon:'🦉',zh:'猫头鹰',en:'Owl'},
   {id:'cat',icon:'🐱',zh:'小猫',en:'Cat'},

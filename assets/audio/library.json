@@ -678,5 +678,237 @@
     "sourceDuration": 33.12,
     "removedSilenceSeconds": 4.32,
     "parts": []
+  },
+  "6b31c8cd213712c80eafb01583d5732b8a57dd1fc28ca4bb8765260787f1610a": {
+    "url": "assets/audio/library/6b31c8cd213712c80eafb01583d5732b8a57dd1fc28ca4bb8765260787f1610a.mp3",
+    "bookId": "demo-carmela",
+    "page": 1,
+    "duration": 27.789,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "每天，山上的风铃都会叮咚叮咚，给农场报平安。今天，卡梅拉竖起耳朵，听见的只有沙沙的树叶声。",
+        "start": 0.0,
+        "duration": 18.453703703703702
+      },
+      {
+        "text": "“风还在，风铃怎么不唱歌了？”",
+        "start": 18.712962962962962,
+        "duration": 3.481481481481481
+      },
+      {
+        "text": "她望向远处的小山，心里冒出一个大大的问号。",
+        "start": 22.453703703703702,
+        "duration": 5.3240740740740735
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 31.76,
+    "removedSilenceSeconds": 2.32
+  },
+  "ff7583e6192bfd8a299313001b24ea8753e4a44ef2e6e046e92c76d04957f4c4": {
+    "url": "assets/audio/library/ff7583e6192bfd8a299313001b24ea8753e4a44ef2e6e046e92c76d04957f4c4.mp3",
+    "bookId": "demo-carmela",
+    "page": 2,
+    "duration": 43.933,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "卡梅拉画了一张小地图，把水壶和绿丝带装进背包。",
+        "start": 0.0,
+        "duration": 4.509259259259259
+      },
+      {
+        "text": "“我去风铃山看看，太阳落山前回来！”她向妈妈挥挥翅膀。",
+        "start": 4.768518518518518,
+        "duration": 31.203703703703706
+      },
+      {
+        "text": "妈妈笑着替她理好背包带：“遇到困难，记得找朋友一起想办法。”",
+        "start": 36.23148148148148,
+        "duration": 7.694444444444445
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 53.2,
+    "removedSilenceSeconds": 6.32
+  },
+  "1adfdd35fb0445e2020a67b94e025a7bdf21a7cec582e68cba69cf4031da1998": {
+    "url": "assets/audio/library/1adfdd35fb0445e2020a67b94e025a7bdf21a7cec582e68cba69cf4031da1998.mp3",
+    "bookId": "demo-carmela",
+    "page": 3,
+    "duration": 21.178,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "走到小溪边，卡梅拉发现地图上的路，被一大片芦苇挡住了。",
+        "start": 0.0,
+        "duration": 8.287037037037036
+      },
+      {
+        "text": "“呱，先别急！”青蛙阿滴跳上石头，“沿着水声走，小木桥就在前面。”",
+        "start": 8.546296296296296,
+        "duration": 7.259259259259259
+      },
+      {
+        "text": "她把绿丝带系在树枝上，记住回家的方向。",
+        "start": 16.064814814814817,
+        "duration": 5.111111111111111
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 24.0,
+    "removedSilenceSeconds": 1.69
+  },
+  "44f75dfc1ae14c64d5cc7122f642a631bb2430a9d881ab6356736a972fce44d2": {
+    "url": "assets/audio/library/44f75dfc1ae14c64d5cc7122f642a631bb2430a9d881ab6356736a972fce44d2.mp3",
+    "bookId": "demo-carmela",
+    "page": 4,
+    "duration": 20.708,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "小桥上，一块木板翘起了头。小兔麦麦抱着胡萝卜，站在桥边发愁。",
+        "start": 0.0,
+        "duration": 9.824074074074073
+      },
+      {
+        "text": "卡梅拉刚想往前跑，又停了下来。",
+        "start": 10.083333333333334,
+        "duration": 3.175925925925926
+      },
+      {
+        "text": "“冒险不是只顾着赶路。我们先把小桥修好吧！”她说。",
+        "start": 13.518518518518517,
+        "duration": 7.175925925925926
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 24.0,
+    "removedSilenceSeconds": 2.21
+  },
+  "c17033961c933f55bd7a3969d8cb40718bbd4c919929e690e05924407b50ffa6": {
+    "url": "assets/audio/library/c17033961c933f55bd7a3969d8cb40718bbd4c919929e690e05924407b50ffa6.mp3",
+    "bookId": "demo-carmela",
+    "page": 5,
+    "duration": 21.326,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "麦麦扶住木板，卡梅拉找来结实的芦苇绳。一个按住，一个绑紧，歪歪的小桥终于不摇了。",
+        "start": 0.0,
+        "duration": 9.777777777777777
+      },
+      {
+        "text": "“一个人真难，两个朋友就有办法！”",
+        "start": 10.037037037037036,
+        "duration": 4.148148148148148
+      },
+      {
+        "text": "麦麦放好胡萝卜，决定陪卡梅拉一起上山。",
+        "start": 14.444444444444443,
+        "duration": 6.879629629629629
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 22.48,
+    "removedSilenceSeconds": 0.01
+  },
+  "b8b248c9aa698df526d39303d1e83aa3229e7a808d4b5f7931f4e34c75926c1c": {
+    "url": "assets/audio/library/b8b248c9aa698df526d39303d1e83aa3229e7a808d4b5f7931f4e34c75926c1c.mp3",
+    "bookId": "demo-carmela",
+    "page": 6,
+    "duration": 20.815,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "到了山顶，她们终于找到了风铃。原来，一根落下的树枝缠住了铃绳，小木锤也掉进了草丛。",
+        "start": 0.0,
+        "duration": 13.194444444444443
+      },
+      {
+        "text": "卡梅拉踮起脚，轻轻解开绳结。",
+        "start": 13.453703703703702,
+        "duration": 3.175925925925926
+      },
+      {
+        "text": "“别着急，我扶着呢！”麦麦稳稳托住风铃。",
+        "start": 16.888888888888886,
+        "duration": 3.925925925925926
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 23.04,
+    "removedSilenceSeconds": 1.12
+  },
+  "e3be4052cb36118bb10e83feb056e4d0e5914a3758232c41355a1412ed30e8a4": {
+    "url": "assets/audio/library/e3be4052cb36118bb10e83feb056e4d0e5914a3758232c41355a1412ed30e8a4.mp3",
+    "bookId": "demo-carmela",
+    "page": 7,
+    "duration": 23.431,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "小木锤找不到了。卡梅拉看见脚边一颗圆圆的松果，忽然有了主意。",
+        "start": 0.0,
+        "duration": 9.953703703703702
+      },
+      {
+        "text": "她把松果系在铃绳上。风一吹，松果碰到木片：叮，咚，叮咚！",
+        "start": 10.212962962962962,
+        "duration": 7.62037037037037
+      },
+      {
+        "text": "“听！风铃有了新歌声！”两个朋友高兴得转起圈来。",
+        "start": 18.09259259259259,
+        "duration": 5.333333333333333
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 27.36,
+    "removedSilenceSeconds": 2.62
+  },
+  "10242a59abf3c9d7f21d27221d51f0b98472def47aed4c2675ecdd155bf668c3": {
+    "url": "assets/audio/library/10242a59abf3c9d7f21d27221d51f0b98472def47aed4c2675ecdd155bf668c3.mp3",
+    "bookId": "demo-carmela",
+    "page": 8,
+    "duration": 39.491,
+    "voice": "Serena",
+    "parts": [
+      {
+        "text": "夕阳把小路染成了蜂蜜色。卡梅拉回到农场，风铃的歌声一路跟着她。",
+        "start": 0.0,
+        "duration": 12.712962962962962
+      },
+      {
+        "text": "她在地图上画下一座小桥、一颗松果，还有两位新朋友。",
+        "start": 12.972222222222221,
+        "duration": 5.4074074074074066
+      },
+      {
+        "text": "“明天，会不会又有新发现呢？”卡梅拉合上地图，笑着钻进暖暖的被窝。",
+        "start": 18.638888888888886,
+        "duration": 20.85185185185185
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "rhythmVersion": "natural-v3",
+    "tempo": 1.08,
+    "sourceDuration": 46.4,
+    "removedSilenceSeconds": 4.31
   }
 }

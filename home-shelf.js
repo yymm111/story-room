@@ -1,19 +1,21 @@
+import {makeCarmelaHen,makeCarmelaMap,makeCarmelaChime} from './carmela-scene.js?v=carmela2';
 import * as T from './vendor/three/build/three.module.js';
 import {GLTFLoader} from './vendor/three/examples/jsm/loaders/GLTFLoader.js';
 import {makeShelf} from './reference-shelf.js?v=otto9';
 
 const referenceBooks=['otto-shy-moon','nia-runaway-kite','fin-glowing-sea'];
-const groups={'demo-otto':['owl','moon','house'],'nia-runaway-kite':['kite','sheep','tree'],'fin-glowing-sea':['turtle','jar','boat'],'demo-little-prince':['moon','tree','house'],'demo-moon':['owl','moon','house'],'demo-kite':['kite','sheep','tree'],'demo-ocean':['turtle','jar','boat']};
-const heights={owl:.26,moon:.28,house:.30,kite:.32,sheep:.20,tree:.34,turtle:.14,jar:.24,boat:.24};
-const labels={owl:'猫头鹰',moon:'月亮',house:'小房子',kite:'红风筝',sheep:'小绵羊',tree:'大树',turtle:'小海龟',jar:'星光瓶',boat:'小帆船'};
-const sounds={owl:'hoot',moon:'shimmer',house:'thunk',kite:'gust',sheep:'baa',tree:'rustle',turtle:'bubbles',jar:'fizz',boat:'splash'};
+const groups={'demo-carmela':['hen','map','chime'],'demo-otto':['owl','moon','house'],'nia-runaway-kite':['kite','sheep','tree'],'fin-glowing-sea':['turtle','jar','boat'],'demo-little-prince':['moon','tree','house'],'demo-moon':['owl','moon','house'],'demo-kite':['kite','sheep','tree'],'demo-ocean':['turtle','jar','boat']};
+const heights={hen:.29,map:.18,chime:.28,owl:.26,moon:.28,house:.30,kite:.32,sheep:.20,tree:.34,turtle:.14,jar:.24,boat:.24};
+const labels={hen:'卡梅拉',map:'冒险地图',chime:'木风铃',owl:'猫头鹰',moon:'月亮',house:'小房子',kite:'红风筝',sheep:'小绵羊',tree:'大树',turtle:'小海龟',jar:'星光瓶',boat:'小帆船'};
+const sounds={hen:'shimmer',map:'rustle',chime:'shimmer',owl:'hoot',moon:'shimmer',house:'thunk',kite:'gust',sheep:'baa',tree:'rustle',turtle:'bubbles',jar:'fizz',boat:'splash'};
 export class HomeShelf{
   constructor(stage){this.stage=stage;this.entries=[];this.coverCache=new Map();this.models=new Map();this.version=0;this.page=0;this.ready=this.load();}
   async load(){
     await this.stage.surfaceMaterials.ready;const loader=new T.TextureLoader(),gltf=new GLTFLoader();
     const [planks,normal]=await Promise.all(['textures-wood-planks.jpg','textures-wood-planks-normal.jpg'].map(n=>loader.loadAsync('assets/room-reference/'+n)));
     planks.colorSpace=T.SRGBColorSpace;normal.colorSpace=T.NoColorSpace;for(const map of [planks,normal]){map.anisotropy=8;map.userData.shared=true;}
-    await Promise.all(Object.keys(heights).map(async name=>{const path=['owl','moon'].includes(name)?`assets/room-reference/models-toys-${name}.glb`:`assets/shelf-reference/${name}.glb`;const asset=await gltf.loadAsync(path);asset.scene.traverse(o=>{if(o.geometry)o.geometry.userData.shared=true;for(const m of o.material?[].concat(o.material):[]){m.userData.shared=true;for(const key of ['map','normalMap','roughnessMap','metalnessMap'])if(m[key]){m[key].userData.shared=true;m[key].anisotropy=8;}}});this.models.set(name,asset.scene);}));
+    await Promise.all(Object.keys(heights).filter(name=>!['hen','map','chime'].includes(name)).map(async name=>{const path=['owl','moon'].includes(name)?`assets/room-reference/models-toys-${name}.glb`:`assets/shelf-reference/${name}.glb`;const asset=await gltf.loadAsync(path);asset.scene.traverse(o=>{if(o.geometry)o.geometry.userData.shared=true;for(const m of o.material?[].concat(o.material):[]){m.userData.shared=true;for(const key of ['map','normalMap','roughnessMap','metalnessMap'])if(m[key]){m[key].userData.shared=true;m[key].anisotropy=8;}}});this.models.set(name,asset.scene);}));
+    for(const [name,create]of [['hen',makeCarmelaHen],['map',makeCarmelaMap],['chime',makeCarmelaChime]]){const model=create();model.userData={};model.traverse(o=>{if(o.geometry)o.geometry.userData.shared=true;for(const m of o.material?[].concat(o.material):[]){m.userData.shared=true;if(m.map)m.map.userData.shared=true;}});this.models.set(name,model);}
     const maps=this.stage.room.surfaceMaps;
     this.textures={wood:maps.wood,woodPlanks:planks,woodPlanksNormal:normal,cloth:maps.cloth,edges:maps.edges,covers:{},locked:()=>false,toyManifest:{heights,books:groups,labels,sounds},toyFor:name=>Promise.resolve(this.models.get(name)?.clone(true)||null)};
     this.baseReady=true;await this.rebuild();return this;

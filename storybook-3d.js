@@ -1,4 +1,5 @@
-import {HomeShelf} from './home-shelf.js?v=home11';
+import {loadCarmelaArt,buildCarmelaScene,interactCarmela,animateCarmela} from './carmela-scene.js?v=carmela2';
+import {HomeShelf} from './home-shelf.js?v=carmela2';
 import * as T from './vendor/three/build/three.module.js';
 import {EffectComposer} from './vendor/three/examples/jsm/postprocessing/EffectComposer.js';
 import {RenderPass} from './vendor/three/examples/jsm/postprocessing/RenderPass.js';
@@ -9,7 +10,7 @@ import {OttoScene} from './otto-scene.js?v=otto9';
 import {PrincePaperScene} from './prince-paper.js?v=otto9';
 import {PhysicalBook} from './physical-book.js?v=otto9';
 import {ReadingRoom} from './reading-room.js?v=home11';
-import {StoryMaterials} from './story-materials.js?v=home11';
+import {StoryMaterials} from './story-materials.js?v=carmela2';
 import {AnimatedActors} from './animated-actors.js?v=otto9';
 import {prepareAsset} from './asset-prep.js?v=otto9';
 
@@ -85,6 +86,7 @@ export class StorybookStage {
   }
 
   loadBookAssets(book){
+    if(book.theme==='carmela')return loadCarmelaArt();
     if(book.theme==='otto')return this.ottoArt.ensureLoaded();
     if(book.theme==='prince'){this.coverArtReady||=prepareAsset('image',{url:new URL('assets/prince-art/cover-v6.png',location.href).href}).then(({image})=>{this.preparedCover=image;this.coverKey=null;this.refreshCover();}).catch(error=>console.warn('Cover preparation unavailable',error));return Promise.all([this.paperArt.ensureLoaded(),this.coverArtReady]);}
     return Promise.resolve();
@@ -271,7 +273,7 @@ export class StorybookStage {
     const oldPaper=this.paperState;this.paperState=null;this.bookId=book.id;this.coverBook=book;this.refreshCover();this.page=index;const previous=this.props;previous.visible=true;previous.rotation.x=0;previous.scale.setScalar(1);
     this.props=new T.Group();this.props.position.set(3.55,.85,-.4);this.scene.add(this.props);this.actors={};
     this.paperArt=book.theme==='otto'?this.ottoArt:this.princeArt;this.room.setTheme(book.theme==='otto');
-    if(book.theme==='otto'){this.props.position.set(3.9,this.physical.topY+.012,0);this.ottoArt.build(page);}else if(book.theme==='prince'){this.props.position.set(3.9,this.physical.topY+.012,0);this.paperArt.build(page);}else this.buildOtherScene(book,page);
+    if(book.theme==='carmela'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);buildCarmelaScene(this,page);}else if(book.theme==='otto'){this.props.position.set(3.9,this.physical.topY+.012,0);this.ottoArt.build(page);}else if(book.theme==='prince'){this.props.position.set(3.9,this.physical.topY+.012,0);this.paperArt.build(page);}else this.buildOtherScene(book,page);
     this.updateFraming();
     if(turn&&this.motion){
       const leaf=this.turningLeaf(forward);leaf.visible=false;
@@ -371,6 +373,7 @@ export class StorybookStage {
     const action=object?.userData.action;this.canvas.dataset.lastInteraction=action||'';if(action)this.onCollect(action);
     if(this.paperState){this.paperArt.interact(action,this.time,{point:hit.point});if(this.paperState.kind?.startsWith('otto-')){const message=this.paperState.messages[action];if(message){this.onInteract(message,{silent:!!this.paperArt.usesSceneSound});if(this.motion)this.burst(hit.point);}this.render();return;}const messages={rose:this.paperState.domeOpen?'给玫瑰一点新鲜空气。':'替玫瑰盖好罩子，轻轻说声晚安。',fox:'你好，小狐狸。今天也来陪你坐一会儿。',lamp:this.paperState.lampOn?'为夜晚留一盏灯。':'让路灯也休息一小会儿。',well:'井水里，也装着一路走来的星光。',plane:'小飞机准备好再一次出发。',prince:'小王子在和你打招呼。'};if(messages[action]){this.onInteract(messages[action]);if(this.motion)this.burst(hit.point);}this.render();return;}
     if(action==='rose'){this.actors.domeOpen=!this.actors.domeOpen;this.onInteract(this.actors.domeOpen?'给玫瑰一点新鲜空气。':'替玫瑰盖好罩子，轻轻说声晚安。');}
+    if(interactCarmela(this,action)){if(this.motion)this.burst(hit.point);return;}
     if(action==='fox'){this.actors.foxTap=this.time;this.onInteract('你好，小狐狸。今天也来陪你坐一会儿。');}
     if(action==='lamp'){this.actors.lampOn=!this.actors.lampOn;this.onInteract(this.actors.lampOn?'为夜晚留一盏灯。':'让路灯也休息一小会儿。');}
     if(action==='well'){this.actors.bucketUp=!this.actors.bucketUp;this.onInteract('井水里，也装着一路走来的星光。');}
@@ -439,7 +442,7 @@ export class StorybookStage {
       this.canvas.dataset.phase=this.turn?turn.phase:'rest';this.canvas.dataset.pageMoving=String(!!this.turn&&turn.mesh.visible);
       this.canvas.dataset.oldSceneVisible=String(turn.old.visible);this.canvas.dataset.newSceneVisible=String(this.props.visible);
     }
-    if(this.view==='reader'&&this.paperState)this.paperArt.animate(this.paperState,dt,t);this.animatedActors?.update(dt);this.room.update(dt,t);this.homeShelf?.update(dt,t);
+    if(this.view==='reader'&&this.paperState)this.paperArt.animate(this.paperState,dt,t);this.animatedActors?.update(dt);animateCarmela(this,t);this.room.update(dt,t);this.homeShelf?.update(dt,t);
     this.resolveReady();
     for(let i=this.particles.length-1;i>=0;i--){const item=this.particles[i],age=t-item.start;for(const star of item.group.children){star.position.addScaledVector(star.userData.velocity,dt);star.material.opacity=Math.max(0,1-age/1.2);star.rotation.y+=dt*2;}if(age>1.2){this.disposeGroup(item.group);this.particles.splice(i,1);}}
     this.canvas.dataset.frames=String((Number(this.canvas.dataset.frames)||0)+1);if(!this.frameStats)this.frameStats={start:now,count:0};this.frameStats.count++;if(now-this.frameStats.start>2000){this.canvas.dataset.fps=(this.frameStats.count*1000/(now-this.frameStats.start)).toFixed(1);this.frameStats={start:now,count:0};}this.render();

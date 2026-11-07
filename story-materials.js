@@ -1,3 +1,4 @@
+import {makeCarmelaWall} from './carmela-scene.js?v=carmela2';
 import * as T from './vendor/three/build/three.module.js';
 export class StoryMaterials{
   constructor(stage){this.ready=this.load(stage).catch(error=>console.warn('Reading-room materials could not load',error));}
@@ -18,6 +19,7 @@ export class StoryMaterials{
     }));
     maps.wallThemes={default:[maps.wall,maps.wallNormal],'demo-otto':[maps.ottoWall,maps.ottoWallNormal],...Object.fromEntries(storyWalls)};
     // Local stories share the wallpaper of their explicitly matching story theme.
+    maps.wallThemes['demo-carmela']=[makeCarmelaWall(),maps.wallNormal];
     maps.wallThemes['demo-moon']=maps.wallThemes['demo-otto'];
     maps.wallThemes['demo-kite']=maps.wallThemes['nia-runaway-kite'];
     maps.wallThemes['demo-ocean']=maps.wallThemes['fin-glowing-sea'];
