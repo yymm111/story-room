@@ -2,12 +2,13 @@ import {demoBooks} from './stories.js?v=otto9';
 import {importFiles,splitPages,guessLang,recognizeImage} from './importers.js?v=otto9';
 import {Atmosphere} from './atmosphere.js?v=otto9';
 import {mountScene} from './scenes.js?v=otto9';
-import {Narrator} from './narrator.js?v=tts3';
+import {Narrator} from './narrator.js?v=pages1';
 import {StorybookStage} from './storybook-3d.js?v=home11';
 import {collectPin,collectStar,pinsFor,collectedPins,collectedStars,totals} from './souvenirs.js?v=otto9';
 import {LANGS,getLang,setLang,t,applyI18n} from './i18n.js?v=home10';
 
 const $=id=>document.getElementById(id);
+const STATIC_PREVIEW=location.hostname.endsWith('.github.io');
 const icons={
  search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>',settings:'<path d="m9 3 1-1h4l1 3 3 1 3-1 2 4-2 2v3l2 2-2 4-3-1-3 1-1 3h-4l-1-3-3-1-3 1-2-4 2-2v-3L1 9l2-4 3 1 3-1z" transform="translate(1 0) scale(.92)"/><circle cx="12" cy="12" r="3.2"/>',
  plus:'<path d="M12 5v14M5 12h14"/>',feather:'<path d="M20 3C12 1 4 9 5 16l3 3C15 20 23 12 20 3Z"/><path d="m3 21 13-13M8 16h6M11 13V8"/>',shield:'<path d="M12 2 4 5v6c0 5 8 10 8 10s8-5 8-10V5z"/><path d="m8 11 3 3 5-5"/>',
@@ -320,7 +321,7 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden){if(activeB
 async function init(){
  try{db=await openDB();books=await getBooks();const otto=demoBooks.find(b=>b.id==='demo-otto'),previousOtto=books.find(b=>b.id==='demo-otto');if(otto&&previousOtto&&(previousOtto.revision||0)<otto.revision){Object.assign(previousOtto,structuredClone(otto),{page:previousOtto.page,favorite:previousOtto.favorite,lastRead:previousOtto.lastRead});await putBooks([previousOtto]);}const missing=demoBooks.filter(d=>!books.some(b=>b.id===d.id)).map(b=>structuredClone(b));if(missing.length){await putBooks(missing);books.push(...missing);}refreshLang();await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0)));try{ensureStage().configure(settings.animationsEnabled);document.body.dataset.view='shelf';stage.showShelf();}catch(error){document.body.classList.remove('three-room','room-boot');$('roomLoading')?.remove();console.warn('Room preview unavailable',error);}const entry=new URL(location.href);if(entry.searchParams.has('book')){entry.searchParams.delete('book');history.replaceState(null,'',entry.pathname+entry.search+entry.hash);}}
  catch(e){document.body.classList.remove('three-room','room-boot');$('roomLoading')?.remove();$('bookList').innerHTML='<div class="empty-shelf"><span>☾</span><strong>书架暂时无法打开</strong><p>请允许当前浏览器保存本地数据，或退出无痕模式后重试。</p></div>';toast(e.message);$('importButton').disabled=true;$('writeButton').disabled=true;}
- try{const response=await fetch('/api/health');health=await response.json();}catch{}
- $('ocrEnabled').disabled=!health.ocr;$('ocrEnabled').checked=!!health.ocr;$('ocrHint').textContent=health.ocr?'识别在这台 Mac 上完成，书页不会发送到外部网站':'本机识别暂不可用；图片导入后可手动补充朗读文字';
+ if(!STATIC_PREVIEW){try{const response=await fetch('/api/health');if(response.ok)health=await response.json();}catch{}}
+ $('ocrEnabled').disabled=!health.ocr;$('ocrEnabled').checked=!!health.ocr;$('ocrHint').textContent=health.ocr?'识别在这台 Mac 上完成，书页不会发送到外部网站':STATIC_PREVIEW?'在线预览可导入图片；请手动填写朗读文字，自动识别需使用本地书房。':'本机识别暂不可用；图片导入后可手动补充朗读文字';
 }
 await init();

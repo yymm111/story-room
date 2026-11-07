@@ -44,6 +44,7 @@ export class Narrator {
     // The manifest may have gained a just-generated built-in page since this tab opened.
     const fresh=await fetch('assets/audio/library.json',{cache:'no-cache',signal}).then(r=>r.ok?r.json():{}).catch(()=>({}));
     if(fresh[key]){this.manifest=Promise.resolve({...library,...fresh});return fresh[key];}
+    if(location.hostname.endsWith('.github.io'))throw new Error('这个声音尚未准备。请在设置中选择系统辅助朗读，或使用本地书房生成配音。');
     const response=await fetch('/api/tts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:normalize(text),voice}),signal});
     let job=await response.json();
     if(!response.ok)throw new Error(job.error||'本机 AI 声音暂时没有准备好。');
