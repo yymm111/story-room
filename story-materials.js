@@ -1,4 +1,4 @@
-import {makeCarmelaWall} from './carmela-scene.js?v=carmela2';
+import {makeCarmelaWall} from './carmela-scene.js?v=local-paper5';
 import * as T from './vendor/three/build/three.module.js';
 export class StoryMaterials{
   constructor(stage){this.ready=this.load(stage).catch(error=>console.warn('Reading-room materials could not load',error));}

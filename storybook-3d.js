@@ -1,5 +1,5 @@
-import {loadCarmelaArt,buildCarmelaScene,interactCarmela,animateCarmela} from './carmela-scene.js?v=carmela2';
-import {HomeShelf} from './home-shelf.js?v=carmela2';
+import {loadCarmelaArt,buildCarmelaScene,interactCarmela,animateCarmela,settleCarmela} from './carmela-scene.js?v=local-paper5';
+import {HomeShelf} from './home-shelf.js?v=local-paper5';
 import * as T from './vendor/three/build/three.module.js';
 import {EffectComposer} from './vendor/three/examples/jsm/postprocessing/EffectComposer.js';
 import {RenderPass} from './vendor/three/examples/jsm/postprocessing/RenderPass.js';
@@ -10,7 +10,7 @@ import {OttoScene} from './otto-scene.js?v=otto9';
 import {PrincePaperScene} from './prince-paper.js?v=otto9';
 import {PhysicalBook} from './physical-book.js?v=otto9';
 import {ReadingRoom} from './reading-room.js?v=home11';
-import {StoryMaterials} from './story-materials.js?v=carmela2';
+import {StoryMaterials} from './story-materials.js?v=local-paper5';
 import {AnimatedActors} from './animated-actors.js?v=otto9';
 import {prepareAsset} from './asset-prep.js?v=otto9';
 
@@ -321,18 +321,18 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     const fromShelf=this.view==='shelf';this.view='reader';this.resize();this.homeShelf?.hide();this.room.setHome(false);if(!this.motion)this.room.settle();this.book.visible=true;this.room.bookDisplayGroup.visible=true;
     this.bookMotion?.resolve?.();this.bookMotion=null;this.finishTurn();this.bookOpen=this.motion?0:1;this.applyBookPose();this.updateFraming();
     this.reader?.classList.remove('book-closing');
-    if(this.motion){this.props.visible=false;if(this.paperState)this.paperArt.fold(this.paperState,0);this.bookMotion={type:'open',start:this.time,duration:timing.open};this.reader?.classList.add('book-opening');if(!fromShelf)this.settleCamera();this.start();}else this.settleCamera();
+    if(this.motion){this.props.visible=false;if(this.paperState)this.paperArt.fold(this.paperState,0);this.bookMotion={type:'open',start:this.time,startedAt:performance.now(),duration:timing.open};this.reader?.classList.add('book-opening');if(!fromShelf)this.settleCamera();this.start();}else this.settleCamera();
   }
   showShelf(){this.sparkles?.clear();this.view='shelf';this.resize();this.homeShelf?.show();this.room.setHome(true);this.room.setTheme(false);if(!this.motion)this.room.settle();this.book.visible=false;this.props.visible=false;this.room.bookDisplayGroup.visible=false;this.orbit={x:0,y:0};this.pointer={x:0,y:0};if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.updateFraming();if(!this.motion)this.settleCamera();this.start();}
   close(){
     const wasOpening=this.bookMotion?.type==='open';this.bookMotion?.resolve?.();this.bookMotion=null;this.finishTurn();
     if(!this.motion){this.bookOpen=0;this.applyBookPose();this.props.visible=false;this.updateFraming();this.settleCamera();this.render();return Promise.resolve();}
     this.reader?.classList.remove('book-opening');this.reader?.classList.add('book-closing');this.framingRect=null;
-    return new Promise(resolve=>{this.bookMotion={type:'close',start:this.time,from:this.bookOpen,fold:wasOpening?0:timing.fold,duration:timing.close,resolve};this.start();});
+    return new Promise(resolve=>{this.bookMotion={type:'close',start:this.time,startedAt:performance.now(),from:this.bookOpen,fold:wasOpening?0:timing.fold,duration:timing.close,resolve};this.start();});
   }
   finishTurn(){this.updateLeftPage();if(this.turn){this.disposeGroup(this.turn.mesh);this.disposeGroup(this.turn.old);this.turn=null;}this.enter=null;this.props.visible=true;this.props.scale.setScalar(1);this.props.rotation.x=0;if(this.paperState)this.paperArt.fold(this.paperState,1);this.reader?.classList.remove('is-turning');this.canvas.dataset.phase='rest';}
   completeMotion(){const closing=this.bookMotion?.type==='close';this.bookMotion?.resolve?.();this.bookMotion=null;this.bookOpen=closing?0:1;this.applyBookPose();this.reader?.classList.remove('book-opening','book-closing');this.finishTurn();this.props.visible=!closing;this.onSceneArrive();this.updateFraming();this.settleCamera();this.resolveReady();this.render();}
-  configure(motion){this.motion=motion;if(!motion)this.sparkles?.clear();this.updateFraming();if(!motion){cancelAnimationFrame(this.raf);for(const p of this.particles)this.disposeGroup(p.group);this.particles=[];this.room?.settle();this.homeShelf?.static();if(this.room?.dust)this.room.dust.visible=false;this.cursor?.classList.remove('is-visible');if(this.view==='shelf'){this.props.visible=false;this.settleCamera();this.render();}else this.completeMotion();}else if(this.active)this.start();}
+  configure(motion){this.motion=motion;if(!motion)settleCarmela(this);if(!motion)this.sparkles?.clear();this.updateFraming();if(!motion){cancelAnimationFrame(this.raf);for(const p of this.particles)this.disposeGroup(p.group);this.particles=[];this.room?.settle();this.homeShelf?.static();if(this.room?.dust)this.room.dust.visible=false;this.cursor?.classList.remove('is-visible');if(this.view==='shelf'){this.props.visible=false;this.settleCamera();this.render();}else this.completeMotion();}else if(this.active)this.start();}
   get busy(){return !!(this.preparing||this.bookMotion||this.turn||this.enter);}
   whenReady(){return this.busy?new Promise(resolve=>(this.readyWaiters||(this.readyWaiters=[])).push(resolve)):Promise.resolve();}
   resolveReady(){if(!this.busy)for(const resolve of (this.readyWaiters||[]).splice(0))resolve();}
@@ -394,7 +394,7 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     this.raf=requestAnimationFrame(this.frame);
     const dt=this.last?Math.min(.05,(now-this.last)/1000):.016;this.last=now;this.time+=dt;const t=this.time,a=this.actors;
     if(this.bookMotion){
-      const motion=this.bookMotion,age=t-motion.start;
+      const motion=this.bookMotion,age=motion.startedAt===undefined?t-motion.start:Math.max(0,(now-motion.startedAt)/1000);
       if(motion.type==='open'){
         const p=clamp(age/motion.duration,0,1);this.bookOpen=smooth(p);this.props.visible=false;this.canvas.dataset.phase='book-open';
         if(p===1){this.bookMotion=null;this.props.visible=true;if(this.paperState)this.enter={start:t,duration:timing.pop};this.reader?.classList.remove('book-opening');this.onSceneArrive();}

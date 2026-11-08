@@ -65,7 +65,8 @@ body.room-boot .room-preview{opacity:1;visibility:visible;transition:none}
 :is(#settingsButton,#readerSettings)::after{background-image:url('assets/room-reference/ui-icons-gear.webp')}
 :is(#musicButton,#readerMusicButton)::after{background-image:url('assets/room-reference/ui-icons-music.png')}
 #zoomSceneButton::after{background-image:url('assets/room-reference/ui-icons-look.png')}
-#closeReader>span{background:url('assets/room-reference/ui-icons-home.png') center/contain no-repeat}
+#closeReader>[data-icon="home"]{display:grid;place-items:center;flex:0 0 18px;width:18px;height:18px;background:url('assets/room-reference/ui-icons-home.png') center/contain no-repeat}
+#closeReader>[data-i18n]{background:none;line-height:18px}
 @media(prefers-reduced-motion:reduce){.cursor-sparkles{display:none}.story-pointer>span{transition:none}}
 
 .cinematic .open-book{background:linear-gradient(#fffdf238,#fff7db38),var(--story-paper) center/100% 100%}
@@ -79,3 +80,18 @@ body.room-boot .room-preview{opacity:1;visibility:visible;transition:none}
 .story-pointer>span{display:none}
 .story-pointer{translate:32px 19px;z-index:59}
 @media(prefers-reduced-motion:reduce){.magic-hand{display:none}.magic-hand::after{transition:none}}
+
+/* Local reader navigation: visible page count, contents and arrow labels. */
+.reader-page-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 12px;flex:none}
+.cinematic .reader-page-bar .page-eyebrow{margin:0;letter-spacing:.12em;line-height:1.5}
+.reader-contents-trigger{flex:none;border:1px solid #c9ab75;border-radius:14px;padding:5px 10px;background:#fff8e5;color:#825d32;font-size:12px;line-height:1.4;cursor:pointer;pointer-events:auto}
+.reader-contents-trigger:hover{background:#ffeab5}.reader-contents-trigger:focus-visible{outline:3px solid #456b86;outline-offset:3px}
+.cinematic .page-arrow:after{content:attr(aria-label);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);white-space:nowrap;border:1px solid #c8a671;border-radius:12px;padding:3px 10px;background:#fff2d7;color:#78532d;font:600 12px/1.3 'PingFang SC',sans-serif;box-shadow:0 2px 5px #49371f33;pointer-events:none}
+@media(max-width:900px){.reader-page-bar{gap:8px;margin-bottom:9px}.reader-contents-trigger{font-size:11px;padding:4px 8px}.cinematic .reader-page-bar .page-eyebrow{font-size:11px;letter-spacing:.06em}.cinematic .page-arrow:after{font-size:11px;padding:2px 8px;bottom:calc(100% + 3px)}}
+
+/* Keep navigation usable while the opening animation is running. */
+.cinematic.book-opening .page-arrow{opacity:1;pointer-events:auto}
+
+/* Keep the current page's story action reachable on small screens. */
+body .scene-hint.carmela-actions{width:auto;max-width:310px;min-height:0;padding:0;background:none;box-shadow:none;justify-content:flex-end;gap:7px}
+@media(max-width:900px){body .scene-hint.otto-actions.carmela-actions{display:flex;position:fixed;left:auto;right:12px;bottom:auto;top:105px;width:auto;max-width:165px;min-height:0;padding:0;gap:4px;z-index:7;background:none;box-shadow:none}body .carmela-actions button{font-size:12px;min-height:40px;padding:7px 11px}body .carmela-actions button:first-child{display:none}}

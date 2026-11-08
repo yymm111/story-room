@@ -1,0 +1,37 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-11-07",
+  "reference": "cover.jpg, style and character reference only",
+  "puppet-rig-v1.png": {
+    "layout": "4 x 4, transparent RGBA",
+    "assets": [
+      "hen-body",
+      "hen-head",
+      "hen-wing",
+      "hen-foot",
+      "rabbit-body",
+      "rabbit-head",
+      "rabbit-arm",
+      "rabbit-foot",
+      "frog",
+      "mother-body",
+      "pinecone",
+      "map",
+      "ribbon",
+      "bottle",
+      "bell",
+      "chime-top"
+    ],
+    "prompt": "Original watercolor paper puppet cutouts based on the cover; separate body, head, wings and feet. Warm gouache texture, transparent margins, no text or grid."
+  },
+  "paper-scenery-v1.png": {
+    "layout": "2 x 2, transparent RGBA",
+    "assets": [
+      "farm",
+      "willow",
+      "ground",
+      "hills"
+    ],
+    "prompt": "Original detailed watercolor scenic cutouts matching the cover: farmhouse, willow tree, oval flower meadow island, distant meadow and sky. No characters, text or grid."
+  }
+}

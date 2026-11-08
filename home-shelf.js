@@ -1,4 +1,4 @@
-import {makeCarmelaHen,makeCarmelaMap,makeCarmelaChime} from './carmela-scene.js?v=carmela2';
+import {makeCarmelaHen,makeCarmelaMap,makeCarmelaChime} from './carmela-scene.js?v=local-paper5';
 import * as T from './vendor/three/build/three.module.js';
 import {GLTFLoader} from './vendor/three/examples/jsm/loaders/GLTFLoader.js';
 import {makeShelf} from './reference-shelf.js?v=otto9';

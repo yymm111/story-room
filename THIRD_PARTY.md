@@ -73,4 +73,4 @@ The Little Prince paper-theatre artwork in assets/prince-art/ was created for th
 
 《不一样的卡梅拉》/ Les P’tites Poules 的人物、系列身份归原权利人所有，文字作者 Christian Jolibois、绘者 Christian Heinrich。本站《卡梅拉的新冒险：风铃山的秘密》是独立编写的冒险故事，不是原作任何一册的复刻、翻译或官方续作。未下载或复制原书插画、正文、扫描页、有声书录音；不表示获得出版社或作者背书。
 
-`assets/carmela-art/cover.jpg` 和 `scenes.jpg` 使用内置图像生成工具独立生成；提示词与排版说明随目录保存。`carmela-scene.js` 中的 3D 小鸡、地图、风铃、木桥和墙纸图案为本项目新建。8 页中文配音在本机使用 Qwen3-TTS/Serena 生成。资料依据见 `content/research/carmela-sources.md`。
+`assets/carmela-art/cover.jpg`、`scenes.jpg`、`puppet-rig-v1.png` 和 `paper-scenery-v1.png` 使用内置图像生成工具独立生成；提示词、部件布局与排版说明随目录保存。`carmela-scene.js` 的书架摆件、墙纸，以及 `carmela-paper.js` 的纸艺部件组合、桥板、绳结和八页动作编排为本项目新建。8 页中文配音在本机使用 Qwen3-TTS/Serena 生成。资料依据见 `content/research/carmela-sources.md`。
