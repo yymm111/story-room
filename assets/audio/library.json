@@ -910,5 +910,405 @@
     "tempo": 1.08,
     "sourceDuration": 46.4,
     "removedSilenceSeconds": 4.31
+  },
+  "4cc6b4ff6f02c5db7e1fdae63687d8b5b0d1513b615e1e2c273201998e66a02e": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "小兔妮娅扣好黄色外衣，推开家门。红风筝靠在门边，长尾巴轻轻摆动。",
+        "start": 0.0,
+        "duration": 10.296296296296294
+      },
+      {
+        "text": "“今天，带你看看远处的山。”她把线轴握在掌心。",
+        "start": 10.555555555555555,
+        "duration": 6.81298611111111
+      }
+    ],
+    "duration": 17.369,
+    "url": "assets/audio/library/4cc6b4ff6f02c5db7e1fdae63687d8b5b0d1513b615e1e2c273201998e66a02e.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 1
+  },
+  "29af2621bae0ca7f98df99e4e90f92fdabfa7ba7f01bb29cb05978c39c2d7d2f": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "草叶都朝一个方向弯下腰。妮娅迎着风跑，风筝从花丛上方升了起来。",
+        "start": 0.0,
+        "duration": 11.287037037037036
+      },
+      {
+        "text": "一只绵羊抬头看了好久。妮娅笑着问：“你也想知道云朵后面有什么吗？”",
+        "start": 11.546296296296296,
+        "duration": 13.842592592592592
+      }
+    ],
+    "duration": 25.397,
+    "url": "assets/audio/library/29af2621bae0ca7f98df99e4e90f92fdabfa7ba7f01bb29cb05978c39c2d7d2f.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 2
+  },
+  "d1cf3b262a32e6747a8ea60b02d739d550742ef6a9d6da7caf58c1cd361b003c": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "一阵大风掀起妮娅的围巾。线轴滚过她的手指，骨碌碌落进草里。",
+        "start": 0.0,
+        "duration": 7.564814814814814
+      },
+      {
+        "text": "红风筝却没有停，越过篱笆飞远了。妮娅捡起线轴，顺着天上的红点追去。",
+        "start": 7.824074074074073,
+        "duration": 9.88750925925926
+      }
+    ],
+    "duration": 17.712,
+    "url": "assets/audio/library/d1cf3b262a32e6747a8ea60b02d739d550742ef6a9d6da7caf58c1cd361b003c.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 3
+  },
+  "d37dccae7ab97b8c7455323676b9fda05baf6585c7761d6161d4da80b10905c8": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "小河拦住了去路，水面上的风筝倒影摇摇晃晃。",
+        "start": 0.0,
+        "duration": 5.518518518518518
+      },
+      {
+        "text": "妮娅没有跳进水里。她沿着岸边找到小桥，扶好栏杆，一步一步走到对岸。",
+        "start": 5.777777777777778,
+        "duration": 18.76359722222222
+      }
+    ],
+    "duration": 24.541,
+    "url": "assets/audio/library/d37dccae7ab97b8c7455323676b9fda05baf6585c7761d6161d4da80b10905c8.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 4
+  },
+  "c2c53e58f8e82b3ac0c23880ffe3a354017afae56b5ced772d0a1a8d21a0d3b3": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "山坡很长，妮娅跑得耳朵都软下来了。她停下来，听听风，再走几步。",
+        "start": 0.0,
+        "duration": 10.018518518518517
+      },
+      {
+        "text": "山顶越来越近。原来不用一下子做完，走一点，也是在往前走。",
+        "start": 10.277777777777777,
+        "duration": 22.51584722222222
+      }
+    ],
+    "duration": 32.794,
+    "url": "assets/audio/library/c2c53e58f8e82b3ac0c23880ffe3a354017afae56b5ced772d0a1a8d21a0d3b3.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 5
+  },
+  "f786af3f3dd98819516d02201820361323a73d71fb15e10545be35af8fbffa37": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "山顶的云像一床展开的被子。红尾巴在云边闪了一下，又不见了。",
+        "start": 0.0,
+        "duration": 8.833333333333332
+      },
+      {
+        "text": "妮娅没有着急乱跑。她站稳脚，等风把云推开，终于看清风筝飘向了一棵大树。",
+        "start": 9.092592592592592,
+        "duration": 8.825532407407408
+      }
+    ],
+    "duration": 17.918,
+    "url": "assets/audio/library/f786af3f3dd98819516d02201820361323a73d71fb15e10545be35af8fbffa37.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 6
+  },
+  "86131a738687673b5c65d0897a52ea9800fb70f0885edff8fb193d26b9f3dcfc": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "风筝挂在橡树的低枝上，尾巴缠了一个小结。妮娅轻轻拉线，树叶沙沙响。",
+        "start": 0.0,
+        "duration": 9.833333333333332
+      },
+      {
+        "text": "她松开手，换个方向再试一次。小结慢慢松了，风筝终于回到她怀里。",
+        "start": 10.092592592592592,
+        "duration": 8.148148148148149
+      }
+    ],
+    "duration": 18.241,
+    "url": "assets/audio/library/86131a738687673b5c65d0897a52ea9800fb70f0885edff8fb193d26b9f3dcfc.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 7
+  },
+  "9d1bdf8f000ab3b728c674a55c12177c037d12f89b9a3d0488ac86b7a4321a96": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "山坡另一边，朋友们带来了各种颜色的风筝。妮娅把自己的线轴递过去。",
+        "start": 0.0,
+        "duration": 7.74074074074074
+      },
+      {
+        "text": "“你来试试，我站在你旁边。”天空多了一串笑声，红尾巴也跳起了舞。",
+        "start": 8.0,
+        "duration": 17.395958333333333
+      }
+    ],
+    "duration": 25.396,
+    "url": "assets/audio/library/9d1bdf8f000ab3b728c674a55c12177c037d12f89b9a3d0488ac86b7a4321a96.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 8
+  },
+  "292586cb9823420a5631d8d3034049b43e8994a85dbff2173a8066ef87fd881a": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "风又来了。妮娅把线绕回线轴，握紧后才让风筝升高。",
+        "start": 0.0,
+        "duration": 15.907407407407407
+      },
+      {
+        "text": "她不再只顾着跑，而是一会儿看看天空，一会儿看看朋友。风筝飞得高，大家也站得稳。",
+        "start": 16.166666666666668,
+        "duration": 8.779625
+      }
+    ],
+    "duration": 24.946,
+    "url": "assets/audio/library/292586cb9823420a5631d8d3034049b43e8994a85dbff2173a8066ef87fd881a.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 9
+  },
+  "28245bed803bdbc6321c18f2ba52028a4530debf2abfc26b2af105e4f79b4adc": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "窗外的天空渐渐变暗。妮娅把红风筝挂好，外衣整齐地搭在椅背上。",
+        "start": 0.0,
+        "duration": 9.296296296296294
+      },
+      {
+        "text": "“明天再去旅行吧。”她钻进被窝。长长的红尾巴轻轻晃了一下，像在说晚安。",
+        "start": 9.555555555555555,
+        "duration": 14.94127777777778
+      }
+    ],
+    "duration": 24.497,
+    "url": "assets/audio/library/28245bed803bdbc6321c18f2ba52028a4530debf2abfc26b2af105e4f79b4adc.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 10
+  },
+  "15301c5df40d4396b3a2c04b1b87e83ceb193cfcfdbda25e5ae224c86fde41ea": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "小海龟芬恩住在一片彩色珊瑚旁。每天晚上，一条灯笼鱼会点亮回家的路。",
+        "start": 0.0,
+        "duration": 8.351851851851851
+      },
+      {
+        "text": "今天，小灯却暗了下来。“别担心，”芬恩说，“我们一起找找光去了哪里。”",
+        "start": 8.61111111111111,
+        "duration": 10.156347222222223
+      }
+    ],
+    "duration": 18.767,
+    "url": "assets/audio/library/15301c5df40d4396b3a2c04b1b87e83ceb193cfcfdbda25e5ae224c86fde41ea.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 1
+  },
+  "b3e6f3d217c37274adb3fc43e62c586cfd8d1c45a8022a5b216bc81f2c2ec047": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "芬恩带上一只空瓶，慢慢向下游。海面变成头顶一块晃动的蓝玻璃。",
+        "start": 0.0,
+        "duration": 8.592592592592592
+      },
+      {
+        "text": "他回头看看朋友，又摆摆鳍。前面还很陌生，不过他愿意先游一小段。",
+        "start": 8.851851851851851,
+        "duration": 11.441106481481484
+      }
+    ],
+    "duration": 20.293,
+    "url": "assets/audio/library/b3e6f3d217c37274adb3fc43e62c586cfd8d1c45a8022a5b216bc81f2c2ec047.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 2
+  },
+  "0e331ae9f3ef3f465c96ea929978bc0f59f353a9696db89bdb5d3392fd30fe7c": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "长长的海带挡在前面，像一排柔软的门帘。芬恩没有用力挤。",
+        "start": 0.0,
+        "duration": 7.231481481481481
+      },
+      {
+        "text": "他等海流经过，顺着海带之间的空隙穿了过去。空瓶碰到叶尖，发出轻轻的一声响。",
+        "start": 7.4907407407407405,
+        "duration": 22.979800925925925
+      }
+    ],
+    "duration": 30.471,
+    "url": "assets/audio/library/0e331ae9f3ef3f465c96ea929978bc0f59f353a9696db89bdb5d3392fd30fe7c.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 3
+  },
+  "2e69350a150af953ef05a4952c7e3b14c5aeec3c88e19aec8a35616c2f8921ce": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "一只小螃蟹正在沙地上画弯弯曲曲的线。芬恩停下来问路。",
+        "start": 0.0,
+        "duration": 5.75
+      },
+      {
+        "text": "螃蟹举起钳子，指向更深的蓝色：“我见过亮亮的小点，不过你要慢一点找。”",
+        "start": 6.009259259259259,
+        "duration": 13.657407407407407
+      }
+    ],
+    "duration": 19.68,
+    "url": "assets/audio/library/2e69350a150af953ef05a4952c7e3b14c5aeec3c88e19aec8a35616c2f8921ce.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 4
+  },
+  "1e2c093237a3645db6ec53191e0d0db7bab204347a64d5ddcd97102fcd9ab52d": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "越往下，海水越安静。芬恩有一点害怕，就轻轻数着自己的呼吸。",
+        "start": 0.0,
+        "duration": 10.38888888888889
+      },
+      {
+        "text": "一只水母亮起淡紫色的光。原来，看不清的地方，也有温柔的邻居。",
+        "start": 10.648148148148147,
+        "duration": 9.342592592592592
+      }
+    ],
+    "duration": 19.992,
+    "url": "assets/audio/library/1e2c093237a3645db6ec53191e0d0db7bab204347a64d5ddcd97102fcd9ab52d.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 5
+  },
+  "7471572afc347ca020c574402fe06c010a57dd6a7e898001d3388c61e5905fc9": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "一条旧木船躺在海底，舷窗像圆圆的眼睛。芬恩在外面绕了一圈，没有钻进黑洞。",
+        "start": 0.0,
+        "duration": 12.11111111111111
+      },
+      {
+        "text": "瓶子映出一点蓝光，原来是船旁的小生物正闪闪发亮。他把这个发现记在心里。",
+        "start": 12.370370370370368,
+        "duration": 10.576754629629631
+      }
+    ],
+    "duration": 22.947,
+    "url": "assets/audio/library/7471572afc347ca020c574402fe06c010a57dd6a7e898001d3388c61e5905fc9.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 6
+  },
+  "1c9dc89996dd78472b0c7e976300e0d727fe3139d94b822289c936a98ca2cb8d": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "低低的歌声从身后传来。一头鲸鱼缓缓游过，巨大的影子遮住了沙地。",
+        "start": 0.0,
+        "duration": 11.444444444444443
+      },
+      {
+        "text": "芬恩挥挥鳍，鲸鱼也轻轻摆尾。水流把一群闪光的小点送到他面前。",
+        "start": 11.703703703703704,
+        "duration": 9.110379629629628
+      }
+    ],
+    "duration": 20.814,
+    "url": "assets/audio/library/1c9dc89996dd78472b0c7e976300e0d727fe3139d94b822289c936a98ca2cb8d.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 7
+  },
+  "b588854f937d71ebcc85c0da5a1545460c9a7d84ec57ddd04cc05122c9d8a9ab": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "闪光的小点聚在一起，像一条会游动的星河。芬恩把空瓶举起来，瓶壁也映出了光。",
+        "start": 0.0,
+        "duration": 12.444444444444443
+      },
+      {
+        "text": "他没有把小生命关起来，只借着这片亮光，认清了回家的方向。",
+        "start": 12.703703703703704,
+        "duration": 7.781462962962964
+      }
+    ],
+    "duration": 20.485,
+    "url": "assets/audio/library/b588854f937d71ebcc85c0da5a1545460c9a7d84ec57ddd04cc05122c9d8a9ab.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 8
+  },
+  "0edd50f9d0062a4effd039c79f5290294063f06a9e5068a5947f59e94db5eec3": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "回到珊瑚旁，芬恩把一路上的发现告诉大家。小鱼、水母和珊瑚都轻轻闪起了光。",
+        "start": 0.0,
+        "duration": 9.555555555555555
+      },
+      {
+        "text": "灯笼鱼抬起头，也重新亮了起来。好多小小的光在一起，足够照见每一位朋友。",
+        "start": 9.814814814814813,
+        "duration": 12.255810185185187
+      }
+    ],
+    "duration": 22.071,
+    "url": "assets/audio/library/0edd50f9d0062a4effd039c79f5290294063f06a9e5068a5947f59e94db5eec3.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 9
+  },
+  "43ab3e78a04f9f0308b1ab6d61b654aa8e9056c1b25ad74c6587a6133b84e3c0": {
+    "voice": "Serena",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "parts": [
+      {
+        "text": "芬恩在珊瑚边躺下来，空瓶安静地放在身旁。水母游过，留下柔柔的亮。",
+        "start": 0.0,
+        "duration": 11.166666666666666
+      },
+      {
+        "text": "他闭上眼睛。今天走了很远，明天还可以和朋友一起，发现更多小小的光。",
+        "start": 11.425925925925926,
+        "duration": 17.663574074074077
+      }
+    ],
+    "duration": 29.09,
+    "url": "assets/audio/library/43ab3e78a04f9f0308b1ab6d61b654aa8e9056c1b25ad74c6587a6133b84e3c0.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 10
   }
 }

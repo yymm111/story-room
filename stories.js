@@ -1,8 +1,9 @@
+import {niaBook,finBook} from './companion-books.js?v=tts-restored1';
 import {carmelaBook} from './carmela-book.js?v=carmela2';
 import {ottoBook} from './otto-book.js?v=otto9';
 import {littlePrince} from './prince-book.js?v=otto9';
 // These three short Chinese stories and their illustrations are original to this project.
-export const demoBooks = [ottoBook,carmelaBook,littlePrince,
+export const demoBooks = [ottoBook,niaBook,finBook,carmelaBook,littlePrince,
   {id:'demo-moon',title:'月亮忘了说晚安',subtitle:'THE MOON’S GOODNIGHT',author:'故事彗星原创',kind:'demo',theme:'moon',cover:'assets/moon.svg',lang:'zh-CN',pages:[
     {title:'一扇亮着的小窗',text:'森林安静下来了，小兔子的窗户还亮着。\n“奇怪，今晚月亮怎么没有来？”\n小兔子抱着枕头，踮起脚尖向外望。天上只有一颗星星，像一粒没睡醒的糖。'},
     {title:'装进口袋的勇气',text:'小兔子系好围巾，把一块胡萝卜饼干装进口袋。\n“我去找月亮，你帮我看家。”他对枕头说。\n风轻轻推开门，给了他一个凉凉的拥抱。'},

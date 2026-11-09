@@ -74,3 +74,13 @@ The Little Prince paper-theatre artwork in assets/prince-art/ was created for th
 《不一样的卡梅拉》/ Les P’tites Poules 的人物、系列身份归原权利人所有，文字作者 Christian Jolibois、绘者 Christian Heinrich。本站《卡梅拉的新冒险：风铃山的秘密》是独立编写的冒险故事，不是原作任何一册的复刻、翻译或官方续作。未下载或复制原书插画、正文、扫描页、有声书录音；不表示获得出版社或作者背书。
 
 `assets/carmela-art/cover.jpg`、`scenes.jpg`、`puppet-rig-v1.png` 和 `paper-scenery-v1.png` 使用内置图像生成工具独立生成；提示词、部件布局与排版说明随目录保存。`carmela-scene.js` 的书架摆件、墙纸，以及 `carmela-paper.js` 的纸艺部件组合、桥板、绳结和八页动作编排为本项目新建。8 页中文配音在本机使用 Qwen3-TTS/Serena 生成。资料依据见 `content/research/carmela-sources.md`。
+
+## Nia and Fin reference reconstruction (1.5.1)
+
+`reference-nia-spreads.js` and `reference-fin-spreads.js` adapt the publicly served StoryComet scenes.js modules for these two books. `companion-assets.js` adapts public runtime rig retargeting and facing correction. The 43 original layered WebP artworks and 12 original character/proxy-animation GLBs under `assets/companion-reference/` remain third-party material, not independently created assets. Exact URLs, sizes and SHA256 hashes are recorded in that directory's `sources.json` and `REFERENCE_SOURCES.json`.
+
+Public access and free reading do not grant redistribution rights. This update is prepared only for the requested local comparison; no push or deployment was performed. Before public distribution, verify the applicable license or obtain the rightsholder's permission. Existing Chinese retellings are independent, not source-book translations; no original recordings or full text are included. This is not an official release or a claim of pixel-perfect verified reproduction.
+
+1.5.3 adds a local companion-only camera fit and painted paper ground in response to the user screenshot. Ground textures are derived from selected lower regions of already attributed source artwork, blended with locally generated color washes. These are visual adaptations, not missing original-site floor illustrations; original asset rights and redistribution cautions still apply.
+
+妮娅、芬恩新增的 20 页 Serena MP3 使用本机 Qwen3-TTS 生成，基于本站中文重新讲述，沿用 story-garden-serena-v3 节奏处理；不是原站有声书录音。

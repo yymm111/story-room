@@ -2,6 +2,7 @@ import * as T from './vendor/three/build/three.module.js';
 import {prepareAsset} from './asset-prep.js?v=otto9';
 
 const TAU=Math.PI*2;
+const lampOffColor=new T.Color('#7d8393'),lampOnColor=new T.Color('#ffffff');
 const smooth=x=>{x=T.MathUtils.clamp(x,0,1);return x*x*(3-2*x);};
 const spring=x=>{x=T.MathUtils.clamp(x,0,1)-1;return 1+2.7*x*x*x+1.7*x*x;};
 const sheets={
@@ -62,7 +63,7 @@ export class PrincePaperScene {
       if(options.action){node.userData.action=options.action;state.characters.push(node);}
       state.landmarks.push(node);return node;
     };
-    const day=['fox','desert','well'].includes(kind),sky=kind==='fox'?'meadow':day?'desert':['farewell','home'].includes(kind)?'cosmos':'night';
+    const day=['fox','desert','well'].includes(kind),sky=kind==='fox'?'meadow':day?'desert':['farewell','home'].includes(kind)?'cosmos':'night';state.day=day;
     state.backdrop=add(sky,6.3,[0,.02,-3.95],{width:9.05,anchor:false,shadow:false,delay:0});
     state.backdrop.rotation.x=-.035;
     const foot=(name,height,x,y,z,extra={})=>{
@@ -80,7 +81,10 @@ export class PrincePaperScene {
       }else if(kind==='lamp'){
         state.lamp=foot('lamp',2.65,1.03,level,.42,{delay:.15,anchor:false});
         state.prince=foot('prince',2.95,-.65,level,.42,{delay:.26});
-        const glow=new T.Sprite(new T.SpriteMaterial({map:glowTexture(),color:'#ffcb77',transparent:true,opacity:.6,depthWrite:false}));glow.position.set(1.03,level+2.27,.48);glow.scale.set(1.4,1.4,1);glow.raycast=()=>{};g.add(glow);state.lampGlow=glow;state.lampOn=true;
+        const glow=new T.Sprite(new T.SpriteMaterial({map:glowTexture(),color:'#ffd293',transparent:true,opacity:.6,depthWrite:false}));glow.position.set(1.03,level+2.27,.48);glow.scale.set(1.15,1.15,1);glow.raycast=()=>{};g.add(glow);state.lampGlow=glow;state.lampOn=true;state.lampLevel=1;
+        // Light the physical page without washing out the watercolor illustration.
+        const light=new T.PointLight('#ffc879',16,7,2);light.position.copy(glow.position);light.position.z+=.3;g.add(light);state.lampLight=light;
+        const pool=new T.Mesh(new T.PlaneGeometry(2.8,2),new T.MeshBasicMaterial({map:glowTexture(),color:'#ffc879',transparent:true,opacity:.16,depthWrite:false,toneMapped:false}));pool.rotation.x=-Math.PI/2;pool.position.set(1.03,.018,.72);pool.raycast=()=>{};g.add(pool);state.lampPool=pool;
       }else if(kind==='stars'){
         state.prince=foot('prince',2.95,-.8,level,.42);
         const stars=new T.Group();stars.position.set(1.15,3.25,.5);g.add(stars);state.orbitStars=stars;
@@ -107,8 +111,9 @@ export class PrincePaperScene {
     // Paper mounting tabs give the standing illustrations a readable physical hinge.
     for(const {node} of state.contacts){const tab=stage.box(node,'#ead6ad',[0,.006,.08],[.16,.012,.16]);tab.castShadow=false;}
     const motes=new T.Group();g.add(motes);state.motes=motes;
-    for(let i=0;i<18;i++){const star=starMesh(.025+i%3*.008);star.material.transparent=true;star.material.opacity=.65;star.raycast=()=>{};motes.add(star);}
-    stage.canvas.dataset.content='watercolor-paper';stage.canvas.dataset.artVersion='5';
+    for(let i=0;i<(day?9:18);i++){const star=day?new T.Mesh(new T.CircleGeometry(.012+i%3*.004,8),new T.MeshBasicMaterial({color:'#edcf8b',side:T.DoubleSide})):starMesh(.025+i%3*.008);star.material.transparent=true;star.material.depthWrite=false;star.material.opacity=day?.18:.45;star.raycast=()=>{};motes.add(star);}
+    this.moveMotes(state,0);
+    stage.canvas.dataset.content='watercolor-paper';stage.canvas.dataset.artVersion='6';
     return state;
   }
   dome(parent,state,position){
@@ -122,38 +127,56 @@ export class PrincePaperScene {
     shell.userData.rise=true;
   }
   fold(state,progress,out=false){
-    const p=T.MathUtils.clamp(progress,0,1);
+    const p=T.MathUtils.clamp(progress,0,1);state.fold=p;
     for(const node of state.hinges){
       const delay=node===state.backdrop?0:node===state.ground ? .10 : node.userData.foldDelay||.22;
       const raw=T.MathUtils.clamp((p-delay)/.55,0,1),local=smooth(raw),settle=spring(raw);
       node.rotation.x=node.userData.rise?0:-(1-settle)*Math.PI/2+(node===state.backdrop?-.035*local:0);
       node.scale.setScalar(node.userData.rise?Math.max(.001,settle):1);node.position.y=node.userData.rest.y;node.visible=raw>.001;
-      if(node===state.dome){node.visible=p>.82;node.children[0].material.opacity=.13*smooth((p-.82)/.18);}
+      if(node===state.dome){node.visible=p>.82;node.children[0].material.opacity=.13*smooth((p-.82)/.18);if(p===1){node.position.y+=state.domeOpen?1.78:0;node.rotation.z=state.domeOpen?-.08:0;}}
     }
-    if(state.lampGlow)state.lampGlow.visible=p>.97;
+    if(state.lampGlow)this.lightLamp(state,0);
     if(state.orbitStars)state.orbitStars.visible=p>.97;
     state.motes.visible=p>.97;
-    state.fold=progress;
   }
   animate(state,dt,time){
     if((state.fold??1)<.999)return;
     state.elapsed+=dt;const t=state.elapsed;
     state.ready=state.landmarks.every(n=>n.userData.artReady);
     const resting=node=>node?.userData.rest;
-    for(const node of state.characters){const age=time-(node.userData.tap??-100),bounce=age>=0&&age<.7?Math.sin(age/.7*Math.PI)*.065*Math.exp(-age*2):0;node.userData.lift=T.MathUtils.damp(node.userData.lift||0,node.userData.hover ? .065 : 0,8,dt);node.position.y=node.userData.rest.y+node.userData.lift+bounce;}
+    // Keep the mounting point on the page; greetings happen above the feet.
+    for(const node of state.characters)node.position.y=node.userData.rest.y;
     if(state.prince){const n=state.prince;n.userData.gaze=T.MathUtils.damp(n.userData.gaze||0,(this.stage.pointer.x||0)*.065,3,dt);n.rotation.z=Math.sin(t*1.3)*.008;const tap=time-(state.princeTap??-100);n.rotation.y=tap<1.2?Math.sin(tap*Math.PI/1.2)*.18:Math.sin(t*.4)*.025;paperFlex(n,'prince',t);headGaze(n,t);}
     if(state.cloud)state.cloud.position.x=resting(state.cloud).x+Math.sin(t*.22)*.17;
     if(state.rose)state.rose.rotation.z=Math.sin(t*.9)*.012;
-    if(state.fox){const n=state.fox,tap=time-(state.foxTap??-100);n.rotation.z=tap<1.5?Math.sin(tap*TAU*1.5)*.055*Math.sin(tap/1.5*Math.PI):Math.sin(t*.7)*.009;n.rotation.y=Math.sin(t*.5)*.035;paperFlex(n,'fox',t);}
+    if(state.fox){const n=state.fox,tap=time-(state.foxTap??-100);n.rotation.z=n.userData.modelReady?0:tap<1.5?Math.sin(tap*TAU*1.5)*.055*Math.sin(tap/1.5*Math.PI):Math.sin(t*.7)*.009;n.rotation.y=n.userData.modelReady?0:Math.sin(t*.5)*.035;paperFlex(n,'fox',t);}
     if(state.birds)state.birds.forEach((bird,i)=>{const base=resting(bird),x=-2.8+(t*.34+i*1.12)%5.6;bird.position.set(x,base.y+Math.sin(t*2.1+i*.8)*.09,base.z);bird.rotation.z=Math.sin(t*2.1+i*.8)*.09;bird.rotation.y=Math.sin(t*2.1+i*.8)*.16;paperFlex(bird,'bird',t+i*.8);const material=bird.children[0].material;material.transparent=true;material.depthWrite=false;material.opacity=smooth((x+2.8)/.35)*smooth((2.8-x)/.35);});
     if(state.ground&&state.kind==='fox')paperFlex(state.ground,'wheat',t);
     if(state.dome){const d=state.dome,target=d.userData.rest.y+(state.domeOpen?1.78:0);d.position.y=T.MathUtils.damp(d.position.y,target,4,dt);d.rotation.z=T.MathUtils.damp(d.rotation.z,state.domeOpen?-.08:0,4,dt);}
-    if(state.lampGlow){state.lampGlow.material.opacity=state.lampOn ? .55+Math.sin(t*3)*.025 : 0;state.lamp.children[0].material.color.set(state.lampOn?'#ffffff':'#7d8393');}
+    if(state.lampGlow){state.lampLevel=T.MathUtils.damp(state.lampLevel,state.lampOn?1:0,7,dt);this.lightLamp(state,t);}
     if(state.orbitStars){state.orbitStars.rotation.z=t*.14;state.orbitStars.children.forEach((star,i)=>star.rotation.z=Math.sin(t+i)*.1);}
     if(state.plane){const tap=time-(state.propBoost??-100);state.plane.rotation.z=tap<1.4?Math.sin(tap*12)*.014*Math.sin(tap/1.4*Math.PI):0;}
     if(state.well){const tap=time-(state.wellTap??-100);state.well.rotation.y=tap<1.4?Math.sin(tap*5)*.03:0;}
-    state.motes.children.forEach((mote,i)=>{mote.position.set(-3.0+(i*.719)%6,.5+(i*.527+t*.065)%3.7,-1.5+Math.sin(i*1.7)*.6);mote.rotation.z=t*.12+i;mote.material.opacity=.35+Math.sin(t*.9+i)*.24;});
+    this.moveMotes(state,t);
     const artReady=String(state.ready);if(this.stage.canvas.dataset.artReady!==artReady)this.stage.canvas.dataset.artReady=artReady;
+  }
+  lightLamp(s,t){
+    if(!s.lampGlow)return;const unfold=smooth(((s.fold??1)-.72)/.28),level=s.lampLevel*unfold;
+    s.lampGlow.visible=unfold>0;s.lampGlow.material.opacity=level*(.52+Math.sin(t*1.5)*.012);
+    s.lampLight.intensity=16*level;s.lampPool.material.opacity=.16*level;s.lampPool.visible=unfold>0;
+    s.lamp.children[0].material.color.copy(lampOffColor).lerp(lampOnColor,s.lampLevel);
+  }
+  moveMotes(s,t){s.motes.children.forEach((mote,i)=>{mote.position.set(-3+(i*.719)%6,.5+(i*.527+t*(s.day?.025:.065))%3.7,-1.5+Math.sin(i*1.7)*.6);mote.rotation.z=t*.12+i;mote.material.opacity=s.day?.12+Math.sin(t*.5+i)*.06:.35+Math.sin(t*.9+i)*.24;});}
+  settleStatic(s){
+    for(const n of s.characters){n.position.y=n.userData.rest.y;n.rotation.y=n.rotation.z=0;n.userData.gaze=0;}
+    if(s.prince){paperFlex(s.prince,'prince',0);headGaze(s.prince,0);}
+    if(s.fox)paperFlex(s.fox,'fox',0);
+    if(s.rose)s.rose.rotation.z=0;
+    if(s.cloud)s.cloud.position.copy(s.cloud.userData.rest);
+    if(s.ground&&s.day)paperFlex(s.ground,'wheat',0);
+    if(s.birds)s.birds.forEach(b=>{b.position.copy(b.userData.rest);b.rotation.y=b.rotation.z=0;paperFlex(b,'bird',0);b.children[0].material.opacity=1;});
+    if(s.plane)s.plane.rotation.z=0;if(s.well)s.well.rotation.y=0;
+    s.lampLevel=s.lampOn?1:0;this.fold(s,1);this.moveMotes(s,0);
   }
   interact(action,time){const s=this.stage.paperState;if(!s)return;this.stage.onCollect?.(action);
     const node=s.characters.find(n=>n.userData.action===action);if(node)node.userData.tap=time;
@@ -163,7 +186,7 @@ export class PrincePaperScene {
     if(action==='lamp')s.lampOn=!s.lampOn;
     if(action==='plane')s.propBoost=time;
     if(action==='well')s.wellTap=time;
-    if(!this.stage.motion){if(s.dome)s.dome.position.y=s.dome.userData.rest.y+(s.domeOpen?1.78:0);if(s.lampGlow){s.lampGlow.material.opacity=s.lampOn ? .55 : 0;s.lamp.children[0].material.color.set(s.lampOn?'#ffffff':'#7d8393');}}
+    if(!this.stage.motion)this.settleStatic(s);
   }
 }
 

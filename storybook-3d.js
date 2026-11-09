@@ -1,3 +1,6 @@
+import {fitCompanionFraming} from './companion-framing.js?v=companions4';
+import {ReferenceCompanionScene} from './reference-companion-scenes.js?v=companion-coordination3';
+import {COMPANION_MANIFESTS,loadCompanionHero,makeCompanionHero} from './companion-assets.js?v=open-smooth7';
 import {loadCarmelaArt,buildCarmelaScene,interactCarmela,animateCarmela,settleCarmela} from './carmela-scene.js?v=local-paper5';
 import {HomeShelf} from './home-shelf.js?v=local-paper5';
 import * as T from './vendor/three/build/three.module.js';
@@ -7,7 +10,7 @@ import {UnrealBloomPass} from './vendor/three/examples/jsm/postprocessing/Unreal
 import {OutputPass} from './vendor/three/examples/jsm/postprocessing/OutputPass.js';
 import {CursorSparkles} from './cursor-sparkles.js?v=otto9';
 import {OttoScene} from './otto-scene.js?v=otto9';
-import {PrincePaperScene} from './prince-paper.js?v=otto9';
+import {PrincePaperScene} from './prince-paper.js?v=prince-polish1';
 import {PhysicalBook} from './physical-book.js?v=otto9';
 import {ReadingRoom} from './reading-room.js?v=home11';
 import {StoryMaterials} from './story-materials.js?v=local-paper5';
@@ -61,7 +64,7 @@ export class StorybookStage {
     this.composer=new EffectComposer(this.renderer);this.composer.addPass(new RenderPass(this.scene,this.camera));this.bloom=new UnrealBloomPass(new T.Vector2(640,400),.11,.45,1.4);this.composer.addPass(this.bloom);this.composer.addPass(new OutputPass());
     this.book=new T.Group();this.scene.add(this.book);this.makeBook();this.bootPhases.book=performance.now()-bootStart;
     this.props=new T.Group();this.props.position.set(3.55,.85,-.4);this.scene.add(this.props);
-    this.paperArt=new PrincePaperScene(this);this.bootPhases.paper=performance.now()-bootStart;this.princeArt=this.paperArt;this.ottoArt=new OttoScene(this);this.room=new ReadingRoom(this);this.bootPhases.room=performance.now()-bootStart;this.surfaceMaterials=new StoryMaterials(this);this.homeShelf=new HomeShelf(this);this.bootPhases.materials=performance.now()-bootStart;this.animatedActors=new AnimatedActors(this);this.bootPhases.actors=performance.now()-bootStart;
+    this.paperArt=new PrincePaperScene(this);this.bootPhases.paper=performance.now()-bootStart;this.princeArt=this.paperArt;this.ottoArt=new OttoScene(this);this.companionArts=Object.fromEntries(['nia','fin'].map(theme=>[theme,new ReferenceCompanionScene(this,{theme,manifest:COMPANION_MANIFESTS[theme],loadHero:()=>loadCompanionHero(this,theme),makeHero:makeCompanionHero})]));this.room=new ReadingRoom(this);this.bootPhases.room=performance.now()-bootStart;this.surfaceMaterials=new StoryMaterials(this);this.homeShelf=new HomeShelf(this);this.bootPhases.materials=performance.now()-bootStart;this.animatedActors=new AnimatedActors(this);this.bootPhases.actors=performance.now()-bootStart;
     this.coverArtReady=null;
     this.raycaster=new T.Raycaster();this.ndc=new T.Vector2();this.bindPointer();this.sparkles=new CursorSparkles(this);
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(host);this.resize();this.bootPhases.resize=performance.now()-bootStart;
@@ -86,10 +89,46 @@ export class StorybookStage {
   }
 
   loadBookAssets(book){
+    if(this.companionArts[book.theme])return this.companionArts[book.theme].ensureLoaded();
     if(book.theme==='carmela')return loadCarmelaArt();
     if(book.theme==='otto')return this.ottoArt.ensureLoaded();
-    if(book.theme==='prince'){this.coverArtReady||=prepareAsset('image',{url:new URL('assets/prince-art/cover-v6.png',location.href).href}).then(({image})=>{this.preparedCover=image;this.coverKey=null;this.refreshCover();}).catch(error=>console.warn('Cover preparation unavailable',error));return Promise.all([this.paperArt.ensureLoaded(),this.coverArtReady]);}
+    if(book.theme==='prince'){this.coverArtReady||=prepareAsset('image',{url:new URL('assets/prince-art/cover-v6.png',location.href).href}).then(({image})=>{this.preparedCover=image;this.coverKey=null;this.refreshCover();}).catch(error=>console.warn('Cover preparation unavailable',error));return Promise.all([this.princeArt.ensureLoaded(),this.coverArtReady]);}
     return Promise.resolve();
+  }
+
+  async prepareReaderScene(){
+    // First-use uploads and shader compilation must finish before the cover starts moving.
+    this.pause();const props=this.props,state=this.paperState,view=this.view,open=this.bookOpen,visible=props.visible,fold=state?.fold;
+    this.uploadedReaderTextures||=new WeakSet();let target;
+    try{
+      this.view='reader';this.book.visible=true;this.homeShelf?.hide();this.room.setHome(false);
+      props.visible=true;if(state)this.paperArt.fold(state,1);this.bookOpen=1;this.applyBookPose();this.updateFraming();
+      const textures=new Set();props.traverse(o=>{for(const m of o.material?[].concat(o.material):[])for(const value of Object.values(m))if(value?.isTexture)textures.add(value);});
+      for(const map of textures){if(this.uploadedReaderTextures.has(map))continue;this.renderer.initTexture(map);this.uploadedReaderTextures.add(map);await new Promise(resolve=>requestAnimationFrame(resolve));}
+      // The props are already in scene: detach while compiling to avoid counting
+      // their lights twice through the target-scene argument.
+      this.scene.remove(props);
+      try{this.renderer.compile(props,this.camera,this.scene);}finally{this.scene.add(props);}
+      target=new T.WebGLRenderTarget(256,256);this.renderer.setRenderTarget(target);this.renderer.shadowMap.needsUpdate=true;
+      // Pop-up pivots reveal lights at different delays. Each light count uses a
+      // different shader; warm those intermediate poses instead of just the end.
+      const poses=[0,...(state?.diorama?.pops||[]).map(p=>Math.min(1,(p.userData.pop?.delay||0)+.002)),1].sort((a,b)=>a-b);
+      let previousLights=-1;
+      for(const progress of poses){
+        if(state)this.paperArt.fold(state,progress);
+        let lights=0;this.scene.traverseVisible(o=>{if(o.isLight)lights++;});
+        if(lights===previousLights&&progress!==1)continue;previousLights=lights;
+        this.renderer.shadowMap.needsUpdate=true;this.renderer.render(this.scene,this.camera);
+        await new Promise(resolve=>requestAnimationFrame(resolve));
+      }
+      // The closed cover has no story lights; warm that lighting variant too.
+      props.visible=false;this.bookOpen=0;this.applyBookPose();this.renderer.shadowMap.needsUpdate=true;this.renderer.render(this.scene,this.camera);
+      this.renderer.setRenderTarget(null);
+      await new Promise(resolve=>requestAnimationFrame(resolve));
+    }finally{
+      this.renderer.setRenderTarget(null);target?.dispose();this.view=view;this.bookOpen=open;this.applyBookPose();
+      props.visible=visible;if(state&&this.paperState===state)this.paperArt.fold(state,fold??0);
+    }
   }
 
   mat(color,options={}) {
@@ -116,13 +155,18 @@ export class StorybookStage {
   }
   refreshCover(){
     if(!this.coverCanvas||!this.coverBook)return;
+    if(this.coverBook.theme==='nia'||this.coverBook.theme==='fin'){
+      this.companionCovers||={};const id=this.coverBook.id;
+      if(!this.companionCovers[id]){const cover=new Image();this.companionCovers[id]=cover;cover.onload=()=>{if(this.coverBook?.id===id)this.refreshCover();};cover.src=`assets/shelf-reference/${id}-cover.webp`;}
+      const cover=this.companionCovers[id];if(cover.complete&&cover.naturalWidth){this.coverCanvas.getContext('2d').drawImage(cover,0,0,900,1240);this.coverMap.needsUpdate=true;this.render();}return;
+    }
     if(this.coverBook.theme==='carmela'){
       if(!this.carmelaCover){this.carmelaCover=new Image();this.carmelaCover.onload=()=>{if(this.coverBook?.theme==='carmela')this.refreshCover();};this.carmelaCover.src='assets/carmela-art/cover.jpg';}
       if(this.carmelaCover.complete&&this.carmelaCover.naturalWidth){this.coverCanvas.getContext('2d').drawImage(this.carmelaCover,0,0,900,1240);this.coverMap.needsUpdate=true;this.render();}
       return;
     }
-if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image();this.ottoCover.onload=()=>this.refreshCover();this.ottoCover.src='assets/otto-reference/cover.webp';}if(this.ottoCover.complete&&this.ottoCover.naturalWidth){this.coverCanvas.getContext('2d').drawImage(this.ottoCover,0,0,900,1240);this.coverMap.needsUpdate=true;}return;}if(this.coverBook.id==='demo-little-prince'){if(this.preparedCover){const c=this.coverCanvas.getContext('2d');c.drawImage(this.preparedCover,0,0,900,1240);this.coverMap.needsUpdate=true;}return;}const coverKey=[this.coverBook?.id,this.coverBook?.title,this.paperArt?.art.regions.has('night'),this.paperArt?.art.regions.has('prince')].join('|');if(coverKey===this.coverKey)return;this.coverKey=coverKey;const generation=this.coverGeneration=(this.coverGeneration||0)+1;const c=this.coverCanvas.getContext('2d');c.fillStyle='#243b60';c.fillRect(0,0,900,1240);
-    const sky=this.paperArt?.art.regions.get('night'),prince=this.paperArt?.art.regions.get('prince');
+if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image();this.ottoCover.onload=()=>this.refreshCover();this.ottoCover.src='assets/otto-reference/cover.webp';}if(this.ottoCover.complete&&this.ottoCover.naturalWidth){this.coverCanvas.getContext('2d').drawImage(this.ottoCover,0,0,900,1240);this.coverMap.needsUpdate=true;}return;}if(this.coverBook.id==='demo-little-prince'){if(this.preparedCover){const c=this.coverCanvas.getContext('2d');c.drawImage(this.preparedCover,0,0,900,1240);this.coverMap.needsUpdate=true;}return;}const coverKey=[this.coverBook?.id,this.coverBook?.title,this.princeArt?.art.regions.has('night'),this.princeArt?.art.regions.has('prince')].join('|');if(coverKey===this.coverKey)return;this.coverKey=coverKey;const generation=this.coverGeneration=(this.coverGeneration||0)+1;const c=this.coverCanvas.getContext('2d');c.fillStyle='#243b60';c.fillRect(0,0,900,1240);
+    const sky=this.princeArt?.art.regions.get('night'),prince=this.princeArt?.art.regions.get('prince');
     if(sky){const map=sky.texture;const image=map.userData.canvasImage||map.image,x=map.offset.x*image.width,y=(1-map.offset.y-map.repeat.y)*image.height;c.drawImage(image,x,y,map.repeat.x*image.width,map.repeat.y*image.height,0,0,900,1240);}
     c.strokeStyle='#dec486';c.lineWidth=3;c.strokeRect(35,35,830,1170);c.strokeRect(47,47,806,1146);c.fillStyle='#fff0c5';c.textAlign='center';c.font='500 88px "Songti SC",serif';c.fillText(this.coverBook?.theme==='prince'?'小王子':(this.coverBook?.title||'小小故事书房').slice(0,9),450,205);c.font='25px "PingFang SC",sans-serif';c.fillText(this.coverBook?.theme==='prince'?'星 空 旅 程':'为 你 留 一 盏 灯',450,272);
     if(prince&&this.coverBook?.theme==='prince'){const map=prince.texture,image=map.userData.canvasImage||map.image,x=map.offset.x*image.width,y=(1-map.offset.y-map.repeat.y)*image.height,w=map.repeat.x*image.width,h=map.repeat.y*image.height,height=650;c.drawImage(image,x,y,w,h,450-height*w/h/2,400,height*w/h,height);}
@@ -272,14 +316,15 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     group.removeFromParent();
   }
   setPage(book,page,index,{turn=false,forward=true}={}) {
-    if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.sparkles?.setTarget(null);this.ottoArt?.hover(null);this.canvas.style.cursor='grab';
+    this.clearStoryFocus();this.paperArt?.stopNarration?.();
+    if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.sparkles?.setTarget(null);this.paperArt?.hover?.(null);this.canvas.style.cursor='grab';
     if(this.turn||this.enter)turn=false;
     if(this.turn){this.disposeGroup(this.turn.mesh);this.disposeGroup(this.turn.old);this.turn=null;}
     this.enter=null;this.reader?.classList.remove('is-turning');
     const oldPaper=this.paperState;this.paperState=null;this.bookId=book.id;this.coverBook=book;this.refreshCover();this.page=index;const previous=this.props;previous.visible=true;previous.rotation.x=0;previous.scale.setScalar(1);
     this.props=new T.Group();this.props.position.set(3.55,.85,-.4);this.scene.add(this.props);this.actors={};
-    this.paperArt=book.theme==='otto'?this.ottoArt:this.princeArt;this.room.setTheme(book.theme==='otto');
-    if(book.theme==='carmela'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);buildCarmelaScene(this,page);}else if(book.theme==='otto'){this.props.position.set(3.9,this.physical.topY+.012,0);this.ottoArt.build(page);}else if(book.theme==='prince'){this.props.position.set(3.9,this.physical.topY+.012,0);this.paperArt.build(page);}else this.buildOtherScene(book,page);
+    this.paperArt=this.companionArts[book.theme]||(book.theme==='otto'?this.ottoArt:this.princeArt);this.room.setTheme(book.theme==='otto');
+    if(book.theme==='nia'||book.theme==='fin'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);this.paperArt.build(page);}else if(book.theme==='carmela'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);buildCarmelaScene(this,page);}else if(book.theme==='otto'){this.props.position.set(3.9,this.physical.topY+.012,0);this.ottoArt.build(page);}else if(book.theme==='prince'){this.props.position.set(3.9,this.physical.topY+.012,0);this.paperArt.build(page);}else this.buildOtherScene(book,page);
     this.updateFraming();
     if(turn&&this.motion){
       const leaf=this.turningLeaf(forward);leaf.visible=false;
@@ -315,6 +360,7 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     const d=T.MathUtils.lerp(portrait?31:24,distance,k),direction=new T.Vector3(.06,.63,1).normalize();
     this.cameraGoal.copy(target).addScaledVector(direction,d);this.lookGoal.copy(target);
     this.camera.setViewOffset(w,h,Math.round(w*(.5-cx)*k),Math.round(h*(.5-cy)*k),w,h);
+    if(this.companionArts?.[this.coverBook?.theme]&&this.paperState?.adapter===this.paperArt){const fitted=fitCompanionFraming({camera:this.camera,state:this.paperState,viewport:{width:w,height:h},region:{x,y,width:fw,height:fh},lookCloser:this.lookCloser});if(fitted){this.cameraGoal.lerp(fitted.position,k);this.lookGoal.lerp(fitted.target,k);}}
     const framing=JSON.stringify({free:[Math.round(x),Math.round(y),Math.round(fw),Math.round(fh)],distance:+distance.toFixed(2)});if(this.canvas.dataset.framing!==framing)this.canvas.dataset.framing=framing;
   }
   open(){
@@ -323,7 +369,7 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     this.reader?.classList.remove('book-closing');
     if(this.motion){this.props.visible=false;if(this.paperState)this.paperArt.fold(this.paperState,0);this.bookMotion={type:'open',start:this.time,startedAt:performance.now(),duration:timing.open};this.reader?.classList.add('book-opening');if(!fromShelf)this.settleCamera();this.start();}else this.settleCamera();
   }
-  showShelf(){this.sparkles?.clear();this.view='shelf';this.resize();this.homeShelf?.show();this.room.setHome(true);this.room.setTheme(false);if(!this.motion)this.room.settle();this.book.visible=false;this.props.visible=false;this.room.bookDisplayGroup.visible=false;this.orbit={x:0,y:0};this.pointer={x:0,y:0};if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.updateFraming();if(!this.motion)this.settleCamera();this.start();}
+  showShelf(){this.clearStoryFocus();this.paperArt?.stopNarration?.();this.sparkles?.clear();this.view='shelf';this.resize();this.homeShelf?.show();this.room.setHome(true);this.room.setTheme(false);if(!this.motion)this.room.settle();this.book.visible=false;this.props.visible=false;this.room.bookDisplayGroup.visible=false;this.orbit={x:0,y:0};this.pointer={x:0,y:0};if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.updateFraming();if(!this.motion)this.settleCamera();this.start();}
   close(){
     const wasOpening=this.bookMotion?.type==='open';this.bookMotion?.resolve?.();this.bookMotion=null;this.finishTurn();
     if(!this.motion){this.bookOpen=0;this.applyBookPose();this.props.visible=false;this.updateFraming();this.settleCamera();this.render();return Promise.resolve();}
@@ -332,33 +378,49 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
   }
   finishTurn(){this.updateLeftPage();if(this.turn){this.disposeGroup(this.turn.mesh);this.disposeGroup(this.turn.old);this.turn=null;}this.enter=null;this.props.visible=true;this.props.scale.setScalar(1);this.props.rotation.x=0;if(this.paperState)this.paperArt.fold(this.paperState,1);this.reader?.classList.remove('is-turning');this.canvas.dataset.phase='rest';}
   completeMotion(){const closing=this.bookMotion?.type==='close';this.bookMotion?.resolve?.();this.bookMotion=null;this.bookOpen=closing?0:1;this.applyBookPose();this.reader?.classList.remove('book-opening','book-closing');this.finishTurn();this.props.visible=!closing;this.onSceneArrive();this.updateFraming();this.settleCamera();this.resolveReady();this.render();}
-  configure(motion){this.motion=motion;if(!motion)settleCarmela(this);if(!motion)this.sparkles?.clear();this.updateFraming();if(!motion){cancelAnimationFrame(this.raf);for(const p of this.particles)this.disposeGroup(p.group);this.particles=[];this.room?.settle();this.homeShelf?.static();if(this.room?.dust)this.room.dust.visible=false;this.cursor?.classList.remove('is-visible');if(this.view==='shelf'){this.props.visible=false;this.settleCamera();this.render();}else this.completeMotion();}else if(this.active)this.start();}
+  configure(motion){this.motion=motion;if(!motion){this.clearStoryFocus();this.paperArt?.stopNarration?.();}if(!motion&&this.paperState)this.paperArt?.settleStatic?.(this.paperState);if(!motion)settleCarmela(this);if(!motion)this.sparkles?.clear();this.updateFraming();if(!motion){cancelAnimationFrame(this.raf);for(const p of this.particles)this.disposeGroup(p.group);this.particles=[];this.room?.settle();this.homeShelf?.static();if(this.room?.dust)this.room.dust.visible=false;this.cursor?.classList.remove('is-visible');if(this.view==='shelf'){this.props.visible=false;this.settleCamera();this.render();}else this.completeMotion();}else if(this.active)this.start();}
   get busy(){return !!(this.preparing||this.bookMotion||this.turn||this.enter);}
   whenReady(){return this.busy?new Promise(resolve=>(this.readyWaiters||(this.readyWaiters=[])).push(resolve)):Promise.resolve();}
   resolveReady(){if(!this.busy)for(const resolve of (this.readyWaiters||[]).splice(0))resolve();}
   settleCamera(){this.camera.position.copy(this.cameraGoal);this.camera.position.x+=Math.sin(this.orbit.x)*5;this.camera.position.y+=this.orbit.y*5;this.target.copy(this.lookGoal);this.camera.lookAt(this.target);this.render();}
-  start(){if(document.hidden){this.pause();return;}this.active=true;if(this.initializing||this.preparing)return;if(this.motion){cancelAnimationFrame(this.raf);this.last=0;this.raf=requestAnimationFrame(this.frame);}else this.render();}
+  start(){if(document.hidden){this.pause();return;}this.active=true;if(this.initializing||this.preparing||this.readerWarmup)return;if(this.motion){cancelAnimationFrame(this.raf);this.last=0;this.raf=requestAnimationFrame(this.frame);}else this.render();}
   pause(){this.active=false;cancelAnimationFrame(this.raf);}
-  toggleZoom(){this.lookCloser=!this.lookCloser;this.updateFraming();if(!this.motion)this.settleCamera();this.render();return this.lookCloser;}
+  clearStoryFocus(owner){if(!owner||this.storyFocus?.owner===owner)this.storyFocus=null;}
+  focusStoryObject(entry,scale=7.5,owner=this.paperState){
+    if(!this.motion||this.busy||this.view!=='reader'||this.lookCloser||owner!==this.paperState)return false;
+    if(this.time-(this.lastStoryFocusAt??-Infinity)<1.4)return false;
+    const world=entry.anchor?entry.anchor():entry.object.getWorldPosition(new T.Vector3());
+    if(!world?.toArray().every(Number.isFinite))return false;
+    const flat=this.camera.position.clone().sub(world);flat.y=0;if(flat.lengthSq()<1e-4)flat.set(0,0,1);flat.normalize();
+    // Reference storyFocus: 3000ms hold, 1400ms throttle, ease 1.15, wide 1.35.
+    // Radius and minimum close-distance are converted from diorama to local book units.
+    const narrow=this.host.clientWidth<this.host.clientHeight*1.05;
+    const distance=Math.max(.85*scale,(entry.radius||.25)*scale*5)*(narrow?1.15:1)*1.35;
+    const pos=world.clone().addScaledVector(flat,distance*Math.cos(.49));pos.y+=distance*Math.sin(.49);
+    this.storyFocus={pos,target:world.clone(),until:this.time+3,ease:1.15,owner};this.lastStoryFocusAt=this.time;return true;
+  }
+  toggleZoom(){this.clearStoryFocus();this.lookCloser=!this.lookCloser;this.updateFraming();if(!this.motion)this.settleCamera();this.render();return this.lookCloser;}
   resize(){this.framingRect=null;const rect=this.host.getBoundingClientRect();if(!rect.width||!rect.height)return;const ratio=this.view==='shelf'?Math.min(devicePixelRatio,2,Math.sqrt(6000000/(rect.width*rect.height))):Math.min(devicePixelRatio,1.75,Math.sqrt(5000000/(rect.width*rect.height)));if(this.viewportWidth===rect.width&&this.viewportHeight===rect.height&&this.viewportRatio===ratio)return;this.viewportWidth=rect.width;this.viewportHeight=rect.height;this.viewportRatio=ratio;this.renderer.setDrawingBufferSize(rect.width,rect.height,ratio);this.composer?.setPixelRatio(ratio);this.composer?.setSize(rect.width,rect.height);this.camera.aspect=rect.width/rect.height;this.camera.updateProjectionMatrix();this.updateFraming();if(!this.motion){this.room?.settle();this.settleCamera();}this.render();}
-  render(){if(this.initializing)return;const now=performance.now(),shadowInterval=this.busy||this.particles.length?1000/60:1000/30;if(!this.shadowRenderedAt||now-this.shadowRenderedAt>=shadowInterval||!this.motion){this.renderer.shadowMap.needsUpdate=true;this.shadowRenderedAt=now;}this.composer?this.composer.render():this.renderer.render(this.scene,this.camera);}
+  render(){if(this.initializing||this.readerWarmup)return;const now=performance.now(),shadowInterval=this.busy||this.particles.length?1000/60:1000/30;if(!this.shadowRenderedAt||now-this.shadowRenderedAt>=shadowInterval||!this.motion){this.renderer.shadowMap.needsUpdate=true;this.shadowRenderedAt=now;}this.composer?this.composer.render():this.renderer.render(this.scene,this.camera);}
 
   bindPointer(){
     let down=null;
     this.cursor=document.createElement('div');this.cursor.className='story-pointer';this.cursor.setAttribute('aria-hidden','true');this.cursor.innerHTML='<span>✧</span><small></small>';document.body.append(this.cursor);
-    const clearHover=()=>{this.homeShelf?.clearHover();this.ottoArt?.hover(null);if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor.classList.remove('is-visible');this.sparkles?.setTarget(null);this.canvas.style.cursor='grab';};
-    this.canvas.addEventListener('pointerdown',event=>{down={x:event.clientX,y:event.clientY,ox:this.orbit.x,oy:this.orbit.y,lastX:event.clientX};if(this.view==='reader'&&this.paperState?.kind?.startsWith('otto-')&&!this.busy){const hit=this.pick(event),entry=this.ottoArt.entry(hit?.object);if(entry?.onDrag)down.sceneDrag={entry,plane:new T.Plane().setFromNormalAndCoplanarPoint(this.camera.getWorldDirection(new T.Vector3()),hit.point)};}this.cursor.classList.add('is-pressed');try{this.canvas.setPointerCapture(event.pointerId);}catch{}});
+    const clearHover=()=>{this.homeShelf?.clearHover();this.paperArt?.hover?.(null);if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor.classList.remove('is-visible');this.sparkles?.setTarget(null);this.canvas.style.cursor='grab';};
+    this.canvas.addEventListener('pointerdown',event=>{this.clearStoryFocus();down={x:event.clientX,y:event.clientY,ox:this.orbit.x,oy:this.orbit.y,lastX:event.clientX};
+      if(this.view==='reader'&&this.paperState&&!this.busy){const hit=this.pick(event),entry=this.paperArt.dragEntry?this.paperArt.dragEntry(hit?.object):this.paperArt.entry?.(hit?.object);if(hit&&entry?.onDrag)down.sceneDrag={entry,plane:new T.Plane().setFromNormalAndCoplanarPoint(this.camera.getWorldDirection(new T.Vector3()),hit.point)};}
+      this.cursor.classList.add('is-pressed');try{this.canvas.setPointerCapture(event.pointerId);}catch{}});
     this.canvas.addEventListener('pointermove',event=>{
       const rect=this.canvas.getBoundingClientRect();this.pointer.over=true;this.pointer.x=(event.clientX-rect.left)/rect.width-.5;this.pointer.y=(event.clientY-rect.top)/rect.height-.5;
       if(down&&this.view==='shelf'&&this.homeShelf?.api){if(Math.hypot(event.clientX-down.x,event.clientY-down.y)>7){clearHover();this.canvas.style.cursor='grabbing';}this.homeShelf.dragBy((event.clientX-down.lastX)/rect.width*5.6);down.lastX=event.clientX;return;}
-      if(down?.sceneDrag){this.ndc.set((event.clientX-rect.left)/rect.width*2-1,-(event.clientY-rect.top)/rect.height*2+1);this.raycaster.setFromCamera(this.ndc,this.camera);const point=this.raycaster.ray.intersectPlane(down.sceneDrag.plane,new T.Vector3());if(point)down.sceneDrag.entry.onDrag(point);this.canvas.style.cursor='grabbing';if(!this.motion){this.ottoArt.animate(this.paperState,.08,this.time);this.render();}return;}
+      if(down?.sceneDrag){if(down.sceneDrag.entry.companion&&Math.hypot(event.clientX-down.x,event.clientY-down.y)<7)return;this.ndc.set((event.clientX-rect.left)/rect.width*2-1,-(event.clientY-rect.top)/rect.height*2+1);this.raycaster.setFromCamera(this.ndc,this.camera);const point=this.raycaster.ray.intersectPlane(down.sceneDrag.plane,new T.Vector3());if(point){down.sceneDrag.entry.onDrag(point);down.sceneDrag.moved=true;}this.canvas.style.cursor='grabbing';if(!this.motion){if(!down.sceneDrag.entry.companion)this.paperArt.animate(this.paperState,.08,this.time);this.render();}return;}
       if(down){const limit=this.view==='reader' ? .22 : .5;this.orbit.x=clamp(down.ox+(event.clientX-down.x)*.003,-limit,limit);this.orbit.y=clamp(down.oy+(event.clientY-down.y)*.002,-.12,.18);if(!this.motion)this.settleCamera();return;}
       if(this.busy){clearHover();return;}if(this.view==='shelf'&&this.homeShelf?.api){const shelfHoverNow=performance.now();if(shelfHoverNow-(this.lastShelfHoverAt||0)<32)return;this.lastShelfHoverAt=shelfHoverNow;const target=this.homeShelf.hover(event);this.sparkles?.setTarget(target,event);this.canvas.style.cursor=target?(this.sparkles?.enabled?'none':'pointer'):'grab';this.cursor.style.left=Math.min(innerWidth-190,event.clientX)+'px';this.cursor.style.top=Math.min(innerHeight-70,event.clientY)+'px';this.cursor.querySelector('small').textContent=target?.label||'';this.cursor.classList.toggle('is-visible',!!target&&event.pointerType!=='touch');if(!this.motion)this.render();return;}const hoverNow=performance.now();if(hoverNow-(this.lastHoverAt||0)<32)return;this.lastHoverAt=hoverNow;const hit=this.pick(event);let node=hit?.object;while(node&&!node.userData.action&&!node.userData.roomAction)node=node.parent;
-      if(this.hoverNode&&this.hoverNode!==node)this.hoverNode.userData.hover=false;this.hoverNode=node||null;if(node)node.userData.hover=true;if(this.paperState?.kind?.startsWith('otto-'))this.ottoArt.hover(this.ottoArt.entry(node));
+      if(this.hoverNode&&this.hoverNode!==node)this.hoverNode.userData.hover=false;this.hoverNode=node||null;if(node)node.userData.hover=true;if(this.paperArt.entry)this.paperArt.hover?.(this.paperArt.entry(node));
       this.sparkles?.setTarget(node,event);this.canvas.style.cursor=node?(this.sparkles?.enabled?'none':'pointer'):'grab';this.cursor.style.left=Math.min(innerWidth-170,Math.max(14,event.clientX))+'px';this.cursor.style.top=Math.min(innerHeight-70,event.clientY)+'px';
       const labels={prince:'小王子 · 打个招呼',rose:'玫瑰 · 打开玻璃罩',fox:'小狐狸 · 打个招呼',lamp:'路灯 · 轻点开关',well:'水井 · 看看星光',plane:'小飞机 · 准备起飞'};this.cursor.querySelector('small').textContent=node?.userData.label||labels[node?.userData.action]||'';this.cursor.classList.toggle('is-visible',!!node&&event.pointerType!=='touch');
     });
-    this.canvas.addEventListener('pointerup',event=>{this.cursor.classList.remove('is-pressed');if(this.canvas.hasPointerCapture(event.pointerId))this.canvas.releasePointerCapture(event.pointerId);if(down){down.sceneDrag?.entry.onDragEnd?.();if(down.sceneDrag&&!this.motion&&Math.hypot(event.clientX-down.x,event.clientY-down.y)>=7){this.ottoArt.settleStatic(this.paperState);this.render();}if(Math.hypot(event.clientX-down.x,event.clientY-down.y)<7)this.interact(event);else if(this.view==='shelf')this.homeShelf?.settle();}down=null;});
+    this.canvas.addEventListener('pointerup',event=>{this.cursor.classList.remove('is-pressed');if(this.canvas.hasPointerCapture(event.pointerId))this.canvas.releasePointerCapture(event.pointerId);if(down){down.sceneDrag?.entry.onDragEnd?.();if(down.sceneDrag&&!this.motion&&Math.hypot(event.clientX-down.x,event.clientY-down.y)>=7){if(!down.sceneDrag.entry.companion)this.paperArt.settleStatic?.(this.paperState);this.render();}if(Math.hypot(event.clientX-down.x,event.clientY-down.y)<7&&!(down.sceneDrag?.entry.companion&&down.sceneDrag.moved))this.interact(event);else if(this.view==='shelf')this.homeShelf?.settle();}down=null;});
     this.canvas.addEventListener('pointercancel',()=>{down?.sceneDrag?.entry.onDragEnd?.();down=null;this.cursor.classList.remove('is-pressed');clearHover();});
     this.canvas.addEventListener('pointerleave',()=>{this.pointer.over=false;if(!down){this.pointer.x=0;this.pointer.y=0;}clearHover();});
     this.canvas.addEventListener('wheel',event=>{if(this.view!=='shelf'||this.busy)return;event.preventDefault();const now=performance.now();if(now-(this.lastShelfWheel||0)<500)return;const delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;if(Math.abs(delta)<9)return;this.lastShelfWheel=now;this.homeShelf.scrollTo(this.homeShelf.page+(delta>0?1:-1));},{passive:false});
@@ -376,7 +438,9 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     let object=hit.object;while(object&&!object.userData.action&&!object.userData.roomAction)object=object.parent;
     if(object?.userData.roomAction){if(object.userData.roomAction==='deskFox'){object.userData.tap=this.time;this.onInteract('小狐狸摇摇尾巴，和你说声你好。');this.canvas.dataset.lastInteraction='room-deskFox';}else this.room.interact(object.userData.roomAction);if(this.motion)this.burst(hit.point);return;}
     if(this.view==='shelf')return;
-    const action=object?.userData.action;this.canvas.dataset.lastInteraction=action||'';if(action)this.onCollect(action);
+    const action=object?.userData.action;this.canvas.dataset.lastInteraction=action||'';
+    if(this.paperState?.adapter){const handled=this.paperArt.interact(action,this.time,{point:hit.point});if(handled){this.onInteract(this.paperArt.message(action),{silent:true});if(this.motion)this.burst(hit.point);}this.render();return;}
+    if(action&&!this.paperState?.kind?.startsWith('otto-'))this.onCollect(action);
     if(this.paperState){this.paperArt.interact(action,this.time,{point:hit.point});if(this.paperState.kind?.startsWith('otto-')){const message=this.paperState.messages[action];if(message){this.onInteract(message,{silent:!!this.paperArt.usesSceneSound});if(this.motion)this.burst(hit.point);}this.render();return;}const messages={rose:this.paperState.domeOpen?'给玫瑰一点新鲜空气。':'替玫瑰盖好罩子，轻轻说声晚安。',fox:'你好，小狐狸。今天也来陪你坐一会儿。',lamp:this.paperState.lampOn?'为夜晚留一盏灯。':'让路灯也休息一小会儿。',well:'井水里，也装着一路走来的星光。',plane:'小飞机准备好再一次出发。',prince:'小王子在和你打招呼。'};if(messages[action]){this.onInteract(messages[action]);if(this.motion)this.burst(hit.point);}this.render();return;}
     if(action==='rose'){this.actors.domeOpen=!this.actors.domeOpen;this.onInteract(this.actors.domeOpen?'给玫瑰一点新鲜空气。':'替玫瑰盖好罩子，轻轻说声晚安。');}
     if(interactCarmela(this,action)){if(this.motion)this.burst(hit.point);return;}
@@ -405,9 +469,12 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
       }
       this.applyBookPose();this.updateFraming();
     }
-    const cameraPos=(this.cameraScratch||(this.cameraScratch=new T.Vector3())).copy(this.cameraGoal);cameraPos.x+=Math.sin(this.orbit.x)*5+this.pointer.x*1.87;cameraPos.y+=this.orbit.y*5+this.pointer.y*.94;
+    if(this.storyFocus&&(this.storyFocus.owner!==this.paperState||t>=this.storyFocus.until||this.busy||this.view!=='reader'))this.storyFocus=null;
+    const focus=this.storyFocus,cameraPos=(this.cameraScratch||(this.cameraScratch=new T.Vector3())).copy(focus?focus.pos:this.cameraGoal);
+    if(!focus){cameraPos.x+=Math.sin(this.orbit.x)*5+this.pointer.x*1.87;cameraPos.y+=this.orbit.y*5+this.pointer.y*.94;}
     if(this.turn?.phase==='page')cameraPos.y+=Math.sin(clamp((t-this.turn.start-timing.fold)/timing.page,0,1)*Math.PI)*.42;
-    this.camera.position.lerp(cameraPos,1-Math.exp(-dt*1.6));this.target.lerp(this.lookGoal,1-Math.exp(-dt*1.6));this.camera.lookAt(this.target);
+    const cameraBlend=1-Math.exp(-dt*(focus?focus.ease:1.6));
+    this.camera.position.lerp(cameraPos,cameraBlend);this.target.lerp(focus?focus.target:this.lookGoal,cameraBlend);this.camera.lookAt(this.target);
     if(a.cloud)a.cloud.position.x=-2.1+Math.sin(t*.18)*.45;
     if(a.planet)a.planet.rotation.y=Math.sin(t*.065)*.055;
     if(a.prince){a.prince.rotation.z=Math.sin(t*1.35)*.014;if(a.princeTap&&t-a.princeTap<.8)a.prince.position.y+=Math.sin((t-a.princeTap)*Math.PI/.8)*dt*.08;}
