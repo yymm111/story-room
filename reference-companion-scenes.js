@@ -4,9 +4,9 @@ import {buildCompanionGround} from './companion-ground.js?v=companions4';
 // Uses the existing illustrated-card engine and injected, rigged character factory.
 // No fallback primitive characters, story text, narration, or remote asset discovery.
 import * as T from './vendor/three/build/three.module.js';
-import niaBuilders from './reference-nia-spreads.js?v=companions4';
-import finBuilders from './reference-fin-spreads.js?v=companions4';
-import {COMPANION_CUES} from './companion-choreography.js?v=cues1';
+import niaBuilders from './reference-nia-spreads.js?v=companion-coordination3';
+import finBuilders from './reference-fin-spreads.js?v=companion-coordination3';
+import {COMPANION_CUES} from './companion-choreography.js?v=companion-coordination3';
 
 export const COMPANION_ART_IDS={
   nia:['bedside','cloud-sleepy','clouds-sky','cottage-front','fence','fence-field','festival-sky','grass','hill','home-wall','kite-face','kite-blue','meadow-sky','oak-tree','oak-wood','river','riverbank','ducks','sheep','crow'],
@@ -152,7 +152,7 @@ export class ReferenceCompanionScene {
       try{if(cue.action)entry.actions?.[cue.action]?.();}finally{s.executingNarration=previous;}
       if(entry.onHover){entry.onHover(true);s.narrationPulses.set(cue.target,{entry,until:s.elapsed+.6});}
       // Never use interact() here: narration is not a user collection action.
-      this.stage.focusStoryObject?.(entry,this.scale,s);
+      // Keep the reading view stable while narration drives character gestures.
     }
     s.narrationProgress=p;
   }

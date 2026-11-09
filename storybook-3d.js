@@ -1,5 +1,5 @@
 import {fitCompanionFraming} from './companion-framing.js?v=companions4';
-import {ReferenceCompanionScene} from './reference-companion-scenes.js?v=reference3';
+import {ReferenceCompanionScene} from './reference-companion-scenes.js?v=companion-coordination3';
 import {COMPANION_MANIFESTS,loadCompanionHero,makeCompanionHero} from './companion-assets.js?v=open-smooth7';
 import {loadCarmelaArt,buildCarmelaScene,interactCarmela,animateCarmela,settleCarmela} from './carmela-scene.js?v=local-paper5';
 import {HomeShelf} from './home-shelf.js?v=local-paper5';
@@ -10,7 +10,7 @@ import {UnrealBloomPass} from './vendor/three/examples/jsm/postprocessing/Unreal
 import {OutputPass} from './vendor/three/examples/jsm/postprocessing/OutputPass.js';
 import {CursorSparkles} from './cursor-sparkles.js?v=otto9';
 import {OttoScene} from './otto-scene.js?v=otto9';
-import {PrincePaperScene} from './prince-paper.js?v=otto9';
+import {PrincePaperScene} from './prince-paper.js?v=prince-polish1';
 import {PhysicalBook} from './physical-book.js?v=otto9';
 import {ReadingRoom} from './reading-room.js?v=home11';
 import {StoryMaterials} from './story-materials.js?v=local-paper5';

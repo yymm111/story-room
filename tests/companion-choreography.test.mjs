@@ -21,7 +21,13 @@ for(const [scene,list]of Object.entries(COMPANION_CUES)){
  adapter.stopNarration();adapter.narrate(1,silent);assert.equal(hits.length,0,'stopped narration');
  s.pending.push({at:0,narration:s.narrationGeneration-1,fn:()=>{throw Error('stale queued action');}});adapter.animate(s,.05);
 }
-assert.equal(verbs,166);assert.equal(cues,208);
+assert(COMPANION_CUES['kite-door'].every(c=>!['away','gust','oh'].includes(c.action)),'departure must not release the kite');
+assert(COMPANION_CUES['kite-river'].every(c=>!['hop','jump'].includes(c.action)),'bridge scene walks, not jumps');
+assert.equal(COMPANION_CUES['kite-oak'].at(-1).action,'catch');
+assert.equal(COMPANION_CUES['kite-home'].at(-1).action,'sleep');
+for(const [scene,list] of Object.entries(COMPANION_CUES).filter(([scene])=>scene.startsWith('sea-'))){assert(list.every(c=>!['spin','ride','brave','small','breath'].includes(c.action)),scene+' must not trigger unrelated acrobatics');}
+assert(COMPANION_CUES['sea-ship'].every(c=>!['open','glow'].includes(c.action)),'ship narration does not open the chest or take the pearl');
+assert.equal(COMPANION_CUES['sea-home'].at(-1).action,'sleep');
 // Exact source focus constants, transformed into local 7.5x book units.
 const owner={},camera=new T.PerspectiveCamera();camera.position.set(4,12,18);
 const stage={motion:true,busy:false,view:'reader',lookCloser:false,paperState:owner,time:1,camera,host:{clientWidth:1200,clientHeight:800}};
@@ -31,4 +37,4 @@ assert(Math.abs(stage.storyFocus.pos.distanceTo(stage.storyFocus.target)-.25*7.5
 stage.time=2;assert.equal(focus.call(stage,entry,7.5,owner),false);stage.time=2.5;assert.equal(focus.call(stage,entry,7.5,owner),true);
 assert.deepEqual(camera.position.toArray(),[4,12,18],'focus sets a goal, never snaps camera');stage.motion=false;stage.time=5;assert.equal(focus.call(stage,entry,7.5,owner),false);
 StorybookStage.prototype.clearStoryFocus.call(stage,owner);assert.equal(stage.storyFocus,null);
-console.log(`PASS: ${cues} source-derived cues, ${verbs} verbs; no source text; once-only/seek/stale/reduced-motion guards; no narration collectibles; camera throttle/hold/ease/scale and no snap.`);
+console.log(`PASS: ${cues} narration cues, ${verbs} verbs; no source text; once-only/seek/stale/reduced-motion guards; no narration collectibles; camera throttle/hold/ease/scale and no snap.`);

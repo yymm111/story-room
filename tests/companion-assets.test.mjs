@@ -4,6 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import * as T from '../vendor/three/build/three.module.js';
 import {loadCompanionHero,makeCompanionHero} from '../companion-assets.js';
+import {COMPANION_CUES} from '../companion-choreography.js';
 import {ReferenceCompanionScene,COMPANION_ART_IDS,COMPANION_SCENE_IDS} from '../reference-companion-scenes.js';
 const root=new URL('../',import.meta.url),realFetch=globalThis.fetch;
 globalThis.self=globalThis;
@@ -65,6 +66,43 @@ for(const theme of ['nia','fin']){
   for(const action of [theme+'/wave',theme+'/'+motion,theme==='nia'?'wind/gust':'sea/sparkle',scene==='kite-river'?'river/splash':null]){
    if(!action||!adapter.interact(action))continue;gestures++;
    for(let i=0;i<12;i++)adapter.animate(state,.05);
+  }
+  for(const cue of COMPANION_CUES[scene]){
+   const entry=state.diorama.objects[cue.target];assert(entry,scene+' narration target '+cue.target);
+   if(cue.action)assert.equal(typeof entry.actions?.[cue.action],'function',scene+' narration action '+cue.action);
+  }
+  if(theme==='fin'){
+   const hero=state.heroes[0],carrier=hero.group.parent,glass=state.diorama.objects.jar?.object,bottle=glass?.parent;
+   if(bottle&&scene!=='sea-home'){
+    const grip=carrier.worldToLocal(hero.bones.LeftHand.getWorldPosition(new T.Vector3()));
+    assert(bottle.position.distanceTo(grip)<.035,scene+' bottle must track its holding flipper');
+   }
+   if(scene==='sea-home')assert.equal(bottle.parent,state.diorama.group,'sleeping bottle rests on the seabed');
+   if(scene==='sea-dive'){
+    adapter.interact('fin/dive');adapter.animate(state,.05);adapter.interact('fin/sleep');
+    const at=carrier.position.x;for(let i=0;i<60;i++)adapter.animate(state,.05);
+    assert.equal(hero.state.pose,'sleep','dive completion must not wake Fin');assert(Math.abs(carrier.position.x-at)<.03,'sleep stops travelling');
+    adapter.interact('fin/swim');assert.equal(hero.state.pose,'swim','swim wakes Fin into the swimming base');
+    for(let n=0;n<50;n++){adapter.interact('fin/swim');for(let i=0;i<8;i++)adapter.animate(state,.05);}
+    assert(Math.abs(carrier.position.x)<.26,'repeated swimming stays on the page');
+   }
+  }
+  if(theme==='nia'){
+   const hero=state.heroes[0],root=hero.group.parent;
+   if(scene==='kite-door'){
+    adapter.interact('nia/catch');adapter.animate(state,.05);assert(hero.state.hold,'held kite engages hand');
+    adapter.interact('kite/away');adapter.animate(state,.05);assert.equal(hero.state.hold,null,'released kite clears stale hand IK');
+   }
+   if(scene==='kite-meadow'){
+    const start=root.position.x;adapter.interact('nia/run');for(let i=0;i<60;i++)adapter.animate(state,.05);
+    const landed=root.position.x;assert(Math.abs(landed-start)>.05,'run must translate the body after spring update');
+    for(let i=0;i<40;i++)adapter.animate(state,.05);assert(Math.abs(root.position.x-landed)<.01,'body must not spring back after finishing the run');
+    adapter.interact('nia/run');adapter.interact('nia/sleep');for(let i=0;i<60;i++)adapter.animate(state,.05);assert.equal(hero.state.pose,'sleep','old run must not wake a sleeping character');
+    adapter.interact('nia/yawn');adapter.interact('nia/sleep');for(let i=0;i<70;i++)adapter.animate(state,.05);assert.equal(hero.state.pose,'sleep','old yawn timer must not cancel sleep');
+   }
+   if(scene==='kite-oak'){
+    adapter.interact('kite/catch');adapter.animate(state,.05);assert(hero.state.hold,'recovered kite reconnects hand and string');
+   }
   }
   state.diorama.group.updateMatrixWorld(true);
   state.diorama.group.traverse(o=>{assert(o.matrixWorld.elements.every(Number.isFinite),`${scene} ${o.name}`);if(o.geometry?.attributes.position)assert(o.geometry.attributes.position.array.every(Number.isFinite));});

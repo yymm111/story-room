@@ -4,7 +4,7 @@ import {importFiles,splitPages,guessLang,recognizeImage} from './importers.js?v=
 import {Atmosphere} from './atmosphere.js?v=companions4';
 import {mountScene} from './scenes.js?v=otto9';
 import {Narrator} from './narrator.js?v=pages1';
-import {StorybookStage} from './storybook-3d.js?v=open-smooth7';
+import {StorybookStage} from './storybook-3d.js?v=prince-polish1';
 import {collectPin,collectStar,pinsFor,collectedPins,collectedStars,totals} from './souvenirs.js?v=companions4';
 import {LANGS,getLang,setLang,t,applyI18n} from './i18n.js?v=home10';
 

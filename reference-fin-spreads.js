@@ -95,7 +95,7 @@ function swimmingFin(d, position, { scale = 0.45, pose = "swim", delay = 0.3, na
   halo.position.set(0, 0.32, -0.08);
   group.add(halo);
   const origin = position.clone();
-  const state = { off: new THREE.Vector3(), vel: new THREE.Vector3(), seed: Math.random() * 6, spin: 0, glow: 0, glowTarget: 0, tilt: 0, tiltTarget: 0, travel: 0, tx: 0, dir: 1, size: 1, sizeTarget: 1, bob: pose === "sleep" ? 0.3 : 1 };
+  const state = { heading: baseYaw, clock: 0, tiltUntil: 0, minTx: Math.max(-.22, -.4 - position.x), maxTx: Math.min(.22, .4 - position.x), off: new THREE.Vector3(), vel: new THREE.Vector3(), seed: Math.random() * 6, spin: 0, glow: 0, glowTarget: 0, tilt: 0, tiltTarget: 0, travel: 0, tx: 0, dir: 1, size: 1, sizeTarget: 1, bob: pose === "sleep" ? 0.3 : 1 };
   const kick = (x, y, z = 0) => state.vel.add(new THREE.Vector3(x, y, z));
   d.add(group, {
     pop: "rise", delay, name, label: "Fin", radius: 0.22,
@@ -104,40 +104,46 @@ function swimmingFin(d, position, { scale = 0.45, pose = "swim", delay = 0.3, na
     onTap: () => { fin.wave(); kick(0, 0.5); d.ctx.sound.chime(2, 0.4); },
   });
   const sound = d.ctx.sound;
-  const swim = (dir = 1, seconds = 1.2) => { state.travel = seconds; state.dir = dir; kick(dir * 0.3, 0.2); state.tiltTarget = -0.25 * dir; d.ctx.schedule(() => { state.tiltTarget = 0; }, seconds * 900); sound.whoosh(true); };
+  const wake = () => { fin.setPose("swim"); state.bob = 1; state.heading = group.rotation.y; state.spin = 0; };
+  const swim = (dir = 1, seconds = 1.2) => { wake(); state.travel = seconds; state.dir = state.tx + dir * .16 > state.maxTx || state.tx + dir * .16 < state.minTx ? -dir : dir; state.tiltTarget = -.12; state.tiltUntil = state.clock + seconds; sound.whoosh(true); };
+  const dive = () => { wake(); state.travel = 0; kick(.05, -.65); state.tiltTarget = .4; state.tiltUntil = state.clock + 1.4; sound.whoosh(false); };
   d.action(name, "look", () => { fin.look(); });
   d.action(name, "find", () => { fin.look(); kick(0, 0.3); });
   d.action(name, "breath", () => { kick(0, 0.7); fin.jump(); sound.pop(1.2); });
-  d.action(name, "dive", () => { kick(0.2, -1.4); state.tiltTarget = 0.7; d.ctx.schedule(() => { state.tiltTarget = 0; }, 1400); sound.whoosh(false); });
+  d.action(name, "dive", dive);
   d.action(name, "wave", () => { fin.wave(); sound.chime(2, 0.4); });
   d.action(name, "giggle", () => { kick(0, 0.4); fin.blink(); sound.chime(5, 0.3); d.ctx.schedule(() => sound.chime(6, 0.25), 160); });
   d.action(name, "swim", () => swim(1));
   d.action(name, "small", () => { state.sizeTarget = 0.82; d.ctx.schedule(() => { state.sizeTarget = 1; }, 1800); fin.look(); sound.chime(0, 0.3); });
   d.action(name, "brave", () => { state.sizeTarget = 1.08; fin.jump(); kick(0, 0.8); sound.sparkle(); d.ctx.schedule(() => { state.sizeTarget = 1; }, 1600); });
   d.action(name, "ride", () => { fin.jump(); kick(0.2, 1.0); sound.whoosh(true); });
-  d.action(name, "spin", () => { state.spin = 1; sound.sparkle(); });
+  d.action(name, "spin", () => { if(state.spin <= 0)state.spin = 1; sound.sparkle(); });
   d.action(name, "glow", () => { state.glowTarget = 1; sound.sparkle(); d.ctx.schedule(() => { state.glowTarget = 0.2; }, 3500); });
   d.action(name, "give", () => { fin.wave(); kick(0.3, 0.3); sound.chime(4, 0.35); });
-  d.action(name, "sleep", () => { fin.setPose("sleep"); state.bob = 0.3; sound.chime(0, 0.3); });
+  d.action(name, "sleep", () => { state.travel = 0; state.heading = group.rotation.y; state.spin = 0; state.tiltTarget = 0; state.tiltUntil = 0; state.sizeTarget = 1; state.vel.set(0,0,0); if(fin.state.oneShot){fin.state.oneShot.fadeOut(.2);fin.state.oneShot = null;} fin.setPose("sleep"); state.bob = .15; sound.chime(0, .3); });
   d.action(name, "home", () => { fin.wave(); sound.chime(2, 0.4); });
   d.updaters.push((dt, t) => {
+    state.clock = t;
+    if(state.tiltUntil && t >= state.tiltUntil){state.tiltTarget = 0;state.tiltUntil = 0;}
     state.vel.addScaledVector(state.off, -30 * dt).addScaledVector(state.vel, -5 * dt);
     state.off.addScaledVector(state.vel, dt);
-    if (state.travel > 0) { state.travel -= dt; state.tx += state.dir * 0.13 * dt; }
+    if (state.travel > 0) { const step = Math.min(dt,state.travel);state.travel -= step;state.tx = clamp(state.tx + state.dir * .13 * step,state.minTx,state.maxTx); }
     // relative to the pop-up pivot: travel + the spring's nudge, never accumulated
     group.position.set(state.tx + state.off.x * 0.2, state.off.y + Math.sin(t * 1.3 + state.seed) * 0.02 * state.bob, state.off.z);
     state.tilt = lerp(state.tilt, state.tiltTarget, dt * 3);
     state.size = lerp(state.size, state.sizeTarget, dt * 3);
     group.scale.setScalar(scale * state.size);
     if (state.spin > 0) { state.spin = Math.max(0, state.spin - dt * 1.1); }
-    group.rotation.set(state.tilt, baseYaw + (1 - state.spin) * Math.PI * 2 * (state.spin > 0 ? 1 : 0), Math.sin(t * 0.9 + state.seed) * 0.04 * state.bob);
+    const targetYaw = state.travel > 0 ? state.dir * 1.05 : baseYaw;
+    state.heading += Math.atan2(Math.sin(targetYaw-state.heading),Math.cos(targetYaw-state.heading))*(1-Math.exp(-dt*4));
+    group.rotation.set(state.tilt, state.heading + (1 - state.spin) * Math.PI * 2 * (state.spin > 0 ? 1 : 0), Math.sin(t * 0.9 + state.seed) * 0.04 * state.bob);
     state.glow = lerp(state.glow, state.glowTarget, dt * 2);
     halo.material.opacity = state.glow * (0.55 + Math.sin(t * 3) * 0.1);
     group.updateMatrixWorld(true);
     fin.lookAt(d.pointer);
     fin.update(dt, t);
   });
-  return { group, fin, kick, state, origin, swim };
+  return { group, fin, kick, state, origin, swim, dive };
 }
 
 /** A creature card with a call and a story verb. */
@@ -150,7 +156,7 @@ function creature(d, id, { name, label = name, width, x, y = 0, z, delay = 0.3, 
 /* ---------- the jar and the friends ---------- */
 
 /** The glass jar Fin carries to fill with light. `fill(level)` sets how much glow it holds. */
-function makeJar(d, fin, { level = 0.05 } = {}) {
+function makeJar(d, fin, { level = 0.05, carried = true } = {}) {
   const group = new THREE.Group();
   const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.045, 0.11, 18, 1, true), new THREE.MeshPhysicalMaterial({ color: 0xdff6ff, transparent: true, opacity: 0.32, roughness: 0.15, metalness: 0, side: THREE.DoubleSide, depthWrite: false }));
   const bottom = new THREE.Mesh(new THREE.CircleGeometry(0.045, 18), glass.material); bottom.rotation.x = -Math.PI / 2; bottom.position.y = -0.055;
@@ -160,9 +166,18 @@ function makeJar(d, fin, { level = 0.05 } = {}) {
   const halo = P.glowPlane(0xfff0b8, 0.5, 0);
   group.add(glass, bottom, cork, core, halo);
   group.position.set(0.19, 0.3, 0.1);   // in Fin's flipper (her group is scaled, so these are her units)
-  fin.group.add(group);
+  group.userData.companionJar = true;
+  if(carried)fin.group.add(group);
+  else{group.scale.setScalar(fin.group.scale.x);group.position.set(fin.origin.x+.2,.04,fin.origin.z+.02);d.group.add(group);}
+  const hand = carried ? fin.fin.bones?.LeftHand : null;
+  const grip = new THREE.Vector3();
   const state = { level, target: level };
   d.updaters.push((dt, t) => {
+    if(hand){
+      // Follow the holding flipper, keeping the bottle upright in the carrier frame.
+      fin.group.updateWorldMatrix(true,false);hand.updateWorldMatrix(true,false);
+      group.position.copy(fin.group.worldToLocal(hand.getWorldPosition(grip)));group.position.y -= .025;
+    }
     state.level = lerp(state.level, state.target, dt * 2);
     core.material.opacity = Math.min(1, state.level * 1.2);
     core.scale.setScalar(0.6 + state.level * 0.9);
@@ -220,7 +235,7 @@ const builders = {
     const jar = makeJar(d, fin, { level: 0.04 });
     let shown = false;
     d.action("jar", "shine", () => { jar.fill(0.3); ctx.sound.sparkle(); d.ctx.schedule(() => jar.fill(0.04), 1500); if (!shown) { shown = true; ctx.onMagic("jar"); } });
-    d.action("fin", "dive", () => { fin.kick(0.1, -1.6); fin.state.tiltTarget = 0.8; d.ctx.schedule(() => { fin.state.tiltTarget = 0; }, 1600); sea.blow(new THREE.Vector3(0.05, 0.45, 0.25), 24); ctx.sound.whoosh(false); });
+    d.action("fin", "dive", () => { fin.dive();sea.blow(new THREE.Vector3(.05,.45,.25),12); });
     d.every(1.6, () => sea.blow(new THREE.Vector3((Math.random() - 0.5) * 0.3, 0.35 + Math.random() * 0.2, 0.2), 3));
     return d;
   },
@@ -322,7 +337,7 @@ const builders = {
       w.rise = lerp(w.rise, w.target, dt * 1.2);
       if (whale) { whale.group.position.y = w.rise + Math.sin(t * 0.7) * 0.02; whale.group.rotation.z = Math.sin(t * 0.5) * 0.03; }
       for (const c of Object.values(riders)) c.group.position.y += w.rise;
-      fin.group.position.y += w.rise;
+      // The whale passes Fin; the local story does not put Fin on its back.
     });
     return d;
   },
@@ -396,7 +411,8 @@ function homeScene(ctx, { asleep, ending = false }) {
   d.register("sand", new THREE.Group(), { label: "sand", radius: 0.3, anchor: () => d.group.localToWorld(new THREE.Vector3(0, 0.02, 0.25)) });
   d.action("sand", "puff", () => { sand.emit(new THREE.Vector3(0, 0.03, 0.25), 16, 0.2, 0.9); ctx.sound.puff(); });
   const fin = swimmingFin(d, new THREE.Vector3(-0.04, 0.02, 0.32), { scale: 0.45, pose: asleep ? "sleep" : "swim" });
-  if (asleep) { fin.fin.setPose("sleep"); fin.state.bob = 0.3; }
+  makeJar(d,fin,{level:.04,carried:false});
+  if (asleep) { fin.fin.setPose("sleep"); fin.state.bob = .15; }
   if (ending) d.ctx.schedule(() => ctx.onMagic("sleep"), 2500);
   d.every(3, () => { if (Math.random() < 0.5) lantern.pulse(); });
   return d;

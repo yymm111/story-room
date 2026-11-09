@@ -200,7 +200,7 @@ function standingNia(d, position, { scale = 0.5, pose = "stand", delay = 0.3, na
   nia.setPose(pose);
   group.add(nia.group);
   const origin = position.clone();
-  const state = { kite: holds, running: 0, dir: 1 };
+  const state = { kite: holds, running: 0, dir: 1, travel: 0, speed: .18, restPose: pose, poseVersion: 0, minTravel: Math.max(-.24, -.4 - position.x), maxTravel: Math.min(.24, .4 - position.x) };
   let spring = null;
   d.add(group, {
     pop: "rise", delay, name, label: "Nia", radius: 0.22,
@@ -210,10 +210,10 @@ function standingNia(d, position, { scale = 0.5, pose = "stand", delay = 0.3, na
   });
   spring = standingSpring(group); // after add(): the pivot holds the place, the spring works from zero
   const sound = d.ctx.sound;
-  const run = (dir = 1, seconds = 1.1) => { state.running = seconds; state.dir = dir; nia.setPose("run"); spring.kick(dir * 0.4, 0.35, 0); sound.whoosh(true); };
-  const holdPose = () => { nia.play("hold"); spring.kick(-0.2, 0.2, 0); }; // Pull_Radish: a lean-back tug on the string
+  const run = (dir = 1, seconds = 1.1, walking = false) => { state.running = seconds; state.dir = state.travel + dir * .18 > state.maxTravel || state.travel + dir * .18 < state.minTravel ? -dir : dir; state.speed = walking ? .1 : .18; state.restPose = pose; nia.setPose("run"); nia.actions?.run?.setEffectiveTimeScale(walking ? .55 : 1); sound.whoosh(true); };
+  const holdPose = () => { nia.look(); spring.kick(-0.05, 0, 0); }; // A small response without fighting the holding-hand IK
   d.action(name, "run", () => run(1));
-  d.action(name, "walk", () => run(1, 1.4));
+  d.action(name, "walk", () => run(1, 1.4, true));
   d.action(name, "chase", () => run(1));
   d.action(name, "hold", () => { holdPose(); sound.pop(1.0); });
   d.action(name, "hop", () => { nia.jump(); spring.kick(0.3, 1.3, 0); sound.pop(1.2); });
@@ -223,19 +223,22 @@ function standingNia(d, position, { scale = 0.5, pose = "stand", delay = 0.3, na
   d.action(name, "oh", () => { nia.jump(); sound.chime(1, 0.4); });
   d.action(name, "hat", () => { nia.look(); spring.kick(0, 0.3, 0); sound.click(); });
   d.action(name, "catch", () => { nia.jump(); spring.kick(0, 1.4, 0); sound.sparkle(); if (state.kite) { state.kite.setMode("held"); state.kite.setTarget(new THREE.Vector3(origin.x + group.position.x + 0.22, 0.55, origin.z + group.position.z - 0.05)); state.kite.tether(() => nia.paw()); } });
-  d.action(name, "yawn", () => { nia.setPose("sleep"); sound.chime(0, 0.3); d.ctx.schedule(() => { if (pose !== "sleep") nia.setPose("stand"); }, 2600); });
-  d.action(name, "sleep", () => { nia.setPose("sleep"); sound.chime(0, 0.3); });
+  d.action(name, "yawn", () => { const version = ++state.poseVersion; state.running = 0; state.restPose = "sleep"; nia.setPose("sleep"); sound.chime(0, 0.3); d.ctx.schedule(() => { if (version === state.poseVersion && pose !== "sleep") { state.restPose = pose; nia.setPose(pose); } }, 2600); });
+  d.action(name, "sleep", () => { ++state.poseVersion; state.running = 0; state.restPose = "sleep"; nia.setPose("sleep"); sound.chime(0, 0.3); });
   d.action(name, "look", () => { nia.look(); });
   d.action(name, "wave", () => { nia.wave(); sound.chime(2, 0.4); });
   d.updaters.push((dt, t) => {
     if (state.running > 0) {
       state.running -= dt;
-      group.position.x += state.dir * 0.12 * dt;
-      if (state.running <= 0) { nia.setPose(pose); }
+      state.travel = clamp(state.travel + state.dir * state.speed * Math.min(dt, Math.max(0, state.running + dt)), state.minTravel, state.maxTravel);
+      if (state.running <= 0) { nia.setPose(state.restPose); }
     }
     spring.update(dt);
+    group.position.x += state.travel;
+    group.rotation.y = lerp(group.rotation.y, state.running > 0 ? state.dir * 1.15 : faces < 0 ? -.35 : .25, 1 - Math.exp(-dt * 6));
     group.updateMatrixWorld(true);
     if (state.kite && state.kite.state.mode === "held") nia.hold(state.kite.knot(), "right");
+    else nia.state.hold = null;
     nia.lookAt(state.kite && state.kite.state.mode !== "hung" ? state.kite.group.getWorldPosition(_v) : d.pointer);
     nia.update(dt, t);
   });
@@ -302,7 +305,7 @@ const builders = {
     const nia = standingNia(d, new THREE.Vector3(-0.06, 0, 0.32), { scale: 0.5, holds: kite });
     // the gust that takes the kite: it slips free and sails off to the top right
     let gone = false;
-    const letGo = () => { if (gone) { kite.kick(0.6, 0.4); return; } gone = true; kite.setMode("free"); kite.setTarget(new THREE.Vector3(0.42, 1.0, -0.3)); kite.kick(1.6, 1.2); nia.nia.look(); ctx.sound.whoosh(true); };
+    const letGo = () => { if (gone && kite.state.mode === "free") { kite.kick(0.6, 0.4); return; } gone = true; kite.setMode("free"); kite.setTarget(new THREE.Vector3(0.42, 1.0, -0.3)); kite.kick(1.6, 1.2); nia.nia.look(); ctx.sound.whoosh(true); };
     d.action("wind", "gust", () => { wind.blow(2.2); letGo(); });
     d.action("kite", "away", letGo);
     d.action("nia", "oh", () => { nia.nia.jump(); nia.spring.kick(0, 0.8, 0); ctx.sound.chime(1, 0.4); });
@@ -316,10 +319,9 @@ const builders = {
     const wind = makeWind(d, sky, { idle: 0.4 });
     const grass = figure(d, "grass", { width: 0.98, x: -0.02, y: 0, z: 0.08, delay: 0.15, name: "grass", label: "meadow", radius: 0.3 });
     leansWith(d, grass, wind, { amount: 0.2, name: "grass" });
-    // the kite is far ahead now: a tiny one drifting off at the top right
-    const far = makeKite(d, { width: 0.09, at: new THREE.Vector3(0.44, 1.02, -0.45), wind, mode: "free", delay: 0.5 });
-    far.setMode("free");
-    standingNia(d, new THREE.Vector3(-0.12, 0, 0.32), { scale: 0.5 });
+    // In the local meadow chapter Nia still holds the kite; it escapes on the next page.
+    const far = makeKite(d, { width: .22, at: new THREE.Vector3(.24, .85, -.12), wind, mode: "held", delay: .5 });
+    standingNia(d, new THREE.Vector3(-.12, 0, .32), { scale: .5, holds: far });
     d.action("sky", "bright", () => { sky.bounce(); ctx.sound.sparkle(); });
     return d;
   },
@@ -331,8 +333,10 @@ const builders = {
     const fence = figure(d, "fence", { width: 0.98, x: 0.02, y: 0, z: -0.12, delay: 0.15, name: "fence", label: "fence", radius: 0.3, onTap: () => ctx.sound.click() });
     d.action("fence", "rattle", () => { if (fence) fence.bounce(); ctx.sound.click(); wind.blow(1.0); });
     clueBow(d, new THREE.Vector3(0.02, 0.2, -0.1));
-    const nia = standingNia(d, new THREE.Vector3(-0.24, 0, 0.32), { scale: 0.5 });
-    d.action("nia", "hop", () => { nia.nia.jump(); nia.spring.kick(0.4, 1.4, 0); nia.run(1, 0.6); ctx.sound.pop(1.2); });
+    const kite = makeKite(d, { at: new THREE.Vector3(.05, .8, -.1), wind, mode: "held" });
+    const nia = standingNia(d, new THREE.Vector3(-.24, 0, .32), { scale: .5, holds: kite });
+    d.action("wind", "gust", () => { wind.blow(1.8); kite.setMode("free"); kite.setTarget(new THREE.Vector3(.42, 1, -.3)); kite.kick(.8, .4); });
+    d.action("nia", "hop", () => { nia.nia.jump(); nia.spring.kick(.15, .35, 0); ctx.sound.pop(1.2); });
     return d;
   },
 
@@ -368,7 +372,7 @@ const builders = {
     const wind = makeWind(d, sky, { idle: 0.2 });
     const cloud = figure(d, "cloud-sleepy", { width: 0.64, x: 0.04, y: 0.34, z: -0.2, delay: 0.25, name: "cloud", label: "cloud", radius: 0.3, onTap: () => sneeze() });
     // the kite the cloud sneezes out is a blue one: not Nia's
-    const kite = makeKite(d, { width: 0.2, at: new THREE.Vector3(0.02, 0.58, -0.3), wind, mode: "stuck", face: "kite-blue" });
+    const kite = makeKite(d, { width: 0.2, at: new THREE.Vector3(0.02, 0.58, -0.3), wind, mode: "stuck", face: "kite-face" });
     const puffs = d.burst(0xffffff, 60, 0.05);
     let sneezed = false;
     const sneeze = () => {
@@ -394,13 +398,14 @@ const builders = {
     const oak = figure(d, "oak-tree", { width: 0.84, x: -0.1, y: 0, z: -0.3, delay: 0.15, name: "oak", label: "oak", radius: 0.32, onTap: () => { leaves(d, wood, 1); ctx.sound.puff(); } });
     d.action("oak", "shake", () => { if (oak) oak.bounce(); leaves(d, wood, 0.8); ctx.sound.puff(); });
     const crow = friend(d, "crow", { name: "crow", width: 0.2, x: 0.2, y: 0.5, z: -0.24, delay: 0.35, call: "caw", note: 0, verb: "caw" });
-    const kite = makeKite(d, { width: 0.2, at: new THREE.Vector3(0.02, 0.74, -0.34), wind, mode: "stuck", face: "kite-blue" });
+    const kite = makeKite(d, { width: 0.2, at: new THREE.Vector3(0.02, 0.74, -0.34), wind, mode: "stuck", face: "kite-face" });
     const crowState = { up: 0, target: 0 };
     if (crow) d.updaters.push((dt, t) => { crowState.up = lerp(crowState.up, crowState.target, dt * 2.5); crow.group.position.set(crowState.up * 0.18, crowState.up * 0.3 + Math.sin(t * 1.5) * 0.01, 0); });
     d.action("crow", "hop", () => { if (crow) crow.bounce(); sfx(d, "pop", 1.3); });
     d.action("crow", "push", () => { if (crow) crow.bounce(); sfx(d, "caw", 0, 0.35); crowState.target = 1; kite.setMode("free"); kite.setDepth(-0.1); kite.setTarget(new THREE.Vector3(0.4, 1.0, -0.1)); kite.kick(1.2, 1.0); d.ctx.schedule(() => { crowState.target = 0; }, 3000); });
     d.action("kite", "away", () => { kite.setMode("free"); kite.kick(0.8, 0.6); ctx.sound.whoosh(true); });
-    standingNia(d, new THREE.Vector3(0.26, 0, 0.34), { scale: 0.45, faces: -1 });
+    const nia = standingNia(d, new THREE.Vector3(.26, 0, .34), { scale: .45, faces: -1, holds: kite });
+    d.action("kite", "catch", () => { kite.setMode("held"); kite.setDepth(.18); kite.setTarget(new THREE.Vector3(.38, .52, .18)); kite.kick(0, -.15); kite.tether(() => nia.nia.paw()); });
     return d;
   },
 
@@ -419,11 +424,12 @@ const builders = {
     red.setMode("free");
     const blue = makeKite(d, { width: 0.18, at: new THREE.Vector3(0.34, 0.7, -0.24), wind, mode: "free", face: "kite-blue", name: "kite2", label: "blue kite", delay: 0.3 });
     blue.setMode("free");
-    const nia = standingNia(d, new THREE.Vector3(-0.18, 0, 0.32), { scale: 0.5 });
+    red.setMode("held");
+    const nia = standingNia(d, new THREE.Vector3(-.18, 0, .32), { scale: .5, holds: red });
     let freed = false;
     d.action("kite", "down", () => { red.setTarget(new THREE.Vector3(0.0, 0.5, 0.1)); red.kick(0, -0.8); ctx.sound.whoosh(false); d.ctx.schedule(() => red.setTarget(new THREE.Vector3(0.08, 0.78, -0.2)), 2200); });
     d.action("kite", "up", () => { red.setTarget(new THREE.Vector3(0.14, 0.95, -0.3)); red.kick(0.3, 1.6); blue.kick(-0.3, 1.2); ctx.sound.whoosh(true); if (!freed) { freed = true; ctx.onMagic("free"); } });
-    d.action("nia", "hold", () => { nia.nia.play("hold"); nia.spring.kick(-0.2, 0.2, 0); red.kick(0, -0.6); ctx.sound.pop(1.0); });
+    d.action("nia", "hold", () => { nia.nia.look(); nia.spring.kick(-.05, 0, 0); red.kick(0, -0.6); ctx.sound.pop(1.0); });
     d.action("nia", "wave", () => { nia.nia.wave(); nia.spring.kick(0, 0.5, 0); ctx.sound.chime(2, 0.4); });
     return d;
   },
