@@ -1,11 +1,11 @@
 import {interactCarmela,narrateCarmela,carmelaActions,carmelaPlayback} from './carmela-scene.js?v=local-paper5';
-import {demoBooks} from './stories.js?v=carmela2';
+import {demoBooks} from './stories.js?v=tts-restored1';
 import {importFiles,splitPages,guessLang,recognizeImage} from './importers.js?v=otto9';
-import {Atmosphere} from './atmosphere.js?v=otto9';
+import {Atmosphere} from './atmosphere.js?v=companions4';
 import {mountScene} from './scenes.js?v=otto9';
 import {Narrator} from './narrator.js?v=pages1';
-import {StorybookStage} from './storybook-3d.js?v=local-paper5';
-import {collectPin,collectStar,pinsFor,collectedPins,collectedStars,totals} from './souvenirs.js?v=carmela2';
+import {StorybookStage} from './storybook-3d.js?v=open-smooth7';
+import {collectPin,collectStar,pinsFor,collectedPins,collectedStars,totals} from './souvenirs.js?v=companions4';
 import {LANGS,getLang,setLang,t,applyI18n} from './i18n.js?v=home10';
 
 const $=id=>document.getElementById(id);
@@ -29,7 +29,7 @@ let settings={...defaults};try{settings={...defaults,...JSON.parse(localStorage.
 if((settings.rhythmVersion||0)<3){if(settings.rate===.9)settings.rate=1;settings.rhythmVersion=3;try{localStorage.setItem('story-garden-settings',JSON.stringify(settings));}catch{}}
 if((settings.narrationVersion||0)<2){settings.speechEngine='ai';settings.narratorVoice='Serena';settings.narrationVersion=2;}
 const atmosphere = new Atmosphere();
-let narrator,stage=null,stageTurn=null,preparing=false,prefetchedPage='';
+let narrator,stage=null,stageTurn=null,preparing=false,prefetchedPage='',companionNarration=null,companionSpeechClock=null;
 let db,books=[],filter='all',activeBook=null,pageIndex=0,sentences=[],voices=[],health={ocr:false},pendingFiles=[],importMode='files',importController=null,importBusy=false;
 let speaking=false,paused=false,speechSession=0,sentenceIndex=0,currentUtterance=null,sleepDeadline=0,toastTimer,openVersion=0,bookOpenRequest=0,lastDeleted=null;
 const synth=window.speechSynthesis;
@@ -42,9 +42,9 @@ function applySettings(){
  $('sleepSelect').value=settings.sleep;updateSleepLabel();
  $('musicEnabledInput').checked=settings.musicEnabled;$('musicVolumeInput').value=Math.round(settings.musicVolume*100);$('musicVolumeOutput').value=Math.round(settings.musicVolume*100)+'%';$('animationsInput').checked=settings.animationsEnabled;$('effectsEnabledInput').checked=settings.effectsEnabled;$('effectsVolumeInput').value=Math.round(settings.effectsVolume*100);$('effectsVolumeOutput').value=Math.round(settings.effectsVolume*100)+'%';
  atmosphere.configure(settings);
- $('speechEngineSelect').value=settings.speechEngine;
+ $('speechEngineSelect').value=currentSpeechEngine();$('speechEngineSelect').disabled=false;
  $('voiceHint').textContent=settings.speechEngine==='ai'?'真正用于每一页正文的声音；首次准备后会保存在本机。':'使用电脑自带的辅助朗读声音。';
- $('voiceBadge').textContent=settings.speechEngine==='ai'?(settings.narratorVoice==='Uncle_Fu'?'Uncle Fu · 温暖男声':'Serena · 温柔女声'):'系统朗读';
+ $('voiceBadge').textContent=currentSpeechEngine()==='ai'?(settings.narratorVoice==='Uncle_Fu'?'Uncle Fu · 温暖男声':'Serena · 温柔女声'):'系统朗读';
  narrator?.configure(settings.rate);stage?.configure(settings.animationsEnabled);
 }
 function openDB(){return new Promise((resolve,reject)=>{const request=indexedDB.open('story-garden',2);request.onupgradeneeded=()=>{const d=request.result;if(!d.objectStoreNames.contains('books'))d.createObjectStore('books',{keyPath:'id'});if(!d.objectStoreNames.contains('progress'))d.createObjectStore('progress',{keyPath:'id'});};request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error);request.onblocked=()=>reject(new Error('请关闭其他正在使用这个书架的标签页后重试。'));});}
@@ -54,17 +54,16 @@ async function persist(book){try{await putBooks([book]);return true;}catch{toast
 function saveProgress(book){try{const tx=db.transaction('progress','readwrite');tx.objectStore('progress').put({id:book.id,page:book.page||0,lastRead:book.lastRead||0,completed:!!book.completed});tx.onerror=()=>toast('阅读进度没有保存成功。请检查浏览器空间。');}catch{}}
 function deleteProgress(ids){return new Promise((resolve,reject)=>{const tx=db.transaction('progress','readwrite');ids.forEach(id=>tx.objectStore('progress').delete(id));tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);});}
 let shelfEntries=[],shelfPage=0,shelfOpening=false;
-const shelfPreviews=[{id:'nia-runaway-kite',title:'妮娅和逃跑的风筝',theme:'reference',preview:true,page:0,spine:'#79b4c3',cover:'assets/shelf-reference/nia-runaway-kite-cover.webp'},{id:'fin-glowing-sea',title:'芬恩和发光的海',theme:'reference',preview:true,page:0,spine:'#264d65',cover:'assets/shelf-reference/fin-glowing-sea-cover.webp'}];
 const referenceId=book=>book.id==='demo-otto'?'otto-shy-moon':book.id;
 const shelfLogo=book=>['demo-otto','nia-runaway-kite','fin-glowing-sea'].includes(book.id)?'assets/shelf-reference/'+referenceId(book)+'-logo-strip.webp':null;
 const safeImage=value=>typeof value==='string'&&(/^(?:\.\/)?assets\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9._-]+\.(?:svg|png|jpe?g|webp|avif)$/.test(value)||/^data:image\/(?:png|jpe?g|webp|gif|avif);base64,[a-z\d+/=\s]+$/i.test(value))?value:'';
 const bookCover=b=>safeImage(b.cover)||`assets/${['moon','kite','ocean','prince'].includes(b.theme)?b.theme:'moon'}.svg`;
 const formatSize=bytes=>bytes>1024*1024?(bytes/1024/1024).toFixed(1)+' MB':Math.max(1,Math.round(bytes/1024))+' KB';
-function shelfCatalog(){const local=books.filter(b=>!b.deleted);return [...local.filter(b=>b.id==='demo-otto'),...local.filter(b=>b.id==='demo-carmela'),...shelfPreviews,...local.filter(b=>!['demo-otto','demo-carmela'].includes(b.id))];}
-function visibleBooks(){const search=$('searchInput').value.trim().toLocaleLowerCase();const local=books.filter(b=>!b.deleted).sort((a,b)=>a.id==='demo-otto'?-1:b.id==='demo-otto'?1:a.kind==='demo'&&b.kind==='demo'?demoBooks.findIndex(x=>x.id===a.id)-demoBooks.findIndex(x=>x.id===b.id):(a.added||0)-(b.added||0));let catalog=filter==='all'?[...local.filter(b=>b.id==='demo-otto'),...local.filter(b=>b.id==='demo-carmela'),...shelfPreviews,...local.filter(b=>!['demo-otto','demo-carmela'].includes(b.id))]:local.filter(b=>filter==='favorite'?b.favorite:filter==='imported'?b.kind!=='demo':filter==='recent'?b.lastRead:true);return catalog.filter(b=>!search||b.title.toLocaleLowerCase().includes(search));}
+function shelfCatalog(){const local=books.filter(b=>!b.deleted);return [...local.filter(b=>b.id==='demo-otto'),...local.filter(b=>b.id==='nia-runaway-kite'),...local.filter(b=>b.id==='fin-glowing-sea'),...local.filter(b=>!['demo-otto','nia-runaway-kite','fin-glowing-sea'].includes(b.id))];}
+function visibleBooks(){const search=$('searchInput').value.trim().toLocaleLowerCase();const local=books.filter(b=>!b.deleted).sort((a,b)=>a.id==='demo-otto'?-1:b.id==='demo-otto'?1:a.kind==='demo'&&b.kind==='demo'?demoBooks.findIndex(x=>x.id===a.id)-demoBooks.findIndex(x=>x.id===b.id):(a.added||0)-(b.added||0));let catalog=filter==='all'?[...local.filter(b=>b.id==='demo-otto'),...local.filter(b=>b.id==='nia-runaway-kite'),...local.filter(b=>b.id==='fin-glowing-sea'),...local.filter(b=>!['demo-otto','nia-runaway-kite','fin-glowing-sea'].includes(b.id))]:local.filter(b=>filter==='favorite'?b.favorite:filter==='imported'?b.kind!=='demo':filter==='recent'?b.lastRead:true);return catalog.filter(b=>!search||b.title.toLocaleLowerCase().includes(search));}
 function renderShelf(){
  const list=$('bookList');list.replaceChildren();shelfEntries=visibleBooks().map(b=>({...b,shelfCover:b.id==='demo-otto'?'assets/otto-reference/cover.webp':b.id==='demo-little-prince'?'assets/prince-art/cover-v6.png':bookCover(b),status:b.preview?'preview':'ready'}));shelfPage=Math.min(shelfPage,Math.max(0,Math.ceil(shelfEntries.length/3)-1));
- $('bookCount').textContent=books.filter(b=>!b.deleted).length+shelfPreviews.length;document.querySelectorAll('[data-filter]').forEach(el=>el.classList.toggle('active',el.dataset.filter===filter));
+ $('bookCount').textContent=books.filter(b=>!b.deleted).length;document.querySelectorAll('[data-filter]').forEach(el=>el.classList.toggle('active',el.dataset.filter===filter));
  $('homeReadingBadge').textContent=`✦ ${books.filter(b=>b.lastRead&&!b.completed&&!b.deleted).length} 本在读　·　${books.filter(b=>b.completed&&!b.deleted).length} 本读完`;
  for(const [i,book]of shelfEntries.entries()){
   const card=document.createElement('article');card.className='shelf-book-card';card.dataset.bookId=book.id;card.dataset.page=Math.floor(i/3);const select=document.createElement('button');select.className='shelf-select';select.setAttribute('aria-label',`${book.preview?'预览':'打开'}《${book.title}》`);
@@ -137,13 +136,17 @@ async function openBook(id,at){
  const request=++bookOpenRequest;const book=books.find(b=>b.id===id&&!b.deleted);if(!book)return;
  const scene=ensureStage();scene.room.setShelfTheme(id,{remember:true});
  if(scene.preparing){atmosphere.start();const message='正在准备这本故事，马上就好…';toast(message);await scene.ready;if(request!==bookOpenRequest||book.deleted)return;if($('toast').textContent===message){clearTimeout(toastTimer);$('toast').hidden=true;}}
- const assetTimer=setTimeout(()=>toast('正在准备这本故事，马上就好…'),400);await scene.loadBookAssets(book);clearTimeout(assetTimer);if($('toast').textContent==='正在准备这本故事，马上就好…'){clearTimeout(toastTimer);$('toast').hidden=true;}if(request!==bookOpenRequest||book.deleted)return;
- stopSpeech();activeBook=book;pageIndex=Math.max(0,Math.min(at??book.page??0,book.pages.length-1));
+ const assetTimer=setTimeout(()=>{if(request===bookOpenRequest)toast('正在准备这本故事，马上就好…');},400);try{await scene.loadBookAssets(book);}catch(error){console.error('Book assets unavailable',error);if(request===bookOpenRequest)toast('这本书的画面或角色没能加载，请再点一次重试。');return;}finally{clearTimeout(assetTimer);}if($('toast').textContent==='正在准备这本故事，马上就好…'){clearTimeout(toastTimer);$('toast').hidden=true;}if(request!==bookOpenRequest||book.deleted)return;
+ scene.readerWarmup=true;scene.pause();
+ stopSpeech();activeBook=book;loadVoices();pageIndex=Math.max(0,Math.min(at??book.page??0,book.pages.length-1));
  atmosphere.start();
  stageTurn=null;
- document.body.dataset.view='reader';$('readerView').hidden=false;$('readerView').inert=false;$('shelfView').hidden=true;document.querySelector('.topbar').hidden=true;document.body.style.overflow='hidden';$('readerBookTitle').textContent=book.title;$('readerSubtitle').textContent=book.theme==='carmela'?book.subtitle:book.theme==='otto'?'红气球 · 10 幕月光冒险':book.theme==='prince'?'儿童节选改编 · 12 幕立体故事':book.kind==='demo'?'属于你的睡前故事时光':'从你的书架，走进想象的世界';updateReaderFavorite();document.title=`${book.title} · 故事彗星`;
+ document.body.dataset.view='reader';$('readerView').hidden=false;$('readerView').inert=false;$('shelfView').hidden=true;document.querySelector('.topbar').hidden=true;document.body.style.overflow='hidden';$('readerBookTitle').textContent=book.title;$('voiceBadge').textContent=settings.speechEngine==='system'?'系统朗读':settings.narratorVoice+' · AI 配音';$('readerSubtitle').textContent=['nia','fin'].includes(book.theme)?'中文重新讲述 · 10 幕立体冒险':book.theme==='carmela'?book.subtitle:book.theme==='otto'?'红气球 · 10 幕月光冒险':book.theme==='prince'?'儿童节选改编 · 12 幕立体故事':book.kind==='demo'?'属于你的睡前故事时光':'从你的书架，走进想象的世界';updateReaderFavorite();document.title=`${book.title} · 故事彗星`;
  try{ensureStage();$('readerView').classList.add('cinematic');stage.resize();stage.configure(settings.animationsEnabled);stage.start();}catch(error){console.error('3D scene unavailable',error);$('readerView').classList.remove('cinematic');}
- await renderPage();stage?.open();$('playButton').focus({preventScroll:true});
+ $('readerView').inert=true;$('readerView').classList.toggle('book-opening',settings.animationsEnabled);
+ const warmMessage='正在准备画面，马上打开…';const warmTimer=setTimeout(()=>toast(warmMessage),300);
+ try{await renderPage();try{await scene.prepareReaderScene();}catch(error){console.warn('Reader warmup unavailable',error);}}finally{clearTimeout(warmTimer);scene.readerWarmup=false;$('readerView').inert=false;if($('toast').textContent===warmMessage){clearTimeout(toastTimer);$('toast').hidden=true;}}
+ if(request!==bookOpenRequest)return;stage?.open();$('playButton').focus({preventScroll:true});
 }
 async function renderPage(){
  const panel=$('openBook');document.querySelectorAll('.departing-card').forEach(n=>n.remove());
@@ -152,7 +155,7 @@ async function renderPage(){
  $('readerView').dataset.currentPage=String(pageIndex+1);$('readerView').dataset.totalPages=String(activeBook.pages.length);$('pageEyebrow').textContent=getLang()==='en'?`PAGE ${pageIndex+1} OF ${activeBook.pages.length}`:`第 ${pageIndex+1} 页 / 共 ${activeBook.pages.length} 页`;$('readerContentsTrigger').textContent=getLang()==='en'?`Contents · ${activeBook.pages.length} pages`:`目录 · ${activeBook.pages.length} 页`;$('pageTitle').textContent=page.title||activeBook.title;
  sentences=sentenceParts(page.text||'');const text=$('storyText');text.replaceChildren();
  let wordIndex=0;const segmenter=typeof Intl.Segmenter==='function'?new Intl.Segmenter(activeBook.lang||'zh',{granularity:'word'}):null;
- sentences.forEach((sentence,i)=>{const span=document.createElement('span');span.className='story-sentence';span.dataset.sentence=i;for(const part of segmenter?[...segmenter.segment(sentence)].map(s=>s.segment):[sentence]){if(/^[，。！？；：、）》”’…\s]+$/.test(part)&&span.lastElementChild){span.lastElementChild.textContent+=part;continue;}const word=document.createElement('span');word.className='story-word'+(/奥托|小熊|月亮|气球|云朵|小镇|小王子|玫瑰|狐狸|星球|候鸟|星星|路灯|水井|卡梅拉|地图|小桥|风铃/.test(part)?' magic-word':'');word.textContent=part;word.style.setProperty('--word-delay',Math.min(wordIndex++*22,720)+'ms');span.append(word);}span.tabIndex=0;span.setAttribute('role','button');span.setAttribute('aria-label',`从这句开始听：${sentence.slice(0,35)}`);text.append(span);});
+ sentences.forEach((sentence,i)=>{const span=document.createElement('span');span.className='story-sentence';span.dataset.sentence=i;for(const part of segmenter?[...segmenter.segment(sentence)].map(s=>s.segment):[sentence]){if(/^[，。！？；：、）》”’…\s]+$/.test(part)&&span.lastElementChild){span.lastElementChild.textContent+=part;continue;}const word=document.createElement('span');word.className='story-word'+(/奥托|小熊|月亮|气球|云朵|小镇|小王子|玫瑰|狐狸|星球|候鸟|星星|路灯|水井|卡梅拉|地图|小桥|风铃|妮娅|芬恩|风筝|海水|水母|宝箱|鲸鱼|珍珠|珊瑚|海草|乌鸦|小蟹/.test(part)?' magic-word':'');word.textContent=part;word.style.setProperty('--word-delay',Math.min(wordIndex++*22,720)+'ms');span.append(word);}span.tabIndex=0;span.setAttribute('role','button');span.setAttribute('aria-label',`从这句开始听：${sentence.slice(0,35)}`);text.append(span);});
  if(!sentences.length){const empty=document.createElement('span');empty.className='empty-text';empty.textContent='这一页还没有朗读文字。点右上角的羽毛，可以识别图片文字，或者为它写一个小故事。';text.append(empty);}
  text.scrollTop=0;$('readingTip').textContent=sentences.length?'点一句话，就从这里开始听':'点右上角的羽毛，为这一页补充文字';
  const image=safeImage(page.image)||bookCover(activeBook);$('pageImage').src=image;$('pictureMat').classList.toggle('carmela-page-art',activeBook.theme==='carmela');$('pictureMat').style.setProperty('--art-column',(page.artIndex||0)%2);$('pictureMat').style.setProperty('--art-row',Math.floor((page.artIndex||0)/2));$('pageImage').alt=page.title?`${page.title}的插画或书页`:'故事插画';$('pictureMat').classList.toggle('illustration',!!page.illustration||!safeImage(page.image));$('pictureCaption').textContent=page.caption||(activeBook.kind==='demo'?'每一个故事，都为你留了一盏灯':'让每一页，都变成听得见的故事');$('pageNumber').textContent=`— ${pageIndex+1} —`;
@@ -161,7 +164,19 @@ async function renderPage(){
  const dots=$('pageDots');dots.replaceChildren();const start=Math.max(0,Math.min(pageIndex-8,activeBook.pages.length-17));for(let i=start;i<Math.min(activeBook.pages.length,start+17);i++){const dot=document.createElement('button');dot.className='page-dot'+(i===pageIndex?' active':i<pageIndex?' past':'');dot.setAttribute('aria-label',`第 ${i+1} 页`);dot.setAttribute('aria-current',i===pageIndex?'page':'false');dot.onclick=()=>changePage(i);dots.append(dot);}
  if(stage){stage.setPage(activeBook,page,pageIndex,stageTurn||{});stageTurn=null;stage.start();$('sceneHint').textContent=activeBook.kind!=='demo'?'拖动画面看原书书页 · 朗读文字可编辑':activeBook.theme==='carmela'?'点卡梅拉打招呼 · 点地图、小桥、风铃收集宝物':activeBook.theme==='otto'?'点小熊挥手 · 点气球乘风 · 点云朵让路':activeBook.theme==='prince'?'拖动画面 · 点点角色和桌面上的小物件':'拖动画面看一看 · 故事会从书页里长出来';}
  $('sceneHint').classList.toggle('carmela-actions',activeBook.theme==='carmela');
- if(activeBook.theme==='otto'&&stage){const actions=[['otto','小熊挥手'],['balloon','乘风漂浮']];if(stage.paperState.clouds?.length)actions.push(['cloud','拨开云朵']);if(stage.paperState.moon?.visible)actions.push(['moon','点亮月光']);if(stage.paperState.starPath?.length)actions.push(['stars','点亮下一颗星']);if(stage.paperState.owl)actions.push(['owl','问问猫头鹰']);if(stage.paperState.cat)actions.push(['cat','和小猫打招呼']);if(stage.paperState.diorama?.objects.lamp)actions.push(['lamp','开关床头灯']);if(stage.paperState.diorama?.objects.window)actions.push(['window','点亮小窗']);const hint=$('sceneHint');hint.replaceChildren();hint.classList.add('otto-actions');for(const [action,label]of actions){const button=document.createElement('button');button.textContent=label;button.onclick=()=>{if(stage.busy)return;stage.ottoArt.interact(action,stage.time);toast(stage.paperState.messages[action]);if(!stage.ottoArt.usesSceneSound)atmosphere.chime();};hint.append(button);}}else if(activeBook.theme==='carmela'&&stage){const hint=$('sceneHint');hint.replaceChildren();hint.classList.add('otto-actions');for(const [action,label]of carmelaActions(page.scene)){const button=document.createElement('button');button.textContent=label;button.dataset.carmelaAction=action;if(action!=='hen')button.title='重播本页动画，朗读会暂停';button.onclick=()=>{if(!stage.busy)interactCarmela(stage,'carmela-'+action);};hint.append(button);}}else $('sceneHint').classList.remove('otto-actions');sentenceIndex=0;updatePlayback();if(version!==openVersion)return;
+ if(activeBook.theme==='otto'&&stage){const actions=[['otto','小熊挥手'],['balloon','乘风漂浮']];if(stage.paperState.clouds?.length)actions.push(['cloud','拨开云朵']);if(stage.paperState.moon?.visible)actions.push(['moon','点亮月光']);if(stage.paperState.starPath?.length)actions.push(['stars','点亮下一颗星']);if(stage.paperState.owl)actions.push(['owl','问问猫头鹰']);if(stage.paperState.cat)actions.push(['cat','和小猫打招呼']);if(stage.paperState.diorama?.objects.lamp)actions.push(['lamp','开关床头灯']);if(stage.paperState.diorama?.objects.window)actions.push(['window','点亮小窗']);const hint=$('sceneHint');hint.replaceChildren();hint.classList.add('otto-actions');for(const [action,label]of actions){const button=document.createElement('button');button.textContent=label;button.onclick=()=>{if(stage.busy)return;stage.ottoArt.interact(action,stage.time);toast(stage.paperState.messages[action]);if(!stage.ottoArt.usesSceneSound)atmosphere.chime();};hint.append(button);}}else if(activeBook.theme==='carmela'&&stage){const hint=$('sceneHint');hint.replaceChildren();hint.classList.add('otto-actions');for(const [action,label]of carmelaActions(page.scene)){const button=document.createElement('button');button.textContent=label;button.dataset.carmelaAction=action;if(action!=='hen')button.title='重播本页动画，朗读会暂停';button.onclick=()=>{if(!stage.busy)interactCarmela(stage,'carmela-'+action);};hint.append(button);}}else if(['nia','fin'].includes(activeBook.theme)&&stage){renderCompanionControls();}else $('sceneHint').classList.remove('otto-actions');sentenceIndex=0;updatePlayback();if(version!==openVersion)return;
+}
+// Every original reference verb remains available without covering the whole diorama.
+function renderCompanionControls(){
+ const hint=$('sceneHint');hint.replaceChildren();hint.classList.add('otto-actions');
+ const actions=stage.paperArt.actions({includeVerbs:true});const primary=actions.filter(a=>!a.verb).slice(0,4),more=actions.filter(a=>!primary.includes(a));
+ const add=(target,action)=>{const button=document.createElement('button');button.type='button';button.textContent=action.label;button.dataset.companionAction=action.key;button.onclick=()=>{if(stage.busy)return;if(stage.paperArt.interact(action.key,stage.time)){toast(action.message);stage.start();}};target.append(button);};
+ for(const action of primary)add(hint,action);
+ if(more.length){const details=document.createElement('details'),summary=document.createElement('summary'),list=document.createElement('div');summary.textContent='更多互动';summary.style.cursor='pointer';details.append(summary,list);Object.assign(list.style,{display:'flex',flexWrap:'wrap',gap:'5px',maxHeight:'180px',overflowY:'auto',paddingTop:'6px'});for(const action of more)add(list,action);hint.append(details);}
+}
+function companionWordAction(word){
+ const actions=stage.paperArt.actions();const names={nia:/妮娅|兔子/,fin:/芬恩|海龟/,kite:/风筝/,wind:/风/,cloud:/云/,oak:/橡树|大树/,crow:/乌鸦/,ducks:/鸭/,sheep:/羊/,jar:/瓶/,jellies:/水母/,chest:/宝箱/,pearl:/珍珠/,whale:/鲸/,crab:/蟹/,fish:/鱼/,kelp:/海草/,reef:/珊瑚/,sea:/海水|海洋/};
+ return actions.find(a=>word.includes(a.label))||actions.find(a=>names[a.key]?.test(word));
 }
 async function changePage(next,continueReading=false){
  if($('readerView').inert||stage?.bookMotion?.type==='close')return;
@@ -176,38 +191,65 @@ async function changePage(next,continueReading=false){
  }
  if(continueReading)startSpeech();
 }
-async function closeReader(){if(!activeBook||$('readerView').inert)return;stopSpeech();atmosphere.effect('lift',{direction:-1});const version=++openVersion;$('readerView').inert=true;await stage?.close();if(version!==openVersion)return;activeBook=null;document.body.dataset.view='shelf';stage?.showShelf();$('readerView').hidden=true;$('readerView').inert=false;$('shelfView').hidden=false;document.querySelector('.topbar').hidden=false;document.body.style.overflow='';document.title='故事彗星 · 我的小小故事书房';renderShelf();}
+async function closeReader(){if(!activeBook||$('readerView').inert)return;stopSpeech();atmosphere.effect('lift',{direction:-1});const version=++openVersion;$('readerView').inert=true;await stage?.close();if(version!==openVersion)return;activeBook=null;loadVoices();document.body.dataset.view='shelf';stage?.showShelf();$('readerView').hidden=true;$('readerView').inert=false;$('shelfView').hidden=false;document.querySelector('.topbar').hidden=false;document.body.style.overflow='';document.title='故事彗星 · 我的小小故事书房';renderShelf();}
 function loadVoices(){
  voices=(synth?.getVoices()||[]).filter(v=>v.localService);const sel=$('voiceSelect');sel.replaceChildren();
- if(settings.speechEngine==='ai'){for(const [value,label]of [['Serena','Serena · 温柔中文女声'],['Uncle_Fu','Uncle Fu · 温暖中文男声']]){const option=document.createElement('option');option.value=value;option.textContent=label;sel.append(option);}sel.value=settings.narratorVoice;return;}
+ if(currentSpeechEngine()==='ai'){for(const [value,label]of [['Serena','Serena · 温柔中文女声'],['Uncle_Fu','Uncle Fu · 温暖中文男声']]){const option=document.createElement('option');option.value=value;option.textContent=label;sel.append(option);}sel.value=settings.narratorVoice;return;}
  const auto=document.createElement('option');auto.value='';auto.textContent='自动选择本机声音';sel.append(auto);voices.sort((a,b)=>Number(b.lang.startsWith('zh'))-Number(a.lang.startsWith('zh'))||a.lang.localeCompare(b.lang));voices.forEach(v=>{const option=document.createElement('option');option.value=v.voiceURI;option.textContent=`${v.name} · ${v.lang}`;sel.append(option);});sel.value=voices.some(v=>v.voiceURI===settings.voice)?settings.voice:'';
 }
+function currentSpeechEngine(){return settings.speechEngine;}
 function chooseVoice(lang){return voices.find(v=>v.voiceURI===settings.voice)||voices.find(v=>v.lang.toLowerCase()===lang.toLowerCase())||voices.find(v=>v.lang.split('-')[0]===lang.split('-')[0])||null;}
+function beginCompanionNarration(from){
+ companionNarration=null;if(!['nia','fin'].includes(activeBook?.theme)||!stage?.paperArt.resetNarration)return;
+ const progress=sentences.slice(0,from).join('').length/Math.max(1,activeBook.pages[pageIndex].text.length);
+ const token=stage.paperArt.resetNarration(progress);companionNarration={token,session:speechSession,version:openVersion,book:activeBook.id,page:pageIndex,state:stage.paperState};
+}
+// Some system voices emit no word boundaries. Use a smooth character-rate estimate
+// only until a real boundary arrives; this is explicitly approximate Chinese timing.
+function startCompanionSpeechClock(index,session){
+ stopCompanionSpeechClock();if(!companionNarration||!settings.animationsEnabled)return;
+ const length=sentences[index].length,before=sentences.slice(0,index).join('').length,total=Math.max(1,activeBook.pages[pageIndex].text.length);
+ const clock={index,session,length,before,total,elapsed:0,last:performance.now(),native:false,timer:null,context:companionNarration};
+ clock.timer=setInterval(()=>{const now=performance.now(),dt=Math.max(0,(now-clock.last)/1000);clock.last=now;
+   if(clock.session!==speechSession||clock.context!==companionNarration){stopCompanionSpeechClock();return;}if(paused||!speaking)return;
+   clock.elapsed+=dt;if(clock.native||clock.elapsed<.65)return;
+   const rate=clock.context.charactersPerSecond||4.5*settings.rate;
+   const chars=Math.min(length*.96,clock.elapsed*rate);driveCompanionNarration((before+chars)/total);
+ },120);companionSpeechClock=clock;
+}
+function stopCompanionSpeechClock(){if(companionSpeechClock)clearInterval(companionSpeechClock.timer);companionSpeechClock=null;}
+function finishCompanionSpeechClock(){const clock=companionSpeechClock;if(clock&&clock.elapsed>.3&&clock.context===companionNarration){const measured=Math.max(2,Math.min(12,clock.length/clock.elapsed));clock.context.charactersPerSecond=clock.context.charactersPerSecond?clock.context.charactersPerSecond*.65+measured*.35:measured;}stopCompanionSpeechClock();}
+function driveCompanionNarration(progress){
+ const cue=companionNarration;
+ if(!cue||!speaking||paused||preparing||cue.session!==speechSession||cue.version!==openVersion||cue.book!==activeBook?.id||cue.page!==pageIndex||cue.state!==stage?.paperState)return;
+ stage.paperArt.narrate(progress,cue.token);
+}
 function highlightSentence(index,boundary){
  const spans=$('storyText').querySelectorAll('.story-sentence');spans.forEach((span,i)=>{span.classList.toggle('speaking',i===index);span.classList.toggle('word-guided',i===index&&!!boundary);let cursor=0;for(const word of span.querySelectorAll('.story-word')){const start=cursor;cursor+=word.textContent.length;word.classList.toggle('word-active',i===index&&!!boundary&&boundary.charIndex>=start&&boundary.charIndex<cursor);}});
+ if(speaking&&['nia','fin'].includes(activeBook?.theme)){const offset=sentences.slice(0,index).reduce((n,t)=>n+t.length,0)+(boundary?.charIndex||0);driveCompanionNarration(offset/Math.max(1,activeBook.pages[pageIndex].text.length));}
  if(speaking&&['otto','carmela'].includes(activeBook?.theme)){const offset=sentences.slice(0,index).reduce((n,t)=>n+t.length,0)+(boundary?.charIndex||0),progress=offset/activeBook.pages[pageIndex].text.length;if(activeBook.theme==='otto')stage?.ottoArt.narrate(progress);else narrateCarmela(stage,progress);}
  const active=spans[index];if(!active)return;const container=$('storyText');if(active.offsetTop-container.offsetTop<container.scrollTop||active.offsetTop-container.offsetTop+active.offsetHeight>container.scrollTop+container.clientHeight)container.scrollTop=active.offsetTop-container.offsetTop-15;
 }
-function stopSpeech(){speechSession++;narrator?.stop();preparing=false;if(synth)synth.cancel();speaking=false;paused=false;currentUtterance=null;$('readerView').classList.remove('is-speaking');document.querySelectorAll('.story-sentence.speaking,.story-word.word-active').forEach(el=>el.classList.remove('speaking','word-guided','word-active'));updatePlayback();}
+function stopSpeech({finish=false}={}){stopCompanionSpeechClock();companionNarration=null;if(finish)stage?.paperArt.finishNarration?.();else stage?.paperArt.stopNarration?.();speechSession++;narrator?.stop();preparing=false;if(synth)synth.cancel();speaking=false;paused=false;currentUtterance=null;$('readerView').classList.remove('is-speaking');document.querySelectorAll('.story-sentence.speaking,.story-word.word-active').forEach(el=>el.classList.remove('speaking','word-guided','word-active'));updatePlayback();}
 function updatePlayback(){
  const playing=speaking&&!paused&&!preparing;
  if(activeBook?.theme==='carmela')carmelaPlayback(stage,playing);
  $('playLabel').textContent=preparing?'准备声音中…':playing?'暂停一下':paused?'继续听故事':'读给我听';
  $('playButton').querySelector('[data-icon]').innerHTML=icon(playing?'pause':'play');$('readerView').classList.toggle('is-speaking',playing);
- $('speechStatus').textContent=preparing?'正在为这一页准备声音…':playing?`${settings.speechEngine==='ai'?settings.narratorVoice+' 正在讲':'正在读'}第 ${pageIndex+1} 页`:paused?'故事在这里等你，随时继续':'点一下，让这个故事读给你听';atmosphere.setDucking(playing);
+ $('speechStatus').textContent=preparing?'正在为这一页准备声音…':playing?`${currentSpeechEngine()==='ai'?settings.narratorVoice+' 正在讲':'正在读'}第 ${pageIndex+1} 页`:paused?'故事在这里等你，随时继续':'点一下，让这个故事读给你听';atmosphere.setDucking(playing);
 }
 function finishPage(){
- if(!activeBook)return;
+ if(!activeBook)return;driveCompanionNarration(1);
  if(collectStar(activeBook.id,pageIndex))updateSouvenirs();
- if(pageIndex===activeBook.pages.length-1){activeBook.completed=true;saveProgress(activeBook);stopSpeech();$('speechStatus').textContent='故事听完了。把一颗星星，轻轻放进你的梦里。';toast('晚安，认真听故事的你 ✦');}
- else if(settings.autoNext)changePage(pageIndex+1,true);else{stopSpeech();$('speechStatus').textContent='这一页听完了，翻一页继续吧。';}
+ if(pageIndex===activeBook.pages.length-1){activeBook.completed=true;saveProgress(activeBook);stopSpeech({finish:true});$('speechStatus').textContent='故事听完了。把一颗星星，轻轻放进你的梦里。';toast('晚安，认真听故事的你 ✦');}
+ else if(settings.autoNext)changePage(pageIndex+1,true);else{stopSpeech({finish:true});$('speechStatus').textContent='这一页听完了，翻一页继续吧。';}
 }
 async function startSpeech(from=0){
  const version=openVersion,session=speechSession;
  if(stage?.busy){if(document.hidden)stage.completeMotion();await stage.whenReady();if(version!==openVersion||session!==speechSession||!activeBook||$('readerView').inert)return;}
- if(settings.speechEngine==='system')return startSystemSpeech(from);
+ if(currentSpeechEngine()==='system')return startSystemSpeech(from);
  if(!activeBook)return;if(!sentences.length){toast('这一页还没有文字，点羽毛图标补充后就能听。');return;}
- stopSpeech();atmosphere.start();sentenceIndex=from;
+ stopSpeech();beginCompanionNarration(from);atmosphere.start();sentenceIndex=from;
  if(settings.sleep&&!sleepDeadline)sleepDeadline=Date.now()+settings.sleep*60000;
  const text=activeBook.pages[pageIndex].text;const prefix=sentences.slice(0,from).join('').length;
  narrator.configure(settings.rate);narrator.play(text,settings.narratorVoice,prefix/Math.max(1,text.length));
@@ -220,25 +262,26 @@ function startSystemSpeech(from=0){
  const lang=activeBook.lang||guessLang(activeBook.pages[pageIndex].text||'');const voice=chooseVoice(lang);
  if(!voice){toast(`没有找到${lang.startsWith('zh')?'中文':'对应语言的'}本机语音。请在 Mac 系统设置的“辅助功能 → 朗读内容”中添加声音，再重新打开网页。`);return;}
  if(!sentences.length){toast('这一页没有朗读文字，可以点羽毛图标补充。');return;}
- stopSpeech();speaking=true;paused=false;sentenceIndex=from;const session=speechSession;if(settings.sleep&&!sleepDeadline)sleepDeadline=Date.now()+settings.sleep*60000;updatePlayback();
+ stopSpeech();beginCompanionNarration(from);speaking=true;paused=false;sentenceIndex=from;const session=speechSession;if(settings.sleep&&!sleepDeadline)sleepDeadline=Date.now()+settings.sleep*60000;updatePlayback();
  const sayNext=()=>{
   if(session!==speechSession||!speaking||!activeBook)return;
   if(sleepDeadline&&Date.now()>=sleepDeadline){stopSpeech();atmosphere.stop();sleepDeadline=0;settings.sleep=0;saveSettings();toast('时间到了，故事休息了。晚安。');return;}
   if(sentenceIndex>=sentences.length){
+   if(collectStar(activeBook.id,pageIndex))updateSouvenirs();
    const last=pageIndex===activeBook.pages.length-1;
-   if(last){activeBook.completed=true;saveProgress(activeBook);stopSpeech();$('speechStatus').textContent='这个故事听完啦。愿你今晚做一个甜甜的梦。';toast('又听完一个小世界，送你一颗星星 ✦');}
-   else if(settings.autoNext)changePage(pageIndex+1,true);else{stopSpeech();$('speechStatus').textContent='这一页听完了，翻一页继续吧。';}return;
+   if(last){activeBook.completed=true;saveProgress(activeBook);stopSpeech({finish:true});$('speechStatus').textContent='这个故事听完啦。愿你今晚做一个甜甜的梦。';toast('又听完一个小世界，送你一颗星星 ✦');}
+   else if(settings.autoNext)changePage(pageIndex+1,true);else{stopSpeech({finish:true});$('speechStatus').textContent='这一页听完了，翻一页继续吧。';}return;
   }
-  const utterance=new SpeechSynthesisUtterance(sentences[sentenceIndex]);currentUtterance=utterance;utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=settings.rate;utterance.pitch=1;utterance.volume=1;
-  utterance.onstart=()=>{if(session===speechSession)highlightSentence(sentenceIndex);};
-  utterance.onboundary=e=>{if(session===speechSession)highlightSentence(sentenceIndex,e);};
-  utterance.onend=()=>{if(session!==speechSession)return;sentenceIndex++;sayNext();};
+  const utteranceIndex=sentenceIndex;const utterance=new SpeechSynthesisUtterance(sentences[utteranceIndex]);currentUtterance=utterance;utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=settings.rate;utterance.pitch=1;utterance.volume=1;
+  utterance.onstart=()=>{if(session===speechSession&&currentUtterance===utterance){highlightSentence(utteranceIndex);startCompanionSpeechClock(utteranceIndex,session);}};
+  utterance.onboundary=e=>{if(session===speechSession&&currentUtterance===utterance){if(companionSpeechClock)companionSpeechClock.native=true;highlightSentence(utteranceIndex,e);}};
+  utterance.onend=()=>{if(session!==speechSession||currentUtterance!==utterance)return;finishCompanionSpeechClock();driveCompanionNarration(sentences.slice(0,utteranceIndex+1).join('').length/Math.max(1,activeBook.pages[pageIndex].text.length));sentenceIndex=utteranceIndex+1;sayNext();};
   utterance.onerror=e=>{if(session!==speechSession||['interrupted','canceled'].includes(e.error))return;stopSpeech();toast('本机声音暂时没有播放成功，请在设置里换一个声音再试。');};
   synth.speak(utterance);
  };
  sayNext();
 }
-function togglePlay(){if(!activeBook)return;$('readerView').dataset.mode='listen';$('selfReadButton').setAttribute('aria-pressed','false');$('listenModeButton').classList.add('active');if(preparing){stopSpeech();return;}if(settings.speechEngine==='ai'){if(speaking&&!paused)narrator.pause();else if(paused)narrator.resume();else startSpeech();return;}if(speaking&&!paused){synth.pause();paused=true;updatePlayback();}else if(paused){synth.resume();paused=false;updatePlayback();}else startSpeech();}
+function togglePlay(){if(!activeBook)return;$('readerView').dataset.mode='listen';$('selfReadButton').setAttribute('aria-pressed','false');$('listenModeButton').classList.add('active');if(preparing){stopSpeech();return;}if(currentSpeechEngine()==='ai'){if(speaking&&!paused)narrator.pause();else if(paused)narrator.resume();else startSpeech();return;}if(speaking&&!paused){synth.pause();paused=true;updatePlayback();}else if(paused){synth.resume();paused=false;updatePlayback();}else startSpeech();}
 function updateSleepLabel(){const text=sleepDeadline?`${Math.max(1,Math.ceil((sleepDeadline-Date.now())/60000))} 分钟后休息`:settings.sleep?`${settings.sleep} 分钟后休息`:'睡眠定时';if($('sleepLabel').textContent!==text)$('sleepLabel').textContent=text;}
 setInterval(()=>{if(sleepDeadline&&Date.now()>=sleepDeadline){stopSpeech();atmosphere.stop();sleepDeadline=0;settings.sleep=0;saveSettings();toast('时间到了，故事休息了。晚安。');}updateSleepLabel();},1000);
 
@@ -271,7 +314,7 @@ function normalizedBook(input){
  if(!input||typeof input.id!=='string'||typeof input.title!=='string'||!Array.isArray(input.pages)||!input.pages.length||input.pages.length>4000)throw new Error('备份中的书籍格式有误。');
  if(!/^[a-zA-Z0-9-]{1,80}$/.test(input.id))throw new Error('备份中的书籍编号无效。');
  const pages=input.pages.map(p=>{if(!p||typeof p.text!=='string'||p.text.length>100000)throw new Error('备份中的页面格式有误。');return{title:String(p.title||'').slice(0,120),text:p.text,image:safeImage(p.image),caption:String(p.caption||'').slice(0,180),illustration:!!p.illustration,scene:typeof p.scene==='string'?p.scene.slice(0,40):undefined};});
- return{id:input.id,title:input.title.slice(0,120),author:String(input.author||'我的故事收藏').slice(0,100),subtitle:String(input.subtitle||'').slice(0,100),kind:['demo','text','pdf','epub','images','txt'].includes(input.kind)?input.kind:'text',theme:['moon','kite','ocean','prince'].includes(input.theme)?input.theme:'moon',cover:safeImage(input.cover),lang:typeof input.lang==='string'?input.lang.slice(0,20):guessLang(pages[0].text),pages,page:Math.min(pages.length-1,Math.max(0,Number(input.page)||0)),favorite:!!input.favorite,completed:!!input.completed,deleted:!!input.deleted,added:Number(input.added)||Date.now(),lastRead:Number(input.lastRead)||0};
+ return{id:input.id,title:input.title.slice(0,120),author:String(input.author||'我的故事收藏').slice(0,100),subtitle:String(input.subtitle||'').slice(0,100),kind:['demo','text','pdf','epub','images','txt'].includes(input.kind)?input.kind:'text',theme:['moon','kite','ocean','prince','otto','carmela','nia','fin'].includes(input.theme)?input.theme:'moon',narration:input.narration==='system'?'system':undefined,cover:safeImage(input.cover),lang:typeof input.lang==='string'?input.lang.slice(0,20):guessLang(pages[0].text),pages,page:Math.min(pages.length-1,Math.max(0,Number(input.page)||0)),favorite:!!input.favorite,completed:!!input.completed,deleted:!!input.deleted,added:Number(input.added)||Date.now(),lastRead:Number(input.lastRead)||0};
 }
 async function restoreBackup(file){
  if(!file)return;try{if(file.size>300*1024*1024)throw new Error('备份超过 300 MB，请分册导入。');const data=JSON.parse(await file.text());if(data.format!=='story-garden-backup'||data.version!==1||!Array.isArray(data.books))throw new Error('请选择本书房导出的 JSON 备份。');const restored=data.books.map(normalizedBook);await putBooks(restored);await deleteProgress(restored.map(b=>b.id));books=await getBooks();if(data.settings){const s=data.settings;settings.rate=Math.min(1.5,Math.max(.5,Number(s.rate)||1));settings.fontSize=Math.min(38,Math.max(20,Number(s.fontSize)||26));settings.autoNext=typeof s.autoNext==='boolean'?s.autoNext:true;settings.nickname=String(s.nickname||'小朋友').slice(0,18);settings.voice=typeof s.voice==='string'?s.voice.slice(0,250):'';settings.speechEngine=s.speechEngine==='system'?'system':'ai';settings.narratorVoice=s.narratorVoice==='Uncle_Fu'?'Uncle_Fu':'Serena';settings.narrationVersion=2;loadVoices();settings.effectsEnabled=typeof s.effectsEnabled==='boolean'?s.effectsEnabled:true;settings.effectsVolume=Math.min(1,Math.max(0,Number.isFinite(Number(s.effectsVolume))?Number(s.effectsVolume):.55));settings.musicEnabled=typeof s.musicEnabled==='boolean'?s.musicEnabled:true;settings.musicVolume=Math.min(.6,Math.max(0,Number.isFinite(Number(s.musicVolume))?Number(s.musicVolume):.3));settings.animationsEnabled=typeof s.animationsEnabled==='boolean'?s.animationsEnabled:defaults.animationsEnabled;settings.sleep=[0,10,20,30,60].includes(Number(s.sleep))?Number(s.sleep):0;sleepDeadline=0;saveSettings();}if(activeBook){const restoredActive=books.find(b=>b.id===activeBook.id&&!b.deleted);if(restoredActive){activeBook=restoredActive;pageIndex=activeBook.page;stopSpeech();$('readerBookTitle').textContent=activeBook.title;await renderPage();}else closeReader();}renderShelf();toast(`已恢复 ${restored.length} 本书和它们的阅读进度。`);}catch(e){toast(`备份没有恢复：${e.message}`);}finally{$('backupInput').value='';}
@@ -282,7 +325,7 @@ async function recognizeCurrentPage(){if(!activeBook)return;const page=activeBoo
 
 narrator=new Narrator({
  onState(state,message){preparing=state==='loading';speaking=['loading','playing','paused'].includes(state);paused=state==='paused';updatePlayback();if(message)$('speechStatus').textContent=message;if(state==='playing'&&activeBook){const id=activeBook.id+':'+pageIndex+':'+settings.narratorVoice;if(prefetchedPage!==id){prefetchedPage=id;const next=activeBook.pages[pageIndex+1];if(next)narrator.prefetch(next.text,settings.narratorVoice);}}},
- onProgress(progress){if(!activeBook||!sentences.length)return;const target=progress*activeBook.pages[pageIndex].text.length;let before=0,index=0;for(;index<sentences.length-1;index++){if(before+sentences[index].length>target)break;before+=sentences[index].length;}sentenceIndex=index;highlightSentence(index,{charIndex:Math.max(0,Math.floor(target-before)),charLength:1});},
+ onProgress(progress){if(!activeBook||!sentences.length||!speaking||paused||currentSpeechEngine()!=='ai')return;const target=progress*activeBook.pages[pageIndex].text.length;let before=0,index=0;for(;index<sentences.length-1;index++){if(before+sentences[index].length>target)break;before+=sentences[index].length;}sentenceIndex=index;highlightSentence(index,{charIndex:Math.max(0,Math.floor(target-before)),charLength:1});},
  onEnd:finishPage,onError(message){toast(message);$('speechStatus').textContent=message;}
 });
 $('speechEngineSelect').onchange=e=>{stopSpeech();settings.speechEngine=e.target.value;loadVoices();saveSettings();};
@@ -302,10 +345,10 @@ $('languageButton').onclick=()=>{renderLanguageOptions();$('languageDialog').sho
 $('allStoriesButton').onclick=()=>{$('catalogSearch').value='';renderAllStories();$('allStoriesDialog').showModal();};
 $('catalogSearch').oninput=renderAllStories;
 $('shelfPrinceButton').onclick=()=>openBook('demo-otto',0);$('shelfImportButton').onclick=()=>showImport();$('readerBrand').onclick=closeReader;$('readerLibrary').onclick=()=>showImport();$('readerProfile').onclick=()=>$('profileButton').click();$('selfReadButton').onclick=()=>{stopSpeech();$('readerView').dataset.mode='self';$('selfReadButton').setAttribute('aria-pressed','true');$('listenModeButton').classList.remove('active');};$('listenModeButton').onclick=()=>{$('readerView').dataset.mode='listen';$('selfReadButton').setAttribute('aria-pressed','false');$('listenModeButton').classList.add('active');togglePlay();};$('settingsButton').onclick=openSettings;$('readerSettings').onclick=openSettings;$('closeReader').onclick=closeReader;$('readerFavorite').onclick=()=>activeBook&&toggleFavorite(activeBook);$('previousPage').onclick=()=>changePage(pageIndex-1);$('nextPage').onclick=()=>changePage(pageIndex+1);$('playButton').onclick=togglePlay;
-$('storyText').onclick=e=>{const span=e.target.closest('[data-sentence]');if(activeBook?.theme==='otto'&&stage?.paperState&&!stage.busy){const word=e.target.closest('.story-word')?.textContent||'',action=/月亮/.test(word)?'moon':/云/.test(word)?'cloud':/气球/.test(word)?'balloon':/奥托|小熊/.test(word)?'otto':/猫头鹰/.test(word)?'owl':/星星/.test(word)?'stars':null;if(action)stage.ottoArt.interact(action,stage.time);}if(activeBook?.theme==='carmela'&&stage&&!stage.busy){const word=e.target.closest('.story-word')?.textContent||'';const action=/地图/.test(word)?'map':/小桥|木板/.test(word)?'bridge':/风铃|松果/.test(word)?'chime':/卡梅拉/.test(word)?'hen':null;if(action)interactCarmela(stage,'carmela-'+action);}if(span)startSpeech(Number(span.dataset.sentence));};$('storyText').onkeydown=e=>{if(['Enter',' '].includes(e.key)&&e.target.matches('[data-sentence]')){e.preventDefault();startSpeech(Number(e.target.dataset.sentence));}};
+$('storyText').onclick=e=>{const span=e.target.closest('[data-sentence]');if(activeBook?.theme==='otto'&&stage?.paperState&&!stage.busy){const word=e.target.closest('.story-word')?.textContent||'',action=/月亮/.test(word)?'moon':/云/.test(word)?'cloud':/气球/.test(word)?'balloon':/奥托|小熊/.test(word)?'otto':/猫头鹰/.test(word)?'owl':/星星/.test(word)?'stars':null;if(action)stage.ottoArt.interact(action,stage.time);}if(activeBook?.theme==='carmela'&&stage&&!stage.busy){const word=e.target.closest('.story-word')?.textContent||'';const action=/地图/.test(word)?'map':/小桥|木板/.test(word)?'bridge':/风铃|松果/.test(word)?'chime':/卡梅拉/.test(word)?'hen':null;if(action)interactCarmela(stage,'carmela-'+action);}if(['nia','fin'].includes(activeBook?.theme)&&stage&&!stage.busy){const word=e.target.closest('.story-word')?.textContent||'';const action=companionWordAction(word);if(action){stage.paperArt.interact(action.key,stage.time);stage.start();}}if(span)startSpeech(Number(span.dataset.sentence));};$('storyText').onkeydown=e=>{if(['Enter',' '].includes(e.key)&&e.target.matches('[data-sentence]')){e.preventDefault();startSpeech(Number(e.target.dataset.sentence));}};
 $('pictureMat').onclick=e=>{const mat=$('pictureMat');mat.classList.remove('popped');void mat.offsetWidth;mat.classList.add('popped');for(let i=0;i<7;i++){const p=document.createElement('span');p.className='sparkle-particle';p.textContent='✦';const rect=mat.getBoundingClientRect();p.style.left=(e.clientX-rect.left)+'px';p.style.top=(e.clientY-rect.top)+'px';p.style.setProperty('--dx',(Math.random()-.5)*180+'px');p.style.setProperty('--dy',-Math.random()*130-20+'px');mat.append(p);setTimeout(()=>p.remove(),1000);}};
-$('rateInput').oninput=e=>{settings.rate=Number(e.target.value);saveSettings();};$('rateInput').onchange=()=>{if(speaking&&settings.speechEngine==='system')startSpeech(sentenceIndex);};$('speedButton').onclick=()=>{const options=[.7,.8,.9,1,1.1,1.2];settings.rate=options[(options.indexOf(settings.rate)+1)%options.length];saveSettings();if(speaking&&settings.speechEngine==='system')startSpeech(sentenceIndex);};
-$('fontInput').oninput=e=>{settings.fontSize=Number(e.target.value);saveSettings();};$('voiceSelect').onchange=e=>{const wasPlaying=speaking;stopSpeech();if(settings.speechEngine==='ai')settings.narratorVoice=e.target.value;else settings.voice=e.target.value;saveSettings();if(wasPlaying)startSpeech(sentenceIndex);};
+$('rateInput').oninput=e=>{settings.rate=Number(e.target.value);saveSettings();};$('rateInput').onchange=()=>{if(speaking&&currentSpeechEngine()==='system')startSpeech(sentenceIndex);};$('speedButton').onclick=()=>{const options=[.7,.8,.9,1,1.1,1.2];settings.rate=options[(options.indexOf(settings.rate)+1)%options.length];saveSettings();if(speaking&&currentSpeechEngine()==='system')startSpeech(sentenceIndex);};
+$('fontInput').oninput=e=>{settings.fontSize=Number(e.target.value);saveSettings();};$('voiceSelect').onchange=e=>{const wasPlaying=speaking;stopSpeech();if(currentSpeechEngine()==='ai')settings.narratorVoice=e.target.value;else settings.voice=e.target.value;saveSettings();if(wasPlaying)startSpeech(sentenceIndex);};
 function toggleAuto(value){settings.autoNext=value;saveSettings();}$('autoNextInput').onchange=e=>toggleAuto(e.target.checked);$('autoNextButton').onclick=()=>toggleAuto(!settings.autoNext);
 $('sleepSelect').onchange=e=>{settings.sleep=Number(e.target.value);sleepDeadline=settings.sleep?Date.now()+settings.sleep*60000:0;saveSettings();};$('sleepButton').onclick=()=>{openSettings();$('sleepSelect').focus();};
 $('testVoice').onclick=async()=>{$('settingsDialog').close();if(!activeBook)await openBook('demo-little-prince',0);startSpeech();};
@@ -325,7 +368,7 @@ let renameTarget=null;$('saveRename').onclick=async()=>{if(!renameTarget)return;
 document.addEventListener('keydown',e=>{if(!activeBook&&!document.querySelector('dialog[open]')&&!/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)){if(e.key==='ArrowRight'){e.preventDefault();setShelfPage(shelfPage+1);}if(e.key==='ArrowLeft'){e.preventDefault();setShelfPage(shelfPage-1);}if(e.key==='Escape'&&!$('searchBox').hidden){$('searchButton').click();}return;}if(!activeBook||$('readerView').inert||document.querySelector('dialog[open]')||/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))return;if(e.key==='ArrowRight'){e.preventDefault();changePage(pageIndex+1);}if(e.key==='ArrowLeft'){e.preventDefault();changePage(pageIndex-1);}if(e.code==='Space'&&e.target===document.body){e.preventDefault();togglePlay();}if(e.key==='Escape')closeReader();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){if(activeBook&&stage?.busy)stage.completeMotion();stage?.pause();}else stage?.start();});window.addEventListener('pageshow',e=>{if(e.persisted&&activeBook)stage?.start();});window.addEventListener('pagehide',()=>{synth?.cancel();narrator?.stop();stage?.pause();atmosphere.stop();});if(synth)synth.addEventListener('voiceschanged',loadVoices);loadVoices();applySettings();
 async function init(){
- try{db=await openDB();books=await getBooks();const otto=demoBooks.find(b=>b.id==='demo-otto'),previousOtto=books.find(b=>b.id==='demo-otto');if(otto&&previousOtto&&(previousOtto.revision||0)<otto.revision){Object.assign(previousOtto,structuredClone(otto),{page:previousOtto.page,favorite:previousOtto.favorite,lastRead:previousOtto.lastRead});await putBooks([previousOtto]);}const missing=demoBooks.filter(d=>!books.some(b=>b.id===d.id)).map(b=>structuredClone(b));if(missing.length){await putBooks(missing);books.push(...missing);}refreshLang();await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0)));try{ensureStage().configure(settings.animationsEnabled);document.body.dataset.view='shelf';stage.showShelf();}catch(error){document.body.classList.remove('three-room','room-boot');$('roomLoading')?.remove();console.warn('Room preview unavailable',error);}const entry=new URL(location.href);if(entry.searchParams.has('book')){const requested=entry.searchParams.get('book');if(books.some(book=>book.id===requested&&!book.deleted))await openBook(requested);entry.searchParams.delete('book');history.replaceState(null,'',entry.pathname+entry.search+entry.hash);}}
+ try{db=await openDB();books=await getBooks();for(const id of ['demo-otto','nia-runaway-kite','fin-glowing-sea']){const latest=demoBooks.find(b=>b.id===id),saved=books.find(b=>b.id===id);if(latest&&saved&&(saved.revision||0)<(latest.revision||0)){const progress=Object.fromEntries(['page','favorite','lastRead','completed','deleted'].filter(key=>Object.hasOwn(saved,key)).map(key=>[key,saved[key]]));Object.assign(saved,structuredClone(latest),progress);await putBooks([saved]);}}const missing=demoBooks.filter(d=>!books.some(b=>b.id===d.id)).map(b=>structuredClone(b));if(missing.length){await putBooks(missing);books.push(...missing);}refreshLang();await new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0)));try{ensureStage().configure(settings.animationsEnabled);document.body.dataset.view='shelf';stage.showShelf();}catch(error){document.body.classList.remove('three-room','room-boot');$('roomLoading')?.remove();console.warn('Room preview unavailable',error);}const entry=new URL(location.href);if(entry.searchParams.has('book')){const requested=entry.searchParams.get('book');if(books.some(book=>book.id===requested&&!book.deleted))await openBook(requested);entry.searchParams.delete('book');history.replaceState(null,'',entry.pathname+entry.search+entry.hash);}}
  catch(e){document.body.classList.remove('three-room','room-boot');$('roomLoading')?.remove();$('bookList').innerHTML='<div class="empty-shelf"><span>☾</span><strong>书架暂时无法打开</strong><p>请允许当前浏览器保存本地数据，或退出无痕模式后重试。</p></div>';toast(e.message);$('importButton').disabled=true;$('writeButton').disabled=true;}
  if(!STATIC_PREVIEW){try{const response=await fetch('/api/health');if(response.ok)health=await response.json();}catch{}}
  $('ocrEnabled').disabled=!health.ocr;$('ocrEnabled').checked=!!health.ocr;$('ocrHint').textContent=health.ocr?'识别在这台 Mac 上完成，书页不会发送到外部网站':STATIC_PREVIEW?'在线预览可导入图片；请手动填写朗读文字，自动识别需使用本地书房。':'本机识别暂不可用；图片导入后可手动补充朗读文字';

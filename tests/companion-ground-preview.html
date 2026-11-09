@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Companion ground · real Canvas QA</title>
+<style>body{margin:20px;background:#e9e4d8;color:#263337;font:13px system-ui}h1{font-size:20px;margin:0 0 8px}p{margin:0 0 18px}#grid{display:grid;grid-template-columns:repeat(5,240px);gap:16px}.tile{background:#fcf4dd;padding:10px;border:1px solid #bcb6a4;border-radius:6px}.label{font-weight:650;font-size:13px}.source{font-size:11px;margin-bottom:6px;color:#5a655c}.canvas{width:220px;height:297px;display:block;background:#fcf4dd}.crop{height:44px;width:220px;display:block;margin-top:5px}.meta{font-size:10px;margin-top:5px}#status{font-weight:bold;color:#356f47}</style></head>
+<body><h1>Companion paper ground · 20 scenes</h1><p>Real Canvas 2D using existing art crops. Top: final page wash on ivory paper. Below: exact source crop. No WebGL / scene screenshot. <span id="status">Loading…</span></p><main id="grid"></main>
+<script type="module">
+import {COMPANION_GROUND_SCENES, createCompanionGroundCanvas} from '../companion-ground.js';
+import {COMPANION_MANIFESTS} from '../companion-asset-manifests.js';
+try {
+ const all=[];
+ for(const [theme, scenes] of Object.entries(COMPANION_GROUND_SCENES))for(const [scene, config] of Object.entries(scenes)){
+  const image=new Image();image.src='../'+COMPANION_MANIFESTS[theme].art[config.art].url;await image.decode();
+  const images=new Map([[config.art,{texture:{image}}]]);
+  const raw=createCompanionGroundCanvas({theme,scene,images});
+  const canvas=document.createElement('canvas');canvas.className='canvas';canvas.width=640;canvas.height=864;
+  const context=canvas.getContext('2d');context.fillStyle='#fcf4dd';context.fillRect(0,0,640,864);
+  context.globalAlpha=config.opacity;context.drawImage(raw,0,0);
+  const tile=document.createElement('section');tile.className='tile';
+  tile.innerHTML=`<div class="label">${theme} · ${scene}</div><div class="source">${config.kind} / ${config.art}</div>`;
+  tile.append(canvas);
+  const crop=document.createElement('canvas');crop.className='crop';crop.width=440;crop.height=88;
+  const [x,y,w,h]=config.crop;crop.getContext('2d').drawImage(image,x*image.width,y*image.height,w*image.width,h*image.height,0,0,440,88);
+  tile.append(crop);document.querySelector('#grid').append(tile);
+  // Inspect true pixel alpha, not stubbed Canvas commands.
+  const pixels=raw.getContext('2d').getImageData(0,0,640,864).data;
+  const alpha=(x,y)=>pixels[(y*640+x)*4+3];
+  if(alpha(0,0)>5||alpha(320,400)<180||alpha(320,863)>8)throw Error(scene+' alpha mask failed');
+  all.push(scene);
+ }
+ document.querySelector('#status').textContent=`PASS: ${all.length}/20 rendered`;
+ document.body.dataset.qa='passed';document.title='PASS 20/20 Companion ground Canvas QA';
+}catch(error){document.querySelector('#status').textContent='FAIL: '+error.message;document.body.dataset.qa='failed';throw error;}
+</script></body></html>

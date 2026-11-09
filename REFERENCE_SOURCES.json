@@ -594,6 +594,446 @@
       "bytes": 85500,
       "sha256": "f74a6f1c4dea5a21df4d742c8c84cef49630af79de51687e24598c39a2713794",
       "retrieved": "2026-11-07"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/bedside.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/bedside.a158e2c5a547c6c2.webp",
+      "logicalSource": "books/nia-runaway-kite/art/bedside.png",
+      "bytes": 246988,
+      "sha256": "a158e2c5a547c6c232df6e9a4cfd0030b65c0a9da129f297bfb0609cf7c94b39",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/birches.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/birches.38d30bd1368e55da.webp",
+      "logicalSource": "books/nia-runaway-kite/art/birches.png",
+      "bytes": 385490,
+      "sha256": "38d30bd1368e55da1ff7c519be48b0f79a05b90b7919f025bd21bfb2ea0157eb",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/cloud-sleepy.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/cloud-sleepy.bb459e0a0e6b5748.webp",
+      "logicalSource": "books/nia-runaway-kite/art/cloud-sleepy.png",
+      "bytes": 111940,
+      "sha256": "bb459e0a0e6b574897dc1b179a431f11e2311ebad0702e407998023054e75e68",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/clouds-sky.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/clouds-sky.aa5a540e3aba3e3c.webp",
+      "logicalSource": "books/nia-runaway-kite/art/clouds-sky.jpg",
+      "bytes": 406686,
+      "sha256": "aa5a540e3aba3e3c8bcc27d0b9bfb8c2db7f2a573da3c48984708f1784374d88",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/cottage-front.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/cottage-front.7c12b25ba51c30cf.webp",
+      "logicalSource": "books/nia-runaway-kite/art/cottage-front.jpg",
+      "bytes": 652622,
+      "sha256": "7c12b25ba51c30cf9b3e93146e9b7d676700d63563eed4376d052d48ac440c99",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/crow.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/crow.77fa71a853630877.webp",
+      "logicalSource": "books/nia-runaway-kite/art/crow.png",
+      "bytes": 253868,
+      "sha256": "77fa71a853630877251d0002715721b3bf7a2dacea94b27e344b3431c8bf8e34",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/door.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/door.16f3a37ae227c67f.webp",
+      "logicalSource": "books/nia-runaway-kite/art/door.png",
+      "bytes": 244618,
+      "sha256": "16f3a37ae227c67f23accc17e0cddfe870a108200e4642092d3db850e5aa1bb0",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/ducks.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/ducks.d61e98286749faa7.webp",
+      "logicalSource": "books/nia-runaway-kite/art/ducks.png",
+      "bytes": 180006,
+      "sha256": "d61e98286749faa7a2937cefeaab40fe389234fc3f9646b67854b00660764bd4",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/fence-field.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/fence-field.6b4ff094d5ae2976.webp",
+      "logicalSource": "books/nia-runaway-kite/art/fence-field.jpg",
+      "bytes": 500100,
+      "sha256": "6b4ff094d5ae297681bfb699c99af93dedbd454093abf3ec22c91b486538288e",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/fence.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/fence.7597d93b1dbceff3.webp",
+      "logicalSource": "books/nia-runaway-kite/art/fence.png",
+      "bytes": 237200,
+      "sha256": "7597d93b1dbceff366f09500d0221fd5f650b085e94709d6f03861816019d9cb",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/festival-sky.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/festival-sky.4348513ecc049538.webp",
+      "logicalSource": "books/nia-runaway-kite/art/festival-sky.jpg",
+      "bytes": 632860,
+      "sha256": "4348513ecc049538c50b7710ccc5cc982bc9043fbfbf42b690cfaaa9e25f7948",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/grass.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/grass.5a6e1b4ef9053ee4.webp",
+      "logicalSource": "books/nia-runaway-kite/art/grass.png",
+      "bytes": 310224,
+      "sha256": "5a6e1b4ef9053ee44f516352737423f4b7f4f259f4dd1db698bde7123157bca3",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/hill.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/hill.222741085534277b.webp",
+      "logicalSource": "books/nia-runaway-kite/art/hill.jpg",
+      "bytes": 604620,
+      "sha256": "222741085534277b52e36c28e9ca2fa8ac45fff588cb014cd0ef0f069741ce32",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/home-wall.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/home-wall.1bc4dc44a9a02c0c.webp",
+      "logicalSource": "books/nia-runaway-kite/art/home-wall.jpg",
+      "bytes": 373830,
+      "sha256": "1bc4dc44a9a02c0c45caf41e7e668700e600dc492d8587f78ed4a81fe815ad17",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/kite-blue.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/kite-blue.a013725fcda86f05.webp",
+      "logicalSource": "books/nia-runaway-kite/art/kite-blue.png",
+      "bytes": 161350,
+      "sha256": "a013725fcda86f05b37e9893644cbd61be5fe7c0481787200091d0797b1f411d",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/kite-face.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/kite-face.d5940901889cfb69.webp",
+      "logicalSource": "books/nia-runaway-kite/art/kite-face.png",
+      "bytes": 137202,
+      "sha256": "d5940901889cfb697a090a564ab3a1c57b9490a2f4e465c54710c3ea06c21e4f",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/meadow-sky.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/meadow-sky.4d2e2a7aaa00fd0c.webp",
+      "logicalSource": "books/nia-runaway-kite/art/meadow-sky.jpg",
+      "bytes": 525122,
+      "sha256": "4d2e2a7aaa00fd0c80f3ec33ec5c72e8eed4702282051f367d7dc0188eabe7f7",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/oak-tree.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/oak-tree.b21d5e716c1b23da.webp",
+      "logicalSource": "books/nia-runaway-kite/art/oak-tree.png",
+      "bytes": 360722,
+      "sha256": "b21d5e716c1b23da0d946a38264a1bdeed6e758c43e5b5e3d2184b82536083ff",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/oak-wood.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/oak-wood.231a84f2493cc580.webp",
+      "logicalSource": "books/nia-runaway-kite/art/oak-wood.jpg",
+      "bytes": 754734,
+      "sha256": "231a84f2493cc580000dbe1d7c6829d0f42c02b7b63b628ac198b401dc5d7319",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/river.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/river.fa07b1b6dfa3662f.webp",
+      "logicalSource": "books/nia-runaway-kite/art/river.jpg",
+      "bytes": 618638,
+      "sha256": "fa07b1b6dfa3662f9c3ad457d4ef30f79e977ee695d6714690682f85a1789e5a",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/riverbank.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/riverbank.ec47e6b3adf2cbd2.webp",
+      "logicalSource": "books/nia-runaway-kite/art/riverbank.png",
+      "bytes": 147996,
+      "sha256": "ec47e6b3adf2cbd2570e268da49232b5fb146e34d189eda8b9054e0f18c547b0",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/sheep.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/sheep.a2b9fa36281e58bd.webp",
+      "logicalSource": "books/nia-runaway-kite/art/sheep.png",
+      "bytes": 354352,
+      "sha256": "a2b9fa36281e58bd2b01e84d130aee9083b533f356e0d070f08fa983086a1922",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/sunset-meadow.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/sunset-meadow.492864e50db5ef2b.webp",
+      "logicalSource": "books/nia-runaway-kite/art/sunset-meadow.jpg",
+      "bytes": 470674,
+      "sha256": "492864e50db5ef2ba508538e4b77565731bfaa9ab5f45a815243ceff1830dea7",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/art/windy-field.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/art/windy-field.d7a9d49066ffa3fe.webp",
+      "logicalSource": "books/nia-runaway-kite/art/windy-field.jpg",
+      "bytes": 625570,
+      "sha256": "d7a9d49066ffa3fe72da7a9159fa5419184a25d7effaa6bea2f43d4d0f9738c8",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/models/anim/doze.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/models/anim/doze.b4497872e7101c02.glb",
+      "logicalSource": "books/nia-runaway-kite/models/anim/doze.glb",
+      "bytes": 240780,
+      "sha256": "b4497872e7101c021f07dfde30866198a9b8fb1d90edc2100c9381c2d2abddbc",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/models/anim/hold.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/models/anim/hold.cb05f1024f13494e.glb",
+      "logicalSource": "books/nia-runaway-kite/models/anim/hold.glb",
+      "bytes": 89856,
+      "sha256": "cb05f1024f13494e6d39d53bc41f24aeae9950e27245288a8eb5c31178967adc",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/models/anim/jump.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/models/anim/jump.e96088f02b3f07a3.glb",
+      "logicalSource": "books/nia-runaway-kite/models/anim/jump.glb",
+      "bytes": 77096,
+      "sha256": "e96088f02b3f07a3939c5eaa627a6e66e48eaadf6d02fccb77d2d087901109e6",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/models/anim/look.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/models/anim/look.e04d54e8869879b4.glb",
+      "logicalSource": "books/nia-runaway-kite/models/anim/look.glb",
+      "bytes": 109456,
+      "sha256": "e04d54e8869879b4e60787d512024dd8fed383ed0fb7624e6f6f57806f7081e4",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/models/anim/run.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/models/anim/run.5b681457aebc1ff9.glb",
+      "logicalSource": "books/nia-runaway-kite/models/anim/run.glb",
+      "bytes": 40968,
+      "sha256": "5b681457aebc1ff9a0582e31989611dbe83d09000ea8aad4fa2e51c8fe65ab2a",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/nia/models/nia.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/nia-runaway-kite/models/nia.8e7ea0df77f73400.glb",
+      "logicalSource": "books/nia-runaway-kite/models/nia.glb",
+      "bytes": 3315160,
+      "sha256": "8e7ea0df77f73400aea39503c6a0652c15bf453890ecb856029f574a9ffce129",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/chest-open.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/chest-open.17a0c968cd20848e.webp",
+      "logicalSource": "books/fin-glowing-sea/art/chest-open.png",
+      "bytes": 342924,
+      "sha256": "17a0c968cd20848e9f777f608a1230741fdf48eacb6c1256ceb4e8c0d8302180",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/coral-front.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/coral-front.e852f86c236efb0c.webp",
+      "logicalSource": "books/fin-glowing-sea/art/coral-front.png",
+      "bytes": 230610,
+      "sha256": "e852f86c236efb0c5234380b971cea7db5f180a6dad8239f024de82ba5ea3c2b",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/crab-rocks.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/crab-rocks.e98bd2ae84240394.webp",
+      "logicalSource": "books/fin-glowing-sea/art/crab-rocks.jpg",
+      "bytes": 578498,
+      "sha256": "e98bd2ae8424039426a0655c5167b13099dfa5a6352a9d45cc9cb20bdbfc2c88",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/crab.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/crab.e2d97fb17733c656.webp",
+      "logicalSource": "books/fin-glowing-sea/art/crab.png",
+      "bytes": 224074,
+      "sha256": "e2d97fb17733c656188c364d50f42b18157ffa404e386751b49582d1a4477bee",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/deep-dark.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/deep-dark.1c09e62e92fcdf8e.webp",
+      "logicalSource": "books/fin-glowing-sea/art/deep-dark.jpg",
+      "bytes": 215096,
+      "sha256": "1c09e62e92fcdf8ec15c77421a35c554f7706b89a2527a0e6c5df167925ab7b3",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/fish-bright.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/fish-bright.85d551c47602f661.webp",
+      "logicalSource": "books/fin-glowing-sea/art/fish-bright.png",
+      "bytes": 206840,
+      "sha256": "85d551c47602f661e3ec9f493c7c5af8268300c3804bdf52efc92aeff12e698c",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/fish-dark.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/fish-dark.039824db5c6962b0.webp",
+      "logicalSource": "books/fin-glowing-sea/art/fish-dark.png",
+      "bytes": 187598,
+      "sha256": "039824db5c6962b03aef68b61de6ff145475ef41be0dd161a8e969ed0eaf504c",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/jellies.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/jellies.a0426acc9b05ee06.webp",
+      "logicalSource": "books/fin-glowing-sea/art/jellies.png",
+      "bytes": 355692,
+      "sha256": "a0426acc9b05ee06f81ba1b82fefa392d25d5381ba43b496a5e0e4d03cdfb859",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/kelp-forest.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/kelp-forest.414da555abe31ca6.webp",
+      "logicalSource": "books/fin-glowing-sea/art/kelp-forest.jpg",
+      "bytes": 661688,
+      "sha256": "414da555abe31ca658505e8603e618bddd8a4c70b474e9f3ec1f2b638e2400a2",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/kelp.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/kelp.54c6d8e9ae83f11e.webp",
+      "logicalSource": "books/fin-glowing-sea/art/kelp.png",
+      "bytes": 165364,
+      "sha256": "54c6d8e9ae83f11ef054acc330e5190b1df81839fcabc34e4ee84a068bd54ae5",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/octopus.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/octopus.a079fca49e54b9fa.webp",
+      "logicalSource": "books/fin-glowing-sea/art/octopus.png",
+      "bytes": 262442,
+      "sha256": "a079fca49e54b9fa2bb4502decbbaeb137084c9843a6d03a6200fdc9e4ec9980",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/plankton.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/plankton.5e6877ae69a0d09d.webp",
+      "logicalSource": "books/fin-glowing-sea/art/plankton.jpg",
+      "bytes": 397808,
+      "sha256": "5e6877ae69a0d09dffac583df81d8d0e7963566bb233d5981619047f8415cb4a",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/reef-bright.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/reef-bright.aeae3f2340705853.webp",
+      "logicalSource": "books/fin-glowing-sea/art/reef-bright.jpg",
+      "bytes": 799432,
+      "sha256": "aeae3f2340705853297d14f4fff8368ff87cd0803f35839e11a15dcfbda0d599",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/reef-dark.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/reef-dark.24e57988f286d5e2.webp",
+      "logicalSource": "books/fin-glowing-sea/art/reef-dark.jpg",
+      "bytes": 427092,
+      "sha256": "24e57988f286d5e2a201b7f086af0243283f3b470ba549a598c9621cdbbbcc58",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/rocks.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/rocks.283360c13a6cce2b.webp",
+      "logicalSource": "books/fin-glowing-sea/art/rocks.png",
+      "bytes": 219082,
+      "sha256": "283360c13a6cce2b489a57b951a829704af5bfb188c7cd10ea6866bf85ebc912",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/shallows.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/shallows.40162336f6efeca8.webp",
+      "logicalSource": "books/fin-glowing-sea/art/shallows.jpg",
+      "bytes": 409960,
+      "sha256": "40162336f6efeca87a0b5ca96a1f35ecea736e57eead58bb22e8eaeb4562b9c7",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/ship-sand.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/ship-sand.c37b1360b248a50c.webp",
+      "logicalSource": "books/fin-glowing-sea/art/ship-sand.jpg",
+      "bytes": 516810,
+      "sha256": "c37b1360b248a50cffe2fa1a013fe7864d7d0e4f1bb4b46ef26f5603228ad518",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/whale-blue.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/whale-blue.10a1d1ca9f890f14.webp",
+      "logicalSource": "books/fin-glowing-sea/art/whale-blue.jpg",
+      "bytes": 403592,
+      "sha256": "10a1d1ca9f890f1418e702159aadad35bdb7a627e154c92083e2b321f0c8ae4d",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/art/whale.webp",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/art/whale.1fdafb92dbc52484.webp",
+      "logicalSource": "books/fin-glowing-sea/art/whale.png",
+      "bytes": 111080,
+      "sha256": "1fdafb92dbc524840bcc018b9ca4ed1e0cfd2df76b78fc43e7349292c0b6ef50",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/models/anim/doze.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/models/anim/doze.d29fa546f1fe72db.glb",
+      "logicalSource": "books/fin-glowing-sea/models/anim/doze.glb",
+      "bytes": 243888,
+      "sha256": "d29fa546f1fe72dbdbcf2c70c80c28fa2037576cdf7170e313de2f9ff3067a77",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/models/anim/jump.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/models/anim/jump.29530d39aded0e32.glb",
+      "logicalSource": "books/fin-glowing-sea/models/anim/jump.glb",
+      "bytes": 82948,
+      "sha256": "29530d39aded0e323b5a799cbb8e0f561b0938825abac8abd66df19146bd69c4",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/models/anim/look.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/models/anim/look.52d07782c588bb34.glb",
+      "logicalSource": "books/fin-glowing-sea/models/anim/look.glb",
+      "bytes": 112904,
+      "sha256": "52d07782c588bb340cdb45db2eeaa93dbe9fcdb3cd188f959913f01216163517",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/models/anim/swim.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/models/anim/swim.6c0ac1af19e988d2.glb",
+      "logicalSource": "books/fin-glowing-sea/models/anim/swim.glb",
+      "bytes": 72420,
+      "sha256": "6c0ac1af19e988d2b336c05ebf9aef3aaecd1cc2cde0ff0339f188b1080daaa2",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/models/anim/wave.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/models/anim/wave.735a7a09c486c759.glb",
+      "logicalSource": "books/fin-glowing-sea/models/anim/wave.glb",
+      "bytes": 100408,
+      "sha256": "735a7a09c486c7596f1c3c564dbf951a3c2e0e0627de5e4e17f84e843f7651cc",
+      "retrieved": "2026-11-09"
+    },
+    {
+      "file": "assets/companion-reference/fin/models/fin.glb",
+      "source": "https://api.storycomet.app/storage/v1/object/public/story-assets/books/fin-glowing-sea/models/fin.3d94344496dfa50f.glb",
+      "logicalSource": "books/fin-glowing-sea/models/fin.glb",
+      "bytes": 3441244,
+      "sha256": "3d94344496dfa50f05258c160eee807eee98c440b1bf68724406d8529ae705cb",
+      "retrieved": "2026-11-09"
     }
   ],
   "adaptedCode": [
@@ -655,5 +1095,23 @@
       "triangles": 163188,
       "sha256": "e81f73fe0956ebd80a86f6284f10256a441796d55c1e3e043881242a86c758cd"
     }
-  ]
+  ],
+  "companionAdaptation": {
+    "retrieved": "2026-11-09",
+    "purpose": "Local comparison only; redistribution license not confirmed",
+    "modules": {
+      "reference-nia-spreads.js": "https://storycomet.app/books/nia-runaway-kite/scenes.js",
+      "reference-fin-spreads.js": "https://storycomet.app/books/fin-glowing-sea/scenes.js",
+      "companion-assets.js": "https://storycomet.app/src/main.js"
+    },
+    "catalogRevision": "9bc5b0df92549966413e16fa",
+    "cueMetadata": {
+      "sources": [
+        "https://storycomet.app/books/nia-runaway-kite/story.json",
+        "https://storycomet.app/books/fin-glowing-sea/story.json"
+      ],
+      "file": "companion-choreography.js",
+      "scope": "Only target/action/normalized character progress; original prose and audio not included"
+    }
+  }
 }

@@ -101,7 +101,7 @@ export class Atmosphere {
   rustle(){return this.effect('page');}
   chime(){return this.effect('sparkle');}
   sceneSound(method,args=[]){
-    if(!['chime','whoosh','pop','click','sparkle','puff','glow','hoot','yawn','meow','lampSwitch'].includes(method))return false;
+    if(!['chime','whoosh','pop','click','sparkle','puff','glow','hoot','yawn','meow','lampSwitch','quack','baa','caw','whale','giggle','boing','snap'].includes(method))return false;
     this.unlockEffects();
     if(!this.effectsEnabled||!this.effectsVolume||!this.sound||this.effects.state!=='running'||document.hidden||this.previewing)return false;
     this.sound[method](...args);return true;
