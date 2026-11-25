@@ -493,7 +493,7 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
       const motion=this.bookMotion,age=motion.startedAt===undefined?t-motion.start:Math.max(0,(now-motion.startedAt)/1000);
       if(motion.type==='open'){
         const p=clamp(age/motion.duration,0,1);this.bookOpen=smooth(p);this.props.visible=false;this.canvas.dataset.phase='book-open';
-        if(p===1){this.bookMotion=null;this.props.visible=true;if(this.paperState)this.enter={start:t,duration:timing.pop};this.reader?.classList.remove('book-opening');this.onSceneArrive();}
+        if(p===1){this.bookMotion=null;this.props.visible=true;if(this.paperState)this.enter={start:t,duration:timing.pop};else this.canvas.dataset.phase='rest';this.reader?.classList.remove('book-opening');this.onSceneArrive();}
       }else{
         if(age<motion.fold){if(this.paperState)this.paperArt.fold(this.paperState,motion.foldFrom*(1-smooth(age/motion.fold)));else this.props.scale.y=Math.max(.001,motion.foldFrom*(1-smooth(age/motion.fold)));}
         else{this.props.visible=false;const p=clamp((age-motion.fold)/motion.duration,0,1);this.bookOpen=motion.from*(1-smooth(p));if(p===1){this.bookMotion=null;this.reader?.classList.remove('book-closing');motion.resolve();}}
