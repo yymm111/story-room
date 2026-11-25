@@ -1,7 +1,7 @@
 // Independent interactive story inspired by the woodland-family premise.
 // New prose and artwork; not a transcription or official edition of the picture book.
 export const miceBook = {
-  "id":"demo-mice-moving-home","revision":2,"kind":"demo","theme":"mice",
+  "id":"demo-mice-moving-home","revision":1,"kind":"demo","theme":"mice",
   "title":"14只老鼠 · 大搬家","subtitle":"森林新家的第一盏灯 · 8 幕原创互动故事",
   "author":"参考岩村和朗的森林大家庭主题 · 本站独立故事与插画",
   "description":"十四位家人带着小行李出发，一起过溪、收拾树洞、点亮新家的第一盏灯。",
