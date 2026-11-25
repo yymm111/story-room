@@ -1,12 +1,12 @@
 // Independent interactive story inspired by the woodland-family premise.
 // New prose and artwork; not a transcription or official edition of the picture book.
 export const miceBook = {
-  "id":"demo-mice-moving-home","revision":1,"kind":"demo","theme":"mice",
+  "id":"demo-mice-moving-home","revision":2,"kind":"demo","theme":"mice",
   "title":"14只老鼠 · 大搬家","subtitle":"森林新家的第一盏灯 · 8 幕原创互动故事",
   "author":"参考岩村和朗的森林大家庭主题 · 本站独立故事与插画",
   "description":"十四位家人带着小行李出发，一起过溪、收拾树洞、点亮新家的第一盏灯。",
   "editionNote":"原创互动改编 · 非原版图文","lang":"zh-CN","narration":"ai",
-  "cover":"assets/mice-art/cover.png","shelfCover":"assets/mice-art/cover.png","spine":"#5a7050",
+  "cover":"assets/mice-art/cover.webp","shelfCover":"assets/mice-art/cover.webp","spine":"#5a7050",
   "pages":[
     {"scene":"gather","title":"出发前，先数一数","text":"清早，老鼠一家在门前集合。爷爷奶奶、爸爸妈妈，还有十个孩子，正好十四位。\n小栗提着一盏还没点亮的松果灯：“搬到新家以后，我来挂灯！”\n妈妈笑着说：“先看看，家人是不是都到齐了？”","caption":"找一找十四位家人，点点他们打招呼。","cue":"先看看","action":"count","art":0},
     {"scene":"pack","title":"小行李，大用处","text":"爸爸把工具装进木箱，奶奶带上种子，哥哥抱起软软的毯子。小栗也想搬最大的篮子，可篮子纹丝不动。\n“我帮你拿这一边。”姐姐伸出手。\n两个人一起抬，小篮子稳稳地离开了地面。","caption":"点“合作搬篮子”，看看两双小手怎样一起出力。","cue":"一起抬","action":"carry","art":0},

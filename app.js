@@ -1,11 +1,11 @@
 import {feedbackMotion} from './motion.js?v=motion5';
 import {interactCarmela,narrateCarmela,carmelaActions,carmelaPlayback} from './carmela-scene.js?v=local-paper5';
-import {demoBooks} from './stories.js?v=mice4';
+import {demoBooks} from './stories.js?v=mice5';
 import {importFiles,splitPages,guessLang,recognizeImage} from './importers.js?v=otto9';
 import {Atmosphere} from './atmosphere.js?v=motion5';
 import {mountScene} from './scenes.js?v=otto9';
 import {Narrator} from './narrator.js?v=tone5';
-import {StorybookStage} from './storybook-3d.js?v=motion5';
+import {StorybookStage} from './storybook-3d.js?v=motion6';
 import {collectPin,collectStar,pinsFor,collectedPins,collectedStars,totals} from './souvenirs.js?v=mice4';
 import {LANGS,getLang,setLang,t,applyI18n} from './i18n.js?v=home10';
 
