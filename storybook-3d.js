@@ -1,26 +1,26 @@
+import {motionSeconds as timing, easeInOut as smooth, approach} from './motion.js?v=motion5';
 import {fitCompanionFraming} from './companion-framing.js?v=companions4';
 import {ReferenceCompanionScene} from './reference-companion-scenes.js?v=companion-coordination3';
 import {COMPANION_MANIFESTS,loadCompanionHero,makeCompanionHero} from './companion-assets.js?v=open-smooth7';
 import {loadCarmelaArt,buildCarmelaScene,interactCarmela,animateCarmela,settleCarmela} from './carmela-scene.js?v=local-paper5';
-import {HomeShelf} from './home-shelf.js?v=local-paper5';
+import {HomeShelf} from './home-shelf.js?v=motion5';
 import * as T from './vendor/three/build/three.module.js';
 import {EffectComposer} from './vendor/three/examples/jsm/postprocessing/EffectComposer.js';
 import {RenderPass} from './vendor/three/examples/jsm/postprocessing/RenderPass.js';
 import {UnrealBloomPass} from './vendor/three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {OutputPass} from './vendor/three/examples/jsm/postprocessing/OutputPass.js';
-import {CursorSparkles} from './cursor-sparkles.js?v=otto9';
+import {CursorSparkles} from './cursor-sparkles.js?v=motion5';
 import {OttoScene} from './otto-scene.js?v=otto9';
+import {MiceScene} from './mice-scene.js?v=motion5';
 import {PrincePaperScene} from './prince-paper.js?v=prince-polish1';
 import {PhysicalBook} from './physical-book.js?v=otto9';
-import {ReadingRoom} from './reading-room.js?v=home11';
+import {ReadingRoom} from './reading-room.js?v=mice4';
 import {StoryMaterials} from './story-materials.js?v=local-paper5';
 import {AnimatedActors} from './animated-actors.js?v=otto9';
 import {prepareAsset} from './asset-prep.js?v=otto9';
 
 const clamp=T.MathUtils.clamp;
 const ease=t=>1-Math.pow(1-clamp(t,0,1),3);
-const smooth=t=>{t=clamp(t,0,1);return t*t*(3-2*t);};
-const timing={fold:.55,page:1.3,pop:1.45,open:2.1,close:1.6};
 
 function texture(kind) {
   const canvas=document.createElement('canvas');canvas.width=1024;canvas.height=768;
@@ -46,7 +46,7 @@ function texture(kind) {
 export class StorybookStage {
   constructor(host,{onInteract=()=>{},onPageTurn=()=>{},onSceneArrive=()=>{},onShelfPick=()=>{},onShelfPage=()=>{},onShelfSound=()=>{},onSceneSound=()=>{},onCollect=()=>{}}={}) {
     const bootStart=performance.now();this.bootPhases={};
-    this.initializing=true;this.preparing=true;this.host=host;this.reader=document.getElementById('readerView');this.view='reader';this.onInteract=onInteract;this.onPageTurn=onPageTurn;this.onSceneArrive=onSceneArrive;this.onShelfPick=onShelfPick;this.onShelfPage=onShelfPage;this.onShelfSound=onShelfSound;this.onSceneSound=onSceneSound;this.onCollect=onCollect;this.active=false;this.motion=true;this.time=0;this.last=0;this.page=0;this.actors={};this.particles=[];this.pointer={x:0,y:0};this.orbit={x:0,y:0};
+    this.initializing=true;this.preparing=true;this.host=host;this.reader=document.getElementById('readerView');this.view='reader';this.onInteract=onInteract;this.onPageTurn=onPageTurn;this.onSceneArrive=onSceneArrive;this.onShelfPick=onShelfPick;this.onShelfPage=onShelfPage;this.onShelfSound=onShelfSound;this.onSceneSound=onSceneSound;this.onCollect=onCollect;this.active=false;this.raf=null;this.motion=true;this.time=0;this.last=0;this.page=0;this.actors={};this.particles=[];this.pointer={x:0,y:0};this.orbit={x:0,y:0};
     this.renderer=new T.WebGLRenderer({antialias:true,alpha:false,powerPreference:'high-performance'});this.bootPhases.renderer=performance.now()-bootStart;
     this.renderer.outputColorSpace=T.SRGBColorSpace;
     this.renderer.toneMapping=T.ACESFilmicToneMapping;this.renderer.toneMappingExposure=.98;
@@ -69,7 +69,7 @@ export class StorybookStage {
     this.raycaster=new T.Raycaster();this.ndc=new T.Vector2();this.bindPointer();this.sparkles=new CursorSparkles(this);
     this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(host);this.resize();this.bootPhases.resize=performance.now()-bootStart;
     this.frame=this.frame.bind(this);
-    this.loading=document.getElementById('roomLoading')||document.createElement('div');this.loading.className='room-loading';this.loading.setAttribute('role','status');this.loading.textContent='正在准备故事…';document.body.append(this.loading);this.host.classList.add('is-preparing');this.ready=this.prepare();
+    this.loading=document.getElementById('roomLoading')||document.createElement('div');this.loading.className='room-loading';this.loading.setAttribute('role','status');this.loading.textContent='正在准备书房…';document.body.append(this.loading);this.host.classList.add('is-preparing');this.ready=this.prepare();
   }
 
   async prepare(){
@@ -84,11 +84,12 @@ export class StorybookStage {
     this.room.settle();this.updateFraming();this.settleCamera();this.initializing=false;
     // Keep the entry pose hidden through the initial shadow draw and compositor frames.
     for(let i=0;i<3;i++){this.render();await new Promise(resolve=>requestAnimationFrame(resolve));}
-    this.canvas.dataset.startedAt=String(Math.round(performance.now()));this.loading.remove();this.host.classList.remove('is-preparing');document.body.classList.remove('room-boot');this.preparing=false;if(this.active)this.start();this.resolveReady();
+    this.canvas.dataset.startedAt=String(Math.round(performance.now()));this.loading.hidden=true;this.host.classList.remove('is-preparing');document.body.classList.remove('room-boot');this.preparing=false;if(this.active)this.start();this.resolveReady();
     setTimeout(()=>{if(this.view==='shelf'&&!this.ottoArt.ready)this.ottoArt.ensureLoaded();},4000);
   }
 
   loadBookAssets(book){
+    if(book.theme==='mice'){this.miceArt||=new MiceScene(this);return this.miceArt.ensureLoaded();}
     if(this.companionArts[book.theme])return this.companionArts[book.theme].ensureLoaded();
     if(book.theme==='carmela')return loadCarmelaArt();
     if(book.theme==='otto')return this.ottoArt.ensureLoaded();
@@ -319,16 +320,16 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     this.clearStoryFocus();this.paperArt?.stopNarration?.();
     if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.sparkles?.setTarget(null);this.paperArt?.hover?.(null);this.canvas.style.cursor='grab';
     if(this.turn||this.enter)turn=false;
-    if(this.turn){this.disposeGroup(this.turn.mesh);this.disposeGroup(this.turn.old);this.turn=null;}
+    if(this.turn){this.disposeGroup(this.turn.mesh);this.disposeGroup(this.turn.old);this.turn.land?.();this.turn=null;}
     this.enter=null;this.reader?.classList.remove('is-turning');
-    const oldPaper=this.paperState;this.paperState=null;this.bookId=book.id;this.coverBook=book;this.refreshCover();this.page=index;const previous=this.props;previous.visible=true;previous.rotation.x=0;previous.scale.setScalar(1);
+    const oldPaper=this.paperState,oldArt=this.paperArt;this.paperState=null;this.bookId=book.id;this.coverBook=book;this.refreshCover();this.page=index;const previous=this.props;previous.visible=true;previous.rotation.x=0;previous.scale.setScalar(1);
     this.props=new T.Group();this.props.position.set(3.55,.85,-.4);this.scene.add(this.props);this.actors={};
-    this.paperArt=this.companionArts[book.theme]||(book.theme==='otto'?this.ottoArt:this.princeArt);this.room.setTheme(book.theme==='otto');
-    if(book.theme==='nia'||book.theme==='fin'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);this.paperArt.build(page);}else if(book.theme==='carmela'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);buildCarmelaScene(this,page);}else if(book.theme==='otto'){this.props.position.set(3.9,this.physical.topY+.012,0);this.ottoArt.build(page);}else if(book.theme==='prince'){this.props.position.set(3.9,this.physical.topY+.012,0);this.paperArt.build(page);}else this.buildOtherScene(book,page);
+    this.paperArt=book.theme==='mice'?this.miceArt:this.companionArts[book.theme]||(book.theme==='otto'?this.ottoArt:this.princeArt);this.room.setTheme(book.theme==='otto');
+    if(book.theme==='mice'||book.theme==='nia'||book.theme==='fin'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);this.paperArt.build(page);}else if(book.theme==='carmela'){this.props.position.set(3.9,this.physical.topY+.012,0);this.room.setWall(book.id);buildCarmelaScene(this,page);}else if(book.theme==='otto'){this.props.position.set(3.9,this.physical.topY+.012,0);this.ottoArt.build(page);}else if(book.theme==='prince'){this.props.position.set(3.9,this.physical.topY+.012,0);this.paperArt.build(page);}else this.buildOtherScene(book,page);
     this.updateFraming();
     if(turn&&this.motion){
       const leaf=this.turningLeaf(forward);leaf.visible=false;
-      this.turn={mesh:leaf,start:this.time,forward,old:previous,oldPaper,phase:'fold',duration:timing.fold+timing.page+timing.pop};this.scene.add(leaf);this.props.visible=false;
+      this.turn={mesh:leaf,start:this.time,startedAt:performance.now(),forward,old:previous,oldPaper,oldArt,phase:'fold',duration:timing.fold+timing.page+timing.pop};this.scene.add(leaf);this.props.visible=false;
       if(this.paperState)this.paperArt.fold(this.paperState,0);
       this.reader?.classList.add('is-turning');
     }else{
@@ -364,27 +365,42 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     const framing=JSON.stringify({free:[Math.round(x),Math.round(y),Math.round(fw),Math.round(fh)],distance:+distance.toFixed(2)});if(this.canvas.dataset.framing!==framing)this.canvas.dataset.framing=framing;
   }
   open(){
+    this.lookCloser=false;this.orbit={x:0,y:0};
     const fromShelf=this.view==='shelf';this.view='reader';this.resize();this.homeShelf?.hide();this.room.setHome(false);if(!this.motion)this.room.settle();this.book.visible=true;this.room.bookDisplayGroup.visible=true;
     this.bookMotion?.resolve?.();this.bookMotion=null;this.finishTurn();this.bookOpen=this.motion?0:1;this.applyBookPose();this.updateFraming();
     this.reader?.classList.remove('book-closing');
     if(this.motion){this.props.visible=false;if(this.paperState)this.paperArt.fold(this.paperState,0);this.bookMotion={type:'open',start:this.time,startedAt:performance.now(),duration:timing.open};this.reader?.classList.add('book-opening');if(!fromShelf)this.settleCamera();this.start();}else this.settleCamera();
   }
-  showShelf(){this.clearStoryFocus();this.paperArt?.stopNarration?.();this.sparkles?.clear();this.view='shelf';this.resize();this.homeShelf?.show();this.room.setHome(true);this.room.setTheme(false);if(!this.motion)this.room.settle();this.book.visible=false;this.props.visible=false;this.room.bookDisplayGroup.visible=false;this.orbit={x:0,y:0};this.pointer={x:0,y:0};if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.updateFraming();if(!this.motion)this.settleCamera();this.start();}
+  showShelf(){this.clearStoryFocus();this.paperArt?.stopNarration?.();this.sparkles?.clear();this.view='shelf';this.resize();this.homeShelf?.show();this.room.setHome(true);this.room.setTheme(false);if(!this.motion)this.room.settle();this.book.visible=false;this.props.visible=false;this.room.bookDisplayGroup.visible=false;this.orbit={x:0,y:0};this.pointer={x:0,y:0};this.draggingCamera=false;if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor?.classList.remove('is-visible');this.updateFraming();if(!this.motion)this.settleCamera();this.start();}
   close(){
-    const wasOpening=this.bookMotion?.type==='open';this.bookMotion?.resolve?.();this.bookMotion=null;this.finishTurn();
+    const wasOpening=this.bookMotion?.type==='open';
+    let foldFrom=this.paperState?.fold??1;
+    this.bookMotion?.resolve?.();this.bookMotion=null;
+    if(this.turn){
+      const turn=this.turn,oldVisible=turn.old.visible;
+      if(oldVisible){this.disposeGroup(this.props);this.props=turn.old;this.paperState=turn.oldPaper;this.paperArt=turn.oldArt;foldFrom=this.paperState?.fold??this.props.scale.y;}
+      else this.disposeGroup(turn.old);
+      this.disposeGroup(turn.mesh);turn.land?.();this.turn=null;
+    }
+    this.enter=null;this.reader?.classList.remove('is-turning');
     if(!this.motion){this.bookOpen=0;this.applyBookPose();this.props.visible=false;this.updateFraming();this.settleCamera();this.render();return Promise.resolve();}
     this.reader?.classList.remove('book-opening');this.reader?.classList.add('book-closing');this.framingRect=null;
-    return new Promise(resolve=>{this.bookMotion={type:'close',start:this.time,startedAt:performance.now(),from:this.bookOpen,fold:wasOpening?0:timing.fold,duration:timing.close,resolve};this.start();});
+    return new Promise(resolve=>{this.bookMotion={type:'close',start:this.time,startedAt:performance.now(),from:this.bookOpen,fold:wasOpening||!this.props.visible?0:timing.fold*foldFrom,foldFrom,duration:timing.close*Math.max(.35,this.bookOpen),resolve};this.start();});
   }
-  finishTurn(){this.updateLeftPage();if(this.turn){this.disposeGroup(this.turn.mesh);this.disposeGroup(this.turn.old);this.turn=null;}this.enter=null;this.props.visible=true;this.props.scale.setScalar(1);this.props.rotation.x=0;if(this.paperState)this.paperArt.fold(this.paperState,1);this.reader?.classList.remove('is-turning');this.canvas.dataset.phase='rest';}
+  finishTurn(){this.updateLeftPage();if(this.turn){this.disposeGroup(this.turn.mesh);this.disposeGroup(this.turn.old);this.turn.land?.();this.turn=null;}this.enter=null;this.props.visible=true;this.props.scale.setScalar(1);this.props.rotation.x=0;if(this.paperState)this.paperArt.fold(this.paperState,1);this.reader?.classList.remove('is-turning');this.canvas.dataset.phase='rest';}
   completeMotion(){const closing=this.bookMotion?.type==='close';this.bookMotion?.resolve?.();this.bookMotion=null;this.bookOpen=closing?0:1;this.applyBookPose();this.reader?.classList.remove('book-opening','book-closing');this.finishTurn();this.props.visible=!closing;this.onSceneArrive();this.updateFraming();this.settleCamera();this.resolveReady();this.render();}
-  configure(motion){this.motion=motion;if(!motion){this.clearStoryFocus();this.paperArt?.stopNarration?.();}if(!motion&&this.paperState)this.paperArt?.settleStatic?.(this.paperState);if(!motion)settleCarmela(this);if(!motion)this.sparkles?.clear();this.updateFraming();if(!motion){cancelAnimationFrame(this.raf);for(const p of this.particles)this.disposeGroup(p.group);this.particles=[];this.room?.settle();this.homeShelf?.static();if(this.room?.dust)this.room.dust.visible=false;this.cursor?.classList.remove('is-visible');if(this.view==='shelf'){this.props.visible=false;this.settleCamera();this.render();}else this.completeMotion();}else if(this.active)this.start();}
+  configure(motion){if(this.motion===motion)return;this.motion=motion;if(!motion){this.clearStoryFocus();this.paperArt?.stopNarration?.();}if(!motion&&this.paperState)this.paperArt?.settleStatic?.(this.paperState);if(!motion)settleCarmela(this);if(!motion)this.sparkles?.clear();this.updateFraming();if(!motion){cancelAnimationFrame(this.raf);this.raf=null;for(const p of this.particles)this.disposeGroup(p.group);this.particles=[];this.room?.settle();this.homeShelf?.static();if(this.room?.dust)this.room.dust.visible=false;this.cursor?.classList.remove('is-visible');if(this.view==='shelf'){this.props.visible=false;this.settleCamera();this.render();}else this.completeMotion();}else if(this.active)this.start();}
   get busy(){return !!(this.preparing||this.bookMotion||this.turn||this.enter);}
+  whenPageLands(){
+    const turn=this.turn;
+    if(!turn||turn.phase==='unfold')return Promise.resolve();
+    return turn.landed ||= new Promise(resolve=>{turn.land=resolve;});
+  }
   whenReady(){return this.busy?new Promise(resolve=>(this.readyWaiters||(this.readyWaiters=[])).push(resolve)):Promise.resolve();}
   resolveReady(){if(!this.busy)for(const resolve of (this.readyWaiters||[]).splice(0))resolve();}
   settleCamera(){this.camera.position.copy(this.cameraGoal);this.camera.position.x+=Math.sin(this.orbit.x)*5;this.camera.position.y+=this.orbit.y*5;this.target.copy(this.lookGoal);this.camera.lookAt(this.target);this.render();}
-  start(){if(document.hidden){this.pause();return;}this.active=true;if(this.initializing||this.preparing||this.readerWarmup)return;if(this.motion){cancelAnimationFrame(this.raf);this.last=0;this.raf=requestAnimationFrame(this.frame);}else this.render();}
-  pause(){this.active=false;cancelAnimationFrame(this.raf);}
+  start(){if(document.hidden){this.pause();return;}this.active=true;if(this.initializing||this.preparing||this.readerWarmup)return;if(this.motion){if(this.raf===null){this.last=0;this.raf=requestAnimationFrame(this.frame);}}else this.render();}
+  pause(){this.active=false;cancelAnimationFrame(this.raf);this.raf=null;}
   clearStoryFocus(owner){if(!owner||this.storyFocus?.owner===owner)this.storyFocus=null;}
   focusStoryObject(entry,scale=7.5,owner=this.paperState){
     if(!this.motion||this.busy||this.view!=='reader'||this.lookCloser||owner!==this.paperState)return false;
@@ -400,28 +416,43 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     this.storyFocus={pos,target:world.clone(),until:this.time+3,ease:1.15,owner};this.lastStoryFocusAt=this.time;return true;
   }
   toggleZoom(){this.clearStoryFocus();this.lookCloser=!this.lookCloser;this.updateFraming();if(!this.motion)this.settleCamera();this.render();return this.lookCloser;}
-  resize(){this.framingRect=null;const rect=this.host.getBoundingClientRect();if(!rect.width||!rect.height)return;const ratio=this.view==='shelf'?Math.min(devicePixelRatio,2,Math.sqrt(6000000/(rect.width*rect.height))):Math.min(devicePixelRatio,1.75,Math.sqrt(5000000/(rect.width*rect.height)));if(this.viewportWidth===rect.width&&this.viewportHeight===rect.height&&this.viewportRatio===ratio)return;this.viewportWidth=rect.width;this.viewportHeight=rect.height;this.viewportRatio=ratio;this.renderer.setDrawingBufferSize(rect.width,rect.height,ratio);this.composer?.setPixelRatio(ratio);this.composer?.setSize(rect.width,rect.height);this.camera.aspect=rect.width/rect.height;this.camera.updateProjectionMatrix();this.updateFraming();if(!this.motion){this.room?.settle();this.settleCamera();}this.render();}
-  render(){if(this.initializing||this.readerWarmup)return;const now=performance.now(),shadowInterval=this.busy||this.particles.length?1000/60:1000/30;if(!this.shadowRenderedAt||now-this.shadowRenderedAt>=shadowInterval||!this.motion){this.renderer.shadowMap.needsUpdate=true;this.shadowRenderedAt=now;}this.composer?this.composer.render():this.renderer.render(this.scene,this.camera);}
+  resize(){this.framingRect=null;const rect=this.host.getBoundingClientRect();if(!rect.width||!rect.height)return;const compact=rect.width<=900;this.compactViewport=compact;const ratio=compact?Math.min(devicePixelRatio,1.35):this.view==='shelf'?Math.min(devicePixelRatio,2,Math.sqrt(6000000/(rect.width*rect.height))):Math.min(devicePixelRatio,1.75,Math.sqrt(5000000/(rect.width*rect.height)));if(this.viewportWidth===rect.width&&this.viewportHeight===rect.height&&this.viewportRatio===ratio)return;this.viewportWidth=rect.width;this.viewportHeight=rect.height;this.viewportRatio=ratio;this.renderer.setDrawingBufferSize(rect.width,rect.height,ratio);this.composer?.setPixelRatio(Math.min(ratio,1.25));this.composer?.setSize(rect.width,rect.height);this.camera.aspect=rect.width/rect.height;this.camera.updateProjectionMatrix();this.updateFraming();if(!this.motion){this.room?.settle();this.settleCamera();}this.render();}
+  render(immediate=false){if(this.initializing||this.readerWarmup||(!immediate&&this.raf!==null&&this.active&&this.motion))return;const now=performance.now(),shadowInterval=this.view==='shelf'?1000/24:1000/30;if(!this.shadowRenderedAt||now-this.shadowRenderedAt>=shadowInterval||!this.motion){this.renderer.shadowMap.needsUpdate=true;this.shadowRenderedAt=now;}if(this.composer&&!this.compactViewport)this.composer.render();else this.renderer.render(this.scene,this.camera);}
 
   bindPointer(){
     let down=null;
     this.cursor=document.createElement('div');this.cursor.className='story-pointer';this.cursor.setAttribute('aria-hidden','true');this.cursor.innerHTML='<span>✧</span><small></small>';document.body.append(this.cursor);
     const clearHover=()=>{this.homeShelf?.clearHover();this.paperArt?.hover?.(null);if(this.hoverNode)this.hoverNode.userData.hover=false;this.hoverNode=null;this.cursor.classList.remove('is-visible');this.sparkles?.setTarget(null);this.canvas.style.cursor='grab';};
-    this.canvas.addEventListener('pointerdown',event=>{this.clearStoryFocus();down={x:event.clientX,y:event.clientY,ox:this.orbit.x,oy:this.orbit.y,lastX:event.clientX};
+    this.canvas.addEventListener('pointerdown',event=>{if(down||event.button!==0||!event.isPrimary)return;this.clearStoryFocus();down={pointerId:event.pointerId,x:event.clientX,y:event.clientY,ox:this.orbit.x,oy:this.orbit.y,lastX:event.clientX};
       if(this.view==='reader'&&this.paperState&&!this.busy){const hit=this.pick(event),entry=this.paperArt.dragEntry?this.paperArt.dragEntry(hit?.object):this.paperArt.entry?.(hit?.object);if(hit&&entry?.onDrag)down.sceneDrag={entry,plane:new T.Plane().setFromNormalAndCoplanarPoint(this.camera.getWorldDirection(new T.Vector3()),hit.point)};}
       this.cursor.classList.add('is-pressed');try{this.canvas.setPointerCapture(event.pointerId);}catch{}});
     this.canvas.addEventListener('pointermove',event=>{
+      if(down&&event.pointerId!==down.pointerId)return;
       const rect=this.canvas.getBoundingClientRect();this.pointer.over=true;this.pointer.x=(event.clientX-rect.left)/rect.width-.5;this.pointer.y=(event.clientY-rect.top)/rect.height-.5;
-      if(down&&this.view==='shelf'&&this.homeShelf?.api){if(Math.hypot(event.clientX-down.x,event.clientY-down.y)>7){clearHover();this.canvas.style.cursor='grabbing';}this.homeShelf.dragBy((event.clientX-down.lastX)/rect.width*5.6);down.lastX=event.clientX;return;}
+      if(down&&this.view==='shelf'&&this.homeShelf?.api){if(!down.shelfDrag&&Math.abs(event.clientX-down.x)<7)return;if(!down.shelfDrag){down.shelfDrag=true;clearHover();this.canvas.style.cursor='grabbing';}this.homeShelf.dragBy((event.clientX-down.lastX)/rect.width*5.6);down.lastX=event.clientX;return;}
       if(down?.sceneDrag){if(down.sceneDrag.entry.companion&&Math.hypot(event.clientX-down.x,event.clientY-down.y)<7)return;this.ndc.set((event.clientX-rect.left)/rect.width*2-1,-(event.clientY-rect.top)/rect.height*2+1);this.raycaster.setFromCamera(this.ndc,this.camera);const point=this.raycaster.ray.intersectPlane(down.sceneDrag.plane,new T.Vector3());if(point){down.sceneDrag.entry.onDrag(point);down.sceneDrag.moved=true;}this.canvas.style.cursor='grabbing';if(!this.motion){if(!down.sceneDrag.entry.companion)this.paperArt.animate(this.paperState,.08,this.time);this.render();}return;}
-      if(down){const limit=this.view==='reader' ? .22 : .5;this.orbit.x=clamp(down.ox+(event.clientX-down.x)*.003,-limit,limit);this.orbit.y=clamp(down.oy+(event.clientY-down.y)*.002,-.12,.18);if(!this.motion)this.settleCamera();return;}
+      if(down){if(!this.draggingCamera&&Math.hypot(event.clientX-down.x,event.clientY-down.y)<7)return;this.draggingCamera=true;const limit=this.view==='reader' ? .22 : .5;const oldX=this.orbit.x,oldY=this.orbit.y;this.orbit.x=clamp(down.ox+(event.clientX-down.x)*.003,-limit,limit);this.orbit.y=clamp(down.oy+(event.clientY-down.y)*.002,-.12,.18);if(this.motion){this.camera.position.x+=(Math.sin(this.orbit.x)-Math.sin(oldX))*5;this.camera.position.y+=(this.orbit.y-oldY)*5;}else this.settleCamera();return;}
       if(this.busy){clearHover();return;}if(this.view==='shelf'&&this.homeShelf?.api){const shelfHoverNow=performance.now();if(shelfHoverNow-(this.lastShelfHoverAt||0)<32)return;this.lastShelfHoverAt=shelfHoverNow;const target=this.homeShelf.hover(event);this.sparkles?.setTarget(target,event);this.canvas.style.cursor=target?(this.sparkles?.enabled?'none':'pointer'):'grab';this.cursor.style.left=Math.min(innerWidth-190,event.clientX)+'px';this.cursor.style.top=Math.min(innerHeight-70,event.clientY)+'px';this.cursor.querySelector('small').textContent=target?.label||'';this.cursor.classList.toggle('is-visible',!!target&&event.pointerType!=='touch');if(!this.motion)this.render();return;}const hoverNow=performance.now();if(hoverNow-(this.lastHoverAt||0)<32)return;this.lastHoverAt=hoverNow;const hit=this.pick(event);let node=hit?.object;while(node&&!node.userData.action&&!node.userData.roomAction)node=node.parent;
       if(this.hoverNode&&this.hoverNode!==node)this.hoverNode.userData.hover=false;this.hoverNode=node||null;if(node)node.userData.hover=true;if(this.paperArt.entry)this.paperArt.hover?.(this.paperArt.entry(node));
       this.sparkles?.setTarget(node,event);this.canvas.style.cursor=node?(this.sparkles?.enabled?'none':'pointer'):'grab';this.cursor.style.left=Math.min(innerWidth-170,Math.max(14,event.clientX))+'px';this.cursor.style.top=Math.min(innerHeight-70,event.clientY)+'px';
       const labels={prince:'小王子 · 打个招呼',rose:'玫瑰 · 打开玻璃罩',fox:'小狐狸 · 打个招呼',lamp:'路灯 · 轻点开关',well:'水井 · 看看星光',plane:'小飞机 · 准备起飞'};this.cursor.querySelector('small').textContent=node?.userData.label||labels[node?.userData.action]||'';this.cursor.classList.toggle('is-visible',!!node&&event.pointerType!=='touch');
     });
-    this.canvas.addEventListener('pointerup',event=>{this.cursor.classList.remove('is-pressed');if(this.canvas.hasPointerCapture(event.pointerId))this.canvas.releasePointerCapture(event.pointerId);if(down){down.sceneDrag?.entry.onDragEnd?.();if(down.sceneDrag&&!this.motion&&Math.hypot(event.clientX-down.x,event.clientY-down.y)>=7){if(!down.sceneDrag.entry.companion)this.paperArt.settleStatic?.(this.paperState);this.render();}if(Math.hypot(event.clientX-down.x,event.clientY-down.y)<7&&!(down.sceneDrag?.entry.companion&&down.sceneDrag.moved))this.interact(event);else if(this.view==='shelf')this.homeShelf?.settle();}down=null;});
-    this.canvas.addEventListener('pointercancel',()=>{down?.sceneDrag?.entry.onDragEnd?.();down=null;this.cursor.classList.remove('is-pressed');clearHover();});
+    const endPointer=(event,cancelled=false)=>{
+      if(!down||event.pointerId!==down.pointerId)return;
+      const gesture=down,cameraDrag=this.draggingCamera;down=null;this.draggingCamera=false;
+      this.cursor.classList.remove('is-pressed');
+      if(this.canvas.hasPointerCapture(event.pointerId))this.canvas.releasePointerCapture(event.pointerId);
+      gesture.sceneDrag?.entry.onDragEnd?.();
+      if(gesture.shelfDrag)this.homeShelf?.settle();
+      else if(gesture.sceneDrag?.moved&&!this.motion){
+        if(!gesture.sceneDrag.entry.companion)this.paperArt.settleStatic?.(this.paperState);
+        this.render();
+      }else if(!cancelled&&!cameraDrag&&!gesture.sceneDrag?.moved&&Math.hypot(event.clientX-gesture.x,event.clientY-gesture.y)<7)this.interact(event);
+      if(cancelled)clearHover();
+    };
+    this.canvas.addEventListener('pointerup',event=>endPointer(event));
+    this.canvas.addEventListener('pointercancel',event=>endPointer(event,true));
+    this.canvas.addEventListener('lostpointercapture',event=>endPointer(event,true));
     this.canvas.addEventListener('pointerleave',()=>{this.pointer.over=false;if(!down){this.pointer.x=0;this.pointer.y=0;}clearHover();});
     this.canvas.addEventListener('wheel',event=>{if(this.view!=='shelf'||this.busy)return;event.preventDefault();const now=performance.now();if(now-(this.lastShelfWheel||0)<500)return;const delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;if(Math.abs(delta)<9)return;this.lastShelfWheel=now;this.homeShelf.scrollTo(this.homeShelf.page+(delta>0?1:-1));},{passive:false});
     // Keyboard access to the same small-object actions; controls reveal on focus.
@@ -451,9 +482,10 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     if(action==='prince'){this.actors.princeTap=this.time;this.onInteract('小王子在和你打招呼。');}
     this.burst(hit.point);if(!this.motion)this.render();
   }
-  burst(point){const group=new T.Group();this.scene.add(group);for(let i=0;i<12;i++){const star=new T.Mesh(new T.OctahedronGeometry(.06,0),new T.MeshBasicMaterial({color:'#fbe39c',transparent:true,opacity:1}));star.position.copy(point);star.userData.velocity=new T.Vector3(Math.sin(i*2.4)*.9,.8+i%3*.3,Math.cos(i*2.4)*.7);group.add(star);}this.particles.push({group,start:this.time});}
+  burst(point){const group=new T.Group();this.scene.add(group);for(let i=0;i<5;i++){const star=new T.Mesh(new T.OctahedronGeometry(.06,0),new T.MeshBasicMaterial({color:'#fbe39c',transparent:true,opacity:1}));star.position.copy(point);star.userData.velocity=new T.Vector3(Math.sin(i*2.4)*.9,.8+i%3*.3,Math.cos(i*2.4)*.7);group.add(star);}this.particles.push({group,start:this.time});}
 
   frame(now){
+    this.raf=null;
     if(!this.active||!this.motion)return;
     this.raf=requestAnimationFrame(this.frame);
     const dt=this.last?Math.min(.05,(now-this.last)/1000):.016;this.last=now;this.time+=dt;const t=this.time,a=this.actors;
@@ -461,9 +493,9 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
       const motion=this.bookMotion,age=motion.startedAt===undefined?t-motion.start:Math.max(0,(now-motion.startedAt)/1000);
       if(motion.type==='open'){
         const p=clamp(age/motion.duration,0,1);this.bookOpen=smooth(p);this.props.visible=false;this.canvas.dataset.phase='book-open';
-        if(p===1){this.bookMotion=null;this.props.visible=true;if(this.paperState)this.enter={start:t,duration:timing.pop};this.reader?.classList.remove('book-opening');this.onSceneArrive();}
+        if(p===1){this.bookMotion=null;this.props.visible=true;if(this.paperState)this.enter={start:t,duration:timing.pop};else this.canvas.dataset.phase='rest';this.reader?.classList.remove('book-opening');this.onSceneArrive();}
       }else{
-        if(age<motion.fold){if(this.paperState)this.paperArt.fold(this.paperState,Math.pow(1-age/motion.fold,2));else this.props.scale.y=Math.max(.001,1-age/motion.fold);}
+        if(age<motion.fold){if(this.paperState)this.paperArt.fold(this.paperState,motion.foldFrom*(1-smooth(age/motion.fold)));else this.props.scale.y=Math.max(.001,motion.foldFrom*(1-smooth(age/motion.fold)));}
         else{this.props.visible=false;const p=clamp((age-motion.fold)/motion.duration,0,1);this.bookOpen=motion.from*(1-smooth(p));if(p===1){this.bookMotion=null;this.reader?.classList.remove('book-closing');motion.resolve();}}
         this.canvas.dataset.phase='book-close';
       }
@@ -471,9 +503,9 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     }
     if(this.storyFocus&&(this.storyFocus.owner!==this.paperState||t>=this.storyFocus.until||this.busy||this.view!=='reader'))this.storyFocus=null;
     const focus=this.storyFocus,cameraPos=(this.cameraScratch||(this.cameraScratch=new T.Vector3())).copy(focus?focus.pos:this.cameraGoal);
-    if(!focus){cameraPos.x+=Math.sin(this.orbit.x)*5+this.pointer.x*1.87;cameraPos.y+=this.orbit.y*5+this.pointer.y*.94;}
-    if(this.turn?.phase==='page')cameraPos.y+=Math.sin(clamp((t-this.turn.start-timing.fold)/timing.page,0,1)*Math.PI)*.42;
-    const cameraBlend=1-Math.exp(-dt*(focus?focus.ease:1.6));
+    if(!focus){cameraPos.x+=Math.sin(this.orbit.x)*5;cameraPos.y+=this.orbit.y*5;}
+    if(this.turn?.phase==='page')cameraPos.y+=Math.sin(clamp(((now-this.turn.startedAt)/1000-timing.fold)/timing.page,0,1)*Math.PI)*.42;
+    const cameraBlend=approach(focus?focus.ease:1.6,dt);
     this.camera.position.lerp(cameraPos,cameraBlend);this.target.lerp(focus?focus.target:this.lookGoal,cameraBlend);this.camera.lookAt(this.target);
     if(a.cloud)a.cloud.position.x=-2.1+Math.sin(t*.18)*.45;
     if(a.planet)a.planet.rotation.y=Math.sin(t*.065)*.055;
@@ -495,20 +527,20 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     if(a.bubbles)a.bubbles.forEach((bubble,i)=>{bubble.position.set(Math.sin(i*2.4+t*.2)*3,.2+((t*.34+i*.49)%4.8),.4+Math.cos(i*1.7)*1.7);});
     if(this.enter){const p=clamp((t-this.enter.start)/this.enter.duration,0,1);this.paperArt.fold(this.paperState,p);this.canvas.dataset.phase='unfold';if(p===1){this.enter=null;this.canvas.dataset.phase='rest';}}
     if(this.turn){
-      const turn=this.turn,age=t-turn.start;
+      const turn=this.turn,age=(now-turn.startedAt)/1000;
       if(age<timing.fold){
-        turn.phase='fold';const p=Math.pow(1-clamp(age/timing.fold,0,1),2);
-        if(turn.oldPaper)this.paperArt.fold(turn.oldPaper,p);else turn.old.scale.y=Math.max(.01,p);
+        turn.phase='fold';const p=1-smooth(age/timing.fold);
+        if(turn.oldPaper)turn.oldArt.fold(turn.oldPaper,p);else turn.old.scale.y=Math.max(.01,p);
       }else if(age<timing.fold+timing.page){
         if(turn.phase!=='page'){this.physical.prepareTurn(this.page,(this.coverBook?.pages.length||12)+1);turn.landX=new Float32Array(37);turn.landY=new Float32Array(37);for(let j=0;j<=36;j++){if(turn.forward){const p=this.physical.landing(j/36,this.page);turn.landX[j]=p.x;turn.landY[j]=p.y+.012;}else{turn.landX[j]=7.8*j/36;turn.landY[j]=this.physical.topY+.006;}}this.onPageTurn();}
         turn.phase='page';turn.old.visible=false;turn.mesh.visible=true;this.props.visible=false;
         const p=clamp((age-timing.fold)/timing.page,0,1),theta=Math.PI*smooth(p),curve=turn.mesh.userData,xx=curve.curveX,yy=curve.curveY;
-        xx[0]=yy[0]=0;for(let i=1;i<=36;i++){const angle=theta+.65*Math.sin(theta)*Math.sin((i-.5)/36*Math.PI/2);xx[i]=xx[i-1]+7.8/36*Math.cos(angle);yy[i]=yy[i-1]+7.8/36*Math.sin(angle);}
+        xx[0]=yy[0]=0;for(let i=1;i<=36;i++){const angle=theta+.78*Math.sin(theta)*Math.sin((i-.5)/36*Math.PI/2);xx[i]=xx[i-1]+7.8/36*Math.cos(angle);yy[i]=yy[i-1]+7.8/36*Math.sin(angle);}
         const geometry=turn.mesh.userData.sheet.geometry,position=geometry.attributes.position,base=geometry.userData.base;
-        for(let i=0;i<position.count;i++){const u=clamp(Math.abs(base[i*3])/7.8*36,0,36),lo=Math.floor(u),hi=Math.min(36,lo+1),f=u-lo;let x=(turn.forward?1:-1)*T.MathUtils.lerp(xx[lo],xx[hi],f),y=.90+.012+T.MathUtils.lerp(yy[lo],yy[hi],f);const landX=T.MathUtils.lerp(turn.landX[lo],turn.landX[hi],f),landY=T.MathUtils.lerp(turn.landY[lo],turn.landY[hi],f),settle=Math.pow(clamp((p-.72)/.28,0,1),2);x=T.MathUtils.lerp(x,landX,settle);y=T.MathUtils.lerp(y,landY,settle);const support=this.physical.surfaceY(x);if(support!==null)y=Math.max(y,support+.012);position.setXYZ(i,x,y-.90,base[i*3+2]+Math.sin(p*Math.PI)*Math.sin(u/36*Math.PI)*.045);}
+        for(let i=0;i<position.count;i++){const u=clamp(Math.abs(base[i*3])/7.8*36,0,36),lo=Math.floor(u),hi=Math.min(36,lo+1),f=u-lo;let x=(turn.forward?1:-1)*T.MathUtils.lerp(xx[lo],xx[hi],f),y=.90+.012+T.MathUtils.lerp(yy[lo],yy[hi],f);const landX=T.MathUtils.lerp(turn.landX[lo],turn.landX[hi],f),landY=T.MathUtils.lerp(turn.landY[lo],turn.landY[hi],f),settle=smooth((p-.67)/.33);x=T.MathUtils.lerp(x,landX,settle);y=T.MathUtils.lerp(y,landY,settle);const support=this.physical.surfaceY(x);if(support!==null)y=Math.max(y,support+.012);position.setXYZ(i,x,y-.90,base[i*3+2]+Math.sin(p*Math.PI)*Math.sin(u/36*Math.PI)*.045);}
         position.needsUpdate=true;geometry.computeVertexNormals();
       }else{
-        if(turn.phase!=='unfold'){this.updateLeftPage();this.onSceneArrive();}turn.phase='unfold';turn.mesh.visible=false;turn.old.visible=false;this.props.visible=true;
+        if(turn.phase!=='unfold'){this.updateLeftPage();turn.land?.();}turn.phase='unfold';turn.mesh.visible=false;turn.old.visible=false;this.props.visible=true;
         const p=clamp((age-timing.fold-timing.page)/timing.pop,0,1);if(this.paperState)this.paperArt.fold(this.paperState,p);else this.props.scale.y=Math.max(.01,ease(p));
         if(p===1)this.finishTurn();
       }
@@ -518,6 +550,6 @@ if(this.coverBook.theme==='otto'){if(!this.ottoCover){this.ottoCover=new Image()
     if(this.view==='reader'&&this.paperState)this.paperArt.animate(this.paperState,dt,t);this.animatedActors?.update(dt);animateCarmela(this,t);this.room.update(dt,t);this.homeShelf?.update(dt,t);
     this.resolveReady();
     for(let i=this.particles.length-1;i>=0;i--){const item=this.particles[i],age=t-item.start;for(const star of item.group.children){star.position.addScaledVector(star.userData.velocity,dt);star.material.opacity=Math.max(0,1-age/1.2);star.rotation.y+=dt*2;}if(age>1.2){this.disposeGroup(item.group);this.particles.splice(i,1);}}
-    this.canvas.dataset.frames=String((Number(this.canvas.dataset.frames)||0)+1);if(!this.frameStats)this.frameStats={start:now,count:0};this.frameStats.count++;if(now-this.frameStats.start>2000){this.canvas.dataset.fps=(this.frameStats.count*1000/(now-this.frameStats.start)).toFixed(1);this.frameStats={start:now,count:0};}this.render();
+    this.frameCount=(this.frameCount||0)+1;if(!this.frameStats)this.frameStats={start:now,count:0};this.frameStats.count++;if(now-this.frameStats.start>2000){this.canvas.dataset.frames=String(this.frameCount);this.canvas.dataset.fps=(this.frameStats.count*1000/(now-this.frameStats.start)).toFixed(1);this.frameStats={start:now,count:0};}this.render(true);
   }
 }

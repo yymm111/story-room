@@ -1,3 +1,4 @@
+import {easeInOut, approach} from './motion.js?v=motion5';
 // Adapted from https://storycomet.app/src/shelf.js for this local reference study.
 /* The bookshelf on the wall behind the table: two long open planks on painted brackets, the
    library's books standing on the lower one (covers to the front) and a row of figurines on
@@ -350,9 +351,10 @@ export function makeShelf({ books, textures }) {
     pageOf(id) { const b = byId(id); return b ? b.page : 0; },
     /** slide the shelf to show another three books */
     scrollTo(page, immediate = false) {
+      slide.free = false;
       slide.page = Math.max(0, Math.min(pages - 1, page));
       slide.target = -slide.page * PER_PAGE * SPACING;
-      if (immediate) slide.x = slide.target;
+      if (immediate) { slide.x = slide.target; slider.position.x = slide.x; }
       spawnToysInView();
       loadToysInView();
       return slide.page;
@@ -364,11 +366,14 @@ export function makeShelf({ books, textures }) {
     get minX() { return -(pages - 1) * PER_PAGE * SPACING; },
     /** slide freely under a finger or a wheel: the shelf follows, with a soft stop at the ends */
     dragBy(dx) {
-      let x = slide.target + dx;
+      slide.dragX = (slide.free ? slide.dragX : slide.x) + dx;
+      let x = slide.dragX;
       const over = x > 0 ? x : x < api.minX ? x - api.minX : 0;
       if (over) x = (x - over) + over * 0.35;     // rubber-band past the ends
       slide.target = x;
       slide.free = true;
+      slide.x = x;
+      slider.position.x = x;
     },
     /** let go: settle on the nearest row */
     settle(velocity = 0) {
@@ -408,6 +413,7 @@ export function makeShelf({ books, textures }) {
       const b = byId(id);
       if (!b) return Promise.resolve();
       return new Promise((resolve) => {
+        b.flight?.resolve();
         b.flight = {
           from: { position: b.mesh.position.clone(), rotation: b.mesh.rotation.clone(), scale: b.mesh.scale.x },
           to: pose, t: 0, duration, resolve, park,
@@ -415,9 +421,10 @@ export function makeShelf({ books, textures }) {
       });
     },
     flyHome(id, duration = 1.0) { const b = byId(id); return b ? api.flyTo(id, homePose(b), duration, false) : Promise.resolve(); },
-    settleMotion(t=0) { for(const r of toys){r.pop=1;r.delay=0;r.hover=0;r.hoverTarget=0;r.hop=0;r.hopV=0;r.spin=0;}for(const b of items){b.hover=0;b.hoverTarget=0;}api.update(0,t);},
+    settleMotion(t=0) { for(const b of items){if(b.flight){b.flight.t=b.flight.duration;}} for(const r of toys){r.pop=1;r.delay=0;r.hover=0;r.hoverTarget=0;r.hop=0;r.hopV=0;r.spin=0;}for(const b of items){b.hover=0;b.hoverTarget=0;}api.update(0,t);},
     update(dt, t) {
-      slide.x += (slide.target - slide.x) * Math.min(1, dt * (slide.free ? 14 : 5));
+      slide.x += (slide.target - slide.x) * approach(5, dt);
+      if (Math.abs(slide.target-slide.x)<.001) slide.x=slide.target;
       slider.position.x = slide.x;
       for (const l of locks) {
         if (!l.holder.visible) continue;
@@ -447,9 +454,9 @@ export function makeShelf({ books, textures }) {
           const f = b.flight;
           f.t += dt;
           const p = Math.min(1, f.t / f.duration);
-          const e = p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; // ease in-out cubic
+          const e = easeInOut(p);
           b.mesh.position.lerpVectors(f.from.position, f.to.position, e);
-          b.mesh.position.y += Math.sin(p * Math.PI) * 0.55;                    // the arc
+          b.mesh.position.y += Math.sin(p * Math.PI) * 0.55;
           b.mesh.rotation.set(
             THREE.MathUtils.lerp(f.from.rotation.x, f.to.rotation.x, e),
             THREE.MathUtils.lerp(f.from.rotation.y, f.to.rotation.y, e) + Math.sin(p * Math.PI) * 0.25,

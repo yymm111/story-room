@@ -1,5 +1,6 @@
 const KEY='story-garden-souvenirs';
 export const PIN_MANIFESTS={
+ 'demo-mice-moving-home':[{id:'family',icon:'🐭',zh:'十四位家人',en:'Mouse family'},{id:'carry',icon:'🧺',zh:'合作小篮子',en:'Shared basket'},{id:'cross',icon:'🌉',zh:'平安小桥',en:'Safe crossing'},{id:'lamp',icon:'🏮',zh:'新家的灯',en:'Home lantern'}],
  'nia-runaway-kite':[{id:'nia-hello',icon:'🐰',zh:'妮娅',en:'Nia'},{id:'nia-kite',icon:'🪁',zh:'风筝',en:'Kite'},{id:'nia-tree',icon:'🌳',zh:'大树',en:'Tree'}],
  'fin-glowing-sea':[{id:'fin-hello',icon:'🐢',zh:'芬恩',en:'Fin'},{id:'fin-shell',icon:'🐚',zh:'贝壳',en:'Shell'},{id:'fin-jelly',icon:'🪼',zh:'水母',en:'Jellyfish'},{id:'fin-light',icon:'✨',zh:'小灯',en:'Light'},{id:'fin-whale',icon:'🐋',zh:'鲸鱼',en:'Whale'}],
  'demo-carmela':[{id:'map',icon:'🗺️',zh:'冒险地图',en:'Adventure map'},{id:'bridge',icon:'🌉',zh:'合作小桥',en:'Friendship bridge'},{id:'chime',icon:'🔔',zh:'松果风铃',en:'Pine-cone chime'}],

@@ -1,0 +1,16 @@
+{
+  "date": "2026-11-20",
+  "pages": 76,
+  "freshlySynthesized": true,
+  "voice": "Serena",
+  "toneProfile": "steady-narrator-v1",
+  "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+  "samplingSettings": {
+    "repetition_penalty": 1.12,
+    "temperature": 0.25,
+    "top_p": 0.8
+  },
+  "register": "One constant, formant-preserving correction per page, at most 3 semitones; no syllable contour flattening",
+  "toneAuditMethod": "40–50 ms autocorrelation pitch estimate, diagnostic only; Mandarin lexical tones remain intact. Not a perceptual listening test.",
+  "scope": "All current built-in narration. Local only, old files and pre-tone-v5 manifest retained. Objective pitch estimates are not proof of perceptual quality or pronunciation accuracy."
+}

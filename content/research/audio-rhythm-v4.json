@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-20",
+  "version": "balanced-v4",
+  "pages": 76,
+  "repairedSegments": 32,
+  "beforeActiveCpsRange": [
+    1.7,
+    4.47
+  ],
+  "afterActiveCpsRange": [
+    3.13,
+    4.11
+  ],
+  "tempoLimits": [
+    0.8,
+    1.25
+  ],
+  "speechRateMethod": "Chinese characters per second excluding conservative 10-ms quiet windows at -45 dB; an estimate, not forced alignment",
+  "checks": [
+    "exact cache keys and full ordered text coverage",
+    "actual encoded MP3 metrics and all segment bounds",
+    "pitch preservation and silence-only cleanup on synthetic waveform",
+    "pathological-output and generation-token-limit guards",
+    "browser playback, pause, resume and selected speed"
+  ],
+  "scope": "Local only. Original audio files and pre-balanced-v4 manifest retained. Automated checks do not establish word-level pronunciation accuracy."
+}

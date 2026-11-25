@@ -11,7 +11,7 @@ cd story-room
 python3 server.py --port 8766
 ```
 
-浏览器访问 http://127.0.0.1:8766/ 。前端依赖已放在 `vendor/`，无需安装 npm 依赖或执行打包。内置 68 页配音可直接播放。
+浏览器访问 http://127.0.0.1:8766/ 。前端依赖已放在 `vendor/`，无需安装 npm 依赖或执行打包。内置 76 页配音可直接播放。
 
 新增文字的 AI 配音为可选能力，需要 Apple 芯片 Mac、ffmpeg，以及通过 `python3 setup_ai_voice.py` 安装的本机语音环境。模型、环境、缓存和浏览器阅读数据不在仓库中。图片文字识别依赖 macOS Vision 和本机 Swift 编译器；不可用时仍可手动填写正文。
 
