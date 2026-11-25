@@ -20,7 +20,7 @@ export class MiceScene {
   mat(color){if(!this.materials.has(color)){const m=new T.MeshStandardMaterial({color,roughness:.95});m.userData.shared=true;this.materials.set(color,m);}return this.materials.get(color);}
   ball(p,c,pos,scale){return mesh(p,sphere,this.mat(c),pos,scale);}
   cube(p,c,pos,scale){return mesh(p,box,this.mat(c),pos,scale);}
-  ensureLoaded(){return this.ready||(this.ready=new T.TextureLoader().loadAsync('assets/mice-art/environments.png').then(map=>{map.colorSpace=T.SRGBColorSpace;map.anisotropy=4;map.userData.shared=true;this.atlas=map;}).catch(e=>{this.ready=null;throw e;}));}
+  ensureLoaded(){return this.ready||(this.ready=new T.TextureLoader().loadAsync('assets/mice-art/environments.webp').then(map=>{map.colorSpace=T.SRGBColorSpace;map.anisotropy=4;map.userData.shared=true;this.atlas=map;}).catch(e=>{this.ready=null;throw e;}));}
   mouse(parent,index){
     const [name,color,size]=MOUSE_FAMILY[index],root=group(parent);root.scale.setScalar(size);root.userData.action='mouse-'+index;
     const fur=index<2?'#aa9277':index%3===0?'#a8784f':'#b98b62';

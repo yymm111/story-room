@@ -1,11 +1,11 @@
 import {feedbackMotion} from './motion.js?v=motion5';
 import {interactCarmela,narrateCarmela,carmelaActions,carmelaPlayback} from './carmela-scene.js?v=local-paper5';
-import {demoBooks} from './stories.js?v=mice4';
+import {demoBooks} from './stories.js?v=mice5';
 import {importFiles,splitPages,guessLang,recognizeImage} from './importers.js?v=otto9';
 import {Atmosphere} from './atmosphere.js?v=motion5';
 import {mountScene} from './scenes.js?v=otto9';
 import {Narrator} from './narrator.js?v=tone5';
-import {StorybookStage} from './storybook-3d.js?v=motion5';
+import {StorybookStage} from './storybook-3d.js?v=motion6';
 import {collectPin,collectStar,pinsFor,collectedPins,collectedStars,totals} from './souvenirs.js?v=mice4';
 import {LANGS,getLang,setLang,t,applyI18n} from './i18n.js?v=home10';
 
@@ -83,7 +83,11 @@ let shelfEntries=[],shelfPage=0,shelfOpening=false;
 const referenceId=book=>book.id==='demo-otto'?'otto-shy-moon':book.id;
 const shelfLogo=book=>['demo-otto','nia-runaway-kite','fin-glowing-sea'].includes(book.id)?'assets/shelf-reference/'+referenceId(book)+'-logo-strip.webp':null;
 const safeImage=value=>typeof value==='string'&&(/^(?:\.\/)?assets\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9._-]+\.(?:svg|png|jpe?g|webp|avif)$/.test(value)||/^data:image\/(?:png|jpe?g|webp|gif|avif);base64,[a-z\d+/=\s]+$/i.test(value))?value:'';
-const bookCover=b=>safeImage(b.cover)||`assets/${['moon','kite','ocean','prince'].includes(b.theme)?b.theme:'moon'}.svg`;
+function bookCover(book){
+ const cover=safeImage(book.cover);
+ if(book.id==='demo-mice-moving-home'&&cover==='assets/mice-art/cover.png')return 'assets/mice-art/cover.webp';
+ return cover||`assets/${['moon','kite','ocean','prince'].includes(book.theme)?book.theme:'moon'}.svg`;
+}
 const formatSize=bytes=>bytes>1024*1024?(bytes/1024/1024).toFixed(1)+' MB':Math.max(1,Math.round(bytes/1024))+' KB';
 function shelfCatalog(){const local=books.filter(b=>!b.deleted);return [...local.filter(b=>b.id==='demo-otto'),...local.filter(b=>b.id==='nia-runaway-kite'),...local.filter(b=>b.id==='fin-glowing-sea'),...local.filter(b=>!['demo-otto','nia-runaway-kite','fin-glowing-sea'].includes(b.id))];}
 function visibleBooks(){const search=$('searchInput').value.trim().toLocaleLowerCase();const local=books.filter(b=>!b.deleted).sort((a,b)=>a.id==='demo-otto'?-1:b.id==='demo-otto'?1:a.kind==='demo'&&b.kind==='demo'?demoBooks.findIndex(x=>x.id===a.id)-demoBooks.findIndex(x=>x.id===b.id):(a.added||0)-(b.added||0));let catalog=filter==='all'?[...local.filter(b=>b.id==='demo-otto'),...local.filter(b=>b.id==='nia-runaway-kite'),...local.filter(b=>b.id==='fin-glowing-sea'),...local.filter(b=>!['demo-otto','nia-runaway-kite','fin-glowing-sea'].includes(b.id))]:local.filter(b=>filter==='favorite'?b.favorite:filter==='imported'?b.kind!=='demo':filter==='recent'?b.lastRead:true);return catalog.filter(b=>!search||b.title.toLocaleLowerCase().includes(search));}

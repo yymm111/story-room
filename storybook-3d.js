@@ -11,7 +11,7 @@ import {UnrealBloomPass} from './vendor/three/examples/jsm/postprocessing/Unreal
 import {OutputPass} from './vendor/three/examples/jsm/postprocessing/OutputPass.js';
 import {CursorSparkles} from './cursor-sparkles.js?v=motion5';
 import {OttoScene} from './otto-scene.js?v=otto9';
-import {MiceScene} from './mice-scene.js?v=motion5';
+import {MiceScene} from './mice-scene.js?v=motion6';
 import {PrincePaperScene} from './prince-paper.js?v=prince-polish1';
 import {PhysicalBook} from './physical-book.js?v=otto9';
 import {ReadingRoom} from './reading-room.js?v=mice4';

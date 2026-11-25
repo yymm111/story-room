@@ -1,4 +1,4 @@
-import {miceBook} from './mice-book.js?v=mice4';
+import {miceBook} from './mice-book.js?v=mice5';
 import {niaBook,finBook} from './companion-books.js?v=tts-restored1';
 import {carmelaBook} from './carmela-book.js?v=carmela2';
 import {ottoBook} from './otto-book.js?v=otto9';
