@@ -38,7 +38,7 @@ export class Atmosphere {
     });
   }
 
-  configure({musicEnabled, musicVolume, animationsEnabled,effectsEnabled=true,effectsVolume=.55}) {
+  configure({musicEnabled, musicVolume,effectsEnabled=true,effectsVolume=.55}) {
     this.enabled = musicEnabled;
     this.effectsEnabled = effectsEnabled;
     this.effectsVolume = Math.min(1,Math.max(0,Number(effectsVolume)||0));
@@ -46,11 +46,9 @@ export class Atmosphere {
     this.sound?.setMuted(!this.effectsEnabled||!this.effectsVolume);
     if(this.sound)this.sound.reverbSend.gain.setTargetAtTime(this.effectsEnabled?this.effectsVolume*.35:0,this.effects.currentTime,.03);
     this.volume = Math.min(.6, Math.max(0, Number(musicVolume) || 0));
-    document.body.dataset.animations = animationsEnabled ? 'on' : 'off';
-    document.documentElement.dataset.motionOverride = animationsEnabled ? 'on' : 'off';
     if (!this.enabled) this.audio.pause();
     else if (this.unlocked && !this.previewing && this.audio.paused) this.start();
-    this.setDucking(this.ducked);
+    this.setDucking(this.ducked,true);
     this.updateState();
   }
 
@@ -122,12 +120,14 @@ export class Atmosphere {
     }
   }
 
-  setDucking(ducked) {
+  setDucking(ducked,force=false) {
+    if(!force&&this.ducked===ducked)return;
     this.ducked = ducked;
     if(this.sound){const level=this.effectsEnabled?this.effectsVolume*(ducked?.6:1):0;this.sound.setSfxVolume(level);this.sound.reverbSend.gain.setTargetAtTime(level*.35,this.effects.currentTime,.1);}
     cancelAnimationFrame(this.fade);
     const from = this.audio.volume;
     const target = this.volume * (ducked ? .4 : 1);
+    if(Math.abs(from-target)<.001){this.audio.volume=target;return;}
     const start = performance.now();
     const step = now => {
       const progress = Math.min(1, (now - start) / 500);

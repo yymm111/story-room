@@ -1,0 +1,16 @@
+{
+  "method":"Built-in image_gen; original project-bound illustrations",
+  "date":"2026-11-20",
+  "assets":[
+    {
+      "file":"environments.png",
+      "layout":"2 columns × 2 rows; UV regions are cropped at runtime, original PNG retained",
+      "prompt":"Use case: illustration-story. Asset: game background atlas for an original animated children's mouse-family story. Generate one landscape image, exactly a 2-column by 2-row grid of FOUR equally sized borderless landscape paintings. No gutters, no lettering, no characters or animals. Beautiful tactile cut-paper diorama illustrated in soft gouache, warm woodland storybook, polished animation art, subtle paper grain. Each quadrant is its own complete scene, with low horizon and clear uncluttered lower central space for separately animated mice in front. Top left: early morning woodland path leaving a tiny root cottage, fern fronds and distant hazy forest, golden beams through leaves. Top right: gentle sparkling shallow creek in a mossy forest, stepping stones at the edge, blue-green light, no bridge in the center (bridge added as 3D prop). Bottom left: enormous old oak trunk with inviting dark arched hollow doorway, late afternoon forest, amber honey sunlight, ferns and mushrooms on edges. Bottom right: interior of a cozy hollow-tree home at dusk, rounded wooden walls, window looking at navy sky, leaf beds and woven baskets at edges, empty center, soft golden lantern light. Four coherent environments for the same story; scene 4 warmer and darker. No printed text, no watermark, no borders, no mice."
+    },
+    {
+      "file":"cover.png",
+      "prompt":"Use case: illustration-story. Create a finished portrait 2:3 children's interactive storybook cover, original woodland mouse-family moving-day illustration, tactile cut-paper sculptural gouache with soft rounded dimensional shapes, exquisitely cozy and inviting. A little brown mouse child with oversized round pink ears, bright dark eyes, ochre jacket and tiny green satchel stands in foreground carrying an acorn lantern. Behind the child, several different brown mouse family members in sage, rust, blue and cream clothes carry little baskets and bundles towards an old oak with an arched hollow doorway glowing amber, mushrooms and ferns, sunbeams and gently falling golden leaves. Clear expressive warm faces and lovely tiny paws. It is an independent new illustration, not a reproduction of any existing book illustration. Top third clean warm cream space with beautifully typeset large EXACT Chinese title in two lines: '14只老鼠' and '大搬家'. Smaller line beneath: '森林新家的第一盏灯'. No other text, no author name, no logo, no watermark. Rich sage green, ochre, russet and warm cream palette. Portrait cover, flat frontal full-bleed artwork, no book mockup, no spine."
+    }
+  ],
+  "characters":"14 independently articulated code-native Three.js mice in mice-scene.js, with distinct clothes and names; no third-party character model."
+}

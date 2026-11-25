@@ -1,4 +1,4 @@
-const STYLE = 'story-garden-serena-v3';
+const STYLE = 'story-garden-serena-v5';
 const normalize = text => text.replace(/\r\n/g,'\n').trim();
 async function keyFor(text,voice) {
   const bytes = new TextEncoder().encode(STYLE+'\n'+voice.toLowerCase()+'\n'+normalize(text));
@@ -35,7 +35,12 @@ export class Narrator {
   }
 
   setState(state,message='') {this.state=state;this.onState(state,message);}
-  configure(rate) {this.rate=rate;this.audio.playbackRate=rate;}
+  configure(rate) {
+    this.rate=Number.isFinite(Number(rate))?Math.min(1.5,Math.max(.5,Number(rate))):1;
+    // Loading another source may reset playbackRate to defaultPlaybackRate.
+    this.audio.defaultPlaybackRate=this.rate;this.audio.playbackRate=this.rate;
+    this.audio.preservesPitch=true;
+  }
 
   async resolveAudio(text,voice,signal,onProgress=()=>{}) {
     const key=await keyFor(text,voice);
@@ -89,6 +94,7 @@ export class Narrator {
         this.audio.src=info.url;this.audio.playbackRate=this.rate;
         this.audio.onloadedmetadata=()=>{
           if(run!==this.run)return;
+          this.audio.defaultPlaybackRate=this.rate;this.audio.playbackRate=this.rate;
           const position=index===start?Math.max(0,(fromRatio*this.totalLength-plan.before)/plan.text.length):0;
           if(position>0&&this.audio.duration){let seconds=this.audio.duration*position;if(info.parts?.length){const target=position*plan.text.length;let cursor=0;for(const part of info.parts){const found=plan.text.indexOf(part.text,cursor),start=found<0?cursor:found;if(target>=start&&target<=start+part.text.length){seconds=part.start+part.duration*(target-start)/part.text.length;break;}cursor=start+part.text.length;}}this.audio.currentTime=Math.min(this.audio.duration-.05,seconds);}
         };
@@ -108,7 +114,7 @@ export class Narrator {
     this.pending.set(id,pending);
   }
   pause(){this.audio.pause();this.setState('paused');}
-  async resume(){try{await this.audio.play();this.setState('playing');}catch{this.setState('paused','请再点一次播放。');}}
+  async resume(){try{this.audio.defaultPlaybackRate=this.rate;this.audio.playbackRate=this.rate;await this.audio.play();this.setState('playing');}catch{this.setState('paused','请再点一次播放。');}}
   stop(){this.run++;this.controller?.abort();this.controller=null;this.audio.pause();this.audio.onended=null;this.audio.onloadedmetadata=null;this.audio.removeAttribute('src');this.audio.load();this.current=null;this.setState('idle');}
   fail(error){this.stop();this.onError(error.message||'本机 AI 声音暂时不可用。');}
 }

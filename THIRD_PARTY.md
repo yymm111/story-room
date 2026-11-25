@@ -84,3 +84,7 @@ Public access and free reading do not grant redistribution rights. This update i
 1.5.3 adds a local companion-only camera fit and painted paper ground in response to the user screenshot. Ground textures are derived from selected lower regions of already attributed source artwork, blended with locally generated color washes. These are visual adaptations, not missing original-site floor illustrations; original asset rights and redistribution cautions still apply.
 
 妮娅、芬恩新增的 20 页 Serena MP3 使用本机 Qwen3-TTS 生成，基于本站中文重新讲述，沿用 story-garden-serena-v3 节奏处理；不是原站有声书录音。
+
+## Mouse-family interactive sample (2026-11-20)
+
+The eight-scene mouse-family story is independently written around a woodland-family premise, not an official edition or a transcription of Kazuo Iwamura’s picture book. Cover and background atlas in `assets/mice-art/` were generated with the built-in image tool; prompts are recorded in `assets/mice-art/prompts.json`. Articulated mouse characters and interactive props are code-native geometry. All eight Serena narration tracks were generated locally; no publisher illustrations, scans, third-party models or reference recordings were copied. Bibliographic context: `content/research/mice-sources.md`.

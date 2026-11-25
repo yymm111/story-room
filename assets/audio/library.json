@@ -1,1314 +1,3346 @@
 {
-  "452aa46b60317afceda554157a68d95b48cc469eb1781d55d0e4a540ffd86f4f": {
-    "url": "assets/audio/library/452aa46b60317afceda554157a68d95b48cc469eb1781d55d0e4a540ffd86f4f.mp3",
-    "duration": 17.822,
+  "5afa47acea8ad4a90ce875ad372c787bb1a766fdfdadd65f65356b33eebf5231": {
     "voice": "Serena",
+    "duration": 20.489,
+    "sampleRate": 24000,
+    "generationSeconds": 15.96,
+    "parts": [
+      {
+        "text": "回家的时候，小狐狸没有跑。\n他想看看路边的小花，想等等那只小蜗牛。\n原来，有些美好的事情，需要一点时间。\n慢一点，也没关系。春天总会来的。",
+        "start": 0.0,
+        "duration": 20.489458333333335,
+        "tempo": 1.25
+      }
+    ],
     "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 27.52,
+    "removedSilenceSeconds": 1.9,
+    "url": "assets/audio/library/5afa47acea8ad4a90ce875ad372c787bb1a766fdfdadd65f65356b33eebf5231.mp3",
+    "bookId": "demo-kite",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 192.77,
+        "medianHz": 228.57,
+        "p90Hz": 271.19,
+        "voicedFrames": 621
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "643b673e7d962abd8325849c527792032a1ef5fd6a307f7732bbb75567068b4a": {
+    "voice": "Serena",
+    "duration": 19.176,
+    "sampleRate": 24000,
+    "generationSeconds": 16.62,
+    "parts": [
+      {
+        "text": "风又来了。妮娅把线绕回线轴，握紧后才让风筝升高。\n她不再只顾着跑，而是一会儿看看天空，一会儿看看朋友。风筝飞得高，大家也站得稳。",
+        "start": 0.0,
+        "duration": 19.176208333333335,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 28.4,
+    "removedSilenceSeconds": 4.43,
+    "url": "assets/audio/library/643b673e7d962abd8325849c527792032a1ef5fd6a307f7732bbb75567068b4a.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 9,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0721781,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 170.21,
+        "medianHz": 219.18,
+        "p90Hz": 262.3,
+        "voicedFrames": 545
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "e156865158839f6dbdea703408fa8c0e5fc2d519c26c53692e46845c2610224d": {
+    "voice": "Serena",
+    "duration": 16.38,
+    "sampleRate": 24000,
+    "generationSeconds": 10.59,
+    "parts": [
+      {
+        "text": "一阵大风掀起妮娅的围巾。线轴滚过她的手指，骨碌碌落进草里。\n红风筝却没有停，越过篱笆飞远了。妮娅捡起线轴，顺着天上的红点追去。",
+        "start": 0.0,
+        "duration": 16.38,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 18.0,
+    "removedSilenceSeconds": 1.62,
+    "url": "assets/audio/library/e156865158839f6dbdea703408fa8c0e5fc2d519c26c53692e46845c2610224d.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.8665511,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 192.77,
+        "medianHz": 271.19,
+        "p90Hz": 347.83,
+        "voicedFrames": 457
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "82ffedf6d319eead36f6101560a2fb5bc2776ff317a67db418286b5f3f8b8d88": {
+    "voice": "Serena",
+    "duration": 32.23,
+    "sampleRate": 24000,
+    "generationSeconds": 17.34,
+    "parts": [
+      {
+        "text": "另一颗星球上的大人，正低着头计算。他不停地数星星，把数字写进本子，连抬头看看天空都顾不上。\n小王子想起自己的花。他为花儿浇水，花儿让他的早晨变得明亮。\n他渐渐明白，喜欢一样东西，不只是说它属于自己，还要用心照顾它。",
+        "start": 0.0,
+        "duration": 32.23,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 34.8,
+    "removedSilenceSeconds": 2.57,
+    "url": "assets/audio/library/82ffedf6d319eead36f6101560a2fb5bc2776ff317a67db418286b5f3f8b8d88.mp3",
+    "bookId": "demo-little-prince",
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9840459,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 175.82,
+        "medianHz": 238.81,
+        "p90Hz": 340.43,
+        "voicedFrames": 751
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "7d2b7e1e2a29cf767cf3b6b0e905beecb574ecaa7ce288faf6be03ad48f313c1": {
+    "voice": "Serena",
+    "duration": 18.073,
+    "sampleRate": 24000,
+    "generationSeconds": 16.14,
+    "parts": [
+      {
+        "text": "奥托躺进被窝，红气球靠在床边。\n月亮安静地守在窗外，星星也慢慢眨着眼。\n晚安，奥托。晚安，月亮。也晚安，正在听故事的你。",
+        "start": 0.0,
+        "duration": 18.0735,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 28.72,
+    "removedSilenceSeconds": 6.13,
+    "url": "assets/audio/library/7d2b7e1e2a29cf767cf3b6b0e905beecb574ecaa7ce288faf6be03ad48f313c1.mp3",
+    "bookId": "demo-otto",
+    "page": 10,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0575106,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 179.78,
+        "medianHz": 222.22,
+        "p90Hz": 262.3,
+        "voicedFrames": 471
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "7ed0716c02c9c35f1c72d016c676a204a77d6687a1ad5923f00c1c20d84b736f": {
+    "voice": "Serena",
+    "duration": 19.762,
+    "sampleRate": 24000,
+    "generationSeconds": 9.81,
+    "parts": [
+      {
+        "text": "山顶的云像一床展开的被子。红尾巴在云边闪了一下，又不见了。\n妮娅没有着急乱跑。她站稳脚，等风把云推开，终于看清风筝飘向了一棵大树。",
+        "start": 0.0,
+        "duration": 19.762416666666667,
+        "tempo": 0.84067
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.84067
+    ],
+    "sourceDuration": 18.32,
+    "removedSilenceSeconds": 1.7,
+    "url": "assets/audio/library/7ed0716c02c9c35f1c72d016c676a204a77d6687a1ad5923f00c1c20d84b736f.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.969392,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 179.78,
+        "medianHz": 242.42,
+        "p90Hz": 296.3,
+        "voicedFrames": 557
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "26a53c348d4798cc6e0f234b03c73ad6b638ccfcee42925d52250ba2c601df5a": {
+    "voice": "Serena",
+    "duration": 15.705,
+    "sampleRate": 24000,
+    "generationSeconds": 12.16,
+    "parts": [
+      {
+        "text": "晚安的钟声响了，小镇的窗户一扇扇亮起来。\n小熊奥托抬头看天空。星星都在，月亮却不见了。\n“月亮，你藏到哪里去了？”",
+        "start": 0.0,
+        "duration": 15.705333333333334,
+        "tempo": 1.20857
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.20857
+    ],
+    "sourceDuration": 22.08,
+    "removedSilenceSeconds": 3.1,
+    "url": "assets/audio/library/26a53c348d4798cc6e0f234b03c73ad6b638ccfcee42925d52250ba2c601df5a.mp3",
     "bookId": "demo-otto",
     "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0500916,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 183.91,
+        "medianHz": 223.79,
+        "p90Hz": 285.71,
+        "voicedFrames": 438
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "08672e1947e3322845210997c44e2483c71704f5e51db796edffb3b217d3fa18": {
+    "voice": "Serena",
+    "duration": 21.82,
+    "sampleRate": 24000,
+    "generationSeconds": 14.37,
     "parts": [
       {
-        "text": "晚安的钟声响了，小镇的窗户一扇扇亮起来。",
+        "text": "哥哥扫去枯叶，姐姐铺好毯子。爸爸摆桌子，妈妈找来平平的石头当小凳子。\n小栗和妹妹把种子篮搬到窗边。窗外的风吹进来，叶帘轻轻摆了摆。\n空空的树洞，慢慢有了家的样子。",
         "start": 0.0,
-        "duration": 5.777777777777778
-      },
-      {
-        "text": "小熊奥托抬头看天空。星星都在，月亮却不见了。",
-        "start": 6.037037037037036,
-        "duration": 9.101851851851851
-      },
-      {
-        "text": "“月亮，你藏到哪里去了？”",
-        "start": 15.398148148148147,
-        "duration": 2.4237685185185196
+        "duration": 21.82,
+        "tempo": 1.0
       }
     ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 19.2,
-    "removedSilenceSeconds": 0.49
-  },
-  "f31d1a2ce8626c2d7e3b6731ca691bd07cfcb46c3fc5cc58e7ee9db0b6c41f8f": {
-    "url": "assets/audio/library/f31d1a2ce8626c2d7e3b6731ca691bd07cfcb46c3fc5cc58e7ee9db0b6c41f8f.mp3",
-    "duration": 13.759,
-    "voice": "Serena",
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
-    "page": 2,
-    "parts": [
-      {
-        "text": "奥托把红围巾系好，握住一只红气球。",
-        "start": 0.0,
-        "duration": 4.296296296296296
-      },
-      {
-        "text": "风轻轻吹来，气球把他带离屋顶。",
-        "start": 4.555555555555555,
-        "duration": 3.333333333333333
-      },
-      {
-        "text": "小镇越来越小，他的勇气却一点点变大。",
-        "start": 8.148148148148149,
-        "duration": 5.611310185185184
-      }
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
     ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 14.32,
-    "removedSilenceSeconds": 0.0
-  },
-  "7aa27ee1f01b936a3abed54b95eb94ec3325fff99cbc5e4530460d595b5740d6": {
-    "url": "assets/audio/library/7aa27ee1f01b936a3abed54b95eb94ec3325fff99cbc5e4530460d595b5740d6.mp3",
-    "duration": 17.664,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
-    "page": 3,
-    "parts": [
-      {
-        "text": "奥托飘过一排排屋顶。暖暖的窗光，像小镇给夜晚写的信。",
-        "start": 0.0,
-        "duration": 7.259259259259259
-      },
-      {
-        "text": "烟囱边的小猫竖起耳朵。",
-        "start": 7.518518518518517,
-        "duration": 2.444444444444444
-      },
-      {
-        "text": "“喵，抬头看看吧。月亮也许在更高的地方。”",
-        "start": 10.222222222222221,
-        "duration": 7.441861111111113
-      }
-    ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 18.88,
-    "removedSilenceSeconds": 0.32
-  },
-  "df78a35604db7fd063ebc4818b76becdf9c5117624eb37439ce3ab141a2491c3": {
-    "url": "assets/audio/library/df78a35604db7fd063ebc4818b76becdf9c5117624eb37439ce3ab141a2491c3.mp3",
-    "duration": 18.045,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
-    "page": 4,
-    "parts": [
-      {
-        "text": "奥托飘进云海。云朵像软软的枕头，轻轻擦过他的脚。",
-        "start": 0.0,
-        "duration": 8.564814814814815
-      },
-      {
-        "text": "“借过一下，我想找月亮。”",
-        "start": 8.824074074074073,
-        "duration": 2.6666666666666665
-      },
-      {
-        "text": "风把云推开，露出一条银蓝色的小路。",
-        "start": 11.749999999999998,
-        "duration": 6.2951250000000005
-      }
-    ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 19.84,
-    "removedSilenceSeconds": 0.91
-  },
-  "32d149c5cae60139720af7a6d4062e28ce4689ad64cda1808bc50f9071036140": {
-    "url": "assets/audio/library/32d149c5cae60139720af7a6d4062e28ce4689ad64cda1808bc50f9071036140.mp3",
-    "duration": 18.095,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
-    "page": 5,
-    "parts": [
-      {
-        "text": "一棵高高的树旁，猫头鹰轻轻转过头。",
-        "start": 0.0,
-        "duration": 6.185185185185184
-      },
-      {
-        "text": "“别着急，奥托。有时候，安静的朋友也需要一句问候。”",
-        "start": 6.444444444444444,
-        "duration": 6.731481481481481
-      },
-      {
-        "text": "奥托点点头，把准备好的晚安，放在了心里。",
-        "start": 13.435185185185183,
-        "duration": 4.657407407407407
-      }
-    ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 19.36,
-    "removedSilenceSeconds": 0.38
-  },
-  "aab0800f189947ea2afb6abc759331fb33f1ce60f7018099c7ebb30aaded6428": {
-    "url": "assets/audio/library/aab0800f189947ea2afb6abc759331fb33f1ce60f7018099c7ebb30aaded6428.mp3",
-    "duration": 17.869,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
+    "sourceDuration": 24.56,
+    "removedSilenceSeconds": 2.74,
+    "url": "assets/audio/library/08672e1947e3322845210997c44e2483c71704f5e51db796edffb3b217d3fa18.mp3",
+    "bookId": "demo-mice-moving-home",
     "page": 6,
-    "parts": [
-      {
-        "text": "一颗小星星眨眨眼，落在奥托身旁。",
-        "start": 0.0,
-        "duration": 6.268518518518517
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 183.28,
+        "medianHz": 235.29,
+        "p90Hz": 280.7,
+        "voicedFrames": 688
       },
-      {
-        "text": "奥托朝它挥手，继续向更高的云飘去。",
-        "start": 6.527777777777777,
-        "duration": 3.99074074074074
-      },
-      {
-        "text": "一路闪烁的小星星，像一串小小的路灯，陪着他往前走。",
-        "start": 10.777777777777777,
-        "duration": 7.090722222222224
-      }
-    ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 19.6,
-    "removedSilenceSeconds": 0.84
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "7a594e3f379d033f7999d5b261a92772c894f0bbfd051689cbfe3f26b23caf02": {
-    "url": "assets/audio/library/7a594e3f379d033f7999d5b261a92772c894f0bbfd051689cbfe3f26b23caf02.mp3",
-    "duration": 20.186,
+  "4f2d8203ff4a035a3162e9053418744607314073f53e230137f9b61d7ae9b102": {
     "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
-    "page": 7,
+    "duration": 17.88,
+    "sampleRate": 24000,
+    "generationSeconds": 10.6,
     "parts": [
       {
-        "text": "奥托停在云边，看见一弯藏起来的金光。",
+        "text": "小兔子朝森林挥挥手。\n松鼠打开窗，小熊探出头，萤火虫点亮了灯。\n“晚安，月亮！”\n一千个小小的晚安升上天空，变成了亮晶晶的星星。",
         "start": 0.0,
-        "duration": 3.916666666666667
-      },
-      {
-        "text": "“没关系，我陪你。你可以先露出一点点。”",
-        "start": 4.175925925925926,
-        "duration": 3.944444444444444
-      },
-      {
-        "text": "月亮听见了。云朵后面，慢慢探出一个小小的微笑。",
-        "start": 8.37962962962963,
-        "duration": 11.796296296296296
+        "duration": 17.88,
+        "tempo": 1.0
       }
     ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 22.96,
-    "removedSilenceSeconds": 1.73
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 19.68,
+    "removedSilenceSeconds": 1.8,
+    "url": "assets/audio/library/4f2d8203ff4a035a3162e9053418744607314073f53e230137f9b61d7ae9b102.mp3",
+    "bookId": "demo-moon",
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.969392,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 188.24,
+        "medianHz": 242.42,
+        "p90Hz": 320.0,
+        "voicedFrames": 532
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "9d61542d0790769724baed01e1030d9e1e670cc3fba5b7e6798c513dd05a91d7": {
-    "url": "assets/audio/library/9d61542d0790769724baed01e1030d9e1e670cc3fba5b7e6798c513dd05a91d7.mp3",
-    "duration": 19.328,
+  "0e65ff02213d58d25c83cbbb6e1803e44d7ca161eab0398cbf2e61dc1870c13a": {
     "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
-    "page": 8,
+    "duration": 28.302,
+    "sampleRate": 24000,
+    "generationSeconds": 13.98,
     "parts": [
       {
-        "text": "月亮慢慢走出云朵。金光落在奥托的围巾上，也落进小镇的窗。",
+        "text": "地球上有许多玫瑰，可小王子仍然惦记着自己星球上的那一朵。\n他记得浇水的早晨，记得挡风的屏障，也记得花儿嘴硬时的小小声音。\n让她变得特别的，是他们一起度过的日子。小王子终于懂了：爱，是愿意花时间，也愿意担起照顾的责任。",
         "start": 0.0,
-        "duration": 11.925925925925926
-      },
-      {
-        "text": "奥托笑了，月亮也笑了。",
-        "start": 12.185185185185185,
-        "duration": 3.5462962962962963
-      },
-      {
-        "text": "有人陪着的时候，试一试就没有那么难。",
-        "start": 15.990740740740739,
-        "duration": 3.333333333333333
+        "duration": 28.301666666666666,
+        "tempo": 0.8
       }
     ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.8
+    ],
+    "sourceDuration": 26.48,
+    "removedSilenceSeconds": 3.82,
+    "url": "assets/audio/library/0e65ff02213d58d25c83cbbb6e1803e44d7ca161eab0398cbf2e61dc1870c13a.mp3",
+    "bookId": "demo-little-prince",
+    "page": 10,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 231.88,
+        "p90Hz": 280.7,
+        "voicedFrames": 882
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "6e8d7987c85cd0434ea60f5015df6ba265b646799dfbb3bf0e42bb8754a46020": {
+    "voice": "Serena",
+    "duration": 23.33,
+    "sampleRate": 24000,
+    "generationSeconds": 15.45,
+    "parts": [
+      {
+        "text": "大家沿着铺满落叶的小路向前走。爷爷在前面认路，爸爸留在队尾，照看走得慢的家人。\n小栗听见沙沙声，回头一看，是妹妹的围巾碰到了草叶。\n“不用赶，我们一起到。”他放慢脚步，等妹妹跟上来。",
+        "start": 0.0,
+        "duration": 23.33,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 27.04,
+    "removedSilenceSeconds": 3.71,
+    "url": "assets/audio/library/6e8d7987c85cd0434ea60f5015df6ba265b646799dfbb3bf0e42bb8754a46020.mp3",
+    "bookId": "demo-mice-moving-home",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.94,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 186.05,
+        "medianHz": 250.0,
+        "p90Hz": 296.86,
+        "voicedFrames": 750
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "7267644d8f278e688dc7ab4344c243386123c57d0732c1469a59dc33c648fad8": {
+    "voice": "Serena",
+    "duration": 18.97,
+    "sampleRate": 24000,
+    "generationSeconds": 41.44,
+    "parts": [
+      {
+        "text": "一棵高高的树旁，猫头鹰轻轻转过头。\n“别着急，奥托。有时候，安静的朋友也需要一句问候。”\n奥托点点头，把准备好的晚安，放在了心里。",
+        "start": 0.0,
+        "duration": 18.97,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
     "sourceDuration": 20.32,
-    "removedSilenceSeconds": 0.01
-  },
-  "4ec91f2e9eb1e3dc253e5e21df37fe80e54688988be3934362969244edd7a246": {
-    "url": "assets/audio/library/4ec91f2e9eb1e3dc253e5e21df37fe80e54688988be3934362969244edd7a246.mp3",
-    "duration": 17.079,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "removedSilenceSeconds": 1.35,
+    "url": "assets/audio/library/7267644d8f278e688dc7ab4344c243386123c57d0732c1469a59dc33c648fad8.mp3",
     "bookId": "demo-otto",
-    "page": 9,
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 175.82,
+        "medianHz": 235.29,
+        "p90Hz": 313.73,
+        "voicedFrames": 506
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "2d90f2d4578170b3286bca156a59066d681dc433727faa76d24571f3cc1d07cf": {
+    "voice": "Serena",
+    "duration": 16.95,
+    "sampleRate": 24000,
+    "generationSeconds": 10.3,
     "parts": [
       {
-        "text": "红气球顺着晚风，轻轻往下落。",
+        "text": "长长的海带挡在前面，像一排柔软的门帘。芬恩没有用力挤。\n他等海流经过，顺着海带之间的空隙穿了过去。空瓶碰到叶尖，发出轻轻的一声响。",
         "start": 0.0,
-        "duration": 5.703703703703703
-      },
-      {
-        "text": "屋顶、小路和小花园，都披上了月光。",
-        "start": 5.962962962962963,
-        "duration": 5.111111111111111
-      },
-      {
-        "text": "奥托回头挥手：“明天见，我会记得向你说晚安。”",
-        "start": 11.333333333333332,
-        "duration": 5.746125000000003
+        "duration": 16.95,
+        "tempo": 1.0
       }
     ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 18.48,
-    "removedSilenceSeconds": 0.59
-  },
-  "7b63cd595edc3b980aefceb26c9ac38099e43cea7d3c44c7822cf43eed5b53f9": {
-    "url": "assets/audio/library/7b63cd595edc3b980aefceb26c9ac38099e43cea7d3c44c7822cf43eed5b53f9.mp3",
-    "duration": 20.979,
-    "voice": "Serena",
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-otto",
-    "page": 10,
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 18.88,
+    "removedSilenceSeconds": 1.93,
+    "url": "assets/audio/library/2d90f2d4578170b3286bca156a59066d681dc433727faa76d24571f3cc1d07cf.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.969392,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 181.82,
+        "medianHz": 242.42,
+        "p90Hz": 313.73,
+        "voicedFrames": 472
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "af3a4c2572ab72f38e77108b058009e8f12e1da63aefef017e71161df837edbb": {
+    "voice": "Serena",
+    "duration": 29.32,
+    "sampleRate": 24000,
+    "generationSeconds": 16.0,
     "parts": [
       {
-        "text": "奥托躺进被窝，红气球靠在床边。",
+        "text": "来到地球以后，小王子在沙漠里遇见了一位飞行员。飞行员的飞机坏了，正独自想办法修理。\n小王子请他画一只小羊。飞行员画来画去，最后画了一个小盒子。\n小王子看着盒子笑了。在他的想象里，小羊已经安安静静地住了进去。",
         "start": 0.0,
-        "duration": 3.925925925925926
-      },
-      {
-        "text": "月亮安静地守在窗外，星星也慢慢眨着眼。",
-        "start": 4.185185185185184,
-        "duration": 6.814814814814815
-      },
-      {
-        "text": "晚安，奥托。晚安，月亮。也晚安，正在听故事的你。",
-        "start": 11.25925925925926,
-        "duration": 9.720115740740741
+        "duration": 29.32,
+        "tempo": 1.0
       }
     ],
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 25.44,
-    "removedSilenceSeconds": 3.3
-  },
-  "ca58c0a51e6c61f98515136944fcb6b64698ae3c1a9f14dbc33bde344782415c": {
-    "url": "assets/audio/library/ca58c0a51e6c61f98515136944fcb6b64698ae3c1a9f14dbc33bde344782415c.mp3",
-    "duration": 18.406,
-    "voice": "Serena",
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-kite",
-    "page": 1,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 21.36,
-    "removedSilenceSeconds": 1.47,
-    "parts": []
-  },
-  "bb0072d715b75eeecb7cb74726d8784fb11d04aca08c8d9cb4c450fbac22a4e3": {
-    "url": "assets/audio/library/bb0072d715b75eeecb7cb74726d8784fb11d04aca08c8d9cb4c450fbac22a4e3.mp3",
-    "duration": 36.047,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-kite",
-    "page": 2,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 44.0,
-    "removedSilenceSeconds": 5.06,
-    "parts": []
-  },
-  "85f2c678ccab2c3a381db09dbffc7ef0b957a4b1746319a173def8072b1c8d78": {
-    "url": "assets/audio/library/85f2c678ccab2c3a381db09dbffc7ef0b957a4b1746319a173def8072b1c8d78.mp3",
-    "duration": 28.015,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-kite",
-    "page": 3,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 35.84,
-    "removedSilenceSeconds": 5.59,
-    "parts": []
-  },
-  "4bebee73dbc5702d252f1ea2d2b519252bdb230f380565e54d3bbde26d770721": {
-    "url": "assets/audio/library/4bebee73dbc5702d252f1ea2d2b519252bdb230f380565e54d3bbde26d770721.mp3",
-    "duration": 28.66,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-kite",
-    "page": 4,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 34.88,
-    "removedSilenceSeconds": 3.92,
-    "parts": []
-  },
-  "5b46df325a94fce0443756c20bd4b91940cb560987e2c202dc4ae6a0f982309f": {
-    "url": "assets/audio/library/5b46df325a94fce0443756c20bd4b91940cb560987e2c202dc4ae6a0f982309f.mp3",
-    "duration": 27.027,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-kite",
-    "page": 5,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 33.04,
-    "removedSilenceSeconds": 3.85,
-    "parts": []
-  },
-  "ae561aff45ff8e8c705d604770ccb1f804aadcdc50be0af23e82c68dcd1d791d": {
-    "url": "assets/audio/library/ae561aff45ff8e8c705d604770ccb1f804aadcdc50be0af23e82c68dcd1d791d.mp3",
-    "duration": 21.985,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-kite",
-    "page": 6,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 26.64,
-    "removedSilenceSeconds": 2.89,
-    "parts": []
-  },
-  "efcb23bc0f54e42512dcc167d03a051bcee11217901a13d086a74628cd7d1d93": {
-    "url": "assets/audio/library/efcb23bc0f54e42512dcc167d03a051bcee11217901a13d086a74628cd7d1d93.mp3",
-    "duration": 39.308,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 1,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 46.24,
-    "removedSilenceSeconds": 3.8,
-    "parts": []
-  },
-  "4f0ef82f936fe970d8b133839ef9a4a7c3742ca52d429fd2bf64db1d50edcf1b": {
-    "url": "assets/audio/library/4f0ef82f936fe970d8b133839ef9a4a7c3742ca52d429fd2bf64db1d50edcf1b.mp3",
-    "duration": 30.007,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 2,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 35.44,
-    "removedSilenceSeconds": 3.03,
-    "parts": []
-  },
-  "f445b49a62368e393e94e9a78578a16117b9c74b73b0e9401181a6da59ffeca6": {
-    "url": "assets/audio/library/f445b49a62368e393e94e9a78578a16117b9c74b73b0e9401181a6da59ffeca6.mp3",
-    "duration": 26.732,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 3,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 32.96,
-    "removedSilenceSeconds": 4.08,
-    "parts": []
-  },
-  "9a34d6278d2ba8d46d302c2a4415b98880e6f4ed044b61e35c9508b9135d815f": {
-    "url": "assets/audio/library/9a34d6278d2ba8d46d302c2a4415b98880e6f4ed044b61e35c9508b9135d815f.mp3",
-    "duration": 26.107,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 4,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 32.48,
-    "removedSilenceSeconds": 4.29,
-    "parts": []
-  },
-  "f5b40e31a04af1ac726e23b4f7e6dec491678c35a205ef0e910c7deb3bac8cdd": {
-    "url": "assets/audio/library/f5b40e31a04af1ac726e23b4f7e6dec491678c35a205ef0e910c7deb3bac8cdd.mp3",
-    "duration": 38.097,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 5,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 45.04,
-    "removedSilenceSeconds": 3.9,
-    "parts": []
-  },
-  "a81ac22c57fbb7ad3ba15c134deb1833cd26bbadcf205fe17a9999e82557efa2": {
-    "url": "assets/audio/library/a81ac22c57fbb7ad3ba15c134deb1833cd26bbadcf205fe17a9999e82557efa2.mp3",
-    "duration": 38.999,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 6,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 45.04,
-    "removedSilenceSeconds": 2.92,
-    "parts": []
-  },
-  "a51448a244c0bb03b4c0d809c5be40cc6b1944dd5e7d74e66ce6841d9699c31d": {
-    "url": "assets/audio/library/a51448a244c0bb03b4c0d809c5be40cc6b1944dd5e7d74e66ce6841d9699c31d.mp3",
-    "duration": 24.496,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 32.64,
+    "removedSilenceSeconds": 3.32,
+    "url": "assets/audio/library/af3a4c2572ab72f38e77108b058009e8f12e1da63aefef017e71161df837edbb.mp3",
     "bookId": "demo-little-prince",
     "page": 7,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 30.08,
-    "removedSilenceSeconds": 3.64,
-    "parts": []
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.145615,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 161.29,
+        "medianHz": 205.13,
+        "p90Hz": 275.86,
+        "voicedFrames": 829
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "fd07d692ecebefda4519f08b15464b45ebb2e033eca91039797c1f3c3690570e": {
-    "url": "assets/audio/library/fd07d692ecebefda4519f08b15464b45ebb2e033eca91039797c1f3c3690570e.mp3",
-    "duration": 31.455,
+  "4a490596f089793e7759bfa10c9dd72fd4c4ecc7e5069f0bde231657f57c3632": {
     "voice": "Serena",
+    "duration": 15.34,
+    "sampleRate": 24000,
+    "generationSeconds": 8.62,
+    "parts": [
+      {
+        "text": "小河拦住了去路，水面上的风筝倒影摇摇晃晃。\n妮娅没有跳进水里。她沿着岸边找到小桥，扶好栏杆，一步一步走到对岸。",
+        "start": 0.0,
+        "duration": 15.34,
+        "tempo": 1.0
+      }
+    ],
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 8,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 36.88,
-    "removedSilenceSeconds": 2.91,
-    "parts": []
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 15.92,
+    "removedSilenceSeconds": 0.58,
+    "url": "assets/audio/library/4a490596f089793e7759bfa10c9dd72fd4c4ecc7e5069f0bde231657f57c3632.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0721781,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 164.95,
+        "medianHz": 219.18,
+        "p90Hz": 285.71,
+        "voicedFrames": 467
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "0c9b88ac6f10682388a940d3f2da1cf8da697011c33f4b0358b7d033fc5797a4": {
-    "url": "assets/audio/library/0c9b88ac6f10682388a940d3f2da1cf8da697011c33f4b0358b7d033fc5797a4.mp3",
-    "duration": 24.77,
+  "7f4e768e15bbce6275947e87d7409eca3911990a2cbe1828c572ae060f64ce67": {
     "voice": "Serena",
+    "duration": 21.042,
+    "sampleRate": 24000,
+    "generationSeconds": 10.17,
+    "parts": [
+      {
+        "text": "麦麦扶住木板，卡梅拉找来结实的芦苇绳。一个按住，一个绑紧，歪歪的小桥终于不摇了。\n“一个人真难，两个朋友就有办法！”\n麦麦放好胡萝卜，决定陪卡梅拉一起上山。",
+        "start": 0.0,
+        "duration": 21.041708333333332,
+        "tempo": 0.8
+      }
+    ],
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 9,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 29.52,
-    "removedSilenceSeconds": 2.75,
-    "parts": []
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.8
+    ],
+    "sourceDuration": 19.52,
+    "removedSilenceSeconds": 2.68,
+    "url": "assets/audio/library/7f4e768e15bbce6275947e87d7409eca3911990a2cbe1828c572ae060f64ce67.mp3",
+    "bookId": "demo-carmela",
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.1603219,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 158.42,
+        "medianHz": 202.53,
+        "p90Hz": 262.3,
+        "voicedFrames": 616
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "cad9bfbb902bfe93b17c1c594876d9588b01dc580c97a1e36a83f3b7bd7d2f86": {
-    "url": "assets/audio/library/cad9bfbb902bfe93b17c1c594876d9588b01dc580c97a1e36a83f3b7bd7d2f86.mp3",
-    "duration": 31.834,
+  "41e9087806dc3c336e8fbfb44aeb9ec3ad7508e481b1dd2bf6abe6275a9284c3": {
     "voice": "Serena",
+    "duration": 32.175,
+    "sampleRate": 24000,
+    "generationSeconds": 21.72,
+    "parts": [
+      {
+        "text": "分别的时候到了。小王子想回去照顾他的花。\n他请飞行员以后抬头看看星空，想想那个爱笑的小朋友。即使隔着很远很远的距离，想念也能找到路。\n飞行员望着满天星光，仿佛听见了一串轻轻的笑声。夜晚从此不再空空荡荡。",
+        "start": 0.0,
+        "duration": 32.1755,
+        "tempo": 1.25
+      }
+    ],
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-little-prince",
-    "page": 10,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 38.32,
-    "removedSilenceSeconds": 3.94,
-    "parts": []
-  },
-  "39a4ed83f48a52698e679eca1b63dfebcbb03884d6897fae8639fe9899050bee": {
-    "url": "assets/audio/library/39a4ed83f48a52698e679eca1b63dfebcbb03884d6897fae8639fe9899050bee.mp3",
-    "duration": 31.869,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 45.2,
+    "removedSilenceSeconds": 4.98,
+    "url": "assets/audio/library/41e9087806dc3c336e8fbfb44aeb9ec3ad7508e481b1dd2bf6abe6275a9284c3.mp3",
     "bookId": "demo-little-prince",
     "page": 11,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 38.08,
-    "removedSilenceSeconds": 3.65,
-    "parts": []
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 197.53,
+        "medianHz": 228.57,
+        "p90Hz": 290.91,
+        "voicedFrames": 938
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "f5429cea6ff1a4c5dbaa1236b287b9204033c4ea45c7ec57c8979f433bd2726a": {
-    "url": "assets/audio/library/f5429cea6ff1a4c5dbaa1236b287b9204033c4ea45c7ec57c8979f433bd2726a.mp3",
-    "duration": 54.825,
+  "a69fa32e3ed2865d7d3f308a6f92546892833d4df2bbcd3135f21a7d08bfbc7c": {
     "voice": "Serena",
+    "duration": 25.025,
+    "sampleRate": 24000,
+    "generationSeconds": 13.78,
+    "parts": [
+      {
+        "text": "一条小溪拦住了去路，窄窄的木桥轻轻摇晃。爸爸检查桥板，妈妈扶住绳子。\n“看着前面，一步一步来。”\n小栗抱紧松果灯，跟着姐姐慢慢走过去。最后一位家人到了对岸，大家才一起松了一口气。",
+        "start": 0.0,
+        "duration": 25.025375,
+        "tempo": 0.87349
+      }
+    ],
     "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.87349
+    ],
+    "sourceDuration": 24.16,
+    "removedSilenceSeconds": 2.29,
+    "url": "assets/audio/library/a69fa32e3ed2865d7d3f308a6f92546892833d4df2bbcd3135f21a7d08bfbc7c.mp3",
+    "bookId": "demo-mice-moving-home",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.1162305,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 161.62,
+        "medianHz": 210.53,
+        "p90Hz": 275.86,
+        "voicedFrames": 715
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "922e4c069bd70253be758ff88caba299c7135775eb43c20f8dfef236f3025d69": {
+    "voice": "Serena",
+    "duration": 17.427,
+    "sampleRate": 24000,
+    "generationSeconds": 9.31,
+    "parts": [
+      {
+        "text": "一只小螃蟹正在沙地上画弯弯曲曲的线。芬恩停下来问路。\n螃蟹举起钳子，指向更深的蓝色：“我见过亮亮的小点，不过你要慢一点找。”",
+        "start": 0.0,
+        "duration": 17.426625,
+        "tempo": 0.8
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.8
+    ],
+    "sourceDuration": 16.72,
+    "removedSilenceSeconds": 2.76,
+    "url": "assets/audio/library/922e4c069bd70253be758ff88caba299c7135775eb43c20f8dfef236f3025d69.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 177.78,
+        "medianHz": 231.88,
+        "p90Hz": 285.71,
+        "voicedFrames": 517
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "aebd38b61ecb5dba9fcb94c3a8bf3790678b48211c9f21df40e292d3069e6aac": {
+    "voice": "Serena",
+    "duration": 18.48,
+    "sampleRate": 24000,
+    "generationSeconds": 10.84,
+    "parts": [
+      {
+        "text": "回到珊瑚旁，芬恩把一路上的发现告诉大家。小鱼、水母和珊瑚都轻轻闪起了光。\n灯笼鱼抬起头，也重新亮了起来。好多小小的光在一起，足够照见每一位朋友。",
+        "start": 0.0,
+        "duration": 18.48,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 20.24,
+    "removedSilenceSeconds": 1.76,
+    "url": "assets/audio/library/aebd38b61ecb5dba9fcb94c3a8bf3790678b48211c9f21df40e292d3069e6aac.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 9,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 177.78,
+        "medianHz": 228.57,
+        "p90Hz": 301.89,
+        "voicedFrames": 580
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "e0679a0948089e33e64a789cf9408fbfeb5005dfc76da9a04d0112c702afa57a": {
+    "voice": "Serena",
+    "duration": 24.41,
+    "sampleRate": 24000,
+    "generationSeconds": 17.23,
+    "parts": [
+      {
+        "text": "爸爸把工具装进木箱，奶奶带上种子，哥哥抱起软软的毯子。小栗也想搬最大的篮子，可篮子纹丝不动。\n“我帮你拿这一边。”姐姐伸出手。\n两个人一起抬，小篮子稳稳地离开了地面。",
+        "start": 0.0,
+        "duration": 24.41,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 28.96,
+    "removedSilenceSeconds": 4.55,
+    "url": "assets/audio/library/e0679a0948089e33e64a789cf9408fbfeb5005dfc76da9a04d0112c702afa57a.mp3",
+    "bookId": "demo-mice-moving-home",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 181.0,
+        "medianHz": 228.57,
+        "p90Hz": 290.91,
+        "voicedFrames": 787
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "ff720254b1e63be5f51440fb462e040b03f581c583a38e68891b0bc5a9aa5bb5": {
+    "voice": "Serena",
+    "duration": 16.654,
+    "sampleRate": 24000,
+    "generationSeconds": 28.57,
+    "parts": [
+      {
+        "text": "红气球顺着晚风，轻轻往下落。\n屋顶、小路和小花园，都披上了月光。\n奥托回头挥手：“明天见，我会记得向你说晚安。”",
+        "start": 0.0,
+        "duration": 16.6545,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 183.91,
+        "medianHz": 235.29,
+        "p90Hz": 280.7,
+        "voicedFrames": 436
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 24.64,
+    "removedSilenceSeconds": 3.79,
+    "url": "assets/audio/library/ff720254b1e63be5f51440fb462e040b03f581c583a38e68891b0bc5a9aa5bb5.mp3",
+    "bookId": "demo-otto",
+    "page": 9
+  },
+  "f3fe747abb1bc7c923c142ab3199edc441cdd4d54959ea35a20b79761852082a": {
+    "voice": "Serena",
+    "duration": 14.303,
+    "sampleRate": 24000,
+    "generationSeconds": 9.57,
+    "parts": [
+      {
+        "text": "奥托飘进云海。云朵像软软的枕头，轻轻擦过他的脚。\n“借过一下，我想找月亮。”\n风把云推开，露出一条银蓝色的小路。",
+        "start": 0.0,
+        "duration": 14.302666666666667,
+        "tempo": 1.13071
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.13071
+    ],
+    "sourceDuration": 17.84,
+    "removedSilenceSeconds": 1.67,
+    "url": "assets/audio/library/f3fe747abb1bc7c923c142ab3199edc441cdd4d54959ea35a20b79761852082a.mp3",
+    "bookId": "demo-otto",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 183.91,
+        "medianHz": 231.88,
+        "p90Hz": 285.71,
+        "voicedFrames": 419
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "bebf2bfc9c4e424f49bd6aab529c021497cd5c0f63c1a3a695fbb79aa9670a33": {
+    "voice": "Serena",
+    "duration": 29.85,
+    "sampleRate": 24000,
+    "generationSeconds": 17.07,
+    "parts": [
+      {
+        "text": "小王子遇见了一位点灯人。小星球转得很快，白天和黑夜一会儿就换了模样。\n点灯人不停地把路灯点亮，又轻轻熄灭。虽然很累，他仍想着让夜里经过的人看得清路。\n小王子喜欢他，因为这盏灯，照亮的不只是他自己。",
+        "start": 0.0,
+        "duration": 29.85,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 34.08,
+    "removedSilenceSeconds": 4.23,
+    "url": "assets/audio/library/bebf2bfc9c4e424f49bd6aab529c021497cd5c0f63c1a3a695fbb79aa9670a33.mp3",
+    "bookId": "demo-little-prince",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0721781,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 219.18,
+        "p90Hz": 280.7,
+        "voicedFrames": 891
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "05f0773c123cd58565f974a81c8df708a22bedae4a7a06a4894dc110564616f7": {
+    "voice": "Serena",
+    "duration": 18.93,
+    "sampleRate": 24000,
+    "generationSeconds": 26.91,
+    "parts": [
+      {
+        "text": "风筝挂在橡树的低枝上，尾巴缠了一个小结。妮娅轻轻拉线，树叶沙沙响。\n她松开手，换个方向再试一次。小结慢慢松了，风筝终于回到她怀里。",
+        "start": 0.0,
+        "duration": 18.93,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 22.56,
+    "removedSilenceSeconds": 3.63,
+    "url": "assets/audio/library/05f0773c123cd58565f974a81c8df708a22bedae4a7a06a4894dc110564616f7.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 7,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.1162305,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 166.67,
+        "medianHz": 210.53,
+        "p90Hz": 271.19,
+        "voicedFrames": 498
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "9fa2936a7e452877603dae1bda9ebddb0903a0ee29534ce825efc46fe1a0041f": {
+    "voice": "Serena",
+    "duration": 20.19,
+    "sampleRate": 24000,
+    "generationSeconds": 14.46,
+    "parts": [
+      {
+        "text": "越往下，海水越安静。\n忽然，一只水母亮起淡淡的紫色，一片珊瑚闪出柔柔的绿光。\n蓝蓝睁大眼睛。\n原来黑暗不是空空的，黑暗里也藏着好多颜色。",
+        "start": 0.0,
+        "duration": 20.18975,
+        "tempo": 1.148
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.148
+    ],
+    "sourceDuration": 28.0,
+    "removedSilenceSeconds": 4.82,
+    "url": "assets/audio/library/9fa2936a7e452877603dae1bda9ebddb0903a0ee29534ce825efc46fe1a0041f.mp3",
+    "bookId": "demo-ocean",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0721781,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 219.18,
+        "p90Hz": 271.19,
+        "voicedFrames": 480
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "7f720044f59c2c34db3da015ca45aedafc7f580cd07da82d9c62a562a8db0fe7": {
+    "voice": "Serena",
+    "duration": 28.99,
+    "sampleRate": 24000,
+    "generationSeconds": 18.92,
+    "parts": [
+      {
+        "text": "一天，一粒陌生的种子长出了花苞。\n玫瑰慢慢展开花瓣，像穿上了一件红色的裙子。小王子为她浇水，替她挡风，夜里还为她盖上玻璃罩。\n花儿有时说些骄傲的话。小王子还不太懂，她其实也会害怕，也盼着有人陪。",
+        "start": 0.0,
+        "duration": 28.99,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 35.04,
+    "removedSilenceSeconds": 6.05,
+    "url": "assets/audio/library/7f720044f59c2c34db3da015ca45aedafc7f580cd07da82d9c62a562a8db0fe7.mp3",
+    "bookId": "demo-little-prince",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9547024,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 181.82,
+        "medianHz": 246.15,
+        "p90Hz": 301.89,
+        "voicedFrames": 802
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "da4587b0dc27c2a23b14bbb7ea322aa46f999b91e6ef831986d34c4fdb8e164e": {
+    "voice": "Serena",
+    "duration": 18.888,
+    "sampleRate": 24000,
+    "generationSeconds": 38.97,
+    "parts": [
+      {
+        "text": "低低的歌声从身后传来。一头鲸鱼缓缓游过，巨大的影子遮住了沙地。\n芬恩挥挥鳍，鲸鱼也轻轻摆尾。水流把一群闪光的小点送到他面前。",
+        "start": 0.0,
+        "duration": 18.887708333333332,
+        "tempo": 1.19389
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.19389
+    ],
+    "sourceDuration": 27.2,
+    "removedSilenceSeconds": 4.64,
+    "url": "assets/audio/library/da4587b0dc27c2a23b14bbb7ea322aa46f999b91e6ef831986d34c4fdb8e164e.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 7,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.145615,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 164.95,
+        "medianHz": 205.13,
+        "p90Hz": 246.15,
+        "voicedFrames": 498
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "46f88ca22e33049f49e2448710d1faf8115d6bd41401509e61afd4dfc5172472": {
+    "voice": "Serena",
+    "duration": 19.168,
+    "sampleRate": 24000,
+    "generationSeconds": 13.64,
+    "parts": [
+      {
+        "text": "芬恩在珊瑚边躺下来，空瓶安静地放在身旁。水母游过，留下柔柔的亮。\n他闭上眼睛。今天走了很远，明天还可以和朋友一起，发现更多小小的光。",
+        "start": 0.0,
+        "duration": 19.168333333333333,
+        "tempo": 1.202
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.202
+    ],
+    "sourceDuration": 26.08,
+    "removedSilenceSeconds": 3.04,
+    "url": "assets/audio/library/46f88ca22e33049f49e2448710d1faf8115d6bd41401509e61afd4dfc5172472.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 10,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0575106,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 183.91,
+        "medianHz": 222.22,
+        "p90Hz": 285.71,
+        "voicedFrames": 546
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "4ca145273ca2cc87b5bf64358f7619614e08438068c0aefb8071623854533cbc": {
+    "voice": "Serena",
+    "duration": 20.46,
+    "sampleRate": 24000,
+    "generationSeconds": 13.37,
+    "parts": [
+      {
+        "text": "卡梅拉画了一张小地图，把水壶和绿丝带装进背包。\n“我去风铃山看看，太阳落山前回来！”她向妈妈挥挥翅膀。\n妈妈笑着替她理好背包带：“遇到困难，记得找朋友一起想办法。”",
+        "start": 0.0,
+        "duration": 20.46,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 23.2,
+    "removedSilenceSeconds": 2.74,
+    "url": "assets/audio/library/4ca145273ca2cc87b5bf64358f7619614e08438068c0aefb8071623854533cbc.mp3",
+    "bookId": "demo-carmela",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.1309495,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 168.42,
+        "medianHz": 207.79,
+        "p90Hz": 280.7,
+        "voicedFrames": 559
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "6dbeac0cc41baa1cde3839d06809ede2fe7d13ca96a217b74887a23c34d77e01": {
+    "voice": "Serena",
+    "duration": 21.799,
+    "sampleRate": 24000,
+    "generationSeconds": 15.17,
+    "parts": [
+      {
+        "text": "走到小溪边，卡梅拉发现地图上的路，被一大片芦苇挡住了。\n“呱，先别急！”青蛙阿滴跳上石头，“沿着水声走，小木桥就在前面。”\n她把绿丝带系在树枝上，记住回家的方向。",
+        "start": 0.0,
+        "duration": 21.798541666666665,
+        "tempo": 1.22828
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.22828
+    ],
+    "sourceDuration": 29.44,
+    "removedSilenceSeconds": 2.67,
+    "url": "assets/audio/library/6dbeac0cc41baa1cde3839d06809ede2fe7d13ca96a217b74887a23c34d77e01.mp3",
+    "bookId": "demo-carmela",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.8408964,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 235.29,
+        "medianHz": 307.69,
+        "p90Hz": 380.95,
+        "voicedFrames": 629
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "aa11ec3a8203dec7b33602921a8b333b139f5a51fbf180f69ce4d4557258d5d3": {
+    "voice": "Serena",
+    "duration": 20.29,
+    "sampleRate": 24000,
+    "generationSeconds": 11.7,
+    "parts": [
+      {
+        "text": "到了山顶，她们终于找到了风铃。原来，一根落下的树枝缠住了铃绳，小木锤也掉进了草丛。\n卡梅拉踮起脚，轻轻解开绳结。\n“别着急，我扶着呢！”麦麦稳稳托住风铃。",
+        "start": 0.0,
+        "duration": 20.29,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 23.44,
+    "removedSilenceSeconds": 3.15,
+    "url": "assets/audio/library/aa11ec3a8203dec7b33602921a8b333b139f5a51fbf180f69ce4d4557258d5d3.mp3",
+    "bookId": "demo-carmela",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 183.91,
+        "medianHz": 228.57,
+        "p90Hz": 285.71,
+        "voicedFrames": 563
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "2aace8c6f3b7bcc6254e00f2524c219698dba8d709a65ad99bd1bca9e183d60a": {
+    "voice": "Serena",
+    "duration": 18.169,
+    "sampleRate": 24000,
+    "generationSeconds": 50.91,
+    "parts": [
+      {
+        "text": "一只老乌龟慢慢走来，看了看安静的树叶。\n“好风筝也需要等一阵风。”\n“风什么时候来呢？”\n“你可以先做一件喜欢的事，等待也会变得很好玩。”",
+        "start": 0.0,
+        "duration": 18.168875,
+        "tempo": 0.817
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.817
+    ],
+    "sourceDuration": 18.24,
+    "removedSilenceSeconds": 3.39,
+    "url": "assets/audio/library/2aace8c6f3b7bcc6254e00f2524c219698dba8d709a65ad99bd1bca9e183d60a.mp3",
+    "bookId": "demo-kite",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.1603219,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 161.13,
+        "medianHz": 202.53,
+        "p90Hz": 266.67,
+        "voicedFrames": 528
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "35caa6558599b8183ac36775a6af1d299b5844a58b0d38c1335b6bd9755e9009": {
+    "voice": "Serena",
+    "duration": 18.37,
+    "sampleRate": 24000,
+    "generationSeconds": 12.29,
+    "parts": [
+      {
+        "text": "闪光的小点聚在一起，像一条会游动的星河。芬恩把空瓶举起来，瓶壁也映出了光。\n他没有把小生命关起来，只借着这片亮光，认清了回家的方向。",
+        "start": 0.0,
+        "duration": 18.37,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 20.96,
+    "removedSilenceSeconds": 2.59,
+    "url": "assets/audio/library/35caa6558599b8183ac36775a6af1d299b5844a58b0d38c1335b6bd9755e9009.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 8,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0575106,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 222.22,
+        "p90Hz": 281.2,
+        "voicedFrames": 490
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "707e8c6f1962ee33b7e5a71fb91191e66376025c69933b94bc30d866e0ccbbb8": {
+    "voice": "Serena",
+    "duration": 33.267,
+    "sampleRate": 24000,
+    "generationSeconds": 20.14,
+    "parts": [
+      {
+        "text": "故事讲完了，B612 还在远处轻轻发亮。\n也许小王子正为玫瑰盖好玻璃罩，也许他正坐在椅子上，等一次温柔的日落。\n现在，轮到我们照顾身边的人，也照顾那些小小的喜欢。晚安，小王子。晚安，认真听故事的你。愿你心里的星球，总有一盏温暖的灯。",
+        "start": 0.0,
+        "duration": 33.266625,
+        "tempo": 0.88091
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.88091
+    ],
+    "sourceDuration": 40.32,
+    "removedSilenceSeconds": 11.01,
+    "url": "assets/audio/library/707e8c6f1962ee33b7e5a71fb91191e66376025c69933b94bc30d866e0ccbbb8.mp3",
     "bookId": "demo-little-prince",
     "page": 12,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 62.4,
-    "removedSilenceSeconds": 3.19,
-    "parts": []
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0721781,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 173.91,
+        "medianHz": 219.18,
+        "p90Hz": 266.67,
+        "voicedFrames": 953
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "7f6603d7c58a42ee34bd41d02105f823dc34d0c3ea4e4b38127d82e70bf20e14": {
-    "url": "assets/audio/library/7f6603d7c58a42ee34bd41d02105f823dc34d0c3ea4e4b38127d82e70bf20e14.mp3",
-    "duration": 25.777,
+  "afedd336b50f1d8ec8bdb9da47c341868ccde5a89c71dfdd294314dbaf12f339": {
     "voice": "Serena",
+    "duration": 19.605,
+    "sampleRate": 24000,
+    "generationSeconds": 10.31,
+    "parts": [
+      {
+        "text": "山坡上，一朵云挂在树梢休息。\n“你见过月亮吗？”小兔子问。\n云朵打了一个大大的哈欠：“她今天很累，也许躲起来了。你可以带一句温柔的话去找她。”",
+        "start": 0.0,
+        "duration": 19.604791666666667,
+        "tempo": 0.85733
+      }
+    ],
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-moon",
-    "page": 1,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 30.4,
-    "removedSilenceSeconds": 2.56,
-    "parts": []
-  },
-  "990576e45295639c1481a7fedd1357408dc6688def7b19e773c141bd815ab936": {
-    "url": "assets/audio/library/990576e45295639c1481a7fedd1357408dc6688def7b19e773c141bd815ab936.mp3",
-    "duration": 22.46,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-moon",
-    "page": 2,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 29.12,
-    "removedSilenceSeconds": 4.87,
-    "parts": []
-  },
-  "7de1f8c64e9f1e4180e7f38e7453b74e72fcaa25f4dfd09181f6983758171c34": {
-    "url": "assets/audio/library/7de1f8c64e9f1e4180e7f38e7453b74e72fcaa25f4dfd09181f6983758171c34.mp3",
-    "duration": 18.176,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.85733
+    ],
+    "sourceDuration": 21.44,
+    "removedSilenceSeconds": 4.62,
+    "url": "assets/audio/library/afedd336b50f1d8ec8bdb9da47c341868ccde5a89c71dfdd294314dbaf12f339.mp3",
     "bookId": "demo-moon",
     "page": 3,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 23.52,
-    "removedSilenceSeconds": 3.9,
-    "parts": []
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.086856,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 173.35,
+        "medianHz": 216.22,
+        "p90Hz": 262.3,
+        "voicedFrames": 538
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "46bed50be5b40a8012499d0bbe23ce96712691a4c2bb13b8ea892dd5e9dd4063": {
-    "url": "assets/audio/library/46bed50be5b40a8012499d0bbe23ce96712691a4c2bb13b8ea892dd5e9dd4063.mp3",
-    "duration": 46.185,
+  "f17556f39b8e30b2e4e04171cdbe481145bc6cfcd1fda3b97e6459e5291cf8a0": {
     "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-moon",
-    "page": 4,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 60.88,
-    "removedSilenceSeconds": 11.02,
-    "parts": []
-  },
-  "5243810aa796e0808a7b07a3204dcedb625082cbf08fd488595a2a0cf7585d1d": {
-    "url": "assets/audio/library/5243810aa796e0808a7b07a3204dcedb625082cbf08fd488595a2a0cf7585d1d.mp3",
-    "duration": 20.506,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-moon",
-    "page": 5,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 23.04,
-    "removedSilenceSeconds": 0.89,
-    "parts": []
-  },
-  "86df65302f2cc47067cdb415733f8f17b9dc4d42e3761c481355da75d549e8f4": {
-    "url": "assets/audio/library/86df65302f2cc47067cdb415733f8f17b9dc4d42e3761c481355da75d549e8f4.mp3",
-    "duration": 20.112,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-moon",
-    "page": 6,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 24.88,
-    "removedSilenceSeconds": 3.16,
-    "parts": []
-  },
-  "f01d4b99db1dc4f66c1fb8e54d7dd4471fd211afda227000ddd38dd186bfd93d": {
-    "url": "assets/audio/library/f01d4b99db1dc4f66c1fb8e54d7dd4471fd211afda227000ddd38dd186bfd93d.mp3",
-    "duration": 23.119,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-ocean",
-    "page": 1,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 30.56,
-    "removedSilenceSeconds": 5.59,
-    "parts": []
-  },
-  "b2c1d69dd3614ba7b747ac94d31c5c26c65908fe19200f338c3271c4b50faf9e": {
-    "url": "assets/audio/library/b2c1d69dd3614ba7b747ac94d31c5c26c65908fe19200f338c3271c4b50faf9e.mp3",
-    "duration": 19.545,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-ocean",
-    "page": 2,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 24.64,
-    "removedSilenceSeconds": 3.54,
-    "parts": []
-  },
-  "aade562ca15e5f803a513a4567da4912a5f08519e19a1fa3490cc6b87963b81a": {
-    "url": "assets/audio/library/aade562ca15e5f803a513a4567da4912a5f08519e19a1fa3490cc6b87963b81a.mp3",
-    "duration": 45.497,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-ocean",
-    "page": 3,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 52.32,
-    "removedSilenceSeconds": 3.18,
-    "parts": []
-  },
-  "969b368812d7d7c875cdfc4dc0afeec1de48ed52caf9ffbb3bc87fd3054d4a8c": {
-    "url": "assets/audio/library/969b368812d7d7c875cdfc4dc0afeec1de48ed52caf9ffbb3bc87fd3054d4a8c.mp3",
-    "duration": 20.748,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-ocean",
-    "page": 4,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 26.4,
-    "removedSilenceSeconds": 3.99,
-    "parts": []
-  },
-  "24ed06a44d7a37a72c14494a8be58f66cb58b818e9557816308e527263b019aa": {
-    "url": "assets/audio/library/24ed06a44d7a37a72c14494a8be58f66cb58b818e9557816308e527263b019aa.mp3",
-    "duration": 24.372,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-ocean",
-    "page": 5,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 27.04,
-    "removedSilenceSeconds": 0.7,
-    "parts": []
-  },
-  "2e402a5ab26800157f5f15863e4001d11d458d85dba136c40b7596d64597fb27": {
-    "url": "assets/audio/library/2e402a5ab26800157f5f15863e4001d11d458d85dba136c40b7596d64597fb27.mp3",
-    "duration": 26.647,
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "bookId": "demo-ocean",
-    "page": 6,
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 33.12,
-    "removedSilenceSeconds": 4.32,
-    "parts": []
-  },
-  "6b31c8cd213712c80eafb01583d5732b8a57dd1fc28ca4bb8765260787f1610a": {
-    "url": "assets/audio/library/6b31c8cd213712c80eafb01583d5732b8a57dd1fc28ca4bb8765260787f1610a.mp3",
-    "bookId": "demo-carmela",
-    "page": 1,
-    "duration": 27.789,
-    "voice": "Serena",
+    "duration": 25.98,
+    "sampleRate": 24000,
+    "generationSeconds": 16.38,
     "parts": [
       {
-        "text": "每天，山上的风铃都会叮咚叮咚，给农场报平安。今天，卡梅拉竖起耳朵，听见的只有沙沙的树叶声。",
+        "text": "小木锤找不到了。卡梅拉看见脚边一颗圆圆的松果，忽然有了主意。\n她把松果系在铃绳上。风一吹，松果碰到木片：叮，咚，叮咚！\n“听！风铃有了新歌声！”两个朋友高兴得转起圈来。",
         "start": 0.0,
-        "duration": 18.453703703703702
-      },
-      {
-        "text": "“风还在，风铃怎么不唱歌了？”",
-        "start": 18.712962962962962,
-        "duration": 3.481481481481481
-      },
-      {
-        "text": "她望向远处的小山，心里冒出一个大大的问号。",
-        "start": 22.453703703703702,
-        "duration": 5.3240740740740735
+        "duration": 25.98,
+        "tempo": 1.0
       }
     ],
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 31.76,
-    "removedSilenceSeconds": 2.32
-  },
-  "ff7583e6192bfd8a299313001b24ea8753e4a44ef2e6e046e92c76d04957f4c4": {
-    "url": "assets/audio/library/ff7583e6192bfd8a299313001b24ea8753e4a44ef2e6e046e92c76d04957f4c4.mp3",
-    "bookId": "demo-carmela",
-    "page": 2,
-    "duration": 43.933,
-    "voice": "Serena",
-    "parts": [
-      {
-        "text": "卡梅拉画了一张小地图，把水壶和绿丝带装进背包。",
-        "start": 0.0,
-        "duration": 4.509259259259259
-      },
-      {
-        "text": "“我去风铃山看看，太阳落山前回来！”她向妈妈挥挥翅膀。",
-        "start": 4.768518518518518,
-        "duration": 31.203703703703706
-      },
-      {
-        "text": "妈妈笑着替她理好背包带：“遇到困难，记得找朋友一起想办法。”",
-        "start": 36.23148148148148,
-        "duration": 7.694444444444445
-      }
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
     ],
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 53.2,
-    "removedSilenceSeconds": 6.32
-  },
-  "1adfdd35fb0445e2020a67b94e025a7bdf21a7cec582e68cba69cf4031da1998": {
-    "url": "assets/audio/library/1adfdd35fb0445e2020a67b94e025a7bdf21a7cec582e68cba69cf4031da1998.mp3",
-    "bookId": "demo-carmela",
-    "page": 3,
-    "duration": 21.178,
-    "voice": "Serena",
-    "parts": [
-      {
-        "text": "走到小溪边，卡梅拉发现地图上的路，被一大片芦苇挡住了。",
-        "start": 0.0,
-        "duration": 8.287037037037036
-      },
-      {
-        "text": "“呱，先别急！”青蛙阿滴跳上石头，“沿着水声走，小木桥就在前面。”",
-        "start": 8.546296296296296,
-        "duration": 7.259259259259259
-      },
-      {
-        "text": "她把绿丝带系在树枝上，记住回家的方向。",
-        "start": 16.064814814814817,
-        "duration": 5.111111111111111
-      }
-    ],
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 24.0,
-    "removedSilenceSeconds": 1.69
-  },
-  "44f75dfc1ae14c64d5cc7122f642a631bb2430a9d881ab6356736a972fce44d2": {
-    "url": "assets/audio/library/44f75dfc1ae14c64d5cc7122f642a631bb2430a9d881ab6356736a972fce44d2.mp3",
-    "bookId": "demo-carmela",
-    "page": 4,
-    "duration": 20.708,
-    "voice": "Serena",
-    "parts": [
-      {
-        "text": "小桥上，一块木板翘起了头。小兔麦麦抱着胡萝卜，站在桥边发愁。",
-        "start": 0.0,
-        "duration": 9.824074074074073
-      },
-      {
-        "text": "卡梅拉刚想往前跑，又停了下来。",
-        "start": 10.083333333333334,
-        "duration": 3.175925925925926
-      },
-      {
-        "text": "“冒险不是只顾着赶路。我们先把小桥修好吧！”她说。",
-        "start": 13.518518518518517,
-        "duration": 7.175925925925926
-      }
-    ],
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 24.0,
-    "removedSilenceSeconds": 2.21
-  },
-  "c17033961c933f55bd7a3969d8cb40718bbd4c919929e690e05924407b50ffa6": {
-    "url": "assets/audio/library/c17033961c933f55bd7a3969d8cb40718bbd4c919929e690e05924407b50ffa6.mp3",
-    "bookId": "demo-carmela",
-    "page": 5,
-    "duration": 21.326,
-    "voice": "Serena",
-    "parts": [
-      {
-        "text": "麦麦扶住木板，卡梅拉找来结实的芦苇绳。一个按住，一个绑紧，歪歪的小桥终于不摇了。",
-        "start": 0.0,
-        "duration": 9.777777777777777
-      },
-      {
-        "text": "“一个人真难，两个朋友就有办法！”",
-        "start": 10.037037037037036,
-        "duration": 4.148148148148148
-      },
-      {
-        "text": "麦麦放好胡萝卜，决定陪卡梅拉一起上山。",
-        "start": 14.444444444444443,
-        "duration": 6.879629629629629
-      }
-    ],
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 22.48,
-    "removedSilenceSeconds": 0.01
-  },
-  "b8b248c9aa698df526d39303d1e83aa3229e7a808d4b5f7931f4e34c75926c1c": {
-    "url": "assets/audio/library/b8b248c9aa698df526d39303d1e83aa3229e7a808d4b5f7931f4e34c75926c1c.mp3",
-    "bookId": "demo-carmela",
-    "page": 6,
-    "duration": 20.815,
-    "voice": "Serena",
-    "parts": [
-      {
-        "text": "到了山顶，她们终于找到了风铃。原来，一根落下的树枝缠住了铃绳，小木锤也掉进了草丛。",
-        "start": 0.0,
-        "duration": 13.194444444444443
-      },
-      {
-        "text": "卡梅拉踮起脚，轻轻解开绳结。",
-        "start": 13.453703703703702,
-        "duration": 3.175925925925926
-      },
-      {
-        "text": "“别着急，我扶着呢！”麦麦稳稳托住风铃。",
-        "start": 16.888888888888886,
-        "duration": 3.925925925925926
-      }
-    ],
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 23.04,
-    "removedSilenceSeconds": 1.12
-  },
-  "e3be4052cb36118bb10e83feb056e4d0e5914a3758232c41355a1412ed30e8a4": {
-    "url": "assets/audio/library/e3be4052cb36118bb10e83feb056e4d0e5914a3758232c41355a1412ed30e8a4.mp3",
+    "sourceDuration": 31.92,
+    "removedSilenceSeconds": 5.94,
+    "url": "assets/audio/library/f17556f39b8e30b2e4e04171cdbe481145bc6cfcd1fda3b97e6459e5291cf8a0.mp3",
     "bookId": "demo-carmela",
     "page": 7,
-    "duration": 23.431,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9253061,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 195.12,
+        "medianHz": 253.97,
+        "p90Hz": 326.53,
+        "voicedFrames": 784
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "42adf781d9068e66665dd6dcdc3b02d862a2c5820dc2f4e5874989665e2a8215": {
     "voice": "Serena",
+    "duration": 14.417,
+    "sampleRate": 24000,
+    "generationSeconds": 8.58,
     "parts": [
       {
-        "text": "小木锤找不到了。卡梅拉看见脚边一颗圆圆的松果，忽然有了主意。",
+        "text": "奥托把红围巾系好，握住一只红气球。\n风轻轻吹来，气球把他带离屋顶。\n小镇越来越小，他的勇气却一点点变大。",
         "start": 0.0,
-        "duration": 9.953703703703702
-      },
-      {
-        "text": "她把松果系在铃绳上。风一吹，松果碰到木片：叮，咚，叮咚！",
-        "start": 10.212962962962962,
-        "duration": 7.62037037037037
-      },
-      {
-        "text": "“听！风铃有了新歌声！”两个朋友高兴得转起圈来。",
-        "start": 18.09259259259259,
-        "duration": 5.333333333333333
+        "duration": 14.416708333333334,
+        "tempo": 0.87573
       }
     ],
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 27.36,
-    "removedSilenceSeconds": 2.62
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.87573
+    ],
+    "sourceDuration": 13.68,
+    "removedSilenceSeconds": 1.05,
+    "url": "assets/audio/library/42adf781d9068e66665dd6dcdc3b02d862a2c5820dc2f4e5874989665e2a8215.mp3",
+    "bookId": "demo-otto",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0721781,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 219.18,
+        "p90Hz": 301.89,
+        "voicedFrames": 420
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "10242a59abf3c9d7f21d27221d51f0b98472def47aed4c2675ecdd155bf668c3": {
-    "url": "assets/audio/library/10242a59abf3c9d7f21d27221d51f0b98472def47aed4c2675ecdd155bf668c3.mp3",
+  "b4c68383ffe576ffc7d09124263c697b0780c6c67f50f0723821ce0be90b47d1": {
+    "voice": "Serena",
+    "duration": 24.81,
+    "sampleRate": 24000,
+    "generationSeconds": 40.1,
+    "parts": [
+      {
+        "text": "大家围着小桌吃过晚饭，钻进柔软的叶子被窝。松果灯调暗了，窗外有一颗星星。\n小栗从爷爷数到最小的妹妹，一个也没落下。\n“十四位，晚安。”他闭上眼睛。新家很陌生，可家人都在身边，梦就暖暖的。",
+        "start": 0.0,
+        "duration": 24.81,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 30.08,
+    "removedSilenceSeconds": 5.27,
+    "url": "assets/audio/library/b4c68383ffe576ffc7d09124263c697b0780c6c67f50f0723821ce0be90b47d1.mp3",
+    "bookId": "demo-mice-moving-home",
+    "page": 8,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.94,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 186.05,
+        "medianHz": 250.0,
+        "p90Hz": 301.89,
+        "voicedFrames": 766
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "b2df381b4006472d5e9c8840b8969b46f4dde94ed68896daf3d9df75607fb5df": {
+    "voice": "Serena",
+    "duration": 17.65,
+    "sampleRate": 24000,
+    "generationSeconds": 10.79,
+    "parts": [
+      {
+        "text": "森林安静下来了，小兔子的窗户还亮着。\n“奇怪，今晚月亮怎么没有来？”\n小兔子抱着枕头，踮起脚尖向外望。天上只有一颗星星，像一粒没睡醒的糖。",
+        "start": 0.0,
+        "duration": 17.65,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 20.72,
+    "removedSilenceSeconds": 3.07,
+    "url": "assets/audio/library/b2df381b4006472d5e9c8840b8969b46f4dde94ed68896daf3d9df75607fb5df.mp3",
+    "bookId": "demo-moon",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 188.24,
+        "medianHz": 231.88,
+        "p90Hz": 280.7,
+        "voicedFrames": 484
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "8959de191af1122b97c50ac544a7c2319fd47ab8601fa8cc2a55dc272bbe139e": {
+    "voice": "Serena",
+    "duration": 21.009,
+    "sampleRate": 24000,
+    "generationSeconds": 75.31,
+    "parts": [
+      {
+        "text": "草叶都朝一个方向弯下腰。妮娅迎着风跑，风筝从花丛上方升了起来。\n一只绵羊抬头看了好久。妮娅笑着问：“你也想知道云朵后面有什么吗？”",
+        "start": 0.0,
+        "duration": 21.008666666666667,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 28.0,
+    "removedSilenceSeconds": 1.74,
+    "url": "assets/audio/library/8959de191af1122b97c50ac544a7c2319fd47ab8601fa8cc2a55dc272bbe139e.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9840459,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 197.53,
+        "medianHz": 238.81,
+        "p90Hz": 296.3,
+        "voicedFrames": 590
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "d25958f5984625a3847df870a7ec0f44c7a91092279b907244933b1f7f19475e": {
+    "voice": "Serena",
+    "duration": 22.195,
+    "sampleRate": 24000,
+    "generationSeconds": 14.35,
+    "parts": [
+      {
+        "text": "这天晚上，一点金色的光落进海里。\n蓝蓝赶紧游过去，原来是一条迷路的灯笼鱼。\n“我的家在很深很深的地方。”灯笼鱼说。\n蓝蓝看了看黑漆漆的海水，心跳得像小鼓。",
+        "start": 0.0,
+        "duration": 22.19475,
+        "tempo": 0.87044
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.87044
+    ],
+    "sourceDuration": 26.48,
+    "removedSilenceSeconds": 7.15,
+    "url": "assets/audio/library/d25958f5984625a3847df870a7ec0f44c7a91092279b907244933b1f7f19475e.mp3",
+    "bookId": "demo-ocean",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.145615,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 168.42,
+        "medianHz": 205.13,
+        "p90Hz": 250.0,
+        "voicedFrames": 566
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "f62e49fc69bae53bf1958f58dce9056a6d54a524829ff3e796348410272cb539": {
+    "voice": "Serena",
+    "duration": 15.958,
+    "sampleRate": 24000,
+    "generationSeconds": 11.51,
+    "parts": [
+      {
+        "text": "小兔妮娅扣好黄色外衣，推开家门。红风筝靠在门边，长尾巴轻轻摆动。\n“今天，带你看看远处的山。”她把线轴握在掌心。",
+        "start": 0.0,
+        "duration": 15.958458333333333,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 21.04,
+    "removedSilenceSeconds": 1.09,
+    "url": "assets/audio/library/f62e49fc69bae53bf1958f58dce9056a6d54a524829ff3e796348410272cb539.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.8518814,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 225.35,
+        "medianHz": 275.86,
+        "p90Hz": 320.0,
+        "voicedFrames": 469
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "0629f55523e063162661adc0823b84f3141d6daeb47fdb9c531c9b176338aaa9": {
+    "voice": "Serena",
+    "duration": 19.917,
+    "sampleRate": 24000,
+    "generationSeconds": 10.01,
+    "parts": [
+      {
+        "text": "灯笼鱼到家了。几十条小鱼游出来，围着蓝蓝转圈。\n“谢谢你送他回来！”\n金色的光映在蓝蓝身上，像一口袋会游泳的小星星。\n蓝蓝笑起来，海水也跟着轻轻晃。",
+        "start": 0.0,
+        "duration": 19.916833333333333,
+        "tempo": 0.86279
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.86279
+    ],
+    "sourceDuration": 18.88,
+    "removedSilenceSeconds": 1.69,
+    "url": "assets/audio/library/0629f55523e063162661adc0823b84f3141d6daeb47fdb9c531c9b176338aaa9.mp3",
+    "bookId": "demo-ocean",
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0428223,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 182.86,
+        "medianHz": 225.35,
+        "p90Hz": 285.71,
+        "voicedFrames": 606
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "28b2158e4fa020c614418759b449c8c6035683eeeef0f24f812de0e1d0efe316": {
+    "voice": "Serena",
+    "duration": 18.84,
+    "sampleRate": 24000,
+    "generationSeconds": 10.2,
+    "parts": [
+      {
+        "text": "小海龟芬恩住在一片彩色珊瑚旁。每天晚上，一条灯笼鱼会点亮回家的路。\n今天，小灯却暗了下来。“别担心，”芬恩说，“我们一起找找光去了哪里。”",
+        "start": 0.0,
+        "duration": 18.84,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 20.8,
+    "removedSilenceSeconds": 1.96,
+    "url": "assets/audio/library/28b2158e4fa020c614418759b449c8c6035683eeeef0f24f812de0e1d0efe316.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 179.78,
+        "medianHz": 231.88,
+        "p90Hz": 285.71,
+        "voicedFrames": 583
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "9d33f8c4133bee4083feac0a1eee0da23aa41d1ba533bfedcc12a967583de0fe": {
+    "voice": "Serena",
+    "duration": 18.07,
+    "sampleRate": 24000,
+    "generationSeconds": 12.23,
+    "parts": [
+      {
+        "text": "一条旧木船躺在海底，舷窗像圆圆的眼睛。芬恩在外面绕了一圈，没有钻进黑洞。\n瓶子映出一点蓝光，原来是船旁的小生物正闪闪发亮。他把这个发现记在心里。",
+        "start": 0.0,
+        "duration": 18.07,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 23.12,
+    "removedSilenceSeconds": 5.05,
+    "url": "assets/audio/library/9d33f8c4133bee4083feac0a1eee0da23aa41d1ba533bfedcc12a967583de0fe.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0428223,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 170.21,
+        "medianHz": 225.35,
+        "p90Hz": 285.71,
+        "voicedFrames": 547
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "c7941956e193aab880f78d8a96e8d806c37d0bb9bd921166da3f712e4c8d506e": {
+    "voice": "Serena",
+    "duration": 30.341,
+    "sampleRate": 24000,
+    "generationSeconds": 16.57,
+    "parts": [
+      {
+        "text": "第一颗星球上，住着一位戴王冠的国王。他的袍子很长，几乎盖住了整个星球。\n国王喜欢发号施令，可是身边没有一个可以聊天的朋友。\n小王子想，坐在最高的椅子上，也不一定就快乐。有人愿意坐在旁边，才是更好的事。",
+        "start": 0.0,
+        "duration": 30.341375,
+        "tempo": 0.88186
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.88186
+    ],
+    "sourceDuration": 31.04,
+    "removedSilenceSeconds": 4.28,
+    "url": "assets/audio/library/c7941956e193aab880f78d8a96e8d806c37d0bb9bd921166da3f712e4c8d506e.mp3",
+    "bookId": "demo-little-prince",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.086856,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 161.62,
+        "medianHz": 216.22,
+        "p90Hz": 299.09,
+        "voicedFrames": 836
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "a547c6f76d979ba8b4527f40769ef5fd577e32132f931c9fe7cdc343afe7b8ad": {
+    "voice": "Serena",
+    "duration": 19.503,
+    "sampleRate": 24000,
+    "generationSeconds": 13.38,
+    "parts": [
+      {
+        "text": "风筝越飞越高，越飞越远。\n“请帮我把信带给春天！”小狐狸喊。\n风穿过他的围巾，像在回答：“收到啦！”\n草地上，那朵一直没有开放的小花，悄悄松开了花瓣。",
+        "start": 0.0,
+        "duration": 19.503333333333334,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 25.68,
+    "removedSilenceSeconds": 1.3,
+    "url": "assets/audio/library/a547c6f76d979ba8b4527f40769ef5fd577e32132f931c9fe7cdc343afe7b8ad.mp3",
+    "bookId": "demo-kite",
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9106409,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 213.33,
+        "medianHz": 258.06,
+        "p90Hz": 307.69,
+        "voicedFrames": 585
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "30dc40e4b6c140df9677915386c9e4a113bc68bd998cb87b46c5228a309f9d8d": {
+    "voice": "Serena",
+    "duration": 26.71,
+    "sampleRate": 24000,
+    "generationSeconds": 16.74,
+    "parts": [
+      {
+        "text": "小王子想去看看外面的世界。\n他认真清扫火山，又给玫瑰浇了一次水，才跟着远行的鸟儿出发。\n星球在身后越来越小。金色围巾在风里飘着，他心里却已经有了一点点想念。原来，离开的时候，才知道自己舍不得什么。",
+        "start": 0.0,
+        "duration": 26.71,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 31.68,
+    "removedSilenceSeconds": 4.97,
+    "url": "assets/audio/library/30dc40e4b6c140df9677915386c9e4a113bc68bd998cb87b46c5228a309f9d8d.mp3",
+    "bookId": "demo-little-prince",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.086856,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 173.91,
+        "medianHz": 216.22,
+        "p90Hz": 263.61,
+        "voicedFrames": 688
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "f4eddae55d1331822e0432bc4253b855ad2bed77eefe9963b8776e6a70ff0374": {
+    "voice": "Serena",
+    "duration": 18.05,
+    "sampleRate": 24000,
+    "generationSeconds": 10.18,
+    "parts": [
+      {
+        "text": "芬恩带上一只空瓶，慢慢向下游。海面变成头顶一块晃动的蓝玻璃。\n他回头看看朋友，又摆摆鳍。前面还很陌生，不过他愿意先游一小段。",
+        "start": 0.0,
+        "duration": 18.05,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 20.08,
+    "removedSilenceSeconds": 2.03,
+    "url": "assets/audio/library/f4eddae55d1331822e0432bc4253b855ad2bed77eefe9963b8776e6a70ff0374.mp3",
+    "bookId": "fin-glowing-sea",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0721781,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 219.18,
+        "p90Hz": 280.7,
+        "voicedFrames": 551
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "189bbc44ffc4aa29f372233c41f9f1dea8e273e7fb413132e574120477005106": {
+    "voice": "Serena",
+    "duration": 18.66,
+    "sampleRate": 24000,
+    "generationSeconds": 28.37,
+    "parts": [
+      {
+        "text": "小狐狸做了一只橘色的风筝。\n他跑过草地，跑过小桥，风筝却只会在地上打滚。\n“是不是我做得不够好？”他坐在石头上，耳朵耷拉了下来。",
+        "start": 0.0,
+        "duration": 18.66,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 21.28,
+    "removedSilenceSeconds": 2.62,
+    "url": "assets/audio/library/189bbc44ffc4aa29f372233c41f9f1dea8e273e7fb413132e574120477005106.mp3",
+    "bookId": "demo-kite",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.145615,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 166.67,
+        "medianHz": 205.13,
+        "p90Hz": 290.91,
+        "voicedFrames": 507
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "8a0e453cd4841ce8d95b48d0c5583f9717e046623405aab1da4a8eb3e0fc5628": {
+    "voice": "Serena",
+    "duration": 16.081,
+    "sampleRate": 24000,
+    "generationSeconds": 10.75,
+    "parts": [
+      {
+        "text": "月亮慢慢走出云朵。金光落在奥托的围巾上，也落进小镇的窗。\n奥托笑了，月亮也笑了。\n有人陪着的时候，试一试就没有那么难。",
+        "start": 0.0,
+        "duration": 16.080875,
+        "tempo": 1.13468
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.13468
+    ],
+    "sourceDuration": 20.8,
+    "removedSilenceSeconds": 2.54,
+    "url": "assets/audio/library/8a0e453cd4841ce8d95b48d0c5583f9717e046623405aab1da4a8eb3e0fc5628.mp3",
+    "bookId": "demo-otto",
+    "page": 8,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.086856,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 175.82,
+        "medianHz": 216.22,
+        "p90Hz": 290.91,
+        "voicedFrames": 491
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "de33889c272512354c3f155807d423e61db5e11476813f400a2fc1fbd6cd3775": {
+    "voice": "Serena",
+    "duration": 17.3,
+    "sampleRate": 24000,
+    "generationSeconds": 54.47,
+    "parts": [
+      {
+        "text": "小狐狸拿出彩笔，在风筝背面写信。\n“亲爱的春天，你好。我种的花还没开，但我每天都给它浇水。”\n他又画了一只小蜗牛，因为蜗牛走得慢，也一直在往前走。",
+        "start": 0.0,
+        "duration": 17.3,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 19.6,
+    "removedSilenceSeconds": 2.3,
+    "url": "assets/audio/library/de33889c272512354c3f155807d423e61db5e11476813f400a2fc1fbd6cd3775.mp3",
+    "bookId": "demo-kite",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0575106,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 168.42,
+        "medianHz": 222.22,
+        "p90Hz": 279.25,
+        "voicedFrames": 564
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "50354f65156c7b5fbad9f7e54bd6e973ce8392e792ebef7e2ae08fe78897ae16": {
+    "voice": "Serena",
+    "duration": 16.91,
+    "sampleRate": 24000,
+    "generationSeconds": 11.97,
+    "parts": [
+      {
+        "text": "窗外的天空渐渐变暗。妮娅把红风筝挂好，外衣整齐地搭在椅背上。\n“明天再去旅行吧。”她钻进被窝。长长的红尾巴轻轻晃了一下，像在说晚安。",
+        "start": 0.0,
+        "duration": 16.91,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 21.12,
+    "removedSilenceSeconds": 4.21,
+    "url": "assets/audio/library/50354f65156c7b5fbad9f7e54bd6e973ce8392e792ebef7e2ae08fe78897ae16.mp3",
+    "bookId": "nia-runaway-kite",
+    "page": 10,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.1015797,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 166.67,
+        "medianHz": 213.33,
+        "p90Hz": 271.19,
+        "voicedFrames": 453
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "8eb379070e42eefa55b73bc56bdf2cf5d3b4fc3a75e546ce69cef47dda688805": {
+    "voice": "Serena",
+    "duration": 19.77,
+    "sampleRate": 24000,
+    "generationSeconds": 13.92,
+    "parts": [
+      {
+        "text": "“我陪你走一段吧。”蓝蓝说。\n他们先游过一块礁石，又游过一丛海草。\n蓝蓝没有去想前面有多黑。他只想着，再往前游一点点，就离朋友的家更近一点点。",
+        "start": 0.0,
+        "duration": 19.77,
+        "tempo": 1.18444
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.18444
+    ],
+    "sourceDuration": 26.16,
+    "removedSilenceSeconds": 2.74,
+    "url": "assets/audio/library/8eb379070e42eefa55b73bc56bdf2cf5d3b4fc3a75e546ce69cef47dda688805.mp3",
+    "bookId": "demo-ocean",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9106409,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 210.53,
+        "medianHz": 258.06,
+        "p90Hz": 320.0,
+        "voicedFrames": 543
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "e291fb2a106aff04be40a0ca34dd9b0a1a1d00cee5124a79b3e5026b23413cb5": {
+    "voice": "Serena",
+    "duration": 24.64,
+    "sampleRate": 24000,
+    "generationSeconds": 14.69,
+    "parts": [
+      {
+        "text": "小王子和飞行员在沙漠里走了很久。他们终于找到一口井。\n木轮慢慢转动，水桶沿着绳子升上来，发出吱呀吱呀的声音。清凉的水，在星光里轻轻晃。\n这杯水格外甘甜，因为里面还装着一路的努力，还有朋友的陪伴。",
+        "start": 0.0,
+        "duration": 24.64,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 28.8,
+    "removedSilenceSeconds": 4.16,
+    "url": "assets/audio/library/e291fb2a106aff04be40a0ca34dd9b0a1a1d00cee5124a79b3e5026b23413cb5.mp3",
+    "bookId": "demo-little-prince",
+    "page": 9,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.086856,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 173.54,
+        "medianHz": 216.22,
+        "p90Hz": 280.7,
+        "voicedFrames": 739
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "d27ba1a22112fa1b41ac08ead5cb4dad7a6b0210c218e5bf9f7f6c82980b8650": {
+    "voice": "Serena",
+    "duration": 20.103,
+    "sampleRate": 24000,
+    "generationSeconds": 14.85,
+    "parts": [
+      {
+        "text": "小桥上，一块木板翘起了头。小兔麦麦抱着胡萝卜，站在桥边发愁。\n卡梅拉刚想往前跑，又停了下来。\n“冒险不是只顾着赶路。我们先把小桥修好吧！”她说。",
+        "start": 0.0,
+        "duration": 20.103166666666667,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 27.92,
+    "removedSilenceSeconds": 2.79,
+    "url": "assets/audio/library/d27ba1a22112fa1b41ac08ead5cb4dad7a6b0210c218e5bf9f7f6c82980b8650.mp3",
+    "bookId": "demo-carmela",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 191.16,
+        "medianHz": 231.88,
+        "p90Hz": 284.21,
+        "voicedFrames": 614
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "5bfe334caf20d5cc8ae717973bfaf5fd1aff7692da2c9562d5f380a3c67afd01": {
+    "voice": "Serena",
+    "duration": 25.026,
+    "sampleRate": 24000,
+    "generationSeconds": 11.72,
+    "parts": [
+      {
+        "text": "夕阳把小路染成了蜂蜜色。卡梅拉回到农场，风铃的歌声一路跟着她。\n她在地图上画下一座小桥、一颗松果，还有两位新朋友。\n“明天，会不会又有新发现呢？”卡梅拉合上地图，笑着钻进暖暖的被窝。",
+        "start": 0.0,
+        "duration": 25.026,
+        "tempo": 0.83205
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.83205
+    ],
+    "sourceDuration": 22.48,
+    "removedSilenceSeconds": 1.65,
+    "url": "assets/audio/library/5bfe334caf20d5cc8ae717973bfaf5fd1aff7692da2c9562d5f380a3c67afd01.mp3",
     "bookId": "demo-carmela",
     "page": 8,
-    "duration": 39.491,
-    "voice": "Serena",
-    "parts": [
-      {
-        "text": "夕阳把小路染成了蜂蜜色。卡梅拉回到农场，风铃的歌声一路跟着她。",
-        "start": 0.0,
-        "duration": 12.712962962962962
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 228.57,
+        "p90Hz": 280.7,
+        "voicedFrames": 798
       },
-      {
-        "text": "她在地图上画下一座小桥、一颗松果，还有两位新朋友。",
-        "start": 12.972222222222221,
-        "duration": 5.4074074074074066
-      },
-      {
-        "text": "“明天，会不会又有新发现呢？”卡梅拉合上地图，笑着钻进暖暖的被窝。",
-        "start": 18.638888888888886,
-        "duration": 20.85185185185185
-      }
-    ],
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "rhythmVersion": "natural-v3",
-    "tempo": 1.08,
-    "sourceDuration": 46.4,
-    "removedSilenceSeconds": 4.31
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "4cc6b4ff6f02c5db7e1fdae63687d8b5b0d1513b615e1e2c273201998e66a02e": {
+  "e133882837f6ec8b5ac4c55634934bf721bfd8400c25a4fd816e86f96d3b5eaa": {
     "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "duration": 20.135,
+    "sampleRate": 24000,
+    "generationSeconds": 13.45,
     "parts": [
       {
-        "text": "小兔妮娅扣好黄色外衣，推开家门。红风筝靠在门边，长尾巴轻轻摆动。",
+        "text": "小鲸鱼蓝蓝很大，可是他怕黑。\n每天太阳落下，他就紧紧跟在妈妈身后。\n“如果海底也有星星就好了。”蓝蓝望着水面上摇摇晃晃的光，轻轻叹了一口气。",
         "start": 0.0,
-        "duration": 10.296296296296294
-      },
-      {
-        "text": "“今天，带你看看远处的山。”她把线轴握在掌心。",
-        "start": 10.555555555555555,
-        "duration": 6.81298611111111
+        "duration": 20.135041666666666,
+        "tempo": 1.15932
       }
     ],
-    "duration": 17.369,
-    "url": "assets/audio/library/4cc6b4ff6f02c5db7e1fdae63687d8b5b0d1513b615e1e2c273201998e66a02e.mp3",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.15932
+    ],
+    "sourceDuration": 26.8,
+    "removedSilenceSeconds": 3.46,
+    "url": "assets/audio/library/e133882837f6ec8b5ac4c55634934bf721bfd8400c25a4fd816e86f96d3b5eaa.mp3",
+    "bookId": "demo-ocean",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.8665511,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 231.88,
+        "medianHz": 271.19,
+        "p90Hz": 340.43,
+        "voicedFrames": 493
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "d161d02a53e16979ff26433fd8b739dd2f286e060cb3b41e4ed91879020e9d33": {
+    "voice": "Serena",
+    "duration": 21.88,
+    "sampleRate": 24000,
+    "generationSeconds": 13.45,
+    "parts": [
+      {
+        "text": "清早，老鼠一家在门前集合。爷爷奶奶、爸爸妈妈，还有十个孩子，正好十四位。\n小栗提着一盏还没点亮的松果灯：“搬到新家以后，我来挂灯！”\n妈妈笑着说：“先看看，家人是不是都到齐了？”",
+        "start": 0.0,
+        "duration": 21.88,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 25.04,
+    "removedSilenceSeconds": 3.16,
+    "url": "assets/audio/library/d161d02a53e16979ff26433fd8b739dd2f286e060cb3b41e4ed91879020e9d33.mp3",
+    "bookId": "demo-mice-moving-home",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 190.25,
+        "medianHz": 228.57,
+        "p90Hz": 301.89,
+        "voicedFrames": 680
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "0da612fa4ca15c887aa6838679c8a2bdfffa56c088407b61ee8dcbccb6628802": {
+    "voice": "Serena",
+    "duration": 15.529,
+    "sampleRate": 24000,
+    "generationSeconds": 7.7,
+    "parts": [
+      {
+        "text": "奥托飘过一排排屋顶。暖暖的窗光，像小镇给夜晚写的信。\n烟囱边的小猫竖起耳朵。\n“喵，抬头看看吧。月亮也许在更高的地方。”",
+        "start": 0.0,
+        "duration": 15.528666666666666,
+        "tempo": 0.81894
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.81894
+    ],
+    "sourceDuration": 14.8,
+    "removedSilenceSeconds": 2.07,
+    "url": "assets/audio/library/0da612fa4ca15c887aa6838679c8a2bdfffa56c088407b61ee8dcbccb6628802.mp3",
+    "bookId": "demo-otto",
+    "page": 3,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 177.78,
+        "medianHz": 235.29,
+        "p90Hz": 298.53,
+        "voicedFrames": 517
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "c8736a15b810542621a390c69e86b8cf447a8f6339377bf59c00b3a84c32a04d": {
+    "voice": "Serena",
+    "duration": 19.145,
+    "sampleRate": 24000,
+    "generationSeconds": 14.38,
+    "parts": [
+      {
+        "text": "沙沙，沙沙。\n小狐狸抬起头，一片树叶轻轻转了个圈。\n他握好线轴，迎着风跑起来。橘色的风筝摇摇晃晃，突然离开地面，像一只终于醒来的鸟。",
+        "start": 0.0,
+        "duration": 19.145083333333332,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 28.32,
+    "removedSilenceSeconds": 4.39,
+    "url": "assets/audio/library/c8736a15b810542621a390c69e86b8cf447a8f6339377bf59c00b3a84c32a04d.mp3",
+    "bookId": "demo-kite",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 181.82,
+        "medianHz": 231.88,
+        "p90Hz": 290.91,
+        "voicedFrames": 565
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "e27b36a166a18652ad70d672da7f4abfbe04558937a36f4f01eaba8d926d5489": {
+    "voice": "Serena",
+    "duration": 21.24,
+    "sampleRate": 24000,
+    "generationSeconds": 12.35,
+    "parts": [
+      {
+        "text": "最高的山顶后面，月亮把脸藏在云里。\n“每天都是我对大家说晚安，可是今天，没有人对我说。”月亮小声地说。\n小兔子拿出饼干：“那我陪你坐一会儿，好不好？”",
+        "start": 0.0,
+        "duration": 21.24,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 24.16,
+    "removedSilenceSeconds": 2.92,
+    "url": "assets/audio/library/e27b36a166a18652ad70d672da7f4abfbe04558937a36f4f01eaba8d926d5489.mp3",
+    "bookId": "demo-moon",
+    "page": 4,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9253061,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 188.24,
+        "medianHz": 253.97,
+        "p90Hz": 301.89,
+        "voicedFrames": 651
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "8f87606a97fc68a45c6751d74d645de7da6056bbd8f40e7d2ed768bc89c27a4d": {
+    "voice": "Serena",
+    "duration": 23.27,
+    "sampleRate": 24000,
+    "generationSeconds": 53.42,
+    "parts": [
+      {
+        "text": "很远很远的星空里，有一颗叫作 B612 的小星球。\n小王子住在那里。他有金色的头发，还有一条会随风飘起来的围巾。\n每天早晨，他打扫星球，照顾小火山。傍晚，他搬动椅子，安安静静地看太阳落下。",
+        "start": 0.0,
+        "duration": 23.27,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 25.2,
+    "removedSilenceSeconds": 1.93,
+    "url": "assets/audio/library/8f87606a97fc68a45c6751d74d645de7da6056bbd8f40e7d2ed768bc89c27a4d.mp3",
+    "bookId": "demo-little-prince",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 173.91,
+        "medianHz": 228.57,
+        "p90Hz": 285.71,
+        "voicedFrames": 698
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "013181ccc80ce79ea60248f964ecd01238c5393a376be23ee053c72a742f4572": {
+    "voice": "Serena",
+    "duration": 17.045,
+    "sampleRate": 24000,
+    "generationSeconds": 12.29,
+    "parts": [
+      {
+        "text": "奥托停在云边，看见一弯藏起来的金光。\n“没关系，我陪你。你可以先露出一点点。”\n月亮听见了。云朵后面，慢慢探出一个小小的微笑。",
+        "start": 0.0,
+        "duration": 17.045333333333332,
+        "tempo": 1.22941
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.22941
+    ],
+    "sourceDuration": 24.08,
+    "removedSilenceSeconds": 3.13,
+    "url": "assets/audio/library/013181ccc80ce79ea60248f964ecd01238c5393a376be23ee053c72a742f4572.mp3",
+    "bookId": "demo-otto",
+    "page": 7,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0428223,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 190.48,
+        "medianHz": 225.35,
+        "p90Hz": 266.67,
+        "voicedFrames": 503
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "1421732b51392b013a07f7f6aa1d68e5d2cd8e73e7c58644843970faed5af9ce": {
+    "voice": "Serena",
+    "duration": 18.07,
+    "sampleRate": 24000,
+    "generationSeconds": 9.93,
+    "parts": [
+      {
+        "text": "一颗小星星眨眨眼，落在奥托身旁。\n奥托朝它挥手，继续向更高的云飘去。\n一路闪烁的小星星，像一串小小的路灯，陪着他往前走。",
+        "start": 0.0,
+        "duration": 18.07,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 20.96,
+    "removedSilenceSeconds": 2.89,
+    "url": "assets/audio/library/1421732b51392b013a07f7f6aa1d68e5d2cd8e73e7c58644843970faed5af9ce.mp3",
+    "bookId": "demo-otto",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0575106,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 172.04,
+        "medianHz": 222.22,
+        "p90Hz": 290.91,
+        "voicedFrames": 480
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "a5480fb7d3ce5a80df26881fd51b53c919b1c7f38b7b1e22788123b513bb6e8c": {
+    "voice": "Serena",
+    "duration": 25.092,
+    "sampleRate": 24000,
+    "generationSeconds": 18.58,
+    "parts": [
+      {
+        "text": "午后的光落在一棵老橡树上。树根旁有一个干燥的洞，门口刚好容得下大家的小行李。\n小栗探头喊：“你好，新家！”\n“新家——”洞里轻轻回答。奶奶摸摸树壁：“这里挡得住风，也装得下我们的笑声。”",
+        "start": 0.0,
+        "duration": 25.092166666666667,
+        "tempo": 1.25
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
+    ],
+    "sourceDuration": 33.76,
+    "removedSilenceSeconds": 2.38,
+    "url": "assets/audio/library/a5480fb7d3ce5a80df26881fd51b53c919b1c7f38b7b1e22788123b513bb6e8c.mp3",
+    "bookId": "demo-mice-moving-home",
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0281314,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 179.78,
+        "medianHz": 228.57,
+        "p90Hz": 275.86,
+        "voicedFrames": 750
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "72ae8bcb90554a27852833b47d7cc2e8811243f2380c7890218fdab9e2e57fba": {
+    "voice": "Serena",
+    "duration": 34.11,
+    "sampleRate": 24000,
+    "generationSeconds": 19.16,
+    "parts": [
+      {
+        "text": "在金色的麦田旁，小王子认识了一只狐狸。\n狐狸请他每天都来坐一会儿。起初，他们隔得很远；后来，小王子一点点坐近，狐狸也不再躲开。\n每天等待、每天陪伴，慢慢把两个陌生人变成了朋友。以后风吹过麦田，狐狸就会想起那一头金色的头发。",
+        "start": 0.0,
+        "duration": 34.11,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 38.0,
+    "removedSilenceSeconds": 3.89,
+    "url": "assets/audio/library/72ae8bcb90554a27852833b47d7cc2e8811243f2380c7890218fdab9e2e57fba.mp3",
+    "bookId": "demo-little-prince",
+    "page": 8,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 179.78,
+        "medianHz": 235.29,
+        "p90Hz": 296.3,
+        "voicedFrames": 966
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "723ca505e829509d8be6894e5e63bbda0bda6b7ac26c68cf20e088526cca1b72": {
+    "voice": "Serena",
+    "duration": 24.02,
+    "sampleRate": 24000,
+    "generationSeconds": 86.89,
+    "parts": [
+      {
+        "text": "回到妈妈身边，蓝蓝说：“我刚才还是有一点害怕。”\n妈妈用尾巴轻轻抱住他。\n“害怕的时候，还愿意做一件温柔的事，这就叫勇敢。”\n那天晚上，蓝蓝梦见，自己也变成了一颗照亮别人的星星。",
+        "start": 0.0,
+        "duration": 24.02,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 26.56,
+    "removedSilenceSeconds": 2.54,
+    "url": "assets/audio/library/723ca505e829509d8be6894e5e63bbda0bda6b7ac26c68cf20e088526cca1b72.mp3",
+    "bookId": "demo-ocean",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.8518814,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 238.81,
+        "medianHz": 275.86,
+        "p90Hz": 334.04,
+        "voicedFrames": 630
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "b9174b2fd3ede394f2354ba7014d80db4067c48c0539775f0914ac99a3f2040a": {
+    "voice": "Serena",
+    "duration": 26.93,
+    "sampleRate": 24000,
+    "generationSeconds": 16.92,
+    "parts": [
+      {
+        "text": "每天，山上的风铃都会叮咚叮咚，给农场报平安。今天，卡梅拉竖起耳朵，听见的只有沙沙的树叶声。\n“风还在，风铃怎么不唱歌了？”\n她望向远处的小山，心里冒出一个大大的问号。",
+        "start": 0.0,
+        "duration": 26.93,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 30.64,
+    "removedSilenceSeconds": 3.71,
+    "url": "assets/audio/library/b9174b2fd3ede394f2354ba7014d80db4067c48c0539775f0914ac99a3f2040a.mp3",
+    "bookId": "demo-carmela",
+    "page": 1,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.1892071,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 145.45,
+        "medianHz": 183.91,
+        "p90Hz": 210.53,
+        "voicedFrames": 797
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "a10b33107b90fd4a1f6ed1df3d45aab6e4fe90fa742736c2ffacb29431f6a654": {
+    "voice": "Serena",
+    "duration": 15.03,
+    "sampleRate": 24000,
+    "generationSeconds": 6.99,
+    "parts": [
+      {
+        "text": "小兔子系好围巾，把一块胡萝卜饼干装进口袋。\n“我去找月亮，你帮我看家。”他对枕头说。\n风轻轻推开门，给了他一个凉凉的拥抱。",
+        "start": 0.0,
+        "duration": 15.030166666666666,
+        "tempo": 0.8
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      0.8
+    ],
+    "sourceDuration": 13.04,
+    "removedSilenceSeconds": 1.01,
+    "url": "assets/audio/library/a10b33107b90fd4a1f6ed1df3d45aab6e4fe90fa742736c2ffacb29431f6a654.mp3",
+    "bookId": "demo-moon",
+    "page": 2,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.9547024,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 190.48,
+        "medianHz": 246.15,
+        "p90Hz": 313.73,
+        "voicedFrames": 505
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "3b2ec1bc42844ebca70a7a236a3b05d5643db4b2d65e54192110f41fc708237d": {
+    "voice": "Serena",
+    "duration": 17.121,
+    "sampleRate": 24000,
+    "generationSeconds": 11.3,
+    "parts": [
+      {
+        "text": "山坡很长，妮娅跑得耳朵都软下来了。她停下来，听听风，再走几步。\n山顶越来越近。原来不用一下子做完，走一点，也是在往前走。",
+        "start": 0.0,
+        "duration": 17.120708333333333,
+        "tempo": 1.12708
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.12708
+    ],
+    "sourceDuration": 22.48,
+    "removedSilenceSeconds": 3.19,
+    "url": "assets/audio/library/3b2ec1bc42844ebca70a7a236a3b05d5643db4b2d65e54192110f41fc708237d.mp3",
     "bookId": "nia-runaway-kite",
-    "page": 1
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 0.8518814,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 219.18,
+        "medianHz": 275.86,
+        "p90Hz": 347.83,
+        "voicedFrames": 412
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "29af2621bae0ca7f98df99e4e90f92fdabfa7ba7f01bb29cb05978c39c2d7d2f": {
+  "e3b5019d79e1a17423af7f0595e1e411ba181ad54076b6d63c729d1b8a00871b": {
     "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "duration": 24.7,
+    "sampleRate": 24000,
+    "generationSeconds": 16.08,
     "parts": [
       {
-        "text": "草叶都朝一个方向弯下腰。妮娅迎着风跑，风筝从花丛上方升了起来。",
+        "text": "天色暗了，小栗终于拿出松果灯。爸爸扶着他，姐姐把灯挂上小木钩。\n暖暖的光亮起来，照见一张张熟悉的脸。\n“我们带来的东西里，什么最要紧？”爷爷问。小栗想了想：“是我们一个也没少呀！”",
         "start": 0.0,
-        "duration": 11.287037037037036
-      },
-      {
-        "text": "一只绵羊抬头看了好久。妮娅笑着问：“你也想知道云朵后面有什么吗？”",
-        "start": 11.546296296296296,
-        "duration": 13.842592592592592
+        "duration": 24.7,
+        "tempo": 1.0
       }
     ],
-    "duration": 25.397,
-    "url": "assets/audio/library/29af2621bae0ca7f98df99e4e90f92fdabfa7ba7f01bb29cb05978c39c2d7d2f.mp3",
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 28.4,
+    "removedSilenceSeconds": 3.7,
+    "url": "assets/audio/library/e3b5019d79e1a17423af7f0595e1e411ba181ad54076b6d63c729d1b8a00871b.mp3",
+    "bookId": "demo-mice-moving-home",
+    "page": 7,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 183.91,
+        "medianHz": 231.88,
+        "p90Hz": 290.91,
+        "voicedFrames": 768
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
+  },
+  "fb45bb22f76ebc994b9ebde55f08d01ff10c0e5bd9b00426600097f144d0a049": {
+    "voice": "Serena",
+    "duration": 17.29,
+    "sampleRate": 24000,
+    "generationSeconds": 12.34,
+    "parts": [
+      {
+        "text": "山坡另一边，朋友们带来了各种颜色的风筝。妮娅把自己的线轴递过去。\n“你来试试，我站在你旁边。”天空多了一串笑声，红尾巴也跳起了舞。",
+        "start": 0.0,
+        "duration": 17.29,
+        "tempo": 1.0
+      }
+    ],
+    "engine": "Qwen3-TTS-1.7B-4bit",
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
+    ],
+    "sourceDuration": 21.84,
+    "removedSilenceSeconds": 4.55,
+    "url": "assets/audio/library/fb45bb22f76ebc994b9ebde55f08d01ff10c0e5bd9b00426600097f144d0a049.mp3",
     "bookId": "nia-runaway-kite",
-    "page": 2
+    "page": 8,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0354247,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 181.82,
+        "medianHz": 226.96,
+        "p90Hz": 290.91,
+        "voicedFrames": 532
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "d1cf3b262a32e6747a8ea60b02d739d550742ef6a9d6da7caf58c1cd361b003c": {
+  "b616f943c9095f5fc4ac7362c44b0d36e49ecba6b7c3161ce9694fff3d480a82": {
     "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "duration": 16.34,
+    "sampleRate": 24000,
+    "generationSeconds": 10.61,
     "parts": [
       {
-        "text": "一阵大风掀起妮娅的围巾。线轴滚过她的手指，骨碌碌落进草里。",
+        "text": "越往下，海水越安静。芬恩有一点害怕，就轻轻数着自己的呼吸。\n一只水母亮起淡紫色的光。原来，看不清的地方，也有温柔的邻居。",
         "start": 0.0,
-        "duration": 7.564814814814814
-      },
-      {
-        "text": "红风筝却没有停，越过篱笆飞远了。妮娅捡起线轴，顺着天上的红点追去。",
-        "start": 7.824074074074073,
-        "duration": 9.88750925925926
+        "duration": 16.34,
+        "tempo": 1.0
       }
     ],
-    "duration": 17.712,
-    "url": "assets/audio/library/d1cf3b262a32e6747a8ea60b02d739d550742ef6a9d6da7caf58c1cd361b003c.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 3
-  },
-  "d37dccae7ab97b8c7455323676b9fda05baf6585c7761d6161d4da80b10905c8": {
-    "voice": "Serena",
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "小河拦住了去路，水面上的风筝倒影摇摇晃晃。",
-        "start": 0.0,
-        "duration": 5.518518518518518
-      },
-      {
-        "text": "妮娅没有跳进水里。她沿着岸边找到小桥，扶好栏杆，一步一步走到对岸。",
-        "start": 5.777777777777778,
-        "duration": 18.76359722222222
-      }
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.0
     ],
-    "duration": 24.541,
-    "url": "assets/audio/library/d37dccae7ab97b8c7455323676b9fda05baf6585c7761d6161d4da80b10905c8.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 4
-  },
-  "c2c53e58f8e82b3ac0c23880ffe3a354017afae56b5ced772d0a1a8d21a0d3b3": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "山坡很长，妮娅跑得耳朵都软下来了。她停下来，听听风，再走几步。",
-        "start": 0.0,
-        "duration": 10.018518518518517
-      },
-      {
-        "text": "山顶越来越近。原来不用一下子做完，走一点，也是在往前走。",
-        "start": 10.277777777777777,
-        "duration": 22.51584722222222
-      }
-    ],
-    "duration": 32.794,
-    "url": "assets/audio/library/c2c53e58f8e82b3ac0c23880ffe3a354017afae56b5ced772d0a1a8d21a0d3b3.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 5
-  },
-  "f786af3f3dd98819516d02201820361323a73d71fb15e10545be35af8fbffa37": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "山顶的云像一床展开的被子。红尾巴在云边闪了一下，又不见了。",
-        "start": 0.0,
-        "duration": 8.833333333333332
-      },
-      {
-        "text": "妮娅没有着急乱跑。她站稳脚，等风把云推开，终于看清风筝飘向了一棵大树。",
-        "start": 9.092592592592592,
-        "duration": 8.825532407407408
-      }
-    ],
-    "duration": 17.918,
-    "url": "assets/audio/library/f786af3f3dd98819516d02201820361323a73d71fb15e10545be35af8fbffa37.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 6
-  },
-  "86131a738687673b5c65d0897a52ea9800fb70f0885edff8fb193d26b9f3dcfc": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "风筝挂在橡树的低枝上，尾巴缠了一个小结。妮娅轻轻拉线，树叶沙沙响。",
-        "start": 0.0,
-        "duration": 9.833333333333332
-      },
-      {
-        "text": "她松开手，换个方向再试一次。小结慢慢松了，风筝终于回到她怀里。",
-        "start": 10.092592592592592,
-        "duration": 8.148148148148149
-      }
-    ],
-    "duration": 18.241,
-    "url": "assets/audio/library/86131a738687673b5c65d0897a52ea9800fb70f0885edff8fb193d26b9f3dcfc.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 7
-  },
-  "9d1bdf8f000ab3b728c674a55c12177c037d12f89b9a3d0488ac86b7a4321a96": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "山坡另一边，朋友们带来了各种颜色的风筝。妮娅把自己的线轴递过去。",
-        "start": 0.0,
-        "duration": 7.74074074074074
-      },
-      {
-        "text": "“你来试试，我站在你旁边。”天空多了一串笑声，红尾巴也跳起了舞。",
-        "start": 8.0,
-        "duration": 17.395958333333333
-      }
-    ],
-    "duration": 25.396,
-    "url": "assets/audio/library/9d1bdf8f000ab3b728c674a55c12177c037d12f89b9a3d0488ac86b7a4321a96.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 8
-  },
-  "292586cb9823420a5631d8d3034049b43e8994a85dbff2173a8066ef87fd881a": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "风又来了。妮娅把线绕回线轴，握紧后才让风筝升高。",
-        "start": 0.0,
-        "duration": 15.907407407407407
-      },
-      {
-        "text": "她不再只顾着跑，而是一会儿看看天空，一会儿看看朋友。风筝飞得高，大家也站得稳。",
-        "start": 16.166666666666668,
-        "duration": 8.779625
-      }
-    ],
-    "duration": 24.946,
-    "url": "assets/audio/library/292586cb9823420a5631d8d3034049b43e8994a85dbff2173a8066ef87fd881a.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 9
-  },
-  "28245bed803bdbc6321c18f2ba52028a4530debf2abfc26b2af105e4f79b4adc": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "窗外的天空渐渐变暗。妮娅把红风筝挂好，外衣整齐地搭在椅背上。",
-        "start": 0.0,
-        "duration": 9.296296296296294
-      },
-      {
-        "text": "“明天再去旅行吧。”她钻进被窝。长长的红尾巴轻轻晃了一下，像在说晚安。",
-        "start": 9.555555555555555,
-        "duration": 14.94127777777778
-      }
-    ],
-    "duration": 24.497,
-    "url": "assets/audio/library/28245bed803bdbc6321c18f2ba52028a4530debf2abfc26b2af105e4f79b4adc.mp3",
-    "bookId": "nia-runaway-kite",
-    "page": 10
-  },
-  "15301c5df40d4396b3a2c04b1b87e83ceb193cfcfdbda25e5ae224c86fde41ea": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "小海龟芬恩住在一片彩色珊瑚旁。每天晚上，一条灯笼鱼会点亮回家的路。",
-        "start": 0.0,
-        "duration": 8.351851851851851
-      },
-      {
-        "text": "今天，小灯却暗了下来。“别担心，”芬恩说，“我们一起找找光去了哪里。”",
-        "start": 8.61111111111111,
-        "duration": 10.156347222222223
-      }
-    ],
-    "duration": 18.767,
-    "url": "assets/audio/library/15301c5df40d4396b3a2c04b1b87e83ceb193cfcfdbda25e5ae224c86fde41ea.mp3",
+    "sourceDuration": 21.2,
+    "removedSilenceSeconds": 4.86,
+    "url": "assets/audio/library/b616f943c9095f5fc4ac7362c44b0d36e49ecba6b7c3161ce9694fff3d480a82.mp3",
     "bookId": "fin-glowing-sea",
-    "page": 1
+    "page": 5,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0428223,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 179.78,
+        "medianHz": 225.35,
+        "p90Hz": 290.91,
+        "voicedFrames": 367
+      },
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   },
-  "b3e6f3d217c37274adb3fc43e62c586cfd8d1c45a8022a5b216bc81f2c2ec047": {
+  "3abb2cecdb262828935173205e5b0b5158acc7266c4df5318b59f344d68bb8e6": {
     "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
+    "duration": 21.743,
+    "sampleRate": 24000,
+    "generationSeconds": 14.73,
     "parts": [
       {
-        "text": "芬恩带上一只空瓶，慢慢向下游。海面变成头顶一块晃动的蓝玻璃。",
+        "text": "月亮露出笑脸，把银色的光铺成一条回家的路。\n小兔子钻进被窝，抱紧了枕头。\n“晚安，月亮。明天也要记得，有人喜欢你。”\n窗外，月亮轻轻点了点头。",
         "start": 0.0,
-        "duration": 8.592592592592592
-      },
-      {
-        "text": "他回头看看朋友，又摆摆鳍。前面还很陌生，不过他愿意先游一小段。",
-        "start": 8.851851851851851,
-        "duration": 11.441106481481484
+        "duration": 21.743041666666667,
+        "tempo": 1.25
       }
     ],
-    "duration": 20.293,
-    "url": "assets/audio/library/b3e6f3d217c37274adb3fc43e62c586cfd8d1c45a8022a5b216bc81f2c2ec047.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 2
-  },
-  "0e331ae9f3ef3f465c96ea929978bc0f59f353a9696db89bdb5d3392fd30fe7c": {
-    "voice": "Serena",
     "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "长长的海带挡在前面，像一排柔软的门帘。芬恩没有用力挤。",
-        "start": 0.0,
-        "duration": 7.231481481481481
-      },
-      {
-        "text": "他等海流经过，顺着海带之间的空隙穿了过去。空瓶碰到叶尖，发出轻轻的一声响。",
-        "start": 7.4907407407407405,
-        "duration": 22.979800925925925
-      }
+    "toneProfile": "steady-narrator-v1",
+    "instructionHash": "8b9ee9b1dbeec27ad6c9459002778f22f6a0255eb7a6d46fcbe266476bb94e85",
+    "synthesisSettings": {
+      "temperature": 0.25,
+      "top_p": 0.8,
+      "repetition_penalty": 1.12
+    },
+    "rhythmVersion": "balanced-v4",
+    "tempos": [
+      1.25
     ],
-    "duration": 30.471,
-    "url": "assets/audio/library/0e331ae9f3ef3f465c96ea929978bc0f59f353a9696db89bdb5d3392fd30fe7c.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 3
-  },
-  "2e69350a150af953ef05a4952c7e3b14c5aeec3c88e19aec8a35616c2f8921ce": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "一只小螃蟹正在沙地上画弯弯曲曲的线。芬恩停下来问路。",
-        "start": 0.0,
-        "duration": 5.75
+    "sourceDuration": 30.4,
+    "removedSilenceSeconds": 3.22,
+    "url": "assets/audio/library/3abb2cecdb262828935173205e5b0b5158acc7266c4df5318b59f344d68bb8e6.mp3",
+    "bookId": "demo-moon",
+    "page": 6,
+    "toneRegister": {
+      "profile": "serena-register-v1",
+      "targetHz": 235.0,
+      "factor": 1.0575106,
+      "maxSemitones": 3.0,
+      "measured": {
+        "p10Hz": 173.91,
+        "medianHz": 222.22,
+        "p90Hz": 275.86,
+        "voicedFrames": 578
       },
-      {
-        "text": "螃蟹举起钳子，指向更深的蓝色：“我见过亮亮的小点，不过你要慢一点找。”",
-        "start": 6.009259259259259,
-        "duration": 13.657407407407407
-      }
-    ],
-    "duration": 19.68,
-    "url": "assets/audio/library/2e69350a150af953ef05a4952c7e3b14c5aeec3c88e19aec8a35616c2f8921ce.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 4
-  },
-  "1e2c093237a3645db6ec53191e0d0db7bab204347a64d5ddcd97102fcd9ab52d": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "越往下，海水越安静。芬恩有一点害怕，就轻轻数着自己的呼吸。",
-        "start": 0.0,
-        "duration": 10.38888888888889
-      },
-      {
-        "text": "一只水母亮起淡紫色的光。原来，看不清的地方，也有温柔的邻居。",
-        "start": 10.648148148148147,
-        "duration": 9.342592592592592
-      }
-    ],
-    "duration": 19.992,
-    "url": "assets/audio/library/1e2c093237a3645db6ec53191e0d0db7bab204347a64d5ddcd97102fcd9ab52d.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 5
-  },
-  "7471572afc347ca020c574402fe06c010a57dd6a7e898001d3388c61e5905fc9": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "一条旧木船躺在海底，舷窗像圆圆的眼睛。芬恩在外面绕了一圈，没有钻进黑洞。",
-        "start": 0.0,
-        "duration": 12.11111111111111
-      },
-      {
-        "text": "瓶子映出一点蓝光，原来是船旁的小生物正闪闪发亮。他把这个发现记在心里。",
-        "start": 12.370370370370368,
-        "duration": 10.576754629629631
-      }
-    ],
-    "duration": 22.947,
-    "url": "assets/audio/library/7471572afc347ca020c574402fe06c010a57dd6a7e898001d3388c61e5905fc9.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 6
-  },
-  "1c9dc89996dd78472b0c7e976300e0d727fe3139d94b822289c936a98ca2cb8d": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "低低的歌声从身后传来。一头鲸鱼缓缓游过，巨大的影子遮住了沙地。",
-        "start": 0.0,
-        "duration": 11.444444444444443
-      },
-      {
-        "text": "芬恩挥挥鳍，鲸鱼也轻轻摆尾。水流把一群闪光的小点送到他面前。",
-        "start": 11.703703703703704,
-        "duration": 9.110379629629628
-      }
-    ],
-    "duration": 20.814,
-    "url": "assets/audio/library/1c9dc89996dd78472b0c7e976300e0d727fe3139d94b822289c936a98ca2cb8d.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 7
-  },
-  "b588854f937d71ebcc85c0da5a1545460c9a7d84ec57ddd04cc05122c9d8a9ab": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "闪光的小点聚在一起，像一条会游动的星河。芬恩把空瓶举起来，瓶壁也映出了光。",
-        "start": 0.0,
-        "duration": 12.444444444444443
-      },
-      {
-        "text": "他没有把小生命关起来，只借着这片亮光，认清了回家的方向。",
-        "start": 12.703703703703704,
-        "duration": 7.781462962962964
-      }
-    ],
-    "duration": 20.485,
-    "url": "assets/audio/library/b588854f937d71ebcc85c0da5a1545460c9a7d84ec57ddd04cc05122c9d8a9ab.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 8
-  },
-  "0edd50f9d0062a4effd039c79f5290294063f06a9e5068a5947f59e94db5eec3": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "回到珊瑚旁，芬恩把一路上的发现告诉大家。小鱼、水母和珊瑚都轻轻闪起了光。",
-        "start": 0.0,
-        "duration": 9.555555555555555
-      },
-      {
-        "text": "灯笼鱼抬起头，也重新亮了起来。好多小小的光在一起，足够照见每一位朋友。",
-        "start": 9.814814814814813,
-        "duration": 12.255810185185187
-      }
-    ],
-    "duration": 22.071,
-    "url": "assets/audio/library/0edd50f9d0062a4effd039c79f5290294063f06a9e5068a5947f59e94db5eec3.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 9
-  },
-  "43ab3e78a04f9f0308b1ab6d61b654aa8e9056c1b25ad74c6587a6133b84e3c0": {
-    "voice": "Serena",
-    "engine": "Qwen3-TTS-1.7B-4bit",
-    "parts": [
-      {
-        "text": "芬恩在珊瑚边躺下来，空瓶安静地放在身旁。水母游过，留下柔柔的亮。",
-        "start": 0.0,
-        "duration": 11.166666666666666
-      },
-      {
-        "text": "他闭上眼睛。今天走了很远，明天还可以和朋友一起，发现更多小小的光。",
-        "start": 11.425925925925926,
-        "duration": 17.663574074074077
-      }
-    ],
-    "duration": 29.09,
-    "url": "assets/audio/library/43ab3e78a04f9f0308b1ab6d61b654aa8e9056c1b25ad74c6587a6133b84e3c0.mp3",
-    "bookId": "fin-glowing-sea",
-    "page": 10
+      "method": "One constant pitch ratio for the entire page; tempo and formants preserved. No syllable-level contour flattening."
+    }
   }
 }

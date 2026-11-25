@@ -10,12 +10,12 @@ export class CursorSparkles{
     this.canvas.className='cursor-sparkles';this.canvas.setAttribute('aria-hidden','true');document.body.append(this.canvas);
     this.sparks=new Sparkles(this.renderer);
     this.hand=document.createElement('div');this.hand.className='magic-hand';this.hand.setAttribute('aria-hidden','true');document.body.append(this.hand);
-    this.resize=()=>{const dpr=Math.min(devicePixelRatio||1,1.25,Math.sqrt(2400000/(innerWidth*innerHeight)));this.renderer.setPixelRatio(dpr);this.renderer.setSize(innerWidth,innerHeight,false);this.sparks.resize(innerWidth,innerHeight,dpr);};this.resize();
+    this.resize=()=>{const dpr=Math.min(devicePixelRatio||1,1,Math.sqrt(1200000/(innerWidth*innerHeight)));this.renderer.setPixelRatio(dpr);this.renderer.setSize(innerWidth,innerHeight,false);this.sparks.resize(innerWidth,innerHeight,dpr);};this.resize();
     window.addEventListener('resize',this.resize);
     window.addEventListener('pointermove',event=>this.move(event),{passive:true});
     window.addEventListener('pointerdown',event=>{
-      if(!this.allowed(event))return;
-      this.pressed=true;this.hand.classList.add('is-pressed');this.sparks.spawn(event.clientX,event.clientY,16,3);this.start();
+      if(!this.target||!this.allowed(event))return;
+      this.pressed=true;this.hand.classList.add('is-pressed');this.sparks.spawn(event.clientX,event.clientY,5,3);this.start();
     },{passive:true});
     const release=()=>{this.pressed=false;this.hand.classList.remove('is-pressed');};
     window.addEventListener('pointerup',release,{passive:true});
@@ -30,20 +30,13 @@ export class CursorSparkles{
   allowed(event){return this.enabled&&event.pointerType!=='touch'&&!this.stage.preparing&&!document.querySelector('dialog[open]')&&!event.target.closest?.('input,textarea,select,[contenteditable="true"]');}
   move(event){
     if(!this.allowed(event)){this.clear();return;}
-    const x=event.clientX,y=event.clientY,now=performance.now(),old=this.pointer;
-    this.pointer={x,y};this.hand.style.transform=`translate3d(${x-7}px,${y-4}px,0)`;
-    this.sparks.setCursor(x,y,true);
-    if(now-(this.lastEmit??-Infinity)>=8){
-      const distance=old?Math.hypot(x-old.x,y-old.y):0,count=Math.min(7,Math.max(2,Math.ceil(distance/12)));
-      for(let i=0;i<count;i++){const a=i/count;this.sparks.spawn(x+(old?old.x-x:0)*a,y+(old?old.y-y:0)*a,1,this.pressed?2:1);}
-      this.lastEmit=now;
-    }
-    if(event.target!==this.stage.canvas)this.setTarget(null,event);
-    this.start();
+    if(!this.target||event.target!==this.stage.canvas){this.setTarget(null,event);return;}
+    this.hand.style.transform=`translate3d(${event.clientX-7}px,${event.clientY-4}px,0)`;
   }
   setTarget(target,event){
+    this.target=target;
     this.hand.classList.toggle('is-visible',!!target&&this.enabled&&event?.pointerType!=='touch');
-    if(event)this.hand.style.transform=`translate3d(${event.clientX-7}px,${event.clientY-4}px,0)`;
+    if(target&&event)this.hand.style.transform=`translate3d(${event.clientX-7}px,${event.clientY-4}px,0)`;
   }
   burst(x,y,count=24){if(this.enabled){this.sparks.spawn(x,y,count,3);this.start();}}
   start(){if(!this.raf&&this.enabled)this.raf=requestAnimationFrame(now=>this.frame(now));}
@@ -54,6 +47,8 @@ export class CursorSparkles{
     if(this.sparks.alive)this.start();else this.lastTime=null;
   }
   clear(){
+    if(!this.raf&&!this.target&&!this.pressed&&!this.sparks.alive)return;
+    this.target=null;
     cancelAnimationFrame(this.raf);this.raf=0;this.lastTime=null;this.lastEmit=null;this.pointer=null;this.pressed=false;
     this.sparks.clear();this.renderer.clear();this.hand.classList.remove('is-visible','is-pressed');
     this.stage.cursor?.classList.remove('is-visible','is-pressed');this.stage.homeShelf?.clearHover();

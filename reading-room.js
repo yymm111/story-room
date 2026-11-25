@@ -122,6 +122,7 @@ export class ReadingRoom {
   }
   setTheme(otto){this.setWall(this.stage.view==='shelf'?(this.shelfWallBook||'default'):otto?'demo-otto':'default');}
   setWall(id){
+    if(id==='demo-mice-moving-home')id='demo-carmela';
     if(!this.surfaceMaps)return;
     const themes=this.surfaceMaps.wallThemes,key=themes[id]?id:'default',pair=themes[key];
     if(this.wallTarget===key)return;

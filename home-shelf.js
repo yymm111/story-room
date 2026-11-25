@@ -1,10 +1,11 @@
+import {motionSeconds} from './motion.js?v=motion5';
 import {makeCarmelaHen,makeCarmelaMap,makeCarmelaChime} from './carmela-scene.js?v=local-paper5';
 import * as T from './vendor/three/build/three.module.js';
 import {GLTFLoader} from './vendor/three/examples/jsm/loaders/GLTFLoader.js';
-import {makeShelf} from './reference-shelf.js?v=otto9';
+import {makeShelf} from './reference-shelf.js?v=motion5';
 
 const referenceBooks=['otto-shy-moon','nia-runaway-kite','fin-glowing-sea'];
-const groups={'demo-carmela':['hen','map','chime'],'demo-otto':['owl','moon','house'],'nia-runaway-kite':['kite','sheep','tree'],'fin-glowing-sea':['turtle','jar','boat'],'demo-little-prince':['moon','tree','house'],'demo-moon':['owl','moon','house'],'demo-kite':['kite','sheep','tree'],'demo-ocean':['turtle','jar','boat']};
+const groups={'demo-mice-moving-home':['tree','house','jar'],'demo-carmela':['hen','map','chime'],'demo-otto':['owl','moon','house'],'nia-runaway-kite':['kite','sheep','tree'],'fin-glowing-sea':['turtle','jar','boat'],'demo-little-prince':['moon','tree','house'],'demo-moon':['owl','moon','house'],'demo-kite':['kite','sheep','tree'],'demo-ocean':['turtle','jar','boat']};
 const heights={hen:.29,map:.18,chime:.28,owl:.26,moon:.28,house:.30,kite:.32,sheep:.20,tree:.34,turtle:.14,jar:.24,boat:.24};
 const labels={hen:'卡梅拉',map:'冒险地图',chime:'木风铃',owl:'猫头鹰',moon:'月亮',house:'小房子',kite:'红风筝',sheep:'小绵羊',tree:'大树',turtle:'小海龟',jar:'星光瓶',boat:'小帆船'};
 const sounds={hen:'shimmer',map:'rustle',chime:'shimmer',owl:'hoot',moon:'shimmer',house:'thunk',kite:'gust',sheep:'baa',tree:'rustle',turtle:'bubbles',jar:'fizz',boat:'splash'};
@@ -20,7 +21,7 @@ export class HomeShelf{
     this.textures={wood:maps.wood,woodPlanks:planks,woodPlanksNormal:normal,cloth:maps.cloth,edges:maps.edges,covers:{},locked:()=>false,toyManifest:{heights,books:groups,labels,sounds},toyFor:name=>Promise.resolve(this.models.get(name)?.clone(true)||null)};
     this.baseReady=true;await this.rebuild();return this;
   }
-  setBooks(entries){this.entries=entries;if(this.baseReady)return this.rebuild();}
+  setBooks(entries){this.entries=entries;this.entryIds=entries.map(e=>e.id).join('|');if(this.baseReady)return this.rebuild();}
   async cover(entry){const url=entry.shelfCover||entry.cover;if(!this.coverCache.has(url))this.coverCache.set(url,(url.endsWith('.svg')?this.stage.room.coverTexture(url):new T.TextureLoader().loadAsync(url).then(map=>{map.colorSpace=T.SRGBColorSpace;map.anisotropy=8;map.userData.shared=true;return map;})).catch(()=>url.includes('-cover.webp')?new T.TextureLoader().loadAsync(url.replace('-cover.webp','-cover-shelf.webp')).then(map=>{map.colorSpace=T.SRGBColorSpace;map.anisotropy=8;map.userData.shared=true;return map;}):null));return this.coverCache.get(url);}
   async rebuild(){
     const version=++this.version,entries=this.entries.slice();const covers=await Promise.all(entries.map(e=>this.cover(e)));if(version!==this.version)return;
@@ -31,10 +32,10 @@ export class HomeShelf{
     this.stage.canvas.dataset.shelf='physical-double-plank';this.stage.renderer.shadowMap.needsUpdate=true;this.stage.render();
   }
   progress(entries){return Object.fromEntries(entries.filter(e=>e.lastRead).map(e=>[e.id,{percent:e.completed?100:Math.round(100*(e.page+1)/(e.pages?.length||10)),color:e.spine||'#284667'}]));}
-  scrollTo(page){const before=this.page;this.page=Math.max(0,Math.min((this.api?.pages||1)-1,page));this.clearHover();this.api?.scrollTo(this.page,!this.stage.motion);if(this.page!==before)this.stage.onShelfSound('slide',{direction:this.page-before});if(!this.stage.motion){this.api?.settleMotion(this.stage.time);this.stage.render();}else this.stage.start();this.stage.onShelfPage(this.page);}
-  dragBy(dx){this.api?.dragBy(dx);}
-  settle(){if(this.api){const before=this.page;this.page=this.api.settle();this.clearHover();if(this.page!==before)this.stage.onShelfSound('slide',{direction:this.page-before});this.stage.onShelfPage(this.page);}}
-  target(event){if(!this.api)return null;const stage=this.stage,r=stage.canvas.getBoundingClientRect();stage.ndc.set((event.clientX-r.left)/r.width*2-1,-(event.clientY-r.top)/r.height*2+1);stage.raycaster.setFromCamera(stage.ndc,stage.camera);const toy=this.api.pickToy(stage.raycaster);if(toy)return{toy,label:labels[toy.name]+' · 点一点打招呼'};const id=this.api.pick(stage.raycaster);return id?{id,label:this.entries.find(e=>e.id===id)?.title||'打开故事'}:null;}
+  scrollTo(page){const before=this.page;this.page=Math.max(0,Math.min(Math.max(0,Math.ceil(this.entries.length/3)-1),page));this.clearHover();this.api?.scrollTo(this.page,!this.stage.motion);if(this.page!==before)this.stage.onShelfSound('slide',{direction:this.page-before});if(!this.stage.motion){this.api?.settleMotion(this.stage.time);this.stage.render();}else this.stage.start();this.stage.onShelfPage(this.page);}
+  dragBy(dx){this.api?.dragBy(dx);if(!this.stage.motion){this.api?.update(0,this.stage.time);this.stage.render();}}
+  settle(){if(this.api){const before=this.page;this.page=this.api.settle();if(!this.stage.motion){this.api.scrollTo(this.page,true);this.api.update(0,this.stage.time);this.stage.render();}this.clearHover();if(this.page!==before)this.stage.onShelfSound('slide',{direction:this.page-before});this.stage.onShelfPage(this.page);}}
+  target(event){if(!this.api||this.entryIds!==this.ids)return null;const stage=this.stage,r=stage.canvas.getBoundingClientRect();stage.ndc.set((event.clientX-r.left)/r.width*2-1,-(event.clientY-r.top)/r.height*2+1);stage.raycaster.setFromCamera(stage.ndc,stage.camera);const toy=this.api.pickToy(stage.raycaster);if(toy)return{toy,label:labels[toy.name]+' · 点一点打招呼'};const id=this.api.pick(stage.raycaster);return id?{id,label:this.entries.find(e=>e.id===id)?.title||'打开故事'}:null;}
   hover(event){const target=this.target(event);this.setHover(target);return target;}
   hoverBook(id){this.setHover(id?{id}:null);}
   setHover(target){
@@ -52,7 +53,8 @@ export class HomeShelf{
   toySparkle(toy,count){const p=this.api.toyTop(toy).project(this.stage.camera),r=this.stage.canvas.getBoundingClientRect();this.stage.sparkles?.burst(r.left+(p.x+1)*r.width/2,r.top+(1-p.y)*r.height/2,count);}
   clearHover(){this.setHover(null);this.stage.sparkles?.setTarget(null);}
   activate(event){const target=this.target(event);if(!target)return false;if(target.toy){if(this.stage.motion)this.api.toyTap(target.toy);this.stage.onShelfSound('toy',{name:target.toy.name,tapped:true});this.toySparkle(target.toy,24);this.stage.onInteract(labels[target.toy.name]+'在和你打招呼。',{silent:true});this.stage.start();}else this.stage.onShelfPick(target.id);return true;}
-  async lift(id){if(!this.api)return;this.clearHover();this.stage.onShelfSound('lift');if(!this.stage.motion)return;await this.api.flyTo(id,{position:new T.Vector3(.01,.07,2.72),rotation:new T.Euler(-Math.PI/2,0,0),scale:1},.85);}
+  async lift(id){if(!this.api)return;this.clearHover();this.stage.onShelfSound('lift');if(!this.stage.motion)return;await this.api.flyTo(id,{position:new T.Vector3(.01,.07,2.72),rotation:new T.Euler(-Math.PI/2,0,0),scale:1},motionSeconds.lift);}
+  async returnBook(id){if(this.stage.motion&&this.stage.view==='shelf')await this.api?.flyHome(id,motionSeconds.lift);}
   show(){if(!this.api)return;this.api.group.visible=true;for(const b of this.api.items){b.parked=false;b.flight?.resolve?.();b.flight=null;}this.clearHover();this.api.update(0,this.stage.time);this.api.setCastShadow(true);}
   hide(){if(this.api){this.api.group.visible=false;this.api.setCastShadow(false);}}
   update(dt,time){if(this.api&&this.stage.view==='shelf')this.api.update(dt,time);}
